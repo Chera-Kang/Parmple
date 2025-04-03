@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "path_to_your_virtual_environment/bin/python",
+    "robot.languageServer.enabled": true
+}
