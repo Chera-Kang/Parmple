@@ -16,6 +16,8 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
     Screenshot
 
+
+
     # 아이디/비밀번호 입력
     Input Text    id=login-email    ${USER_2_ID}
     Input Text    id=login-password    ${USER_2_PW}
