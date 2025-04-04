@@ -50,7 +50,7 @@ Suite Teardown    Finalize Test Suite
     # Click Element    id=btn-search
     # Screenshot
 
-    # 필터링 검색 3 (qa 서버 db 관련 이슈로 검색 불가함만을 확인)
+    # 필터링 검색 3 (qa 서버 db 관련 이슈로 검색되지 않는 것만 확인)
     Click Element    class=select2-selection__arrow
     Press Key    class=select2-search__field    메디
     Press Keys    None    ENTER
