@@ -60,6 +60,8 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Click Element    id=btn-search
     Screenshot
+    Click Button    class=swal2-confirm
+    
 
     # # 세로 스크롤이 있는지 확인하고 스크롤 동작 수행
     # Execute JavaScript    if (document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").scrollHeight > document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").clientHeight) { document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").scrollTo({ top: document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").scrollHeight, behavior: 'smooth' }); } else { console.log('세로 스크롤 없음'); }

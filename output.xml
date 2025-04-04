@@ -1,0 +1,1785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.11.9 on win32)" generated="2025-04-04T15:01:05.316168" rpa="false" schemaversion="5">
+<suite id="s1" name="3. 정산 내역" source="c:\Dev\robotframework\Automation_Testcase\3. 정산 내역.robot">
+<kw name="Initialize Test Suite" owner="keywords" type="SETUP">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Initialzing Test Suite</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-04-04T15:01:05.743533" elapsed="0.002636"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Opening Browser</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-04-04T15:01:05.747269" elapsed="0.001005"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:05.750347" level="INFO">Opening browser 'Chrome' to base url 'https://qa.erp.parmple.com/'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-04T15:01:05.749274" elapsed="2.410275"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-04T15:01:08.159549" elapsed="0.044391"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:05.741173" elapsed="2.463763"/>
+</kw>
+<test id="s1-t1" name="---- 1. 정산내역관리 Testcase" line="12">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:08.208767" elapsed="0.037098"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:08.247729" level="INFO">Typing text 'chera-m1@twosun.com' into text field 'id=login-email'.</msg>
+<arg>id=login-email</arg>
+<arg>${USER_1_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:08.246658" elapsed="0.083067"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:08.332203" level="INFO">Typing text 'asdf1234' into text field 'id=login-password'.</msg>
+<arg>id=login-password</arg>
+<arg>${USER_1_PW}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:08.329725" elapsed="0.068430"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:09.402890" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:08.401438" elapsed="1.002461"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:09.408812" level="INFO">Clicking button 'class=btn'.</msg>
+<arg>class=btn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:09.406557" elapsed="1.169640"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:10.577283" elapsed="0.021370"/>
+</kw>
+<kw name="MainMenu Mouse Over" owner="keywords">
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:10.601005" level="INFO">Simulating Mouse Over on element 'class=menu-link'.</msg>
+<arg>class=menu-link</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:10.601005" elapsed="0.310340"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:11.913167" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:10.912688" elapsed="1.001490"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:10.599994" elapsed="1.315179"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:11.918883" level="INFO">Clicking element 'xpath=//div[@class='gnb_title' and text()='정산 내역 관리']'.</msg>
+<arg>xpath=//div[@class='gnb_title' and text()='정산 내역 관리']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:11.916834" elapsed="0.525623"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=b-grid-cell</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:12.443455" elapsed="0.261419"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:12.708687" level="INFO">${SetTime} = 2025.04.04_15.01.12</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:12.707690" elapsed="0.001993"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:13.210935" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:12.709683" elapsed="0.502395"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:13.337775" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.12.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:13.214095" elapsed="0.124687"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:14.339546" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:13.338782" elapsed="1.001882"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:12.706696" elapsed="1.635064"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:08.204936" elapsed="6.139168"/>
+</test>
+<test id="s1-t2" name="-------- 1.1. 정산내역 등록" line="28">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:14.350748" level="INFO">${SetTime2} = 2025.04.04 15.01.14</msg>
+<var>${SetTime2}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d %H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.349645" elapsed="0.001103"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:14.353077" level="INFO">${SetTime3} = 2025.04.04</msg>
+<var>${SetTime3}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.351754" elapsed="0.001323"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:14.356122" level="INFO">Clicking button 'id=b-button-2'.</msg>
+<arg>id=b-button-2</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.355019" elapsed="0.137052"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:14.495717" level="INFO">${SetTime} = 2025.04.04_15.01.14</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.494184" elapsed="0.001533"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:14.997348" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.495717" elapsed="0.501631"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:15.201904" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.14.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:14.998357" elapsed="0.204544"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:16.203677" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:15.202901" elapsed="1.002126"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:14.493099" elapsed="1.713198"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:16.211460" level="INFO">Sending key(s) ('자동화_2025.04.04',) to id=biz_name element.</msg>
+<msg time="2025-04-04T15:01:16.517396" level="INFO">Sending keys 자동화_2025.04.04</msg>
+<arg>id=biz_name</arg>
+<arg>자동화_${SetTime3}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:16.208359" elapsed="0.364078"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:16.574952" level="INFO">Sending key(s) ('1234567890',) to id=biz_reg_no element.</msg>
+<msg time="2025-04-04T15:01:16.878353" level="INFO">Sending keys 1234567890</msg>
+<arg>id=biz_reg_no</arg>
+<arg>1234567890</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:16.573447" elapsed="0.347474"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:16.923098" level="INFO">Sending key(s) ('123456',) to id=prescription_date element.</msg>
+<msg time="2025-04-04T15:01:17.223232" level="INFO">Sending keys 123456</msg>
+<arg>id=prescription_date</arg>
+<arg>123456</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:16.921925" elapsed="0.326622"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:17.250751" level="INFO">Clicking element 'class=select2-selection__arrow'.</msg>
+<arg>class=select2-selection__arrow</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.249699" elapsed="0.078951"/>
+</kw>
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>class=select2-search__field</arg>
+<arg>오토</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.329659" elapsed="0.043185"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:17.375411" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg time="2025-04-04T15:01:17.375411" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg time="2025-04-04T15:01:17.375411" level="INFO">Releasing special key ENTER.</msg>
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.373907" elapsed="0.010294"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=mp-selectbox</arg>
+<arg>2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.385700" elapsed="0.451557"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:17.840560" level="INFO">Clicking element 'class=mp-selectbox'.</msg>
+<arg>class=mp-selectbox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.838278" elapsed="0.067776"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:17.909558" level="INFO">Sending key(s) ('자동화테스트_제약사이름',) to id=manufacturer_name element.</msg>
+<msg time="2025-04-04T15:01:18.221603" level="INFO">Sending keys 자동화테스트_제약사이름</msg>
+<arg>id=manufacturer_name</arg>
+<arg>자동화테스트_제약사이름</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:17.908163" elapsed="0.369547"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:18.280136" level="INFO">Sending key(s) ('자동화테스트_제품이름',) to id=product_name element.</msg>
+<msg time="2025-04-04T15:01:18.579795" level="INFO">Sending keys 자동화테스트_제품이름</msg>
+<arg>id=product_name</arg>
+<arg>자동화테스트_제품이름</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:18.277710" elapsed="0.352894"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:18.635109" level="INFO">Sending key(s) ('100',) to id=sales_cost element.</msg>
+<msg time="2025-04-04T15:01:18.950490" level="INFO">Sending keys 100</msg>
+<arg>id=sales_cost</arg>
+<arg>100</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:18.633605" elapsed="0.333629"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:18.969483" level="INFO">Sending key(s) ('200',) to id=sales_quantity element.</msg>
+<msg time="2025-04-04T15:01:19.271885" level="INFO">Sending keys 200</msg>
+<arg>id=sales_quantity</arg>
+<arg>200</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:18.968356" elapsed="0.329074"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:19.300893" level="INFO">Sending key(s) ('300',) to id=sales_amount element.</msg>
+<msg time="2025-04-04T15:01:19.610715" level="INFO">Sending keys 300</msg>
+<arg>id=sales_amount</arg>
+<arg>300</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:19.298434" elapsed="0.333452"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:19.633966" level="INFO">Sending key(s) ('400',) to id=settlement_amount element.</msg>
+<msg time="2025-04-04T15:01:19.940140" level="INFO">Sending keys 400</msg>
+<arg>id=settlement_amount</arg>
+<arg>400</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:19.632925" elapsed="0.326494"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:19.961479" level="INFO">Sending key(s) ('12',) to id=commission_rate element.</msg>
+<msg time="2025-04-04T15:01:20.254972" level="INFO">Sending keys 12</msg>
+<arg>id=commission_rate</arg>
+<arg>12</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:19.960470" elapsed="0.309820"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:20.273515" level="INFO">Sending key(s) ('0.34',) to id=addition_commission_rate element.</msg>
+<msg time="2025-04-04T15:01:20.579010" level="INFO">Sending keys 0.34</msg>
+<arg>id=addition_commission_rate</arg>
+<arg>0.34</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:20.271303" elapsed="0.331491"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:20.605307" level="INFO">Sending key(s) ('Automation Test ! 2025.04.04 15.01.14',) to name=note element.</msg>
+<msg time="2025-04-04T15:01:20.907594" level="INFO">Sending keys Automation Test ! 2025.04.04 15.01.14</msg>
+<arg>name=note</arg>
+<arg>Automation Test ! ${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:20.603804" elapsed="0.432062"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:21.038917" level="INFO">${SetTime} = 2025.04.04_15.01.21</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:21.037914" elapsed="0.001003"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:21.540972" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:21.039436" elapsed="0.501536"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:21.708742" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.21.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.21.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:21.542065" elapsed="0.166677"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:22.710025" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:21.709769" elapsed="1.000256"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:21.036870" elapsed="1.674155"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:22.712044" level="INFO">Clicking button 'class=btn-primary'.</msg>
+<arg>class=btn-primary</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:22.711025" elapsed="0.098775"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:22.812141" level="INFO">${SetTime} = 2025.04.04_15.01.22</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:22.812141" elapsed="0.001015"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:23.314519" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:22.813156" elapsed="0.502909"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:23.469633" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.22.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.22.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:23.317464" elapsed="0.152169"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:24.470995" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:23.470638" elapsed="1.001148"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:22.811125" elapsed="1.661827"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:14.346442" elapsed="10.129029"/>
+</test>
+<test id="s1-t3" name="-------- 1.2. 정산내역 수정" line="58">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:24.482838" level="INFO">Executing JavaScript:
+document.querySelector('[data-region="normal"]').scrollTo({ left: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })
+Without any arguments.</msg>
+<arg>document.querySelector('[data-region="normal"]').scrollTo({ left: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:24.481842" elapsed="0.009278"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:24.993960" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:24.492553" elapsed="0.502449"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:24.999149" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_cost8']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_cost8']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:24.997090" elapsed="0.334089"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:25.334979" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:25.333476" elapsed="0.008582"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:25.344206" level="INFO">Sending key(s) ('1234',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_cost8'] element.</msg>
+<msg time="2025-04-04T15:01:25.646358" level="INFO">Sending keys 1234</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_cost8']</arg>
+<arg>1234</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:25.343182" elapsed="0.328707"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:25.672957" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_quantity9']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_quantity9']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:25.672957" elapsed="0.322066"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:25.997248" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:25.996217" elapsed="0.008749"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:26.007065" level="INFO">Sending key(s) ('2345',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_quantity9'] element.</msg>
+<msg time="2025-04-04T15:01:26.303473" level="INFO">Sending keys 2345</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_quantity9']</arg>
+<arg>2345</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:26.006034" elapsed="0.320115"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:26.328384" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_amount10']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_amount10']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:26.327386" elapsed="0.349140"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:26.679898" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:26.678870" elapsed="0.016089"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:26.695992" level="INFO">Sending key(s) ('3456.7',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_amount10'] element.</msg>
+<msg time="2025-04-04T15:01:27.026447" level="INFO">Sending keys 3456.7</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='sales_amount10']</arg>
+<arg>3456.7</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:26.695992" elapsed="0.362058"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:27.060208" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='settlement_amount11']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='settlement_amount11']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:27.059054" elapsed="0.342292"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:27.403457" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:27.402398" elapsed="0.006888"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:27.411379" level="INFO">Sending key(s) ('4567.89',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='settlement_amount11'] element.</msg>
+<msg time="2025-04-04T15:01:27.698729" level="INFO">Sending keys 4567.89</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='settlement_amount11']</arg>
+<arg>4567.89</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:27.410298" elapsed="0.325003"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:27.736813" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='commission_rate12']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='commission_rate12']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:27.735807" elapsed="0.330329"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:28.068149" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:28.067154" elapsed="0.005591"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:28.075253" level="INFO">Sending key(s) ('0.05',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='commission_rate12'] element.</msg>
+<msg time="2025-04-04T15:01:28.366981" level="INFO">Sending keys 0.05</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='commission_rate12']</arg>
+<arg>0.05</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:28.073750" elapsed="0.319111"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:28.393875" level="INFO">Double clicking element 'xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='addition_commission_rate13']'.</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='addition_commission_rate13']</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:28.393875" elapsed="0.319413"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:28.716121" level="INFO">Executing JavaScript:
+document.activeElement.value = ""
+Without any arguments.</msg>
+<arg>document.activeElement.value = ""</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:28.714586" elapsed="0.006965"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:28.723697" level="INFO">Sending key(s) ('67.80',) to xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='addition_commission_rate13'] element.</msg>
+<msg time="2025-04-04T15:01:29.020875" level="INFO">Sending keys 67.80</msg>
+<arg>xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='addition_commission_rate13']</arg>
+<arg>67.80</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:28.722692" elapsed="0.331960"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:29.057303" level="INFO">${SetTime} = 2025.04.04_15.01.29</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:29.056261" elapsed="0.002046"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:29.559798" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:29.058307" elapsed="0.502612"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:29.689336" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.29.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.29.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:29.562022" elapsed="0.127314"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:30.691512" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:29.690333" elapsed="1.002342"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:29.055244" elapsed="1.638552"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:30.698825" level="INFO">Clicking button 'id=b-button-1'.</msg>
+<arg>id=b-button-1</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:30.696769" elapsed="0.108371"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:30.809501" level="INFO">${SetTime} = 2025.04.04_15.01.30</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:30.808505" elapsed="0.001993"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:31.312140" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:30.811494" elapsed="0.501662"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:31.487873" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.30.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.30.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:31.314152" elapsed="0.173721"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:32.489485" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:31.488920" elapsed="1.001753"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:30.806508" elapsed="1.685272"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:32.496452" level="INFO">Clicking button 'class=swal2-confirm'.</msg>
+<arg>class=swal2-confirm</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:32.493879" elapsed="0.112441"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:32.609600" level="INFO">${SetTime} = 2025.04.04_15.01.32</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:32.609600" elapsed="0.001004"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:33.112280" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:32.610604" elapsed="0.502685"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:33.263155" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.32.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.32.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:33.114285" elapsed="0.149908"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.265061" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:33.264193" elapsed="1.001386"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:32.607325" elapsed="1.660255"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:34.271935" level="INFO">Executing JavaScript:
+document.querySelector('[data-region="normal"]').scrollTo({ right: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })
+Without any arguments.</msg>
+<arg>document.querySelector('[data-region="normal"]').scrollTo({ right: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.270939" elapsed="0.009357"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.782885" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.281698" elapsed="0.502190"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:24.477926" elapsed="10.308192"/>
+</test>
+<test id="s1-t4" name="-------- 1.2. 정산내역 삭제" line="105">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.799039" level="INFO">${SetTime2} = 2025.04.04 15.01.34</msg>
+<var>${SetTime2}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d %H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.795850" elapsed="0.003692"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.800959" level="INFO">${SetTime3} = 2025.04.04</msg>
+<var>${SetTime3}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.799542" elapsed="0.002414"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.805510" level="INFO">${SetTime4} = 2504041501</msg>
+<var>${SetTime4}</var>
+<arg>__import__('datetime').datetime.now().strftime('%y%m%d%H%M')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.803454" elapsed="0.004078"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.811759" level="INFO">${SetTime5} = 202504</msg>
+<var>${SetTime5}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y%m')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.808530" elapsed="0.004245"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:34.816245" level="INFO">${SetTime6} = 15.01.34</msg>
+<var>${SetTime6}</var>
+<arg>__import__('datetime').datetime.now().strftime('%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.815201" elapsed="0.001044"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:34.819352" level="INFO">Clicking button 'id=b-button-2'.</msg>
+<arg>id=b-button-2</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.818257" elapsed="0.074846"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:35.895988" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:34.894428" elapsed="1.002064"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:35.899801" level="INFO">Sending key(s) ('전송테스트_2025.04.04 15.01.34',) to id=biz_name element.</msg>
+<msg time="2025-04-04T15:01:36.189660" level="INFO">Sending keys 전송테스트_2025.04.04 15.01.34</msg>
+<arg>id=biz_name</arg>
+<arg>전송테스트_${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:35.897260" elapsed="0.392257"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:36.291869" level="INFO">Sending key(s) ('2504041501',) to id=biz_reg_no element.</msg>
+<msg time="2025-04-04T15:01:36.594368" level="INFO">Sending keys 2504041501</msg>
+<arg>id=biz_reg_no</arg>
+<arg>${SetTime4}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:36.290691" elapsed="0.346779"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:36.640495" level="INFO">Sending key(s) ('202504',) to id=prescription_date element.</msg>
+<msg time="2025-04-04T15:01:36.940490" level="INFO">Sending keys 202504</msg>
+<arg>id=prescription_date</arg>
+<arg>${SetTime5}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:36.638978" elapsed="0.337275"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:36.978756" level="INFO">Clicking element 'class=select2-selection__arrow'.</msg>
+<arg>class=select2-selection__arrow</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:36.977270" elapsed="0.113572"/>
+</kw>
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>class=select2-search__field</arg>
+<arg>오토</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:37.092025" elapsed="0.039868"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:37.135871" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg time="2025-04-04T15:01:37.137022" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg time="2025-04-04T15:01:37.137022" level="INFO">Releasing special key ENTER.</msg>
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:37.134383" elapsed="0.010978"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=mp-selectbox</arg>
+<arg>2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:37.146379" elapsed="0.444209"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:37.593907" level="INFO">Clicking element 'class=mp-selectbox'.</msg>
+<arg>class=mp-selectbox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:37.591594" elapsed="0.074982"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:37.670484" level="INFO">Sending key(s) ('자동화테스트_2025.04.04',) to id=manufacturer_name element.</msg>
+<msg time="2025-04-04T15:01:37.975014" level="INFO">Sending keys 자동화테스트_2025.04.04</msg>
+<arg>id=manufacturer_name</arg>
+<arg>자동화테스트_${SetTime3}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:37.668932" elapsed="0.381274"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:38.052588" level="INFO">Sending key(s) ('자동화테스트_2025.04.04',) to id=product_name element.</msg>
+<msg time="2025-04-04T15:01:38.352680" level="INFO">Sending keys 자동화테스트_2025.04.04</msg>
+<arg>id=product_name</arg>
+<arg>자동화테스트_${SetTime3}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:38.051581" elapsed="0.372043"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:38.427129" level="INFO">Sending key(s) ('100',) to id=sales_cost element.</msg>
+<msg time="2025-04-04T15:01:38.751307" level="INFO">Sending keys 100</msg>
+<arg>id=sales_cost</arg>
+<arg>100</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:38.424955" elapsed="0.349719"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:38.776864" level="INFO">Sending key(s) ('200',) to id=sales_quantity element.</msg>
+<msg time="2025-04-04T15:01:39.085435" level="INFO">Sending keys 200</msg>
+<arg>id=sales_quantity</arg>
+<arg>200</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:38.775689" elapsed="0.335273"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:39.113084" level="INFO">Sending key(s) ('300',) to id=sales_amount element.</msg>
+<msg time="2025-04-04T15:01:39.432186" level="INFO">Sending keys 300</msg>
+<arg>id=sales_amount</arg>
+<arg>300</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:39.112059" elapsed="0.357726"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:39.471844" level="INFO">Sending key(s) ('400',) to id=settlement_amount element.</msg>
+<msg time="2025-04-04T15:01:39.786042" level="INFO">Sending keys 400</msg>
+<arg>id=settlement_amount</arg>
+<arg>400</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:39.470799" elapsed="0.339389"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:39.812514" level="INFO">Sending key(s) ('12',) to id=commission_rate element.</msg>
+<msg time="2025-04-04T15:01:40.142244" level="INFO">Sending keys 12</msg>
+<arg>id=commission_rate</arg>
+<arg>12</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:39.811280" elapsed="0.348796"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:40.162486" level="INFO">Sending key(s) ('0.34',) to id=addition_commission_rate element.</msg>
+<msg time="2025-04-04T15:01:40.469342" level="INFO">Sending keys 0.34</msg>
+<arg>id=addition_commission_rate</arg>
+<arg>0.34</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:40.161378" elapsed="0.335054"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:40.498434" level="INFO">Sending key(s) ('Automation Test ! 2025.04.04 15.01.34',) to name=note element.</msg>
+<msg time="2025-04-04T15:01:40.796083" level="INFO">Sending keys Automation Test ! 2025.04.04 15.01.34</msg>
+<arg>name=note</arg>
+<arg>Automation Test ! ${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:40.497436" elapsed="0.395804"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:41.395585" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:40.894303" elapsed="0.501282"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:41.397793" level="INFO">Clicking button 'class=btn-primary'.</msg>
+<arg>class=btn-primary</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:41.396735" elapsed="0.068888"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:42.468362" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:41.466640" elapsed="1.003242"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:42.473795" level="INFO">Clicking button 'id=b-button-2'.</msg>
+<arg>id=b-button-2</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:42.471759" elapsed="0.068951"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:43.542502" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:42.542100" elapsed="1.001410"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:43.549071" level="INFO">Sending key(s) ('전송테스트_2025.04.04 15.01.34',) to id=biz_name element.</msg>
+<msg time="2025-04-04T15:01:43.838473" level="INFO">Sending keys 전송테스트_2025.04.04 15.01.34</msg>
+<arg>id=biz_name</arg>
+<arg>전송테스트_${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:43.545741" elapsed="0.398913"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:43.946793" level="INFO">Sending key(s) ('2744708777',) to id=biz_reg_no element.</msg>
+<msg time="2025-04-04T15:01:44.240064" level="INFO">Sending keys 2744708777</msg>
+<arg>id=biz_reg_no</arg>
+<arg>2744708777</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:43.945702" elapsed="0.331512"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:44.279408" level="INFO">Sending key(s) ('202504',) to id=prescription_date element.</msg>
+<msg time="2025-04-04T15:01:44.574658" level="INFO">Sending keys 202504</msg>
+<arg>id=prescription_date</arg>
+<arg>${SetTime5}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:44.278194" elapsed="0.333556"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:44.612816" level="INFO">Clicking element 'class=select2-selection__arrow'.</msg>
+<arg>class=select2-selection__arrow</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:44.612816" elapsed="0.053185"/>
+</kw>
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>class=select2-search__field</arg>
+<arg>오토</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:44.667833" elapsed="0.030451"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:44.701590" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg time="2025-04-04T15:01:44.702600" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg time="2025-04-04T15:01:44.702600" level="INFO">Releasing special key ENTER.</msg>
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:44.700400" elapsed="0.008788"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=mp-selectbox</arg>
+<arg>2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:01:44.710388" elapsed="0.452388"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:45.165265" level="INFO">Clicking element 'class=mp-selectbox'.</msg>
+<arg>class=mp-selectbox</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:45.165265" elapsed="0.055863"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:45.224624" level="INFO">Sending key(s) ('자동화테스트_15.01.34',) to id=manufacturer_name element.</msg>
+<msg time="2025-04-04T15:01:45.524727" level="INFO">Sending keys 자동화테스트_15.01.34</msg>
+<arg>id=manufacturer_name</arg>
+<arg>자동화테스트_${SetTime6}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:45.223627" elapsed="0.361386"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:45.587015" level="INFO">Sending key(s) ('자동화테스트_2025.04.04 15.01.34',) to id=product_name element.</msg>
+<msg time="2025-04-04T15:01:45.888619" level="INFO">Sending keys 자동화테스트_2025.04.04 15.01.34</msg>
+<arg>id=product_name</arg>
+<arg>자동화테스트_${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:45.586019" elapsed="0.398675"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:45.986745" level="INFO">Sending key(s) ('100',) to id=sales_cost element.</msg>
+<msg time="2025-04-04T15:01:46.275278" level="INFO">Sending keys 100</msg>
+<arg>id=sales_cost</arg>
+<arg>100</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:45.985736" elapsed="0.309263"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:46.297021" level="INFO">Sending key(s) ('200',) to id=sales_quantity element.</msg>
+<msg time="2025-04-04T15:01:46.588186" level="INFO">Sending keys 200</msg>
+<arg>id=sales_quantity</arg>
+<arg>200</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:46.296009" elapsed="0.314869"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:46.613881" level="INFO">Sending key(s) ('300',) to id=sales_amount element.</msg>
+<msg time="2025-04-04T15:01:46.918684" level="INFO">Sending keys 300</msg>
+<arg>id=sales_amount</arg>
+<arg>300</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:46.611888" elapsed="0.332968"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:46.946293" level="INFO">Sending key(s) ('400',) to id=settlement_amount element.</msg>
+<msg time="2025-04-04T15:01:47.244943" level="INFO">Sending keys 400</msg>
+<arg>id=settlement_amount</arg>
+<arg>400</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:46.944856" elapsed="0.321621"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:47.268653" level="INFO">Sending key(s) ('12',) to id=commission_rate element.</msg>
+<msg time="2025-04-04T15:01:47.581302" level="INFO">Sending keys 12</msg>
+<arg>id=commission_rate</arg>
+<arg>12</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:47.267483" elapsed="0.334628"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:47.604753" level="INFO">Sending key(s) ('0.34',) to id=addition_commission_rate element.</msg>
+<msg time="2025-04-04T15:01:47.919263" level="INFO">Sending keys 0.34</msg>
+<arg>id=addition_commission_rate</arg>
+<arg>0.34</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:47.603518" elapsed="0.342862"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:47.949209" level="INFO">Sending key(s) ('Automation Test ! 2025.04.04 15.01.34',) to name=note element.</msg>
+<msg time="2025-04-04T15:01:48.236100" level="INFO">Sending keys Automation Test ! 2025.04.04 15.01.34</msg>
+<arg>name=note</arg>
+<arg>Automation Test ! ${SetTime2}</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:47.947696" elapsed="0.381945"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:48.832005" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:48.330644" elapsed="0.502465"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:48.838490" level="INFO">Clicking button 'class=btn-primary'.</msg>
+<arg>class=btn-primary</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:48.836435" elapsed="0.176018"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:50.014087" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:49.013744" elapsed="1.001351"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:50.020265" level="INFO">Clicking button 'id=b-button-2'.</msg>
+<arg>id=b-button-2</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:50.018274" elapsed="0.074017"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:50.594437" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:50.093289" elapsed="0.501148"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:50.598893" level="INFO">Sending key(s) ('Delete_Test',) to id=biz_name element.</msg>
+<msg time="2025-04-04T15:01:50.905264" level="INFO">Sending keys Delete_Test</msg>
+<arg>id=biz_name</arg>
+<arg>Delete_Test</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:50.596585" elapsed="0.355725"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:50.954530" level="INFO">Sending key(s) ('1234567890',) to id=biz_reg_no element.</msg>
+<msg time="2025-04-04T15:01:51.252923" level="INFO">Sending keys 1234567890</msg>
+<arg>id=biz_reg_no</arg>
+<arg>1234567890</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-04T15:01:50.953451" elapsed="0.349476"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:51.305112" level="INFO">${SetTime} = 2025.04.04_15.01.51</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:51.305112" elapsed="0.001019"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:51.807335" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:51.306131" elapsed="0.502220"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:51.931844" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.51.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.51.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:51.809348" elapsed="0.122496"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:52.934350" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:51.932908" elapsed="1.002542"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:51.303944" elapsed="1.632524"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:52.939656" level="INFO">Clicking button 'class=btn-primary'.</msg>
+<arg>class=btn-primary</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:52.937536" elapsed="0.069131"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:53.010240" level="INFO">${SetTime} = 2025.04.04_15.01.53</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:53.009146" elapsed="0.002143"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:53.511668" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:53.011289" elapsed="0.500379"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:53.675619" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.53.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.53.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:53.512675" elapsed="0.162944"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:54.677302" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:53.676712" elapsed="1.001106"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:53.007920" elapsed="1.671927"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:54.684492" level="INFO">Executing JavaScript:
+document.querySelector('[data-region="normal"]').scrollTo({ left: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })
+Without any arguments.</msg>
+<arg>document.querySelector('[data-region="normal"]').scrollTo({ left: document.querySelector('[data-region="normal"]').scrollWidth, behavior: 'smooth' })</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:54.681600" elapsed="0.012146"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:55.196066" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:54.694765" elapsed="0.502317"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:55.201987" level="INFO">Clicking element 'id=b-button-9'.</msg>
+<arg>id=b-button-9</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:55.199565" elapsed="0.078074"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:55.285612" level="INFO">${SetTime} = 2025.04.04_15.01.55</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:55.283620" elapsed="0.001992"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:55.787901" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:55.286608" elapsed="0.501293"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:55.927251" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.55.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.55.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:55.788911" elapsed="0.139347"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:56.929563" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:55.929381" elapsed="1.001515"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:55.280630" elapsed="1.651278"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:56.936319" level="INFO">Clicking button 'class=swal2-confirm'.</msg>
+<arg>class=swal2-confirm</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:56.934298" elapsed="0.068987"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:57.006826" level="INFO">${SetTime} = 2025.04.04_15.01.57</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:57.005666" elapsed="0.001160"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:57.508377" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:57.006826" elapsed="0.501551"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:57.647731" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.57.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.57.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:57.508377" elapsed="0.140435"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:58.650615" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:57.648812" elapsed="1.002906"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:57.003285" elapsed="1.649523"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:58.657003" level="INFO">Executing JavaScript:
+document.querySelector('[data-region="normal"]').scrollTo({ left: 0, behavior: 'smooth' })
+Without any arguments.</msg>
+<arg>document.querySelector('[data-region="normal"]').scrollTo({ left: 0, behavior: 'smooth' })</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-04-04T15:01:58.654935" elapsed="0.011423"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:59.168908" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:58.667363" elapsed="0.501545"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:34.789587" elapsed="24.381881"/>
+</test>
+<test id="s1-t5" name="-------- 1.3. 정산내역 검색 &amp; 정산월 변경" line="189">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:01:59.182522" level="INFO">Clicking element 'id=st'.</msg>
+<arg>id=st</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:01:59.179196" elapsed="0.157794"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:01:59.342274" level="INFO">${SetTime} = 2025.04.04_15.01.59</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:01:59.342274" elapsed="0.001482"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:01:59.846301" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:01:59.343756" elapsed="0.502545"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:00.006722" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.01.59.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.01.59.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:01:59.847686" elapsed="0.159036"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:01.007786" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:00.007719" elapsed="1.000067"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:59.339603" elapsed="1.669469"/>
+</kw>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:01.011266" level="INFO">Selecting options from selection list 'id=st' by label 제품명.</msg>
+<arg>id=st</arg>
+<arg>제품명</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-04-04T15:02:01.010160" elapsed="0.064331"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:02.077200" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:01.075493" elapsed="1.001707"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:02.081049" level="INFO">Typing text '자동화' into text field 'name=sw'.</msg>
+<arg>name=sw</arg>
+<arg>자동화</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:02.079948" elapsed="0.105835"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:02.690379" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:02.188715" elapsed="0.502678"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:02.695493" level="INFO">Clicking button 'btn-search'.</msg>
+<arg>btn-search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:02.693490" elapsed="0.101518"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:02.800987" level="INFO">${SetTime} = 2025.04.04_15.02.02</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:02.798993" elapsed="0.001994"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:03.302604" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:02.802274" elapsed="0.501358"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:03.449231" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.02.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.02.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:03.304678" elapsed="0.144553"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:04.450932" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:03.450343" elapsed="1.001182"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:02.797000" elapsed="1.655620"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:04.456861" level="INFO">Clicking button 'id=btn-init-search'.</msg>
+<arg>id=btn-init-search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:04.454756" elapsed="0.116333"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:04.574188" level="INFO">Clicking button 'btn-search'.</msg>
+<arg>btn-search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:04.573191" elapsed="0.104485"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:05.180438" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:04.679999" elapsed="0.500439"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:05.184021" level="INFO">Clicking element 'id=apply_year_month'.</msg>
+<arg>id=apply_year_month</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:05.182753" elapsed="0.081609"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:05.269898" level="INFO">${SetTime} = 2025.04.04_15.02.05</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:05.268853" elapsed="0.001045"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:05.771723" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:05.271223" elapsed="0.501502"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:05.932169" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.05.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.05.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:05.773721" elapsed="0.159631"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:06.934658" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:05.934429" elapsed="1.000735"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:05.266530" elapsed="1.670631"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:06.939250" level="INFO">Clicking element 'xpath=//span[@class='month' and text()='2월']'.</msg>
+<arg>xpath=//span[@class='month' and text()='2월']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:06.939250" elapsed="0.087069"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:07.029789" level="INFO">${SetTime} = 2025.04.04_15.02.07</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:07.028620" elapsed="0.001169"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:07.531360" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:07.029789" elapsed="0.502719"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:07.649182" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.07.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.07.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:07.533525" elapsed="0.116691"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:08.651937" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:07.651302" elapsed="1.001657"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:07.027419" elapsed="1.626535"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:59.172810" elapsed="9.483441"/>
+</test>
+<test id="s1-t6" name="---- 2. 정산내역공유 Testcase" line="210">
+<kw name="MainMenu Mouse Over" owner="keywords">
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:08.666125" level="INFO">Simulating Mouse Over on element 'class=menu-link'.</msg>
+<arg>class=menu-link</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:08.665122" elapsed="0.291041"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:09.957566" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:08.957273" elapsed="1.000885"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:08.663717" elapsed="1.295451"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:09.963780" level="INFO">Clicking element 'xpath=//div[@class='gnb_title' and text()='정산 내역 공유']'.</msg>
+<arg>xpath=//div[@class='gnb_title' and text()='정산 내역 공유']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:09.961713" elapsed="0.399917"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=b-grid-cell</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:02:10.362646" elapsed="0.259561"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:10.628750" level="INFO">${SetTime} = 2025.04.04_15.02.10</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:10.626532" elapsed="0.002218"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:11.130821" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:10.628750" elapsed="0.503081"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:11.286867" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.10.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:11.132827" elapsed="0.154040"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:12.288089" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:11.287863" elapsed="1.001311"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:10.624233" elapsed="1.666045"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:08.659614" elapsed="3.632782"/>
+</test>
+<test id="s1-t7" name="-------- 2.1. 정산내역 상세보기" line="217">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:12.301061" level="INFO">Clicking element 'xpath=//a[@data-name='체라메디' and text()='보기']'.</msg>
+<arg>xpath=//a[@data-name='체라메디' and text()='보기']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:12.300051" elapsed="0.076636"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=modal-body</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:02:12.378704" elapsed="0.248832"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:12.633438" level="INFO">${SetTime} = 2025.04.04_15.02.12</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:12.631278" elapsed="0.003203"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:13.136638" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:12.634481" elapsed="0.503293"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:13.280351" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.12.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:13.139870" elapsed="0.141487"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:14.282787" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:13.282354" elapsed="1.001670"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:12.629741" elapsed="1.654283"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:14.287220" level="INFO">Clicking button 'class=btn-close'.</msg>
+<arg>class=btn-close</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:14.286136" elapsed="0.075598"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:12.296004" elapsed="2.066750"/>
+</test>
+<test id="s1-t8" name="-------- 2.2. 정산내역 공유하기" line="225">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:14.370593" level="INFO">Clicking button 'id=b-checkbox-1-input'.</msg>
+<arg>id=b-checkbox-1-input</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:14.369249" elapsed="0.345302"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:15.218214" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:14.716804" elapsed="0.502527"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:15.222443" level="INFO">Clicking button 'id=b-button-1'.</msg>
+<arg>id=b-button-1</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.221435" elapsed="0.085197"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=swal2-container</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.307627" elapsed="0.019855"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:15.330635" level="INFO">${SetTime} = 2025.04.04_15.02.15</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.329592" elapsed="0.001043"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:15.832148" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.331661" elapsed="0.500990"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:15.970854" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.15.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.833652" elapsed="0.138360"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:16.973687" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:15.972012" elapsed="1.001675"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:15.328545" elapsed="1.646162"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:16.975714" level="INFO">Clicking button 'class=swal2-confirm'.</msg>
+<arg>class=swal2-confirm</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:16.975714" elapsed="0.083497"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:17.063709" level="INFO">${SetTime} = 2025.04.04_15.02.17</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:17.062548" elapsed="0.001161"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:17.565809" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:17.065192" elapsed="0.502625"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:17.699819" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.17.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:17.569808" elapsed="0.131008"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:18.703319" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:17.700816" elapsed="1.003514"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:17.061446" elapsed="1.643878"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:14.364918" elapsed="4.342423"/>
+</test>
+<test id="s1-t9" name="---- 3. 받은 정산 내역 Testcase" line="240">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:18.715267" level="INFO">Clicking element 'xpath=//*[@id="navbar-collapse"]/ul/li/a/div/div'.</msg>
+<arg>xpath=//*[@id="navbar-collapse"]/ul/li/a/div/div</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:18.714269" elapsed="0.065720"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:19.281451" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:18.780993" elapsed="0.501467"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:19.286300" level="INFO">Clicking element 'xpath=//*[@id="navbar-collapse"]/ul/li/ul/li[5]/a/span'.</msg>
+<arg>xpath=//*[@id="navbar-collapse"]/ul/li/ul/li[5]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:19.284929" elapsed="0.146314"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:19.436184" level="INFO">${SetTime} = 2025.04.04_15.02.19</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:19.435043" elapsed="0.001141"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:19.937847" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:19.437204" elapsed="0.501652"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:20.058472" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.19.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:19.939850" elapsed="0.118622"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:21.059766" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:20.059471" elapsed="1.001305"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:19.433724" elapsed="1.628047"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:21.066172" level="INFO">Typing text 'chera@twosun.com' into text field 'id=login-email'.</msg>
+<arg>id=login-email</arg>
+<arg>${USER_2_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:21.064087" elapsed="0.156545"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:21.222651" level="INFO">Typing text 'dummy_password123!' into text field 'id=login-password'.</msg>
+<arg>id=login-password</arg>
+<arg>${USER_2_PW}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:21.221647" elapsed="0.066768"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:21.791112" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:21.289488" elapsed="0.502627"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:21.795760" level="INFO">Clicking button 'class=btn'.</msg>
+<arg>class=btn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:21.794231" elapsed="0.310774"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:23.108837" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:22.107456" elapsed="1.001381"/>
+</kw>
+<kw name="MainMenu Mouse Over" owner="keywords">
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:23.111863" level="INFO">Simulating Mouse Over on element 'class=menu-link'.</msg>
+<arg>class=menu-link</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:23.111863" elapsed="0.281713"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:24.395510" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:23.394082" elapsed="1.001428"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:23.110864" elapsed="1.285648"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:24.397918" level="INFO">Clicking element 'xpath=//div[@class='gnb_title' and text()='받은 정산 내역']'.</msg>
+<arg>xpath=//div[@class='gnb_title' and text()='받은 정산 내역']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:24.396512" elapsed="0.270637"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>class=b-grid-cell</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T15:02:24.670585" elapsed="0.244647"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:24.920714" level="INFO">${SetTime} = 2025.04.04_15.02.24</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:24.919697" elapsed="0.001017"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:25.423971" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:24.922064" elapsed="0.501907"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:25.549158" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.24.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.24.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:25.425006" elapsed="0.124152"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:26.552987" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:25.551696" elapsed="1.001291"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:24.916240" elapsed="1.637746"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:26.555440" level="INFO">Clicking element 'id=st'.</msg>
+<arg>id=st</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:26.553986" elapsed="0.071954"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:27.128382" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:26.626937" elapsed="0.502447"/>
+</kw>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:27.131487" level="INFO">Selecting options from selection list 'id=st' by label 제품명.</msg>
+<arg>id=st</arg>
+<arg>제품명</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-04-04T15:02:27.131487" elapsed="0.056612"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:28.190944" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:27.189455" elapsed="1.001489"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:28.193377" level="INFO">Typing text '자동화' into text field 'name=sw'.</msg>
+<arg>name=sw</arg>
+<arg>자동화</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:28.192331" elapsed="0.073496"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:28.769611" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:28.267851" elapsed="0.502265"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:28.772114" level="INFO">Clicking button 'btn-search'.</msg>
+<arg>btn-search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T15:02:28.771117" elapsed="0.104810"/>
+</kw>
+<kw name="Screenshot" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-04-04T15:02:28.880059" level="INFO">${SetTime} = 2025.04.04_15.02.28</msg>
+<var>${SetTime}</var>
+<arg>__import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-04-04T15:02:28.879033" elapsed="0.002032"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:29.381703" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:28.881065" elapsed="0.501757"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-04T15:02:29.510954" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../screenshots/screenshot_2025.04.04_15.02.28.png"&gt;&lt;img src="../screenshots/screenshot_2025.04.04_15.02.28.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}/screenshot_${SetTime}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-04T15:02:29.384856" elapsed="0.127123"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:30.513121" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:29.511979" elapsed="1.001142"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:28.878042" elapsed="1.635079"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:18.710847" elapsed="11.804337"/>
+</test>
+<kw name="Finalize Test Suite" owner="keywords" type="TEARDOWN">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Closing Browser</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-04-04T15:02:30.519560" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T15:02:31.521636" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T15:02:30.521011" elapsed="1.000625"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-04T15:02:31.522645" elapsed="2.208385"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:02:30.518564" elapsed="3.213825"/>
+</kw>
+<status status="PASS" start="2025-04-04T15:01:05.326145" elapsed="88.406244"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="9" fail="0" skip="0" id="s1" name="3. 정산 내역">3. 정산 내역</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
