@@ -31,4 +31,5 @@
 2. `App_test.robot` 실행
 
 ## 테스트 결과
-- (작성 예정)
+- `C:\Dev\TestResult` 내 테스트 수행 날짜 형태로 폴더 저장
+    - 예시) `C:\Dev\TestResult\25-04-04_14-15_App`
