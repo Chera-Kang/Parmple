@@ -1,15 +1,13 @@
 *** Settings ***
 Library    AppiumLibrary
 Library    OperatingSystem
-Library    .venv/Lib/site-packages/robot/libraries/Process.py
+Library    ../.venv/Lib/site-packages/robot/libraries/Process.py
 
 *** Variables ***
 ${REMOTE_URL}    http://127.0.0.1:4723/wd/hub
 ${PLATFORM_NAME}    Android
 ${AUTOMATION_NAME}    UiAutomator2
 ${NO_RESET}    true
-${USER_1_ID}    chera-m1@twosun.com
-${USER_1_PW}    asdf1234
 ${SCREENSHOT_DIR}    C:/Dev/appium_screenshot
 
 # LG V30
