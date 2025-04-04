@@ -8,18 +8,3 @@ Web 및 App 환경에서 수행 중인 자동화 테스트 스크립트를 정�
   - Appium 기반, *Sample* App 테스트 스크립트 (Wikipedia)
 
 각 폴더에는 테스트 항목별 코드 및 실행 방법이 포함되어 있습니다.
-
-
-
-
-자동화 테스트 
-
-
-
-sadfh asdfghasdfsf klsddsjf
-
-공통 사항 
-
-
-테스트 개요 
-Web / App 폴더 내 readme.txt 참고 
