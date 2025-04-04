@@ -19,10 +19,11 @@ screenshots_dir = os.path.join(result_dir, "screenshots")
 os.makedirs(screenshots_dir, exist_ok=True)
 
 # Robot Framework 실행
-run(TEST_SUITE_DIR, output=os.path.join(result_dir, "output.xml"),
+run(TEST_SUITE_DIR,
+    output=os.path.join(result_dir, "output.xml"),
     log=os.path.join(result_dir, "log.html"),
     report=os.path.join(result_dir, "report.html"),
-    variable=f"SCREENSHOT_DIR:{screenshots_dir}")
+    variable=[f"SCREENSHOT_DIR:{screenshots_dir}"])
 
 # 디렉토리 확인
 print(f"Test results saved in: {result_dir}")

@@ -1,7 +1,9 @@
 *** Settings ***
 Library    AppiumLibrary
 Library    OperatingSystem
-
+Library    Process
+Library    string
+Library    DateTime
 
 *** Variables ***
 ${REMOTE_URL}    http://127.0.0.1:4723/wd/hub
@@ -9,7 +11,10 @@ ${PLATFORM_NAME}    Android
 ${AUTOMATION_NAME}    UiAutomator2
 ${NO_RESET}    true
 
-${SCREENSHOT_DIR}    C:/Dev/appium_screenshot
+${DEVICE_PATH}      /sdcard/ETC/image
+${TIMESTAMP}        Get Current Date    result_format=%y-%m-%d_%H-%M-%S
+${FILENAME}         screenshot-${TIMESTAMP}.png
+
 
 # Chrome
 # ${APP_PACKAGE}    com.android.chrome
@@ -24,18 +29,14 @@ ${APP_PACKAGE}    org.wikipedia
 ${APP_ACTIVITY}    org.wikipedia.main.MainActivity
 
 *** Keywords ***
-# Screenshot
-#     ${SetTime}=    Evaluate    __import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')
-#     Sleep    1
-#     # 1. ADB를 이용해 디바이스에서 스크린샷 촬영
-#     Run    adb shell screencap -p /sdcard/Pictures/screenshot.png
-#     # 2. 파일이 정상적으로 생성될 때까지 기다림
-#     Wait Until Keyword Succeeds    10x    0.5s    Run    adb shell ls /sdcard/Pictures/screenshot.png
-#     # 2. 스크린샷을 PC의 지정된 폴더로 복사
-#     Run    adb pull /sdcard/Pictures/screenshot.png ${SCREENSHOT_DIR}/screenshot_${SetTime}.png
-#     # 3. 디바이스에서 스크린샷 파일 삭제 (필요하면)
-#     Run    adb shell rm /sdcard/screenshot.png
-#     Sleep    1
+App Screenshot
+    ${device_filepath}=    Set Variable    ${DEVICE_PATH}/${FILENAME}
+    ${local_filepath}=     Set Variable    ${SCREENSHOT_DIR}/${FILENAME}
+
+    Run Process    adb    shell    screencap    -p    ${device_filepath}
+    Run Process    adb    pull    ${device_filepath}    ${local_filepath}
+    # Run Process    adb    shell    rm    ${device_filepath}
+
 
 # Open Chrome
 #     Run Keyword And Ignore Error    Open Application    ${REMOTE_URL}

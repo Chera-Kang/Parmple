@@ -28,6 +28,7 @@ Open Wikipedia
     # 앱 실행 대기 
     Sleep    1
     Wait Until Element Is Visible    class=android.widget.FrameLayout    10
+    App Screenshot
 
 
 ---- 탐색
@@ -179,6 +180,7 @@ Open Wikipedia
 
     Sleep    5
 
-    # 앱 종료 (필요하면)
+---- Test 종료 (앱 종료)
+    # 앱 종료
     Terminate Application    ${APP_PACKAGE}
 
