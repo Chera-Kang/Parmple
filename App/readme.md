@@ -12,19 +12,19 @@
 
 ## 실행 방법
 ### 사전설정 (이후 Skip 가능)
-1. 기본 설정
+- 기본 설정
   - ADB 설정
   - Appium 설정
   - Wikipedia 다운로드 후 구동 확인
-2. Device 설정
+- Device 설정
   - Android Device 개발자 옵션 활성화
   - 개발자 옵션 > USB 디버깅 활성화 
   - PC 와 Device USB 연결 
   - Device 에서 USB 디버깅 허용
-3. 명령 프롬프트 실행 (CMD) > adb devices 입력하여 연결 확인
+- 명령 프롬프트 실행 (CMD) > adb devices 입력하여 연결 확인
   - 모델 고유값 Device Name 노출
   - 예시) `LGMV300S9da9bb03`
-4. `App_Test.robot` 의 `Variables` 에 Device Name 작성
+- `App_Test.robot` 의 `Variables` 에 Device Name 작성
   - 예시) `${DEVICE_NAME}    LGMV300S9da9bb03`
 ### 테스트 설정
 1. 명령프롬프트 실행 (CMD) > appium --base-path /wd/hub 입력하여 연결 확인
