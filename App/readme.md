@@ -24,7 +24,7 @@
 3. 명령 프롬프트 실행 (CMD) > adb devices 입력하여 연결 확인
   - 모델 고유값 Device Name 노출
 4. `App_Test.robot` 의 `Variables` 에 DeviceName 작성
-  - 예시) ${DEVICE_NAME}    LGMV300S9da9bb03
+  - 예시) `${DEVICE_NAME}    LGMV300S9da9bb03`
 ### 테스트 설정
 1. 명령프롬프트 실행 (CMD) > appium --base-path /wd/hub 입력하여 연결 확인
 2. `App_test.robot` 실행
