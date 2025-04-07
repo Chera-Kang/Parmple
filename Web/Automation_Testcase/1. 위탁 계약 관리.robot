@@ -153,7 +153,7 @@ Suite Teardown    Finalize Test Suite
 
     ### 계약서 파일등록
     ${File_Path}=    Set Variable    C:/Dev/robotframework/assets/Test_Sameple_PDF.pdf
-    Wait Until Element Is Visible    id=changeFileButton    5
+    Sleep    1
     Input Text    xpath=//*[@id="contractFile"]    ${File_Path}
     Screenshot
     

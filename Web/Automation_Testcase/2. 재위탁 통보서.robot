@@ -264,6 +264,7 @@ Handle Button Exists 9
     Click Button    class=swal2-confirm
 
     Wait Until Element Is Visible    class=swal2-popup    5
+    Sleep    0.5
     Click Button    class=swal2-confirm
     Sleep    1
     Screenshot
