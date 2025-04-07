@@ -21,64 +21,64 @@ ${XPATH_WITH_TEXT_2}    xpath=//div[@class='item-title' and @title='바CSO']
 
 
 *** Keywords ***
-Check and Handle Button 1
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_1}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 1
-    ...    ELSE    Sleep    1
+# Check and Handle Button 1
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_1}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 1
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 1
-    Sleep    1
-    Click Element    ${div_xpath_1}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
-    Sleep    1
+# Handle Button Exists 1
+#     Sleep    1
+#     Click Element    ${div_xpath_1}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 2
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_2}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 2
-    ...    ELSE    Sleep    1
+# Check and Handle Button 2
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_2}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 2
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 2
-    Sleep    1
-    Click Element    ${div_xpath_2}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
-    Sleep    1
+# Handle Button Exists 2
+#     Sleep    1
+#     Click Element    ${div_xpath_2}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 3
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_3}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 3
-    ...    ELSE    Sleep    1
+# Check and Handle Button 3
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_3}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 3
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 3
-    Sleep    1
-    Click Element    ${div_xpath_3}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
-    Sleep    1
+# Handle Button Exists 3
+#     Sleep    1
+#     Click Element    ${div_xpath_3}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 4
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_4}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 4
-    ...    ELSE    Sleep    1
+# Check and Handle Button 4
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_4}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 4
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 4
-    Sleep    1
-    Click Element    ${div_xpath_4}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
-    Sleep    1
+# Handle Button Exists 4
+#     Sleep    1
+#     Click Element    ${div_xpath_4}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
+#     Sleep    1
 
 
 Check and Handle Button 5
@@ -111,48 +111,48 @@ Handle Button Exists 6
     Sleep    1
 
 
-Check and Handle Button 7
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_7}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 7
-    ...    ELSE    Sleep    1
+# Check and Handle Button 7
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_7}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 7
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 7
-    Sleep    1
-    Click Element    ${div_xpath_7}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//div[contains(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
-    Sleep    1
+# Handle Button Exists 7
+#     Sleep    1
+#     Click Element    ${div_xpath_7}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//div[contains(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 8
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_8}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 8
-    ...    ELSE    Sleep    1
+# Check and Handle Button 8
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_8}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 8
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 8
-    Sleep    1
-    Click Element    ${div_xpath_8}
-    Screenshot
-    Click Element    xpath=//div[contains(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
-    Sleep    1
+# Handle Button Exists 8
+#     Sleep    1
+#     Click Element    ${div_xpath_8}
+#     Screenshot
+#     Click Element    xpath=//div[contains(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 9
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_9}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 9
-    ...    ELSE    Sleep    1
+# Check and Handle Button 9
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_9}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 9
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 9
-    Sleep    1
-    Click Element    ${div_xpath_9}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
-    Sleep    1
+# Handle Button Exists 9
+#     Sleep    1
+#     Click Element    ${div_xpath_9}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    #닫기 버튼
+#     Sleep    1
 
 
 Sub Selectection 1
@@ -171,7 +171,7 @@ Sub Selectection 2
 
     Input Text    id=login-email    ${USER_1_ID}
     Input Text    id=login-password    ${USER_1_PW}
-    Sleep    1
+    Sleep    0.5
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -180,7 +180,7 @@ Sub Selectection 2
 -------- 1.1. 재위탁 구조도
     MainMenu Mouse Over
     Click Element    xpath=//div[@class='gnb_title' and text()='재위탁 구조도']
-    Sleep    2
+    Wait Until Element Is Visible    class=grid-contents-list-fit    10
     Screenshot
 
 
@@ -231,12 +231,9 @@ Sub Selectection 2
 
     ### 검색
     Input Text    name=sw    체라메디
-    Sleep    0.5
-
     ### 검색하기 버튼
     Click Button    btn-search
     Screenshot
-
     ### 검색어 초기화 버튼
     Click Button    btn-init-search
     Sleep    0.5

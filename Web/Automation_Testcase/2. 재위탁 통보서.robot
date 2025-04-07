@@ -81,34 +81,34 @@ Handle Button Exists 4
     Sleep    1
 
 
-Check and Handle Button 5
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_5}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 5
-    ...    ELSE    Sleep    1
+# Check and Handle Button 5
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_5}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 5
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 5
-    Sleep    1
-    Click Element    ${div_xpath_5}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
-    Sleep    1
+# Handle Button Exists 5
+#     Sleep    1
+#     Click Element    ${div_xpath_5}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
+#     Sleep    1
 
 
-Check and Handle Button 6
-    ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_6}
-    Run Keyword IF    ${button_exists}    Handle Button Exists 6
-    ...    ELSE    Sleep    1
+# Check and Handle Button 6
+#     ${button_exists}=    Run Keyword And Return Status    Element Should Be Visible    ${div_xpath_6}
+#     Run Keyword IF    ${button_exists}    Handle Button Exists 6
+#     ...    ELSE    Sleep    1
 
 
-Handle Button Exists 6
-    Sleep    1
-    Click Element    ${div_xpath_6}
-    Sleep    1
-    Screenshot
-    Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
-    Sleep    1
+# Handle Button Exists 6
+#     Sleep    1
+#     Click Element    ${div_xpath_6}
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=//*[starts-with(@id, 'modal_')]/div/div/div[3]/button[2]    # 닫기 버튼
+#     Sleep    1
 
 
 Check and Handle Button 7
@@ -155,23 +155,13 @@ Handle Button Exists 9
     Sleep    1
 
 
-Sub Selectection 1
-    Wait Until Page Contains Element    ${XPATH_WITH_TEXT}    timeout=10s
-    Click Element    ${XPATH_WITH_TEXT}
-
-
-Sub Selectection 2
-    Wait Until Page Contains Element    ${XPATH_WITH_TEXT_2}    timeout=10s
-    Click Element    ${XPATH_WITH_TEXT_2}
-
-
 *** Test Cases ***
 ---- 1. 재위탁 통보서 Testcase (회원)
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
 
     Input Text    id=login-email    ${USER_2_ID}
     Input Text    id=login-password    ${USER_2_PW}
-    Sleep    1
+    Sleep    0.5
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -185,16 +175,18 @@ Sub Selectection 2
 -------- 1.1. 재위탁통보서 작성
     ### 작성하기 진입
     Click Element    id=b-button-2
+    Wait Until Element Is Visible    class=content-view-wrap    5
     Screenshot
 
 
 ------------ 1.1.1. 제약사 선택
     ### 제약사 선택 버튼 
     Click Button    id=btn-team-manufacturer
+    Wait Until Element Is Visible    class=btn    5
     Screenshot
     ### 제약사 검색 
     Input Text    name=searchWord    메디제약
-    Sleep    0.5
+    Screenshot
     ### 제약사 선택 
     Click Button    xpath=//*[@id="pharmacistSelectModal"]/div/div/div[2]/div[1]/form/div/button
     Sleep    0.5
@@ -216,6 +208,7 @@ Sub Selectection 2
 
     ## 기존 첨부파일의 첨부형식
     ${File_Path}=    Set Variable    C:/Dev/robotframework/assets/Test_Sameple_PDF.pdf
+    
     Click Element    xpath=//label[normalize-space(text())='파일첨부']
     Sleep    0.5
     Input Text    xpath=//*[@id="rate_file"]    ${File_Path}
@@ -224,10 +217,9 @@ Sub Selectection 2
 
 ------------ 1.1.3. 재위탁사유 작성
     ${SetTime2}=    Evaluate    __import__('datetime').datetime.now().strftime('%Y.%m.%d %H.%M.%S')
+    
     Click Element    name=reconsignment_reason
-    Sleep    0.5
     Execute JavaScript    document.activeElement.value = ""
-    Sleep    0.5
     Press Keys    name=reconsignment_reason    Re AutomationTest ${SetTime2}
     Screenshot
     
@@ -241,10 +233,9 @@ Sub Selectection 2
 
 ------------ 1.1.5. 기타 작성
     ${SetTime2}=    Evaluate    __import__('datetime').datetime.now().strftime('%Y.%m.%d %H.%M.%S')
+    
     Click Element    name=reconsignment_etc
-    Sleep    0.5
     Execute JavaScript    document.activeElement.value = ""
-    Sleep    0.5
     Press Keys    name=reconsignment_etc    ETC AutomationTest ${SetTime2}
     Screenshot
 
@@ -268,9 +259,11 @@ Sub Selectection 2
 
 ------------ 1.1.7. 일괄작성 버튼 선택
     Click Element    xpath=//*[@id="main_content"]/div[1]/div/form/div[3]/button[2]
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
     Click Button    class=swal2-confirm
-    Sleep    1
+
+    Wait Until Element Is Visible    class=swal2-popup    5
     Click Button    class=swal2-confirm
     Sleep    1
     Screenshot
@@ -280,17 +273,13 @@ Sub Selectection 2
     Sleep    1
     # 재위탁 통보서 누르기
     Click Element    xpath=//*[@id="b-grid-1-normalSubgrid"]/div[3]/div[5]
-    Sleep    1
     Screenshot
-
 
     # 재위탁통보서 > 수수료율표 누르기
     Check and Handle Button 7
-    Sleep    1
 
     # 재위탁 통보서 닫기 버튼
     Click Element    xpath=//*[@id="sub-fiduciary-button-area"]/button[2]
-    Sleep    1
     Screenshot
 
     # 수수료율표
@@ -300,7 +289,6 @@ Sub Selectection 2
 
 -------- 1.2. 재위탁 통보서 전송
     Input Text    name=sw    파CSO
-    Sleep    0.5
     Click Button    btn-search
     Screenshot
 
@@ -308,29 +296,21 @@ Sub Selectection 2
     Select Checkbox    id=b-checkbox-1-input
     Screenshot
 
-
------------- 1.2.1. 전송하기 버튼
-    Click Button    id=b-button-1
+    Click Button    id=b-button-1    # 전송하기
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
     Click Button    class=swal2-confirm
     Screenshot
 
 
------------- 1.2.2. 재위탁 통보서 검색하기
+------------ 1.2.1. 재위탁 통보서 검색하기
     ### 검색
     Input Text    name=sw    파CSO
-    Sleep    0.5
-
-    ### 검색하기 버튼
-    Click Button    btn-search
+    Click Button    btn-search    ### 검색하기 버튼
     Screenshot
 
-    ### 검색어 초기화 버튼
-    Click Button    btn-init-search
+    Click Button    btn-init-search    ### 검색어 초기화 버튼
     Sleep    0.5
-
-    Click Button    class=btn
-    Sleep    1
 
     ### 로그아웃
     Click Element    xpath=//*[@id="navbar-collapse"]/ul/li/a/div/div
@@ -362,10 +342,9 @@ Sub Selectection 2
     Screenshot
     
     Check and Handle Button 9
-    Sleep    1
-
+ 
     Click Button    xpath=//*[@id="sub-fiduciary-button-area"]/button    # 닫기 버튼
-    Sleep    1
+    Sleep    0.5
 
     ### 수수료율표
     Check and Handle Button 1
@@ -383,12 +362,10 @@ Sub Selectection 2
 -------- 2.2. 재위탁 통보서 검색하기
     ### 검색
     Input Text    name=sw    파CSO
-    Sleep    0.5
-
-    ### 검색하기 버튼
-    Click Button    btn-search
+    Click Button    btn-search    ### 검색하기 버튼
     Screenshot
 
     ### 검색어 초기화 버튼
     Click Button    btn-init-search
     Sleep    0.5
+

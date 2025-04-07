@@ -21,42 +21,41 @@ Initialize Test Suite
 
 Finalize Test Suite
     Log To Console    Closing Browser
-    Sleep    1
     Close Browser
 
 Screenshot
     ${SetTime}=    Evaluate    __import__('datetime').datetime.now().strftime('%Y.%m.%d_%H.%M.%S')
     Sleep    0.5
     Capture Page Screenshot    ${SCREENSHOT_DIR}/screenshot_${SetTime}.png
-    Sleep    1
+    Sleep    0.5
 
 MainMenu Mouse Over
     Mouse Over    class=menu-link
-    Sleep    1
+    Sleep    0.5
 
 Open New Tab
     Execute JavaScript    window.open();  # 새로운 탭 열기
-    sleep    1
+    sleep    0.5
     Switch Window    NEW                 # 새로 열린 탭으로 전환
-    sleep    1
+    sleep    0.5
 
 Switch To Tab
     [Arguments]    ${index}
     ${handles}=    Get Window Handles
     Switch Window    ${handles[${index}]}
-    sleep    1 
+    sleep    0.5 
 
 
 Generaotr & Validator
     Open New Tab
     Go To    ${GENERATOR}
-    Sleep    2
+    Wait Until Element Is Visible    id=count    5
     Input Text    count    1
-    Sleep    1
+    Sleep    0.5
 
     Open New Tab 
     Go To    ${VALIDATOR}
-    Sleep    2
+    Wait Until Element Is Visible    id=numbers    5
 
     ${is_valid}=    Set Variable    False
 
@@ -68,9 +67,8 @@ Generaotr & Validator
 
         Switch To Tab    2
         Input Text    numbers    ${GENERATOR_Number}
-        Sleep    1
         Click Element    xpath=//button[@onclick='validateBizRegNos()']
-        Sleep    1
+        Wait Until Element Is Visible    class=summary    5
         ${validation_result}=    Get Text    class=summary
 
         Run Keyword If    '${validation_result}' == '모든 사업자등록번호가 유효합니다.'    Set Global Variable    ${is_valid}    True

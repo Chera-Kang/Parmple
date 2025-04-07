@@ -11,12 +11,10 @@ Suite Teardown    Finalize Test Suite
 *** Test Cases ***
 ---- 1. 필터링 Testcase
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
-    Screenshot
 
     Input Text    id=login-email    ${USER_2_ID}
     Input Text    id=login-password    ${USER_2_PW}
-    Screenshot
-    # 로그인 버튼
+    Sleep    0.5
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -85,7 +83,6 @@ Suite Teardown    Finalize Test Suite
     Input Text    id=login-email    pharm_manager@example.com
     Input Text    id=login-password    dummy_password123!
     Screenshot
-    # 로그인 버튼
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -110,3 +107,4 @@ Suite Teardown    Finalize Test Suite
     # 세로 스크롤을 맨 위로 스크롤
     Execute JavaScript    if (document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").scrollHeight > document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").clientHeight) { document.querySelector("#b-grid-1 > div.b-vbox.b-box-center.b-panel-body-wrap.b-grid-body-wrap > div.b-grid-panel-body > div.b-grid-body-container.b-widget-scroller.b-resize-monitored.b-vertical-overflow").scrollTo({ top: 0, behavior: 'smooth' }); } else { console.log('세로 스크롤 없음'); }
     Screenshot
+

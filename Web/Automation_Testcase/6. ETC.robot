@@ -10,12 +10,10 @@ Suite Teardown    Finalize Test Suite
 *** Test Cases ***
 ---- 0. ETC Testcase
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
-    Screenshot
 
     Input Text    id=login-email    ${USER_2_ID}
     Input Text    id=login-password    ${USER_2_PW}
-    Screenshot
-    # 로그인 버튼
+    Sleep    0.5
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -60,7 +58,6 @@ Suite Teardown    Finalize Test Suite
     ### 제품 검색 
     Sleep    1
     Input Text    name=sw    라이트
-    Sleep    0.5
     Click Button    btn-search
     Screenshot
     Click Button    btn-init-search
@@ -97,7 +94,7 @@ Suite Teardown    Finalize Test Suite
 
     ### 검색 버튼 선택 
     Click Button    id=btn-search
-    Sleep    3
+    Wait Until Element Is Visible    class=b-grid-row    5
     Screenshot
 
     ### 초기화 버튼 선택 
@@ -111,7 +108,7 @@ Suite Teardown    Finalize Test Suite
 
 -------- 2.1. CSO 제품 정보
     Click Element    xpath=//div[@class='gnb_title' and text()='CSO 제품 정보']
-    Sleep    2
+    Wait Until Element Is Visible    class=b-grid-row    5
     Screenshot
 
     ### 제약사별 sort 
@@ -136,7 +133,7 @@ Suite Teardown    Finalize Test Suite
     
     ### 제품 선택 
     Click Element    class=text_abbreviation
-    Sleep    1
+    Wait Until Element Is Visible    class=tab-content    5
     Screenshot
 
     ### 페이지 맨 아래로 스크롤
@@ -149,7 +146,7 @@ Suite Teardown    Finalize Test Suite
 
     #동일성분의약품
     Click Element    xpath=//*[@id="main_content"]/div/div/div/div[1]/ul[2]/li[2]/a
-    Sleep    1
+    Wait Until Element Is Visible    class=b-grid-panel-body    5
     Screenshot
 
     ### 페이지 맨 아래로 스크롤
@@ -165,7 +162,6 @@ Suite Teardown    Finalize Test Suite
     ### 제품 검색 
     Sleep    1
     Input Text    name=sw    라이트
-    Sleep    0.5
     Click Button    btn-search
     Screenshot
     Click Button    btn-init-search
@@ -190,20 +186,18 @@ Suite Teardown    Finalize Test Suite
     ${SetTime5}=    Evaluate    __import__('datetime').datetime.now().strftime('%y.%m.%d %H:%M')
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
     ${phone_number}=    Set Variable    010${random_number}
+
     Click Element    class=dropdown-menu
     Screenshot
 
     ### 이름
     Click Element    id=user.username
     Execute JavaScript    document.activeElement.value = ""
-    Sleep    0.5
     Press Keys    id=user.username    Auto_${SetTime5}
-    Sleep    0.5
 
     ### 휴대폰 번호
     Click Element    id=user.phone
     Execute JavaScript    document.activeElement.value = ""
-    Sleep    0.5
     Press Keys    id=user.phone    ${phone_number}
     Screenshot
 
@@ -221,6 +215,7 @@ Suite Teardown    Finalize Test Suite
     Input Password    id=password_confirmation    dummy_password123!
     Screenshot
     Click Element    xpath=//*[@id="updatePassword"]/div[3]/button[2]
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
     Click Button    class=swal2-confirm
     Sleep     0.5

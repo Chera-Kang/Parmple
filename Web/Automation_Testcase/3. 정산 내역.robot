@@ -14,7 +14,7 @@ Suite Teardown    Finalize Test Suite
 
     Input Text    id=login-email    ${USER_1_ID}
     Input Text    id=login-password    ${USER_1_PW}
-    Sleep    1
+    Sleep    0.5
     Click Button    class=btn
     
     Wait Until Element Is Visible    //img[@src='https://qa.erp.parmple.com/assets/img/branding/logo_pp.png']    10
@@ -38,7 +38,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    class=select2-selection__arrow
     Press Key    class=select2-search__field    오토
     Press Keys    None    ENTER
-    Wait Until Element Is Visible    class=mp-selectbox    2
+    Wait Until Element Is Visible    class=mp-selectbox    5
     Click Element    class=mp-selectbox
     Press Keys    id=manufacturer_name    자동화테스트_제약사이름
     Press Keys    id=product_name    자동화테스트_제품이름
@@ -91,9 +91,10 @@ Suite Teardown    Finalize Test Suite
     Press Keys    xpath=//div[contains(@class, 'b-grid-cell') and @data-column-id='addition_commission_rate13']    67.80
     Screenshot
 
+    # 저장하기
     Click Button    id=b-button-1
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
-
     Click Button    class=swal2-confirm
     Screenshot
 
@@ -107,7 +108,7 @@ Suite Teardown    Finalize Test Suite
 
     # 정산내역공유에서 미전송 Case 대응용 
     Click Button    id=b-button-2
-    Sleep    1
+    Sleep    0.5
 
     Press Keys    id=biz_name    전송테스트_${SetTime2}
     Press Keys    id=biz_reg_no    ${SetTime4}
@@ -133,7 +134,7 @@ Suite Teardown    Finalize Test Suite
 
     # 받은 정산 내역 Case 확인용  
     Click Button    id=b-button-2
-    Sleep    1
+    Sleep    0.5
 
     Press Keys    id=biz_name    전송테스트_${SetTime2}
     Press Keys    id=biz_reg_no    2744708777
@@ -162,8 +163,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
     Press Keys    id=biz_name    Delete_Test
     Press Keys    id=biz_reg_no    1234567890
+    
     Screenshot
-
     Click Button    class=btn-primary
     Screenshot
 
@@ -172,8 +173,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
     Click Element    id=b-button-9
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
-
     Click Button    class=swal2-confirm
     Screenshot
 
@@ -186,9 +187,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    id=st
     Screenshot
     Select From List By Label    id=st    제품명
-    Sleep    1
-    Input Text    name=sw    자동화
-    Sleep    0.5
+    Input Text    name=sw    1    #자동화
     Click Button    btn-search
     Screenshot
 
@@ -197,8 +196,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
     Click Element    id=apply_year_month
+    Wait Until Element Is Visible    class=datepicker-months    5
     Screenshot
-
     Click Element    xpath=//span[@class='month' and text()='2월']
     Screenshot
 
@@ -215,21 +214,19 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    class=modal-body    10
     Screenshot
 
+    # 닫기 버튼
     Click Button    class=btn-close
 
 
 -------- 2.2. 정산내역 공유하기
-    # 목록 전체 선택
-    Click Button    id=b-checkbox-1-input
+    Click Button    id=b-checkbox-1-input        # 목록 전체 선택
     Sleep    0.5
 
     # 공유하기 버튼
     Click Button    id=b-button-1
-    Wait Until Element Is Visible    class=swal2-container
+    Wait Until Element Is Visible    class=swal2-popup    5
     Screenshot
-
-    # 공유하기 동작 
-    Click Button    class=swal2-confirm
+    Click Button    class=swal2-confirm    # 예 버튼 
     Screenshot
 
 
