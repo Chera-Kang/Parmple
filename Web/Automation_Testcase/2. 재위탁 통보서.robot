@@ -184,10 +184,9 @@ Handle Button Exists 9
     Click Button    id=btn-team-manufacturer
     Wait Until Element Is Visible    class=btn    5
     Screenshot
-    ### 제약사 검색 
+    ### 제약사 검색 및 선택
     Input Text    name=searchWord    메디제약
-    Screenshot
-    ### 제약사 선택 
+    Sleep    1
     Click Button    xpath=//*[@id="pharmacistSelectModal"]/div/div/div[2]/div[1]/form/div/button
     Sleep    0.5
     Click Element    class=b-field-inner
@@ -342,6 +341,7 @@ Handle Button Exists 9
     Click Element    xpath=//*[@id="b-grid-1-normalSubgrid"]/div[3]/div[4]
     Screenshot
     
+    # 재위탁 통보서 > 수수료율표
     Check and Handle Button 9
  
     Click Button    xpath=//*[@id="sub-fiduciary-button-area"]/button    # 닫기 버튼

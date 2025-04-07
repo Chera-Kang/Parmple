@@ -53,6 +53,11 @@ Suite Teardown    Finalize Test Suite
     Sleep    5
     Screenshot
 
+    #동일성분의약품
+    Click Element    xpath=//*[@id="main_content"]/div/div/div/div[1]/ul[2]/li[2]/a
+    Wait Until Element Is Visible    class=b-grid-panel-body    5
+    Screenshot
+
     Go Back
 
     ### 제품 검색 
