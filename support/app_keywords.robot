@@ -37,12 +37,17 @@ Take App Screenshot
     ${filename}=      Set Variable    ${timestamp}.png
     ${device_path}=   Set Variable    /sdcard/ETC/screenshots/${filename}
 
-    ${result}=        Run Process    adb    shell    screencap    -p    ${device_path}    shell=True    stdout=TRUE    stderr=TRUE
+    ${result}=        Run Process    adb    shell    screencap    -p    ${device_path}    shell=True    #stdout=TRUE    stderr=TRUE
 
-Copy All Screenshots To Dated Folder2
+Copy All Screenshots To Dated Folder
     Log To Console    복사 시작: ${SCREENSHOT_DIR}
     Run Process    adb    pull    /sdcard/ETC/screenshots    ${SCREENSHOT_DIR}
     Log To Console    복사 완료: ${SCREENSHOT_DIR}
+
+Delete All Screenshots From Device
+    Log To Console    디바이스 스크린샷 삭제 시작
+    Run Process    adb    shell    rm    /sdcard/ETC/screenshots/*.png
+    Log To Console    디바이스 스크린샷 삭제 완료
 
 
 # Open Chrome

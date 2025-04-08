@@ -22,6 +22,8 @@ Open Wikipedia
 
 *** Test Cases ***
 ---- 앱 실행
+    Delete All Screenshots From Device
+    Sleep    1
     Take App Screenshot
     Sleep    1
     Open Wikipedia
@@ -206,5 +208,6 @@ Open Wikipedia
     # 앱 종료
     Terminate Application    ${APP_PACKAGE}
     Take App Screenshot
-    Copy All Screenshots To Dated Folder2
-
+    Sleep    1
+    Copy All Screenshots To Dated Folder
+    Delete All Screenshots From Device
