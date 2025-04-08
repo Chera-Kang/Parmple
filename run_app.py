@@ -15,7 +15,8 @@ result_dir = os.path.join(BASE_RESULT_DIR, timestamp)
 os.makedirs(result_dir, exist_ok=True)
 
 # screenshots 폴더를 실행 결과 폴더 내부에 생성
-screenshots_dir = os.path.join(result_dir, "screenshots")
+screenshots_dir = os.path.join(result_dir)
+# screenshots_dir = os.path.join(result_dir, "screenshots") App 에선 필요 없음으로,
 os.makedirs(screenshots_dir, exist_ok=True)
 
 # Robot Framework 실행
@@ -23,7 +24,7 @@ run(TEST_SUITE_DIR,
     output=os.path.join(result_dir, "output.xml"),
     log=os.path.join(result_dir, "log.html"),
     report=os.path.join(result_dir, "report.html"),
-    variable=[f"SCREENSHOT_DIR:{screenshots_dir}"])
+    variable=[f"SCREENSHOT_DIR:{screenshots_dir}", f"RUN_TIMESTAMP:{timestamp}"])
 
 # 디렉토리 확인
 print(f"Test results saved in: {result_dir}")

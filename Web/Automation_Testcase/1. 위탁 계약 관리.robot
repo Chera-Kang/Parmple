@@ -6,6 +6,8 @@ Resource   ../support/keywords.robot
 Suite Setup    Initialize Test Suite
 Suite Teardown    Finalize Test Suite
 *** Variables ***
+${GENERATOR_Number}    dummy
+
 *** Keywords ***
 *** Test Cases ***
 ---- 0. 사전 준비 (사업자등록번호)

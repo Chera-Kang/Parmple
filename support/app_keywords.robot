@@ -2,7 +2,7 @@
 Library    AppiumLibrary
 Library    OperatingSystem
 Library    Process
-Library    string
+Library    String
 Library    DateTime
 
 *** Variables ***
@@ -11,9 +11,10 @@ ${PLATFORM_NAME}    Android
 ${AUTOMATION_NAME}    UiAutomator2
 ${NO_RESET}    true
 
-${DEVICE_PATH}      /sdcard/ETC/image
-${TIMESTAMP}        Get Current Date    result_format=%y-%m-%d_%H-%M-%S
-${FILENAME}         screenshot-${TIMESTAMP}.png
+# 스크린샷 저장 후 이동시키기
+${RUN_TIMESTAMP}    dummy    #밑의 ${RESULT_DIR} 에 ${RUN_TIMESTAMP} 빨간줄 그어지는거 해소용
+${RESULT_DIR}    C:/Dev/TestResult/${RUN_TIMESTAMP}_App
+${SCREENSHOT_DIR}    ${RESULT_DIR}
 
 
 # Chrome
@@ -29,13 +30,19 @@ ${APP_PACKAGE}    org.wikipedia
 ${APP_ACTIVITY}    org.wikipedia.main.MainActivity
 
 *** Keywords ***
-App Screenshot
-    ${device_filepath}=    Set Variable    ${DEVICE_PATH}/${FILENAME}
-    ${local_filepath}=     Set Variable    ${SCREENSHOT_DIR}/${FILENAME}
+Take App Screenshot
+    ${raw_time}=      Get Time
+    ${timestamp}=     Replace String    ${raw_time}    :    -
+    ${timestamp}=     Replace String    ${timestamp}    ${SPACE}    _
+    ${filename}=      Set Variable    ${timestamp}.png
+    ${device_path}=   Set Variable    /sdcard/ETC/screenshots/${filename}
 
-    Run Process    adb    shell    screencap    -p    ${device_filepath}
-    Run Process    adb    pull    ${device_filepath}    ${local_filepath}
-    # Run Process    adb    shell    rm    ${device_filepath}
+    ${result}=        Run Process    adb    shell    screencap    -p    ${device_path}    shell=True    stdout=TRUE    stderr=TRUE
+
+Copy All Screenshots To Dated Folder2
+    Log To Console    복사 시작: ${SCREENSHOT_DIR}
+    Run Process    adb    pull    /sdcard/ETC/screenshots    ${SCREENSHOT_DIR}
+    Log To Console    복사 완료: ${SCREENSHOT_DIR}
 
 
 # Open Chrome
