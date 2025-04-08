@@ -7,6 +7,7 @@ Library    ../.venv/Lib/site-packages/robot/libraries/Process.py
 *** Variables ***
 # LG V30
 ${DEVICE_NAME}    LGMV300S9da9bb03    # LG V30
+
 # Nexus 5X
 # ${DEVICE_NAME}    02664b87309f3009    # Nexus 5X
 
