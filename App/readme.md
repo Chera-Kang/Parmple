@@ -30,7 +30,9 @@
   - `/sdcard/ETC/screenshots` 
 ### 테스트 설정
 1. 명령프롬프트 실행 (CMD) > appium --base-path /wd/hub 입력하여 연결 확인
-2. `App_test.robot` 실행
+2. 테스트 실행 (목록 중 택1)
+- 명령 프롬프트(CMD) 또는 터미널에서 `python run_app.py` 입력
+- 파일목록의 `run_app.py` 파일 실행
 
 ## 테스트 결과
 - `C:\Dev\TestResult` 내 테스트 수행 날짜 형태로 폴더 저장
