@@ -184,7 +184,35 @@ Sub Selectection 2
 
 ---- Testcase
 
+    Click Element    class=modal-add
+    Wait Until Element Is Visible    class=fa-solid    5
+    Sleep    0.5
 
+    ### 날짜 선택
+    Click Element    name=contractStartDate
+    Wait Until Element Is Visible    class=datepicker    5
+    Sleep    0.5
+    Click Element    class=today.active.day
+    Sleep    0.5
+
+    ### 계약서 파일등록
+    ${File_Path}=    Set Variable    C:/Dev/robotframework/assets/Test_Sameple_PDF.pdf
+    Sleep    1
+    Input Text    xpath=//*[@id="contractFile"]    ${File_Path}
+    Sleep    0.5
+    
+    ### 계약서 등록하기 버튼
+    Click Button    xpath=//*[@id="contract-add"]/div/div[3]/button[2]
+    Wait Until Element Is Visible    class=swal2-popup    5
+    Sleep    0.5
+    Click Button    class=swal2-confirm
+    Sleep    0.5
+
+    Click Element    class=modalHistory
+    Sleep    1
+    Screenshot
+    Click Element    xpath=//*[@id="modalContractHistory"]/div/div/div/div[3]/button
+    Sleep    0.5
 
 
     Log To Console    -Succese-
