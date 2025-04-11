@@ -28,7 +28,7 @@
   - 예시) `${DEVICE_NAME}    LGMV300S9da9bb03`
 - 아래의 경로에 스크린샷 폴더 생성
   - `/sdcard/ETC/screenshots` 
-### 테스트 설정
+### 테스트 실행
 1. 명령프롬프트 실행 (CMD) > appium --base-path /wd/hub 입력하여 연결 확인
 2. 테스트 실행 (목록 중 택1)
 - 명령 프롬프트(CMD) 또는 터미널에서 `python run_app.py` 입력
