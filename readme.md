@@ -16,8 +16,8 @@ Web 및 App 환경에서 수행 중인 자동화 테스트 스크립트를 정�
 ## 테스트 결과
 ### 테스트 동영상
 - **Youtube** : [자동화 테스트 시연 동영상]
-  Web : (https://www.youtube.com/watch?v=5YyteNw1Jz4)
-  App : (https://www.youtube.com/watch?v=L-_c_SkEAjs)
+  - Web : (https://www.youtube.com/watch?v=5YyteNw1Jz4)
+  - App : (https://www.youtube.com/watch?v=L-_c_SkEAjs)
 
 
 ### 샘플 다운로드
