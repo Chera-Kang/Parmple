@@ -14,4 +14,4 @@ Web 및 App 환경에서 수행 중인 자동화 테스트 스크립트를 정�
 ---
 
 ## 테스트 결과 샘플 다운로드
-- **Google Drive** : [전체 실행 결과 및 스크린샷 다운로드] (https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0?usp=drive_link)
+- **Google Drive** : [전체 실행 결과 및 스크린샷 다운로드] (https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
