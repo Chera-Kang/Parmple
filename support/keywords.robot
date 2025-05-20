@@ -3,7 +3,8 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 
 *** Variables ***
-${URL}               https://qa.erp.parmple.com/
+${URL1}               https://qa.erp.parmple.com/
+${URL2}               https://qa.renew.parmple.com/
 ${SCREENSHOT_DIR}     ../screenshots
 ${GENERATOR}    file:///C:/Dev/robotframework/assets/GENERATOR.html
 ${VALIDATOR}    file:///C:/Dev/robotframework/assets/VALIDATOR.html
@@ -11,12 +12,16 @@ ${USER_1_ID}    chera-m1@twosun.com
 ${USER_1_PW}    asdf1234
 ${USER_2_ID}    chera@twosun.com
 ${USER_2_PW}    dummy_password123!
+${USER_RN_CSO_1}    chera+1@twosun.com
+${USER_RN_PC_1}    chera+pc1@twosun.com
+${USER_RN_PW}    password123!
+ 
 
 *** Keywords ***
 Initialize Test Suite
     Log To Console    Initialzing Test Suite
     Log To Console    Opening Browser
-    Open Browser    ${URL}    Chrome
+    Open Browser    ${URL2}    Chrome
     Maximize Browser Window
 
 Finalize Test Suite
