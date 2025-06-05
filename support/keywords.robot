@@ -12,10 +12,10 @@ ${USER_1_ID}    chera-m1@twosun.com
 ${USER_1_PW}    asdf1234
 ${USER_2_ID}    chera@twosun.com
 ${USER_2_PW}    dummy_password123!
-${USER_RN_CSO_1}    chera+1@twosun.com
-${USER_RN_PC_1}    chera+pc1@twosun.com
-${USER_RN_PW}    password123!
- 
+${id_1}    chera+1@twosun.com
+${id_2}    pharm1@twosun.com
+${password}    password123!
+
 
 *** Keywords ***
 Initialize Test Suite
