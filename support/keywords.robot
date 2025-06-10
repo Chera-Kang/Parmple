@@ -12,16 +12,28 @@ ${USER_1_ID}    chera-m1@twosun.com
 ${USER_1_PW}    asdf1234
 ${USER_2_ID}    chera@twosun.com
 ${USER_2_PW}    dummy_password123!
+
+# ▲ 기존 버전
+# ▼ 리뉴얼 버전
+
 ${id_1}    chera+1@twosun.com
 ${id_2}    pharm1@twosun.com
 ${password}    password123!
+
+${API}               https://qa.api.parmple.com
+${bizRegNo_DIR}      assets/bizRegNo
+${testfile_DIR}    ${EXECDIR}/assets/testfile
+${testfile_PATH}   ${EXECDIR}/assets/testfile/automation_sample_attachment.pdf
+
+
+${MAX_RETRY}         5
 
 
 *** Keywords ***
 Initialize Test Suite
     Log To Console    Initialzing Test Suite
     Log To Console    Opening Browser
-    Open Browser    ${URL2}    Chrome
+    Open Browser    ${URL1}    Chrome
     Maximize Browser Window
 
 Finalize Test Suite

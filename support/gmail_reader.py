@@ -68,14 +68,32 @@ def fetch_auth_code():
 
     return None
 
-# 인증번호 추출 재시도
-for attempt in range(1, MAX_RETRIES + 1):
-    code = fetch_auth_code()
-    if code:
-        print(code)
-        break
+
+if __name__ == "__main__":
+    # 인증번호 추출 재시도
+    for attempt in range(1, MAX_RETRIES + 1):
+        # print(f"시도 {attempt}: EMAIL={EMAIL}, APP_PASSWORD={'SET' if APP_PASSWORD else 'NONE'}")
+        code = fetch_auth_code()
+        if code:
+            print(code)
+            break
+        else:
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_DELAY)
     else:
-        if attempt < MAX_RETRIES:
-            time.sleep(RETRY_DELAY)
-else:
-    print("NO_CODE")
+        print("NO_CODE")
+
+
+
+# # 인증번호 추출 재시도
+# for attempt in range(1, MAX_RETRIES + 1):
+#     print(f"시도 {attempt}: EMAIL={EMAIL}, APP_PASSWORD={'SET' if APP_PASSWORD else 'NONE'}") ################ 11
+#     code = fetch_auth_code()
+#     if code:
+#         print(code)
+#         break
+#     else:
+#         if attempt < MAX_RETRIES:
+#             time.sleep(RETRY_DELAY)
+# else:
+#     print("NO_CODE")

@@ -1,4 +1,9 @@
 .env
 __pycache__/
-test_app.robot
-test.robot
+.test_app.robot
+.test.robot
+.secrets.robot
+log.html
+output.xml
+PIPE
+report.html
