@@ -8,6 +8,7 @@ Library    BuiltIn
 Resource   ../support/keywords.robot
 Library    Process
 Library    DateTime
+Resource    ../.secrets.robot
 
 Suite Setup    Initialize Test Suite
 Suite Teardown    Finalize Test Suite
@@ -97,8 +98,20 @@ Get Absolute File Path
 
 
 
+
+
+
+
+
+
+
+
+
 *** Test Cases ***
----- Testcase (로그인)
+
+
+
+---- 회원가입
 
     ${result}=    Run Process    python    -c    "import sys; print(sys.executable)"    stdout=PIPE
     Log To Console    Robot Framework Run Process uses: ${result.stdout}
