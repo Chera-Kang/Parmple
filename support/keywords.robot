@@ -30,7 +30,7 @@ ${testfile_PATH}   ${EXECDIR}/assets/testfile/automation_sample_attachment.pdf
 
 ${MAX_RETRY}         5
 
-${BIZREG_FILE}    ${CURDIR}/../support/used_bizRegNo.txt
+${BIZREG_FILE}    ${CURDIR}/../aseets/used_bizRegNo.txt
 
 *** Keywords ***
 Initialize Test Suite
