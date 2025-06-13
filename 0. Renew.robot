@@ -18,6 +18,7 @@ ${lastBizReNo}    None
 ${bizRegNo}    None
 
 *** Keywords ***
+
 # 사업자번호 하이픈 제거
 Remove Hyphen From BizNo
     [Arguments]    ${rawBizNo}
@@ -146,6 +147,14 @@ Get Absolute File Path
     Sleep    2
     Click Button    xpath=//button[text()='확인하기']
     Sleep    2
+
+
+
+
+
+
+
+
     Press Keys    NONE    ESC
     Sleep    2
 
