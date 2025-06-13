@@ -23,7 +23,7 @@ Get Unused Biz Number
     ${files}=         List Files In Directory    ${unused_bizRegNo_DIR}   pattern=bizRegNo_*.txt
     ${random_index}=  Evaluate    random.randint(0, len(${files}) - 1)    modules=random
     ${file}=          Get From List    ${files}    ${random_index}
-    ${path}=          Catenate    SEPARATOR=/    ${unused_bizRegNo_DIR}    ${file}
+    ${path}=          Catenate    SEPARATOR=/    project/assets/unused_bizRegNo    ${file}
     
     ${content}=       Get File    ${path}
     ${lines}=         Split To Lines    ${content}
@@ -39,12 +39,6 @@ Get Unused Biz Number
 
     [Return]          ${last}
 
-Get Absolute File Path
-    [Arguments]    ${relative_path}
-    ${abs}=    Normalize Path    ${EXECDIR}/${relative_path}
-    [Return]    ${abs}
-
-
 
 *** Test Cases ***
 ---- Testcase
@@ -55,33 +49,22 @@ Get Absolute File Path
     Click Button    xpath=//button[text()='로그인']
     Sleep    3
 
-    ############################################################
-
-
-    ## 미사용 사업자 번호 위탁 업체 추가 
     # 업체 추가하기 
     Click Button    css=button[title="작성하기"]
     Sleep    2
-    
-    # ${bizNo}=    Get Unused Biz Number
-    # Press Key    id=bizNumber    ${bizNo}
 
-    Press Key    id=bizNumber    295-37-00754    #110-81-69528
+    # 직전 회원가입한 사업자번호 입력
+    ${lastBizReNo}=    Get Last BizRegNo From File
+    Set Suite Variable    ${lastBizReNo}
+    Log To Console    ${lastBizReNo}
+    Press Key    id=bizNumber    ${lastBizReNo}
     Sleep    2
-
     Click Button    xpath=//button[text()='확인하기']
     Sleep    2
 
-    # 모달 waiting
-    Wait Until Element Is Visible    class=space-y-4    5
-
-    # 파일 첨부    
-    ${abs_path}=    Normalize Path    ${testfile_PATH}
-    Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${abs_path}
-    Sleep    1
-    Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${abs_path}
-    Sleep    1
-
+    # 위탁업체 추가하기 
+    Wait Until Element Is Visible    class=text-lg    5
+    
     # 관리코드
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
@@ -102,31 +85,6 @@ Get Absolute File Path
     Sleep    1
 
     Press Keys    NONE    ESC
+    
     Sleep    2
-
-
-
-    # 업체 상세 
-    # Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
-
-
-
-
-    # Sleep    1
-    # Click Element    xpath=//button[text()='로그인']
-    # Sleep    2
-    # Click Element    xpath=//a[span[text()='위탁 계약']]
-    # Sleep    2
-
-
-
-# 1. 회원가입
-    # 이메일은 이런 형태면 안겹칠듯 chera+auto.25-05-20_17-56-11@twosun.com
-# 2. 로그인
-# 3. 위탁 계약
-# 4. 수탁 계약
-# 5. 재위탁 통보서 작성
-# 6. 필터링 조회
-# 7. 제약사 제품 공지
-# 8. 신규 개원 정보
 
