@@ -158,7 +158,7 @@ Approve Company Review
     [Arguments]    ${access_token}    ${company_id}
     Create Session    parmple_admin    ${API}
     ${headers}=    Create Dictionary    accept=*/*    Authorization=Bearer ${access_token}    Content-Type=application/json
-    ${payload}=    Create Dictionary    csoReportNo=테스트
+    ${payload}=    Create Dictionary    csoReportNo=자동화테스트
     ${endpoint}=    Set Variable    /api/v1/admins/company-reviews/${company_id}/approve
     ${response}=    Post Request    parmple_admin    ${endpoint}    json=${payload}    headers=${headers}
 
@@ -250,6 +250,7 @@ Approve Company Review
 
     ## 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
+    Record BizRegNo To File    ${bizRegNo}
     Sleep    2
     # Wait Until Element Is Visible    id=radix-:r15:    5
     Click Element    xpath=//button[text()='확인']
@@ -275,6 +276,8 @@ Approve Company Review
 
     Log To Console    ${EMAIL}
     Log To Console    ${bizRegNo}
+    ${lastBizReNo}=    Get Last BizRegNo From File
+    Log To Console    ${lastBizReNo}
 
 
     # Sleep    1
@@ -286,9 +289,8 @@ Approve Company Review
     # Click Element    xpath=//a[span[text()='위탁 계약']]
     # Sleep    2
 
-# 1. 회원가입
-    # 이메일은 이런 형태면 안겹칠듯 chera+auto.25-05-20_17-56-11@twosun.com
-# 2. 로그인
+
+
 # 3. 위탁 계약
 # 4. 수탁 계약
 # 5. 재위탁 통보서 작성

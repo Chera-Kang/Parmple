@@ -1,6 +1,8 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    OperatingSystem
+Library    String
+Library    Collections
 
 *** Variables ***
 ${URL1}               https://qa.erp.parmple.com/
@@ -22,12 +24,13 @@ ${password}    password123!
 
 ${API}               https://qa.api.parmple.com
 ${bizRegNo_DIR}      assets/bizRegNo
+${unused_bizRegNo_DIR}      assets/unused_bizRegNo
 ${testfile_DIR}    ${EXECDIR}/assets/testfile
 ${testfile_PATH}   ${EXECDIR}/assets/testfile/automation_sample_attachment.pdf
 
-
 ${MAX_RETRY}         5
 
+${BIZREG_FILE}    ${CURDIR}/../support/used_bizRegNo.txt
 
 *** Keywords ***
 Initialize Test Suite
@@ -104,3 +107,18 @@ Generaotr & Validator
     # Global 변수 설정
     Set Global Variable    ${GENERATOR_Number}    ${GENERATOR_Number}
 
+
+# 사용한 사업자 번호 기록
+Record BizRegNo To File
+    [Arguments]    ${bizRegNo}
+    Append To File    ${BIZREG_FILE}    ${bizRegNo}\n
+    Log    기록된 사업자번호: ${bizRegNo}
+
+# 사용했던 사업자 번호 추출 
+Get Last BizRegNo From File
+    ${content}=    Get File    ${BIZREG_FILE}
+    ${lines}=    Split String    ${content}    \n
+    ${line_count}=    Get Length    ${lines}
+    Run Keyword If    ${line_count} < 2    Fail    No bizRegNo found in file
+    ${last_bizRegNo}=    Get From List    ${lines}    -2
+    [Return]    ${last_bizRegNo}
