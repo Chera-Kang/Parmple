@@ -102,10 +102,6 @@ Get Absolute File Path
     Click Button    xpath=//button[normalize-space(.)='나중에']
     Sleep    2
 
-    Go Back
-    Sleep    1
-
-
 
     ##### 미가입사용자 추가 
     # 업체 추가하기 
@@ -157,7 +153,6 @@ Get Absolute File Path
 
     Go Back
     Sleep    1
-
 
     ${lastBizReNo}=    Get Last BizRegNo From File
     Log To Console    ${lastBizReNo}
@@ -291,6 +286,22 @@ Get Absolute File Path
     Sleep    1
     Wait Until Element Is Visible    xpath=(//button[normalize-space(.)='작성하기'])[2]    5
     Click Button    xpath=(//button[normalize-space(.)='작성하기'])[2]
+
+
+
+---- 수탁 계약
+
+    Click Element    xpath=//a[span[text()='수탁 계약']]
+    Sleep    1
+
+    # 업체 상세 
+    Click Element    xpath=//a[text()='842-88-83121']
+    Sleep    1
+
+    Go Back
+    Sleep    1
+    
+
 
 
 

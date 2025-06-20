@@ -280,23 +280,4 @@ Approve Company Review
     Log To Console    ${lastBizReNo}
 
 
-    # Sleep    1
-    # Click Element    xpath=//button[text()='로그인']
-    # Sleep    2
-    # Input Text    name=email    ${USER_RN_CSO_1}
-    # Input Text    name=password    ${USER_RN_PW}
-
-    # Click Element    xpath=//a[span[text()='위탁 계약']]
-    # Sleep    2
-
-
-
-# 3. 위탁 계약
-# 4. 수탁 계약
-# 5. 재위탁 통보서 작성
-# 6. 필터링 조회
-# 7. 제약사 제품 공지
-# 8. 신규 개원 정보
-
-
 
