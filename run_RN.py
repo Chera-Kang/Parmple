@@ -4,7 +4,7 @@ import time
 from robot import run
 
 # 테스트 스위트 폴더 
-TEST_SUITE_DIR = "Web" 
+TEST_SUITE_DIR = "Web (Renew)" 
 
 # 새로운 결과 저장 경로
 BASE_RESULT_DIR = r"C:\Dev\TestResult"

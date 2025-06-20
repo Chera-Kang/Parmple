@@ -61,7 +61,7 @@ Get Absolute File Path
 
     ##### 가입된 업체 추가 
     # 업체 추가하기 
-    Click Button    css=button[title="작성하기"]
+    Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
     Sleep    2
 
     # 직전 회원가입한 사업자번호 입력
@@ -236,6 +236,61 @@ Get Absolute File Path
     Click Button    xpath=//button[normalize-space(.)='저장하기']
     Sleep    1
 
+
+    ##################
+
+    Sleep    1
+
+    Click Button    xpath=//button[@title='재위탁통보서']
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='통보서 작성하기']    5
+    Click Button    xpath=//button[normalize-space(.)='통보서 작성하기']
+    Sleep    1
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='작성하기']    5
+
+
+    Sleep    1
+
+    Input Text    name=reason    ${EMPTY}
+    Sleep    0.5
+    Press Key    name=reason    automation test
+
+    Sleep    1
+
+    Input Text    name=note    ${EMPTY}
+    Sleep    0.5
+    Press Key    name=note    automation test
+
+    Click Element    id=created-date
+    Sleep    1
+    Press Keys    NONE    ESC
+    Sleep    1
+
+    # 화면 스크롤
+    Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
+    Sleep    1
+
+
+    Click Button    xpath=//button[normalize-space(.)='추가하기']
+
+    Sleep    1
+
+    Click Element    xpath=//*[normalize-space(.)='제약사 명 검색']
+    Sleep    1
+    Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬 
+    Sleep    2
+    Press Keys    xpath=//input[@placeholder='제약사 명 검색']    ENTER
+    Sleep    3
+    Click Button    xpath=(//button[normalize-space(.)='추가하기'])[2]
+    Sleep    1
+   
+
+
+    Click Element    xpath=//button[normalize-space(.)='작성하기']
+    Sleep    1
+    Wait Until Element Is Visible    xpath=(//button[normalize-space(.)='작성하기'])[2]    5
+    Click Button    xpath=(//button[normalize-space(.)='작성하기'])[2]
 
 
 
