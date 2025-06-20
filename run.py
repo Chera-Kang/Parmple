@@ -3,7 +3,7 @@ import shutil
 import time
 from robot import run
 
-# 테스트 스위트 폴더 (여기에 너의 실제 테스트 폴더 경로를 설정해)
+# 테스트 스위트 폴더 (실제 테스트 폴더 경로 설정)
 TEST_SUITE_DIR = "Web/TC" 
 
 # 새로운 결과 저장 경로

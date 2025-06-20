@@ -159,6 +159,88 @@ Get Absolute File Path
     Sleep    1
 
 
+    ${lastBizReNo}=    Get Last BizRegNo From File
+    Log To Console    ${lastBizReNo}
+
+    # 업체 상세 
+    Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
+
+    # 계약 추가
+    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
+    ${managementCode}=    Set Variable    ${datetime}
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='계약 추가']    5
+    Click Button    xpath=//button[normalize-space(.)='계약 추가']
+    Wait Until Element Is Visible    class=text-lg    5
+    Press Key    name=contractTitle    자동화테스트 ${managementCode}
+    Sleep    1
+
+    ${abs_path}=    Normalize Path    ${testfile_PATH}
+    Choose File     xpath=//*[@id="contractFile"]//input    ${abs_path}
+    Wait Until Element Is Visible    xpath=//button[.//span[text()='Remove file']]    5
+
+    Click Element    id=direct
+    Wait Until Element Is Visible    name=commissionText    5
+    Press Key    name=commissionText    자동화테스트
+
+    Click Button    xpath=//button[normalize-space(.)='추가하기']
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='나중에']    5
+    Click Button    xpath=//button[normalize-space(.)='나중에']
+  
+    Sleep    2
+
+
+
+    # 관리코드 수정
+    Click Button    xpath=(//button[normalize-space(.)='수정하기'])[1]
+    Sleep    1
+
+    # 관리코드
+    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
+    ${managementCode}=    Set Variable    ${datetime}
+
+    Click Button    xpath=//button[contains(@class, 'text-gray-400')]
+
+    Sleep    1
+    Press Key    name=managementCode    ${managementCode}F
+    Sleep    1
+    Click Button    xpath=//button[normalize-space(.)='저장하기']
+    Sleep    1
+
+
+    # 담당자 정보 수정 
+    Click Button    xpath=(//button[normalize-space(.)='수정하기'])[2]
+    Sleep    1
+
+    # 이름 
+    Click Button    xpath=(//button[contains(@class, 'text-gray-400')])[1]
+    Sleep    1
+    Press Key    name=name    자동화테스트
+    Sleep    1
+
+    # 연락처 
+    ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
+    ${phone_number}=    Set Variable    010${random_number}
+    Click Button    xpath=(//button[contains(@class, 'text-gray-400')])[2]
+    Sleep    1
+    Press Key    name=phone    ${phone_number}
+    Sleep    1
+
+    # 이메일 
+    Click Button    xpath=(//button[contains(@class, 'text-gray-400')])[3]
+    Sleep    1
+    Press Key    name=email    automation@test.com
+    Sleep    1
+
+    Click Button    xpath=//button[normalize-space(.)='저장하기']
+    Sleep    1
+
+
+
+
+
+
 
     Press Keys    NONE    ESC
     

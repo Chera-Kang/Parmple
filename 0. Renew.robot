@@ -36,56 +36,80 @@ Get Absolute File Path
     Click Button    xpath=//button[text()='로그인']
     Sleep    3
 
-
-    ############################################################
-
     ${lastBizReNo}=    Get Last BizRegNo From File
-    Log To Console    ${lastBizReNo}
 
     # 업체 상세 
     Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
 
-    # 계약 추가
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
-    ${managementCode}=    Set Variable    ${datetime}
 
-    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='계약 추가']    5
-    Click Button    xpath=//button[normalize-space(.)='계약 추가']
-    Wait Until Element Is Visible    class=text-lg    5
-    Press Key    name=contractTitle    자동화테스트 ${managementCode}
+    ############################################################
+
+
     Sleep    1
 
-    ${abs_path}=    Normalize Path    ${testfile_PATH}
-    Choose File     xpath=//*[@id="contractFile"]//input    ${abs_path}
+    Click Button    xpath=//button[@title='재위탁통보서']
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='통보서 작성하기']    5
+    Click Button    xpath=//button[normalize-space(.)='통보서 작성하기']
     Sleep    1
-    
-    Click Element    id=direct
-    Wait Until Element Is Visible    name=commissionText    5
-    Press Key    name=commissionText    자동화테스트
+
+    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='작성하기']    5
+
+
+    Sleep    1
+
+    Input Text    name=reason    ${EMPTY}
+    Sleep    0.5
+    Press Key    name=reason    automation test
+
+    Sleep    1
+
+    Input Text    name=note    ${EMPTY}
+    Sleep    0.5
+    Press Key    name=note    automation test
+
+    Click Element    id=created-date
+    Sleep    1
+    Press Keys    NONE    ESC
+    Sleep    1
+
+    # 화면 스크롤
+    Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
+    Sleep    1
+
 
     Click Button    xpath=//button[normalize-space(.)='추가하기']
 
-    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='나중에']    5
-    Click Button    xpath=//button[normalize-space(.)='나중에']
-  
-    Sleep    2
-
-    Press Keys    NONE    ESC    
-    Sleep    2
-
-    # 관리코드 수정
-    Click Button    xpath=(//button[normalize-space(.)='수정하기'])[1]
     Sleep    1
+
+    Click Element    xpath=//*[normalize-space(.)='제약사 명 검색']
+    Sleep    1
+    Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬 
+    Sleep    2
+    Press Keys    xpath=//input[@placeholder='제약사 명 검색']    ENTER
+    Sleep    3
+    Click Button    xpath=(//button[normalize-space(.)='추가하기'])[2]
+    Sleep    1
+   
+
+
+    Click Element    xpath=//button[normalize-space(.)='작성하기']
+    Sleep    1
+    Wait Until Element Is Visible    xpath=(//button[normalize-space(.)='작성하기'])[2]    5
+    Click Button    xpath=(//button[normalize-space(.)='작성하기'])[2]
+
+
+
+
+
+    Sleep    10
+
 
     Press Keys    NONE    ESC
     Sleep    1
 
-    # 담당자 정보 수정 
-    Click Button    xpath=(//button[normalize-space(.)='수정하기'])[2]
-    Sleep    1
- 
-    Sleep    5
 
+    Sleep    5
 
 
     # Sleep    1
