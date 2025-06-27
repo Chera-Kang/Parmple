@@ -173,43 +173,43 @@ Approve Company Review
     ## 스탠바이 및 회원가입 시작
     ${result}=    Run Process    python    -c    "import sys; print(sys.executable)"    stdout=PIPE
     
-    Wait Until Element Is Visible    class=mb-4
+    Wait Until Element Is Visible    class=mb-4    5
+    Screenshot
     Click Element    xpath=//button[text()='회원가입']
-    Sleep    2
+    Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력"]    5
+    Screenshot
 
     ## 사업자 번호 입력
     ${bizRegNo}=      Find Valid Biz Number
     Set Suite Variable    ${bizRegNo}
-    Sleep    1
-
-    Input Text    id=bizNumber    ${bizRegNo}    # 사업자 번호 입력
-    Sleep    1
-    Click Element    xpath=//button[text()='확인하기']    # 사업자 번호 입력 후 회원가입 Page 로 진입
-    Sleep    1
+    Input Text    id=bizNumber    ${bizRegNo}
+    Screenshot
+    Click Element    xpath=//button[text()='확인하기']
+    Screenshot
     Click Element    xpath=//button[text()='확인']
-    Sleep    1
+    Screenshot
 
     ## 파일 첨부    
     ${abs_path}=    Normalize Path    ${testfile_PATH}
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${abs_path}
-    Sleep    1
+    Sleep    0.5
     Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${abs_path}
-    Sleep    1
+    Screenshot
 
     # 화면 스크롤
     Scroll Element Into View    xpath=//*[@id="name"]
-    Sleep    1
+    Sleep    0.5
 
     ## 이메일 입력 
     ${EMAIL}=    Generate Unique Email
     Input Text    id=email    ${EMAIL}    # 이메일 입력
     Set Suite Variable    ${EMAIL}
     Log To Console    \n${EMAIL}
+    Screenshot
 
     # 인증번호 발송
-    Sleep    1
     Click Element    xpath=//button[text()='인증번호 발송']
-    Sleep    1
+    Screenshot
     Click Element    xpath=//button[text()='확인']
     Sleep    5
 
@@ -220,58 +220,56 @@ Approve Company Review
     Should Not Be Equal    ${code}    NO_CODE
 
     Input Text    id=emailVerificationKey    ${code}
-    Sleep    1
+    Screenshot
     Click Element    xpath=//button[text()='인증하기']
-    Sleep    1
+    Screenshot
 
     # 화면 스크롤
     Scroll Element Into View    xpath=//button[text()='가입하기']
-    Sleep    1
+    Sleep    0.5
 
     ## 비밀번호 입력
     Input Password    id=password    ${password}
-    Sleep    1
+    Sleep    0.5
     Input Password    id=passwordCheck    ${password}
-    Sleep    1
+    Screenshot
 
     ## 이름 입력
     Input Text    id=name    테스트
-    Sleep    1
+    Sleep    0.5
 
     ## 휴대폰 번호 입력 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
     ${phone_number}=    Set Variable    010${random_number}
     Press Key    id=phone    ${phone_number}
-    Sleep    1
+    Screenshot
 
     ## 약관 동의
     Click Button    id=termsAll
-    Sleep    1
+    Screenshot
 
     ## 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
     Record BizRegNo To File    ${bizRegNo}
-    Sleep    2
-    # Wait Until Element Is Visible    id=radix-:r15:    5
-    Click Element    xpath=//button[text()='확인']
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//button[text()='확인']    5
+    Screenshot
+    
     # 로그인 Page 로 이동
-
-
+    Click Element    xpath=//button[text()='확인']
+    Screenshot
+    
     ## Admin API 승인 Process    
     ${access_token}=    Get Admin Access Token
     ${company_id}=    Get Pending Company Review Id    ${access_token}
     Approve Company Review    ${access_token}    ${company_id}
-
-    Sleep    2
+    Sleep    1
 
 ---- Testcase3
 
     Input Text    name=email    ${EMAIL}
     Press Key    name=password    ${password}
-    Sleep    1
+    Screenshot
     Click Button    xpath=//button[text()='로그인']
-
     Sleep    5
 
     Log To Console    ${EMAIL}

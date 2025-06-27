@@ -14,17 +14,7 @@ Suite Setup    Initialize Test Suite
 Suite Teardown    Finalize Test Suite
 
 *** Variables ***
-${lastBizReNo}    None
-${bizNo}    None
-
-
 *** Keywords ***
-Get Absolute File Path
-    [Arguments]    ${relative_path}
-    ${abs}=    Normalize Path    ${EXECDIR}/${relative_path}
-    [Return]    ${abs}
-
-
 *** Test Cases ***
 ---- Testcase
 
@@ -37,125 +27,24 @@ Get Absolute File Path
     Sleep    3
 
 
-    ############################################################
-
-
-    Click Element    xpath=//a[span[text()='재위탁 통보서 작성']]
-    Sleep    1
-
-    Click button    xpath=//button[normalize-space(.)='작성하기']
-    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='작성하기']    5 
-
+    #################################################
 
     Sleep    1
+    # Click Element    xpath=//button[span[text()="사업자상태 (전체)"]]
+    Click Element    xpath=//button[normalize-space(.)='상태 (전체)']
 
-    Click Element    xpath=//*[normalize-space(.)='제약사 명 검색']
-    Sleep    1
-    Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬 
-    Sleep    2
-    Press Keys    xpath=//input[@placeholder='제약사 명 검색']    ENTER
-    Sleep    2
-
-    Input Text    name=reason    1
-    # Sleep    0.5
-    Input Text    name=reason    ${EMPTY}
-    Sleep    0.5
-    Press Key    name=reason    automation test
-    Sleep    1
-
-    Input Text    name=note    1
-    # Sleep    0.5
-    Input Text    name=note    ${EMPTY}
-    Sleep    0.5
-    Press Key    name=note    automation test
-    Sleep    1
-    
-    # Click Element    id=created-date
-
-    Click Button    xpath=//button[@id="writtenDate"]
-
-
-    Sleep    1
-    Press Keys    NONE    ESC
-    Sleep    1
-
-    # 화면 스크롤
-    Scroll Element Into View    xpath=//*[normalize-space(.)='작성하기']
-    Sleep    1
-
-    Click Button    xpath=//button[@title="추가하기"]
     Sleep    1
 
 
 
-    Click Element    xpath=(//button[@title='재위탁통보서'])[1]
-    Sleep    2
+    #################################################
 
-    Input Text    name=reason    1
-    Input Text    name=reason    ${EMPTY}
-    Sleep    1
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
-    ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=reason    자동화_${datetime}
-    Sleep    1
-
-    Input Text    name=note    1
-    Input Text    name=note    ${EMPTY}
-    Sleep    1
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
-    ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=note    자동화_${datetime}
-    Sleep    1
-
-    # 화면 스크롤
-    Scroll Element Into View    xpath=//*[normalize-space(.)='귀하']
-    Sleep    1
-
-    Click button    xpath=//button[normalize-space(.)='수정하기']
 
     Press Keys    NONE    ESC
-    Sleep    1
-
-    Press Keys    NONE    ESC
-    Sleep    1
-
-    Click Element    xpath=(//button[@title='수수료율'])[1]
-    Sleep    2
-
-    Press Keys    NONE    ESC
-    Sleep    1
-
-
-    Click Element    xpath=(//button[@title='계약서'])[1]
-    Sleep    2
-
-    Press Keys    NONE    ESC
-    Sleep    1
-
-
-
-
-
-
-
-    # Go Back
-    Sleep    1
-
-
-
-
-
-
-
     Sleep    10
 
 
-    Press Keys    NONE    ESC
-    Sleep    1
-
-
-    Sleep    5
-
+    # Go Back
 
     # Sleep    1
     # Click Element    xpath=//button[text()='로그인']
@@ -163,6 +52,15 @@ Get Absolute File Path
     # Click Element    xpath=//a[span[text()='위탁 계약']]
     # Sleep    2
 
+    # Click Button    xpath=//button[normalize-space(.)='저장하기']
+    # Click Button    xpath=//button[@title='재위탁통보서']
+    # xpath=//input[@placeholder='제약사 명 검색']
+    # xpath=//button[text()='작성하기']
+    # xpath=//h3[text()='계약 관리']
+
+    # # 화면 스크롤
+    # Scroll Element Into View    xpath=//*[normalize-space(.)='로그아웃']
+    # Sleep    0.5
 
 
 # 1. 회원가입

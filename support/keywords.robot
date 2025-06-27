@@ -19,7 +19,7 @@ ${USER_2_PW}    dummy_password123!
 # ▼ 리뉴얼 버전
 
 ${id_1}    chera+1@twosun.com
-${id_2}    pharm1@twosun.com
+${id_2}    pharm1@parmple.com
 ${password}    password123!
 
 ${API}               https://qa.api.parmple.com
