@@ -20,6 +20,7 @@ ${USER_2_PW}    dummy_password123!
 
 ${id_1}    chera+1@twosun.com
 ${id_2}    pharm1@parmple.com
+${id_3}    pharm_manager@example.com
 ${password}    password123!
 
 ${API}               https://qa.api.parmple.com
@@ -122,3 +123,4 @@ Get Last BizRegNo From File
     Run Keyword If    ${line_count} < 2    Fail    No bizRegNo found in file
     ${last_bizRegNo}=    Get From List    ${lines}    -2
     [Return]    ${last_bizRegNo}
+

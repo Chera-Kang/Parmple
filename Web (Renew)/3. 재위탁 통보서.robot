@@ -14,10 +14,7 @@ Suite Setup    Initialize Test Suite
 Suite Teardown    Finalize Test Suite
 
 *** Variables ***
-
 *** Keywords ***
-
-
 *** Test Cases ***
 ---- Testcase
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5

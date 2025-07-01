@@ -15,6 +15,50 @@ Suite Teardown    Finalize Test Suite
 
 *** Variables ***
 *** Keywords ***
+Logout
+    # 내 정보 선택
+    Click Element    xpath=//button[@data-sidebar='menu-button']
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='내 정보']    5
+    Sleep    1
+    Click Element    xpath=//a[normalize-space(.)='내 정보']
+    Wait Until Element Is Visible    xpath=//h2[normalize-space(.)='내 정보']
+    Sleep    1
+
+    # 화면 스크롤
+    Scroll Element Into View    xpath=//*[normalize-space(.)='로그아웃']
+    Sleep    0.5
+
+    # 로그아웃
+    Click Element    xpath=//button[@title='로그아웃']
+    Wait Until Element Is Visible    name=email    5
+    Screenshot
+    Sleep    0.5
+
+login CSO
+    Input Text    name=email    ${id_1}
+    Press Key    name=password    ${password}
+    Sleep    1
+    Click Button    xpath=//button[text()='로그인']
+    Sleep    3
+
+
+login pharm
+    Input Text    name=email    ${id_2}
+    Press Key    name=password    ${password}
+    Sleep    1
+    Click Button    xpath=//button[text()='로그인']
+    Sleep    3
+
+
+login samik
+    Input Text    name=email    ${id_3}
+    Press Key    name=password    ${password}
+    Sleep    1
+    Click Button    xpath=//button[text()='로그인']
+    Sleep    3
+
+
+
 *** Test Cases ***
 ---- Testcase
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
@@ -24,4 +68,55 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Click Button    xpath=//button[text()='로그인']
     Sleep    3
+
+
+
+
+
+    Click Element    xpath=//a[span[text()='필터링 조회']]
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회']
+    Sleep    1
+
+    Press Key    xpath=//input[@placeholder='병의원명 검색 후 리스트 선택']    오토
+    Sleep    1
+    Press Keys    xpath=//input[@placeholder='병의원명 검색 후 리스트 선택']    ENTER
+    Sleep    1
+
+    Click Element    xpath=//div[text()='기아(주)오토랜드 광주제1의원']
+    Sleep    1
+    Press Key    xpath=//input[@placeholder='사업자등록번호 (-없이 입력)']    1234567890
+    Sleep    1
+
+    Click Element    xpath=//button[span[text()='조회하기']]
+    Sleep    1
+
+    # 계정 변경
+    Logout
+
+    Input Text    name=email    ${id_3}
+    Press Key    name=password    ${password}
+    Sleep    1
+    Click Button    xpath=//button[text()='로그인']
+    Sleep    3
+
+
+    Click Element    xpath=//a[span[text()='필터링 조회 이력']]
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회 이력']
+    Sleep    1
+
+
+    Click Element    xpath=//button[span[text()='병의원명']]
+    Sleep    1
+    Press Keys    NONE    ESC
+    Sleep    0.5
+
+    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    오토
+    Sleep    1
+    Click Element    xpath=//button[span[text()='검색']]
+    Sleep    1
+
+
+
+
+
 
