@@ -175,10 +175,13 @@ Approve Company Review
     
     Wait Until Element Is Visible    class=mb-4    5
     Screenshot
+
+    # 회원가입 버튼    
     Click Element    xpath=//button[text()='회원가입']
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력"]    5
     Screenshot
 
+---- ---- 회원가입 Page 
     ## 사업자 번호 입력
     ${bizRegNo}=      Find Valid Biz Number
     Set Suite Variable    ${bizRegNo}
@@ -257,15 +260,15 @@ Approve Company Review
     # 로그인 Page 로 이동
     Click Element    xpath=//button[text()='확인']
     Screenshot
-    
+
+---- ---- Admin 승인 Process
     ## Admin API 승인 Process    
     ${access_token}=    Get Admin Access Token
     ${company_id}=    Get Pending Company Review Id    ${access_token}
     Approve Company Review    ${access_token}    ${company_id}
     Sleep    1
 
----- Testcase3
-
+---- 로그인
     Input Text    name=email    ${EMAIL}
     Press Key    name=password    ${password}
     Screenshot
@@ -276,6 +279,4 @@ Approve Company Review
     Log To Console    ${bizRegNo}
     ${lastBizReNo}=    Get Last BizRegNo From File
     Log To Console    ${lastBizReNo}
-
-
 

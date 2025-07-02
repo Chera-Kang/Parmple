@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- Testcase
+---- 제약사 제품 공지
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
 
     Input Text    name=email    ${id_1}
@@ -80,7 +80,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- Testcase2
+---- 신규 개원 정보
     # 신규 개원 정보 
     Click Element    xpath=//a[span[text()='신규 개원 정보']]
     Wait Until Element Is Visible    xpath=//h2[text()='신규 개원 정보']    5
@@ -110,7 +110,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- Testcase3
+---- CSO 제품 정보
     # CSO 제품 정보 
     Click Element    xpath=//a[span[text()='CSO 제품 정보']]
     Wait Until Element Is Visible    xpath=//h2[text()='CSO 제품 정보']    5
@@ -156,5 +156,4 @@ Suite Teardown    Finalize Test Suite
     # 검색 버튼 
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
-
 

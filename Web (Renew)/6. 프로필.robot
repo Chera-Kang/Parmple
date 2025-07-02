@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- Testcase
+---- 내 정보
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
 
     Input Text    name=email    ${id_1}
@@ -37,6 +37,8 @@ Suite Teardown    Finalize Test Suite
     Scroll Element Into View    xpath=//*[normalize-space(.)='로그아웃']
     Sleep    0.5
 
+
+---- ---- 계정 정보 수정
     # 계정 정보 수정 
     Click Element    xpath=//button[@title='계정 정보 수정']
     Wait Until Element Is Visible    xpath=//h2[text()='계정 정보 수정']    5
@@ -61,6 +63,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
     Screenshot
 
+
+---- ---- 비밀번호 변경
     # 비밀번호 변경 
     Click Button    xpath=//button[@title='비밀번호 변경']
     Wait Until Element Is Visible    xpath=//h2[text()='비밀번호 변경']    5
@@ -78,6 +82,8 @@ Suite Teardown    Finalize Test Suite
     Click Element     xpath=//button[@title='확인']
     Sleep    0.5
 
+
+---- ---- 도장 관리
     # 도장 관리 
     Click Element    xpath=//button[text()='변경하기']
     Wait Until Element Is Visible    xpath=//h2[text()='도장 관리']    5
@@ -98,6 +104,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
     Screenshot
 
+
+---- 약관 
     # 서비스 이용약관
     Click Element    xpath=//button[@data-sidebar='menu-button']
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='내 정보']    5
@@ -118,6 +126,8 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
     Sleep    0.5
 
+
+---- 고객센터
     # 고객센터
     Click Element    xpath=//button[@data-sidebar='menu-button']
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='내 정보']    5
@@ -128,9 +138,10 @@ Suite Teardown    Finalize Test Suite
     Switch To Tab    0
     Screenshot
 
+
+---- 로그아웃
     # 로그아웃 버튼 선택 
     Click Element    xpath=//button[@title='로그아웃']
     Wait Until Element Is Visible    name=email    5
     Screenshot
-
 

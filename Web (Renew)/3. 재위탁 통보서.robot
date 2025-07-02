@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- Testcase
+---- 재위탁 통보서 작성 
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
 
     Input Text    name=email    ${id_1}
@@ -79,7 +79,7 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
     Sleep    1
 
-
+---- ---- 재위탁 통보서 작성하기 Page
     ## 재위탁 통보서 작성하기 page 
     Click button    xpath=//button[normalize-space(.)='작성하기']
     Wait Until Element Is Visible    xpath=//button[normalize-space(.)='작성하기']    5 
@@ -136,6 +136,7 @@ Suite Teardown    Finalize Test Suite
     Click Button    xpath=(//button[@title="작성하기"])[2]
     Sleep    0.5
 
+---- ---- 재위탁통보서 전송 
     ## 재위탁 통보서 작성 의 check box 선택 
     Wait Until Element Is Visible    xpath=//div[contains(@class,'ag-selection-checkbox')]    5
     Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[2]
@@ -175,7 +176,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- Testcase 2
+---- 재위탁 통보서 관리 
     ### 계정변경
     # 프로필
     Click Element    xpath=//button[@data-sidebar='menu-button']
@@ -191,7 +192,6 @@ Suite Teardown    Finalize Test Suite
 
     # 로그아웃 버튼 선택 
     Click Element    xpath=//button[@title='로그아웃']
-    # Sleep    2
     Wait Until Element Is Visible    name=email    5
 
     # 제약사 로그인 
@@ -250,9 +250,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-
----- Testcase 3 
-
+---- 재위탁 목록 
     ##### 재위탁 목록 Page 
     Click Element    xpath=//a[span[text()='재위탁 목록']]
     Sleep    1
@@ -269,6 +267,4 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-
-
 

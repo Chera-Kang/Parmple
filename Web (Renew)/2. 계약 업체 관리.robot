@@ -46,7 +46,7 @@ Get Absolute File Path
 
 
 *** Test Cases ***
----- Testcase
+---- 위탁계약
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
 
     Input Text    name=email    ${id_1}
@@ -56,6 +56,7 @@ Get Absolute File Path
     Sleep    3
     Screenshot
 
+---- ---- 업체 추가하기 (가입 업체)
     ##### 가입된 업체 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
@@ -99,7 +100,7 @@ Get Absolute File Path
     Sleep    1
     Screenshot
 
-
+---- ---- 업체 추가하기 (미가입 업체)
     ##### 미가입사용자 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
@@ -154,11 +155,13 @@ Get Absolute File Path
     Go Back    ## 등록시 상세로 이동되기에 이전 page 로 복귀 시킴 
     Sleep    1
 
+---- ---- 업체 상세
     # 업체 상세 
     ${lastBizReNo}=    Get Last BizRegNo From File
     Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
     Screenshot
 
+---- ---- 계약 추가
     # 계약 추가
     Wait Until Element Is Visible    xpath=//button[normalize-space(.)='계약 추가']    5
     Click Button    xpath=//button[normalize-space(.)='계약 추가']
@@ -251,6 +254,7 @@ Get Absolute File Path
     Click Button    xpath=//button[normalize-space(.)='저장하기']
     Screenshot
 
+---- ---- 위탁계약 > 재위탁 통보서 
     # 위탁계약 - 재위탁 통보서 
     Click Button    xpath=//button[@title='재위탁통보서']
     Wait Until Element Is Visible    xpath=//button[normalize-space(.)='통보서 작성하기']    5
@@ -343,6 +347,7 @@ Get Absolute File Path
     Sleep    0.5
     Screenshot
 
+---- ---- 업체 상세 
     # 업체 상세 
     Click Element    xpath=//a[text()='842-88-83121']
     Wait Until Element Is Visible    xpath=//h3[text()='계약 관리']
@@ -350,7 +355,7 @@ Get Absolute File Path
 
     Go Back
     Sleep    1
-    
+
     # 검색 
     Click Element    xpath=//button[span[text()="상호/법인명"]]
     Sleep    0.5
