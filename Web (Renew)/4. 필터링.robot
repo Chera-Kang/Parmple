@@ -69,18 +69,19 @@ Login samik
     Click Element    xpath=//a[span[text()='필터링 조회']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회']
     Sleep    1
+    Screenshot
 
     # 병의원 검색 
     Press Key    xpath=//input[@placeholder='병의원명 검색 후 리스트 선택']    오토
-    Sleep    1
+    Screenshot
     Press Keys    xpath=//input[@placeholder='병의원명 검색 후 리스트 선택']    ENTER
-    Sleep    1
+    Screenshot
     Click Element    xpath=//div[text()='기아(주)오토랜드 광주제1의원']
-    Sleep    1
+    Screenshot
     Press Key    xpath=//input[@placeholder='사업자등록번호 (-없이 입력)']    1234567890
-    Sleep    1
+    Screenshot
     Click Element    xpath=//button[span[text()='조회하기']]
-    Sleep    1
+    Screenshot
 
 
 ---- 필터링 조회 이력 
@@ -95,17 +96,17 @@ Login samik
     # 필터링 조회 이력 
     Click Element    xpath=//a[span[text()='필터링 조회 이력']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회 이력']
-    Sleep    1
+    Screenshot
 
     # 병의원 검색 
     Click Element    xpath=//button[span[text()='병의원명']]
-    Sleep    1
+    Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
     Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    오토
-    Sleep    1
+    Screenshot
     Click Element    xpath=//button[span[text()='검색']]
-    Sleep    1
+    Screenshot
 
 
 ---- 필터링 요청 
@@ -119,7 +120,7 @@ Login samik
     # 필터링 요청 
     Click Element    xpath=//a[span[text()='필터링 요청']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']
-    Sleep    1
+    Screenshot
 
 
 ---- 필터링 회신 관리 
@@ -134,7 +135,7 @@ Login samik
     # 필터링 회신 관리
     Click Element    xpath=//a[span[text()='필터링 회신 관리']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 회신 관리']
-    Sleep    1
+    Screenshot
 
 
 ---- 거래처 내역
@@ -149,7 +150,7 @@ Login samik
     # 거래처 내역
     Click Element    xpath=//a[span[text()='거래처 내역']]
     Wait Until Element Is Visible    xpath=//h2[text()='거래처 내역']
-    Sleep    1
+    Screenshot
 
 
 ---- 영업 거래처 관리
@@ -164,5 +165,5 @@ Login samik
     # 영업 거래처 관리
     Click Element    xpath=//a[span[text()='영업 거래처 관리']]
     Wait Until Element Is Visible    xpath=//h2[text()='영업 거래처 관리']
-    Sleep    1
+    Screenshot
 

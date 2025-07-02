@@ -135,6 +135,8 @@ Suite Teardown    Finalize Test Suite
     # 모달의 컨펌 확인 
     Click Button    xpath=(//button[@title="작성하기"])[2]
     Sleep    0.5
+    Screenshot
+
 
 ---- ---- 재위탁통보서 전송 
     ## 재위탁 통보서 작성 의 check box 선택 

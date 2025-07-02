@@ -347,15 +347,6 @@ Get Absolute File Path
     Sleep    0.5
     Screenshot
 
----- ---- 업체 상세 
-    # 업체 상세 
-    Click Element    xpath=//a[text()='842-88-83121']
-    Wait Until Element Is Visible    xpath=//h3[text()='계약 관리']
-    Screenshot
-
-    Go Back
-    Sleep    1
-
     # 검색 
     Click Element    xpath=//button[span[text()="상호/법인명"]]
     Sleep    0.5
@@ -367,4 +358,11 @@ Get Absolute File Path
 
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
+
+---- ---- 업체 상세 
+    # 업체 상세 
+    Click Element    xpath=//a[text()='842-88-83121']
+    Wait Until Element Is Visible    xpath=//h3[text()='계약 관리']
+    Screenshot
+    Sleep    1
 
