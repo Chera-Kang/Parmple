@@ -25,78 +25,11 @@ ${bizRegNo}    None
 
 *** Keywords ***
 # 이메일 번호 생성 
-Generate Unique Email
+Generate Email
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d.%H%M')
     ${email}=    Set Variable    ${EMAIL_PREFIX}+${datetime}@${EMAIL_DOMAIN}
     [Return]    ${EMAIL}
 
-# 사업자번호 하이픈 제거
-Remove Hyphen From BizNo
-    [Arguments]    ${rawBizNo}
-    ${cleaned}=    Replace String    ${rawBizNo}    -    ${EMPTY}
-    [Return]    ${cleaned}
-
-# 사업자번호 찾기
-Check Biz Joinable
-    [Arguments]    ${bizRegNo}
-    Create Session    parmple    ${API}
-    ${endpoint}=       Catenate    SEPARATOR=    /api/v1/companies/    ${bizRegNo}    /status
-    ${headers}=        Create Dictionary    accept=*/*
-    ${response}=       Get Request    parmple    ${endpoint}    headers=${headers}
-    ${code}=           Convert To Integer    ${response.status_code}
-    Should Be Equal As Numbers    ${code}    200
-    ${json}=           To JSON    ${response.text}
-    ${status}=         Get From Dictionary    ${json['data']['detail']}    status
-    [Return]           ${status}
-
-# 숫자 섞기 
-Shuffle List
-    [Arguments]    ${list}
-    ${copy}=       Copy List    ${list}
-    ${length}=     Get Length    ${copy}
-    FOR    ${i}    IN RANGE    ${length}
-        ${rand}=     Evaluate    random.randint(0, ${length} - 1)    modules=random
-        ${tmp}=      Set Variable    ${copy[${i}]}
-        Set List Value    ${copy}    ${i}    ${copy[${rand}]}
-        Set List Value    ${copy}    ${rand}    ${tmp}
-    END
-    [Return]    ${copy}
-
-# 사업자번호 찾기 
-Find Valid Biz Number
-    ${files}=         List Files In Directory    ${bizRegNo_DIR}    pattern=bizRegNo_*.txt
-    ${random_index}=  Evaluate    random.randint(0, len(${files}) - 1)    modules=random
-    ${file}=          Get From List    ${files}    ${random_index}
-    ${path}=          Catenate    SEPARATOR=/    ${bizRegNo_DIR}    ${file}
-    ${content}=       Get File    ${path}
-    ${lines}=         Split To Lines    ${content}
-    ${shuffled}=      Shuffle List    ${lines}
-
-    ${bizRegNo}=      Set Variable    ${EMPTY}
-    ${retry}=         Set Variable    0
-
-    FOR    ${raw}    IN    @{shuffled}
-        Exit For Loop If    ${retry} >= ${MAX_RETRY}
-        ${bizNo}=      Remove Hyphen From BizNo    ${raw}
-        ${status}=     Check Biz Joinable    ${bizNo}
-        Run Keyword If    '${status}' == 'UNREGISTERED'    Set Global Variable    ${bizRegNo}    ${bizNo}
-        Run Keyword If    '${status}' == 'UNREGISTERED'    Exit For Loop
-        ${retry}=      Set Variable    ${retry + 1}
-    END
-
-    Run Keyword Unless    ${bizRegNo}    Log    유효한 사업자번호를 찾을 수 없습니다.    WARN
-    Run Keyword Unless    ${bizRegNo}    Fatal Error    테스트를 종료합니다: 유효한 사업자번호 없음
-
-    Log To Console    \n선택된 파일 : ${file}
-    Log To Console    선택된 사업자번호 : ${bizRegNo}
-
-    [Return]    ${bizRegNo}
-
-# 파일 경로
-Get Absolute File Path
-    [Arguments]    ${relative_path}
-    ${abs}=    Normalize Path    ${EXECDIR}/${relative_path}
-    [Return]    ${abs}
 
 # 어드민 로그인 토큰
 Get Admin Access Token
@@ -117,6 +50,7 @@ Get Admin Access Token
     ${detail}=    Get From Dictionary    ${data}    detail
     ${access_token}=    Get From Dictionary    ${detail}    accessToken
     [Return]    ${access_token}
+
 
 # 어드민 승인요청관리 목록 
 Get Pending Company Review Id
@@ -153,6 +87,7 @@ Get Pending Company Review Id
 
     [Return]    ${company_id}
 
+
 # 어드민 승인처리
 Approve Company Review
     [Arguments]    ${access_token}    ${company_id}
@@ -183,9 +118,12 @@ Approve Company Review
 
 ---- ---- 회원가입 Page 
     ## 사업자 번호 입력
-    ${bizRegNo}=      Find Valid Biz Number
-    Set Suite Variable    ${bizRegNo}
-    Input Text    id=bizNumber    ${bizRegNo}
+    ${bizRegNo}=      Get Biz Number
+    
+    ${cleanBizNo}=    Remove Hyphen From BizNo    ${bizRegNo}
+    Record BizRegNo To File    ${cleanBizNo}
+
+    Input Text    id=bizNumber    ${cleanBizNo}
     Screenshot
     Click Element    xpath=//button[text()='확인하기']
     Screenshot
@@ -204,9 +142,9 @@ Approve Company Review
     Sleep    0.5
 
     ## 이메일 입력 
-    ${EMAIL}=    Generate Unique Email
-    Input Text    id=email    ${EMAIL}    # 이메일 입력
+    ${EMAIL}=    Generate Email
     Set Suite Variable    ${EMAIL}
+    Input Text    id=email    ${EMAIL}    # 이메일 입력
     Log To Console    \n${EMAIL}
     Screenshot
 
@@ -253,13 +191,13 @@ Approve Company Review
 
     ## 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
-    Record BizRegNo To File    ${bizRegNo}
     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
     Screenshot
     
     # 로그인 Page 로 이동
     Click Element    xpath=//button[text()='확인']
     Screenshot
+
 
 ---- ---- Admin 승인 Process
     ## Admin API 승인 Process    
@@ -268,15 +206,11 @@ Approve Company Review
     Approve Company Review    ${access_token}    ${company_id}
     Sleep    1
 
+
 ---- 로그인
     Input Text    name=email    ${EMAIL}
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
     Sleep    5
-
-    Log To Console    ${EMAIL}
-    Log To Console    ${bizRegNo}
-    ${lastBizReNo}=    Get Last BizRegNo From File
-    Log To Console    ${lastBizReNo}
 

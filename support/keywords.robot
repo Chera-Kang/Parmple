@@ -109,11 +109,42 @@ Generaotr & Validator
     Set Global Variable    ${GENERATOR_Number}    ${GENERATOR_Number}
 
 
-# 사용한 사업자 번호 기록
+
+# 사업자번호 찾기 
+Get Biz Number
+    ${files}=         List Files In Directory    ${bizRegNo_DIR}   pattern=bizRegNo_*.txt
+    ${random_index}=  Evaluate    random.randint(0, len(${files}) - 1)    modules=random
+    ${file}=          Get From List    ${files}    ${random_index}
+    ${path}=          Catenate    SEPARATOR=/    ${bizRegNo_DIR}    ${file}
+    
+    ${content}=       Get File    ${path}
+    ${lines}=         Split To Lines    ${content}
+    Run Keyword Unless    ${lines}    Fatal Error    사용 가능한 사업자번호가 없습니다: ${file}
+
+    ${last}=          Get From List    ${lines}    -1
+    Remove From List  ${lines}    -1
+    ${new_content}=   Catenate    SEPARATOR=\n    @{lines}
+    Create File       ${path}    ${new_content}
+    
+    Log To Console    \n선택된 파일 : ${file}
+    Log To Console    사용된 사업자번호 : ${last}
+
+    [Return]          ${last}
+
+
+# 사업자번호 하이픈 제거
+Remove Hyphen From BizNo
+    [Arguments]    ${rawBizNo}
+    ${cleaned}=    Replace String    ${rawBizNo}    -    ${EMPTY}
+    [Return]    ${cleaned}
+
+
+# 사용한 사업자번호 기록
 Record BizRegNo To File
     [Arguments]    ${bizRegNo}
     Append To File    ${BIZREG_FILE}    ${bizRegNo}\n
     Log    기록된 사업자번호: ${bizRegNo}
+
 
 # 사용했던 사업자 번호 추출 
 Get Last BizRegNo From File

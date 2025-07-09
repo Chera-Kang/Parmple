@@ -15,36 +15,10 @@ Suite Teardown    Finalize Test Suite
 
 *** Variables ***
 ${lastBizReNo}    None
-${bizNo}    None
+${unused_BizNo}    None
 
 
 *** Keywords ***
-Get Unused Biz Number
-    ${files}=         List Files In Directory    ${unused_bizRegNo_DIR}   pattern=bizRegNo_*.txt
-    ${random_index}=  Evaluate    random.randint(0, len(${files}) - 1)    modules=random
-    ${file}=          Get From List    ${files}    ${random_index}
-    ${path}=          Catenate    SEPARATOR=/    ${unused_bizRegNo_DIR}    ${file}
-    
-    ${content}=       Get File    ${path}
-    ${lines}=         Split To Lines    ${content}
-    Run Keyword Unless    ${lines}    Fatal Error    사용 가능한 사업자번호가 없습니다: ${file}
-
-    ${last}=          Get From List    ${lines}    -1
-    Remove From List  ${lines}    -1
-    ${new_content}=   Catenate    SEPARATOR=\n    @{lines}
-    Create File       ${path}    ${new_content}
-    
-    Log To Console    \n선택된 파일 : ${file}
-    Log To Console    사용된 사업자번호 : ${last}
-
-    [Return]          ${last}
-
-Get Absolute File Path
-    [Arguments]    ${relative_path}
-    ${abs}=    Normalize Path    ${EXECDIR}/${relative_path}
-    [Return]    ${abs}
-
-
 *** Test Cases ***
 ---- 위탁계약
     Wait Until Element Is Visible    xpath=//img[contains(@src, 'logo_200.25f0e37e.png')]    5
@@ -65,7 +39,6 @@ Get Absolute File Path
 
     # 직전 회원가입한 사업자번호 입력
     ${lastBizReNo}=    Get Last BizRegNo From File
-    Set Suite Variable    ${lastBizReNo}
     Press Key    id=bizNumber    ${lastBizReNo}
     Screenshot
     Click Button    xpath=//button[text()='확인하기']
@@ -108,8 +81,8 @@ Get Absolute File Path
     Screenshot
 
     # 미사용 번호 
-    ${bizNo}=    Get Unused Biz Number    
-    Press Key    id=bizNumber    ${bizNo}
+    ${unused_BizNo}=    Get Biz Number    
+    Press Key    id=bizNumber    ${unused_BizNo}
     Screenshot
 
     Click Button    xpath=//button[text()='확인하기']
