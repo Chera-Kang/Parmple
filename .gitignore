@@ -1,5 +1,5 @@
-.env
 __pycache__/
+.env
 .test_app.robot
 .test.robot
 .secrets.robot
@@ -8,3 +8,5 @@ output.xml
 PIPE
 report.html
 interactive_console_output.xml
+TestResult
+resources/.secrets.robot
