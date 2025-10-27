@@ -20,10 +20,10 @@
 **Youtube**
 
 - 자동화 테스트 동영상 (25.10.27) / *Design Sysyem 적용*
-  https://youtu.be/e3fbpIVPqks
+https://youtu.be/e3fbpIVPqks
 
 - 자동화 테스트 동영상 (25.08.06) / *Renewal 적용*
-  https://youtu.be/KU7lC9yqJbI
+https://youtu.be/KU7lC9yqJbI
 
 - 자동화 테스트 동영상 (25.04.15) / *기존 버전*
   https://youtu.be/5YyteNw1Jz4
