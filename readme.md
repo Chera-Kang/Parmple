@@ -15,8 +15,10 @@ Web 및 App 환경에서 수행 중인 자동화 테스트 스크립트를 정�
 ## 테스트 결과
 ### 테스트 동영상
 - **Youtube**
-  - [Web 자동화 테스트 시연] (https://www.youtube.com/watch?v=5YyteNw1Jz4)
-  - [App 자동화 테스트 시연] (https://www.youtube.com/watch?v=L-_c_SkEAjs)
+  - [Web 자동화 테스트 시연]
+    - (https://youtu.be/e3fbpIVPqks)
+    - https://youtu.be/KU7lC9yqJbI
+    - https://youtu.be/5YyteNw1Jz4
 
 ### 샘플 다운로드
 - **Google Drive**
