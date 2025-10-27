@@ -27,13 +27,12 @@ https://youtu.be/KU7lC9yqJbI
 - 자동화 테스트 동영상 (25.04.15) | *기존 버전*
   https://youtu.be/5YyteNw1Jz4
 
----
 
-## 샘플 다운로드
-
+## 테스트 결과 다운로드 (Sample)
 
 - **Google Drive**
-  - [전체 실행 결과 및 스크린샷 다운로드 (ZIP)] (https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+  - [전체 실행 결과 및 스크린샷 다운로드 (ZIP)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+
 #### 📦 ZIP 파일 구성
 - 📁 `screenshots/`  
   - 테스트 실행 중 촬영된 주요 화면 스크린샷 모음입니다.
