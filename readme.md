@@ -26,7 +26,7 @@
 ## 테스트 결과 다운로드 (샘플)
 > 테스트 결과 샘플파일 다운로드 및 구성 요소 요약
 
-#### **Google Drive**
+#### 🗂️ **Google Drive**
 - [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
 
 #### 📦 ZIP 파일 구성
