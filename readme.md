@@ -3,6 +3,9 @@
 제약회사 영업 관리 서비스 **팜플**의 자동화 테스트 스크립트 저장소
 
 ## 구성
+
+🗂️
+
 - 📂 [Testcase](./Testcase)
   - 서비스 주요 기능별 자동화 **테스트 케이스**
 - 📂 [resources](./resources)
@@ -23,10 +26,12 @@
 
 
 ## 테스트 결과 다운로드 (Sample)
-- **Google Drive**
-  - [Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+> 테스트 결과 파일 (Sample) 다운로드 및 구성요소 안내
 
-#### 📦 ZIP 파일 구성
+- **Google Drive**
+  - [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+
+📦 ZIP 파일 구성
 - 📁 `screenshots/`  
   - 테스트 실행 중 촬영된 주요 화면 스크린샷 모음입니다.
 - 📄 `output.xml`  
