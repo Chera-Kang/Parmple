@@ -6,7 +6,7 @@
 📂 [Testcase](./Testcase)
 - 테스트 케이스
 
-📂 [resources](./resource)
+📂 [resources](./resources)
 - 자동화 테스트에 필요한 주요 요소
 
 📂 [Legacy](./Legacy)
