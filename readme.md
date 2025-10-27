@@ -23,13 +23,6 @@
 - 자동화 테스트 동영상 **(25.08.06)** | *Renewal 적용* | [▶️ 바로보기](https://youtu.be/KU7lC9yqJbI)
 - 자동화 테스트 동영상 **(25.04.15)** | *기존 버전* | [▶️ 바로보기](https://youtu.be/5YyteNw1Jz4)
 
-| 날짜 | 내용 | 링크 |
-|:--|:--|:--:|
-| **25.10.27** | *Design System 적용* | [▶️ 바로보기](https://youtu.be/e3fbpIVPqks) |
-| **25.08.06** | *Renewal 적용* | [▶️ 바로보기](https://youtu.be/KU7lC9yqJbI) |
-| **25.04.15** | *기존 버전* | [▶️ 바로보기](https://youtu.be/5YyteNw1Jz4) |
-
-
 ## 테스트 결과 다운로드 (샘플)
 > 테스트 결과 샘플파일 다운로드 및 구성 요소 요약
 
