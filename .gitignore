@@ -10,4 +10,5 @@ report.html
 interactive_console_output.xml
 TestResult
 screenshots
+results
 resources/.secrets.robot
