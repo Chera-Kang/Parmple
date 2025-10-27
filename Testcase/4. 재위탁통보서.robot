@@ -208,8 +208,6 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
-    Scroll Element Into View    xpath=//span[text()='Page']
-
     # 재위탁통보서
     Click Button    xpath=//button[@title='재위탁통보서']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
@@ -238,8 +236,6 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//a[span[text()='재위탁 현황']]
     Sleep    1
     Screenshot
-
-    Scroll Element Into View    xpath=//span[text()='Page']
 
     # 검색 
     Click Element    xpath=//button[span[text()="상호/법인명"]]

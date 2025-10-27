@@ -223,10 +223,10 @@ ${unused_BizNo}    None
     Screenshot
 
     # 계약 - 추가하기 버튼
-    Execute Javascript    document.body.style.zoom='80%'
+    # Execute Javascript    document.body.style.zoom='80%'
     Click Button    xpath=//button[normalize-space(.)='추가하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']
-    Execute Javascript    document.body.style.zoom='100%'
+    # Execute Javascript    document.body.style.zoom='100%'
     Screenshot
     Click Button    xpath=//button[normalize-space(.)='나중에']
     Sleep    1
@@ -246,12 +246,12 @@ ${unused_BizNo}    None
     Sleep    1
 
     # 계약 - 추가하기 버튼
-    Execute Javascript    document.body.style.zoom='80%'
+    # Execute Javascript    document.body.style.zoom='80%'
     Sleep    0.5
     Click Button    xpath=//button[normalize-space(.)='추가하기']
     Sleep    0.5
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']
-    Execute Javascript    document.body.style.zoom='100%'
+    # Execute Javascript    document.body.style.zoom='100%'
     Click Button    xpath=//button[normalize-space(.)='나중에']
     Sleep    1
 

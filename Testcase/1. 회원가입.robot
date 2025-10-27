@@ -113,10 +113,10 @@ Approve Company Review
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
 
-    # 회원가입 버튼
-    Execute Javascript    document.body.style.zoom='90%'
+    # # 회원가입 버튼
+    # Execute Javascript    document.body.style.zoom='90%'
     Click Element    xpath=//a[text()='회원가입']
-    Execute Javascript    document.body.style.zoom='100%'
+    # Execute Javascript    document.body.style.zoom='100%'
 
 1.1.1. 사업자 번호 입력
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5

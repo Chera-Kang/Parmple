@@ -9,4 +9,5 @@ PIPE
 report.html
 interactive_console_output.xml
 TestResult
+screenshots
 resources/.secrets.robot

@@ -3,7 +3,6 @@ import shutil
 import time
 from robot import run
 
-############### Web ###############
 # 테스트 스위트 폴더 
 TEST_SUITE_DIR = "Testcase" 
 
@@ -24,34 +23,6 @@ run(TEST_SUITE_DIR, output=os.path.join(result_dir, "output.xml"),
     log=os.path.join(result_dir, "log.html"),
     report=os.path.join(result_dir, "report.html"),
     variable=f"SCREENSHOT_DIR:{screenshots_dir}")
-############### Web ###############
-
-
-# ############### App ###############
-# # 테스트 스위트 폴더
-# TEST_SUITE_DIR = "App" 
-
-# # 새로운 결과 저장 경로
-# BASE_RESULT_DIR = r"C:\Dev\TestResult"
-
-# # 현재 날짜 및 시간 기반으로 폴더 생성
-# timestamp = time.strftime("%y-%m-%d_%H-%M_App")
-# result_dir = os.path.join(BASE_RESULT_DIR, timestamp)
-# os.makedirs(result_dir, exist_ok=True)
-
-# # screenshots 폴더를 실행 결과 폴더 내부에 생성
-# screenshots_dir = os.path.join(result_dir)
-# # screenshots_dir = os.path.join(result_dir, "screenshots") App 에선 필요 없음으로,
-# os.makedirs(screenshots_dir, exist_ok=True)
-
-# # Robot Framework 실행
-# run(TEST_SUITE_DIR,
-#     output=os.path.join(result_dir, "output.xml"),
-#     log=os.path.join(result_dir, "log.html"),
-#     report=os.path.join(result_dir, "report.html"),
-#     variable=[f"SCREENSHOT_DIR:{screenshots_dir}", f"RUN_TIMESTAMP:{timestamp}"])
-# ############### App ###############
-
 
 
 # 디렉토리 확인

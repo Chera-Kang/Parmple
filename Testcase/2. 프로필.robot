@@ -27,9 +27,8 @@ Suite Teardown    Finalize Test Suite
 
 
 ---- 내 정보
-
     # 프로필 진입 
-    Click Element    xpath=//button[.//i[contains(@class,'ri-arrow-right-s-line')]]
+    Click Element    xpath=//button[span[div[i[contains(@class, 'ri-user-line')]]]]
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
 
