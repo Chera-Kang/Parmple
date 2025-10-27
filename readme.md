@@ -18,13 +18,11 @@
 > *(테스트 자동화 진행 시점과 적용 버전에 따라 내용이 다를 수 있습니다.)*
 
 
-- 자동화 테스트 동영상 (25.10.27) | *Design Sysyem 적용*
-  - [▶️ 바로보기](https://youtu.be/e3fbpIVPqks)
+- 자동화 테스트 동영상 (25.10.27) | *Design Sysyem 적용* | [▶️ 바로보기](https://youtu.be/e3fbpIVPqks)
 
 - 자동화 테스트 동영상 (25.08.06) | *Renewal 적용* | [▶️ 바로보기](https://youtu.be/KU7lC9yqJbI)
 
-- 자동화 테스트 동영상 (25.04.15) | *기존 버전*
-  https://youtu.be/5YyteNw1Jz4
+- 자동화 테스트 동영상 (25.04.15) | *기존 버전* | [▶️ 바로보기](https://youtu.be/5YyteNw1Jz4)
 
 
 ## 테스트 결과 다운로드 (Sample)
