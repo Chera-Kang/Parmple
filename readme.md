@@ -19,7 +19,7 @@
 
 
 - 자동화 테스트 동영상 (25.10.27) | *Design Sysyem 적용*
-  - https://youtu.be/e3fbpIVPqks
+  - [▶️ YoutubeLink 바로보기](https://youtu.be/e3fbpIVPqks)
 
 - 자동화 테스트 동영상 (25.08.06) | *Renewal 적용*
 https://youtu.be/KU7lC9yqJbI
@@ -29,9 +29,8 @@ https://youtu.be/KU7lC9yqJbI
 
 
 ## 테스트 결과 다운로드 (Sample)
-
 - **Google Drive**
-  - [전체 실행 결과 및 스크린샷 다운로드 (ZIP)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+  - [전체 실행 결과 및 스크린샷 다운로드 (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
 
 #### 📦 ZIP 파일 구성
 - 📁 `screenshots/`  
