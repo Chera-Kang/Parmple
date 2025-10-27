@@ -28,10 +28,10 @@
 ## 테스트 결과 다운로드 (Sample)
 > 테스트 결과 파일 (Sample) 다운로드 및 구성요소 안내
 
-- **Google Drive**
-  - [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+#### **Google Drive**
+- [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
 
-📦 ZIP 파일 구성
+#### 📦 ZIP 파일 구성
 - 📁 `screenshots/`  
   - 테스트 실행 중 촬영된 주요 화면 스크린샷 모음입니다.
 - 📄 `output.xml`  
