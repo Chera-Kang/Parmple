@@ -3,34 +3,35 @@
 제약회사 영업 관리 서비스 **팜플**의 자동화 테스트 스크립트 저장소
 
 ## 구성
-📂 [Testcase](./Testcase)
-- 테스트 케이스
+- 📂 [Testcase](./Testcase)
+  - 테스트 케이스
+- 📂 [resources](./resources)
+  - 자동화 테스트에 필요한 주요 요소
+- 📂 [Legacy](./Legacy)
+  - 기존 자동화테스트 레거시 코드
 
-📂 [resources](./resources)
-- 자동화 테스트에 필요한 주요 요소
-
-📂 [Legacy](./Legacy)
-- 기존 자동화테스트 레거시 코드
-
-
-
+---
 
 ## 테스트 결과
-### 테스트 동영상
-**Youtube**
+###  테스트 동영상 (Youtube)
+> 각 버전별 테스트 시연 영상을 확인할 수 있습니다.  
+> *(테스트 자동화 진행 시점과 적용 버전에 따라 내용이 다를 수 있습니다.)*
 
-- 자동화 테스트 동영상 (25.10.27)(/) / *Design Sysyem 적용*
+
+- 자동화 테스트 동영상 (25.10.27) | *Design Sysyem 적용*
   - https://youtu.be/e3fbpIVPqks
 
-- 자동화 테스트 동영상 (25.08.06) / *Renewal 적용*
+- 자동화 테스트 동영상 (25.08.06) | *Renewal 적용*
 https://youtu.be/KU7lC9yqJbI
 
-- 자동화 테스트 동영상 (25.04.15) / *기존 버전*
+- 자동화 테스트 동영상 (25.04.15) | *기존 버전*
   https://youtu.be/5YyteNw1Jz4
 
+---
+
+## 샘플 다운로드
 
 
-### 샘플 다운로드
 - **Google Drive**
   - [전체 실행 결과 및 스크린샷 다운로드 (ZIP)] (https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
 #### 📦 ZIP 파일 구성
