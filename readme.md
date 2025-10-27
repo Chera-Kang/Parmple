@@ -4,10 +4,12 @@
 
 ## 구성
 
-📂 [Web](./Testcase)
-- Selenium 기반, Web 서비스 테스트 스크립트 (제약영업관리 서비스 "팜플")  
-
-> 각 폴더에는 테스트 코드 및 실행 방법이 포함되어 있습니다.
+📂 [Legacy](./Legacy)
+- 기존 자동화테스트 레거시 코드
+📂 [resources](./resource)
+- 자동화 테스트에 필요한 주요 요소
+📂 [Testcase](./Testcase)
+- 테스트 케이스
 
 ---
 
