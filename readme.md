@@ -3,11 +3,12 @@
 제약회사 영업 관리 서비스 **팜플**의 자동화 테스트 스크립트 저장소
 
 ## 구성
-
 📂 [Legacy](./Legacy)
 - 기존 자동화테스트 레거시 코드
+
 📂 [resources](./resource)
 - 자동화 테스트에 필요한 주요 요소
+
 📂 [Testcase](./Testcase)
 - 테스트 케이스
 
@@ -15,9 +16,15 @@
 
 ## 테스트 결과
 ### 테스트 동영상
-- **Youtube**
-  - [Web 자동화 테스트 시연] (https://www.youtube.com/watch?v=5YyteNw1Jz4)
-  - [App 자동화 테스트 시연] (https://www.youtube.com/watch?v=L-_c_SkEAjs)
+**Youtube**
+
+- 1
+  https://youtu.be/e3fbpIVPqks
+- 2
+  https://youtu.be/KU7lC9yqJbI
+- 3
+  https://youtu.be/5YyteNw1Jz4
+
 
 ### 샘플 다운로드
 - **Google Drive**
