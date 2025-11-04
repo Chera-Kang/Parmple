@@ -19,7 +19,7 @@ ${screenshot_DIR}     ../screenshots
 ${testfile_DIR}    ${EXECDIR}/resources/testfile
 ${testfile_PATH}   ${testfile_DIR}/Sameple_PDF.pdf
 ${bizRegNo_DIR}    ${EXECDIR}/resources/bizRegNo
-${bizReg_FILE}    ${EXECDIR}/resources/bizRegNo/used_bizRegNo.txt
+${bizReg_FILE}    ${EXECDIR}/resources/used_bizRegNo.txt
 ${MAX_RETRY}         5
 
 

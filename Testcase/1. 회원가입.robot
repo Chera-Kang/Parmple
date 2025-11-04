@@ -114,9 +114,9 @@ Approve Company Review
     Screenshot
 
     # # 회원가입 버튼
-    # Execute Javascript    document.body.style.zoom='90%'
+    Execute Javascript    document.body.style.zoom='90%'
     Click Element    xpath=//a[text()='회원가입']
-    # Execute Javascript    document.body.style.zoom='100%'
+    Execute Javascript    document.body.style.zoom='100%'
 
 1.1.1. 사업자 번호 입력
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
@@ -138,7 +138,7 @@ Approve Company Review
     Wait Until Element Is Visible    xpath=//h1[text()='회원가입']    5
     Screenshot
 
-1.1.2. 파일 첨부
+1.2.1. 파일 첨부
     ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
@@ -149,7 +149,7 @@ Approve Company Review
     Scroll Element Into View    xpath=//*[@id="name"]
     Sleep    0.5
 
-1.1.3. 이메일 입력 및 인증
+1.2.2. 이메일 입력 및 인증
     ## 이메일 입력 
     ${EMAIL}=    Generate Email
     Set Suite Variable    ${EMAIL}
@@ -179,12 +179,12 @@ Approve Company Review
     Scroll Element Into View    xpath=//div[button[@id='termsAll']]
     Sleep    0.5
 
-1.1.4. 비밀번호 입력
+1.2.3. 비밀번호 입력
     ## 비밀번호 입력
     Input Password    id=password    ${password}
     Input Password    id=passwordCheck    ${password}
 
-1.1.5. 회원정보 입력
+1.2.4. 회원정보 입력
     ## 이름 입력
     Input Text    id=name    테스트
     
@@ -194,13 +194,13 @@ Approve Company Review
     Press Key    id=phone    ${phone_number}
     Screenshot
 
-1.1.6. 약관 동의
+1.2.5. 약관 동의
     ## 약관 동의
     Scroll Element Into View    xpath=//button[text()='가입하기']
     Click Button    id=termsAll
     Screenshot
 
-1.1.7. 가입하기
+1.2.6. 가입하기
     ## 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
@@ -210,14 +210,14 @@ Approve Company Review
     Click Element    xpath=//button[text()='확인']
     Screenshot
 
-1.1.8. Admin 승인 절차
+1.3. Admin 승인 절차
     ## Admin API 승인 Process    
     ${access_token}=    Get Admin Access Token
     ${company_id}=    Get Pending Company Review Id    ${access_token}
     Approve Company Review    ${access_token}    ${company_id}
     Sleep    1
 
-1.2. 로그인
+1.4. 로그인
     Input Text    name=email    ${EMAIL}
     Press Key    name=password    ${password}
     Screenshot

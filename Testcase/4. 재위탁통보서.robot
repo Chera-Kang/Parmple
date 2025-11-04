@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- 재위탁통보서
+4.1. 재위탁통보서
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Login_CSO
     Click Element    xpath=//a[span[text()='재위탁 통보서 관리']]
@@ -24,13 +24,14 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     
 
----- 재위탁통보서 작성
+4.1.1 재위탁통보서 작성
     # 통보서 작성 Page 진입
     Click Element    xpath=//button[@title='작성하기']
     Sleep    1
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서 작성하기']    5
     Screenshot
 
+4.1.2. 제약사 선택
     #제약사 선택
     Click Element    xpath=//input[@placeholder='제약사 명 검색']
     Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬
@@ -38,6 +39,7 @@ Suite Teardown    Finalize Test Suite
     Press Keys    xpath=//input[@placeholder='제약사 명 검색']    ENTER
     Screenshot
 
+4.1.3. 재위탁 사유, 기타
     # 재위탁 사유, 기타
     Input Text    name=reason    1
     Input Text    name=reason    ${EMPTY}
@@ -53,15 +55,16 @@ Suite Teardown    Finalize Test Suite
 
     Scroll Element Into View    xpath=//button[@title='추가하기']
 
+4.1.4. 통보서 기재일
     # 통보서 기재일 
     Click Button    xpath=//button[@id='date']
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
 
-    
     Scroll Element Into View    xpath=//button[@title='작성하기']
 
+4.1.5. 재위탁 업체 추가
     # 재위탁 업체 추가
     Click Element    xpath=//button[@title='추가하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 업체 추가하기']    5
@@ -79,6 +82,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//button[@title='삭제'][1]
     Screenshot
 
+4.1.6. 재위탁통보서 작성하기
     # 통보서 작성 Page 의 작성하기 버튼
     Click Button    xpath=//button[@title="작성하기"]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']    5
@@ -90,8 +94,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-
----- 재위탁통보서 삭제/수정
+4.1.7. 재위탁통보서 삭제/수정
     Sleep    1
     # 목록 첨부파일 확인
     Click Element    xpath=(//button[@title='재위탁통보서'])[1]
@@ -142,6 +145,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
+4.1.8. 첨부파일 확인
     # 그리드에서 첨부자료 확인    
     Click Element    css=div.ag-body-horizontal-scroll
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
@@ -169,8 +173,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-
----- 재위탁통보서 전송
+4.2. 재위탁 통보서 전송
     Sleep    1
     # 그리드 체크박스 선택
     Click Element    css=div.ag-body-horizontal-scroll
@@ -189,6 +192,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[2]
     Screenshot
 
+4.2.1. 재위탁 통보 전송하기
     # 전송하기 버튼 
     Click Button    xpath=//button[@title="전송하기"]
     Wait Until Element Is Visible   xpath=//h2[text()='1건의 통보서를 전송할까요?']    5
@@ -198,8 +202,7 @@ Suite Teardown    Finalize Test Suite
     Click Button    xpath=(//button[@title="전송하기"])[2]
     Screenshot
 
-
----- 재위탁통보서 관리
+4.3. 재위탁통보서 관리
     # 계정 변경
     Logout
     Login_pharm_pharm1
@@ -208,6 +211,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
+4.3.1. 첨부자료
     # 재위탁통보서
     Click Button    xpath=//button[@title='재위탁통보서']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
@@ -230,7 +234,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
----- 재위탁 현황
+4.4. 재위탁 현황
     Sleep    1
 
     Click Element    xpath=//a[span[text()='재위탁 현황']]
@@ -242,7 +246,7 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//div[span[text()="사업자등록번호"]]    5
     Screenshot
     Press Keys    NONE    ESC
-    Press Key    xpath=//input[@placeholder="검색어를 입력해주세요"]    휴피스
+    Press Key    xpath=//input[@placeholder="검색어를 입력해 주세요"]    휴피스
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
@@ -252,25 +256,11 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Sleep    0.5
 
-    # 재위탁통보서 
-    Click Element    xpath=(//button[@title='재위탁통보서'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
 
-
-
----- 이전 통보서 관리
+4.5. 이전 통보서 관리
     Sleep    1
 
     Click Element    xpath=//a[span[text()='이전 통보서 관리']]
     Sleep    1
     Screenshot
-
-
-
-
-
-
 

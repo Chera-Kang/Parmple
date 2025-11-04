@@ -15,13 +15,13 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- 자료실
+6.0. 자료실
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Login_CSO
     Sleep    1
 
 
----- 제약사 제품 공지 
+6.1. 제약사 제품 공지 
     Scroll Element Into View    xpath=//a[span[text()='영업 자료실']]
     Click Element    xpath=//a[span[text()='제약사 제품 공지']]
     Wait Until Element Is Visible    xpath=//h2[text()='제약사 제품 공지']    5
@@ -72,7 +72,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- 신규 개원 정보
+6.2. 신규 개원 정보
     Scroll Element Into View    xpath=//a[span[text()='영업 자료실']]
     Click Element    xpath=//a[span[text()='신규 개원 정보']]
     Sleep    1
@@ -96,7 +96,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- CSO 제품 정보
+6.3. CSO 제품 정보
     Scroll Element Into View    xpath=//a[span[text()='영업 자료실']]
     Click Element    xpath=//a[span[text()='CSO 제품 정보']]
     Sleep    1

@@ -15,19 +15,19 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- 필터링
+5.1. 필터링
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
 
     Login_CSO
     Sleep    1
 
-
----- 필터링 직접 조회
+5.1.1. 필터링 직접 조회
     Scroll Element Into View    xpath=//div[span[text()='자료실']]
     Click Element    xpath=//a[span[text()='필터링 직접 조회']]
     Sleep    1
     Screenshot
 
+5.1.2. 병의원 검색
     # 병의원 검색 
     Press Key    xpath=//input[@placeholder='병의원명 검색 후 리스트를 선택해 주세요']    오토
     Sleep    2
@@ -40,7 +40,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- 필터링 조회 이력
+5.2. 필터링 조회 이력
     Logout
     Login_pharm_samik
 
@@ -55,13 +55,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    강남
+    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    강남
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
----- 필터링 요청
+5.3. 필터링 요청
     Logout
     Login_CSO
 
@@ -71,6 +71,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
+5.3.1. 필터링 요청 등록
     # 필터링 요청 등록하기
     Click Button    xpath=//button[@title='필터링 요청 등록']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청 등록하기']    5
@@ -105,6 +106,7 @@ Suite Teardown    Finalize Test Suite
     Input Text    name=inquiryContent    ${EMPTY}
     Press Key    name=inquiryContent    자동화테스트
 
+5.3.2. 필터링 요청하기
     # 필터링 요청하기 
     Click Button    xpath=//button[@title='요청하기']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
@@ -150,7 +152,7 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
     Screenshot
 
-
+5.3.3. 필터링 요청 상세
     # 요청 상세
     Click Element    xpath=//span[text()='자동화테스트']
     Wait Until Element Is Visible    xpath=//h2[text()='투썬제약']    5
@@ -179,6 +181,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
 
+5.3.4. 필터링 > 검색
     # 병의원 검색 
     Click Element    xpath=//button[span[text()='상태 (전체)']]
     Screenshot
@@ -192,13 +195,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    인천
+    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    인천
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
----- 필터링 회신 관리
+5.4. 필터링 회신 관리
     Logout
     Login_pharm_pharm1
 
@@ -208,6 +211,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
+5.4.1. 필터링 요청 상세
     # 요청 상세 모달
     Click Element    xpath=//span[text()='자동화테스트']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 회신']    5
@@ -226,6 +230,7 @@ Suite Teardown    Finalize Test Suite
     Press Key    name=replyContent    자동화테스트 회신
     Screenshot
     
+5.4.2. 필터링 회신하기
     # 회신하기
     Click Button    xpath=//button[text()='회신하기']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 결과를 회신할까요?']    5
@@ -255,23 +260,25 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    휴피스
+    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    휴피스
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
----- 영업 거래처 관리
+5.5. 영업 거래처 관리
     Scroll Element Into View    xpath=//div[span[text()='자료실']]
     Click Element    xpath=//a[span[text()='영업 거래처 관리']]
     Sleep    1
     Screenshot
 
+5.5.1. 거래처 상세 모달
     # 거래처 상세 모달
     Click Element    xpath=//span[span[contains(text(), 'Auto')]]
     Wait Until Element Is Visible    xpath=//h2[text()='영업 거래처']    5
     Screenshot
 
+5.5.2. 영업 상태 변경
     # 영업 상태 변경
     Click Button    xpath=//button[span[text()='변경할 상태 선택']]
     Screenshot
@@ -295,13 +302,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    휴베이스
+    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    휴베이스
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
----- 거래처 내역 
+5.6. 거래처 내역 
     Logout
     Login_CSO
     
@@ -323,7 +330,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해주세요']    중동
+    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    중동
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot

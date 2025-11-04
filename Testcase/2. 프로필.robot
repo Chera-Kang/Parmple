@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
----- 프로필
+2.1 프로필
     Login_CSO
     Sleep    1
 
@@ -26,7 +26,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
----- 내 정보
+2.2. 내 정보
     # 프로필 진입 
     Click Element    xpath=//button[span[div[i[contains(@class, 'ri-user-line')]]]]
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
@@ -35,6 +35,7 @@ Suite Teardown    Finalize Test Suite
     Scroll Element Into View    xpath=//h3[text()='계정 정보']
     Screenshot
 
+2.2.1. 첨부자료
     # 사업자등록증
     Click Button    xpath=//button[text()='보기'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
@@ -49,7 +50,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
 
+2.2.2. CSO 교육 수료증
+    Sleep    1
 
+2.3. 계정 정보
+    Sleep    1
+
+2.3.1. 비밀번호 변경
     Scroll Element Into View    xpath=//dt[text()='휴대폰번호']
 
     # 비밀번호 변경
@@ -67,7 +74,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Click Element    xpath=//button[@title='확인']
 
-
+2.3.2. 계정 정보 수정
     # 계정 정보 수정 
     Click Element    xpath=//button[@title='계정 정보 수정']
     Wait Until Element Is Visible    xpath=//h2[text()='계정 정보 수정']    5
@@ -92,7 +99,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
     Screenshot
 
-
+2.4. 도장 정보
     # 도장 정보 
     Click Element    xpath=//span[text()='도장 변경하기']
     Wait Until Element Is Visible    xpath=//h2[text()='도장 변경하기']    5
@@ -109,11 +116,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     
 
-
-
-
----- 약관
-
+2.5. 약관
     # 서비스 이용약관
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='서비스 이용약관']    5
@@ -131,7 +134,7 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
 
 
----- 로그아웃
+2.6. 로그아웃
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
     Click Element    xpath=//div[@title='로그아웃']
