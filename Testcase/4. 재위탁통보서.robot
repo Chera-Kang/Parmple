@@ -213,7 +213,7 @@ Suite Teardown    Finalize Test Suite
 
 4.3.1. 첨부자료
     # 재위탁통보서
-    Click Button    xpath=//button[@title='재위탁통보서']
+    Click Button    xpath=//button[@title='통보서']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
     Press Keys    NONE    ESC

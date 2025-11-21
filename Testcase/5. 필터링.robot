@@ -105,6 +105,7 @@ Suite Teardown    Finalize Test Suite
     Input Text    name=inquiryContent    1
     Input Text    name=inquiryContent    ${EMPTY}
     Press Key    name=inquiryContent    자동화테스트
+    Screenshot
 
 5.3.2. 필터링 요청하기
     # 필터링 요청하기 
