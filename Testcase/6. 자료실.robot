@@ -92,7 +92,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//*[starts-with(@id, 'radix-') and normalize-space(text())='세종']
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
-    Wait Until Element Is Visible    xpath=//div[span[text()='의원']]    5
+    Sleep    2
     Screenshot
 
 

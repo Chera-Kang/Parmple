@@ -17,15 +17,16 @@ Suite Teardown    Finalize Test Suite
 *** Test Cases ***
 5.1. 필터링
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
-
     Login_CSO
     Sleep    1
+
 
 5.1.1. 필터링 직접 조회
     Scroll Element Into View    xpath=//div[span[text()='자료실']]
     Click Element    xpath=//a[span[text()='필터링 직접 조회']]
     Sleep    1
     Screenshot
+
 
 5.1.2. 병의원 검색
     # 병의원 검색 
