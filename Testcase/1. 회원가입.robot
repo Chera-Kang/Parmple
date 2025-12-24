@@ -113,8 +113,6 @@ Approve Company Review
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
 
-    #test
-
     # # 회원가입 버튼
     Execute Javascript    document.body.style.zoom='90%'
     Click Element    xpath=//a[text()='회원가입']
