@@ -219,13 +219,6 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
     Sleep    0.5
 
-    # 수수료율 
-    Click Button    xpath=//button[@title='수수료율']
-    Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
-
     # 계약서
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5

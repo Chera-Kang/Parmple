@@ -206,25 +206,21 @@ ${unused_BizNo}    None
     Scroll Element Into View    xpath=//h3[text()='계약관리']
 
 3.4.1. 계약 추가
-    # 계약 추가
     Click Button    xpath=//button[normalize-space(.)='계약 추가']
     Wait Until Element Is Visible    xpath=//h2[text()='계약 추가']    5
     Screenshot
 
 3.4.2. 계약 제목
-    # 계약 제목 
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    name=contractTitle    자동화테스트 ${managementCode}
     Sleep    0.5
 
 3.4.3. 파일 첨부
-    # 파일 첨부 
     Choose File     xpath=//*[@id="contractFile"]//input    ${testfile_PATH}
     Sleep    0.5
 
 3.4.4. 수수료율
-    # 수수료율 입력 
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Click Element    id=direct
