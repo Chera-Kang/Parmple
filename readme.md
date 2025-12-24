@@ -27,7 +27,7 @@
 > 테스트 결과 샘플파일 다운로드 및 구성 요소 요약
 
 #### 🗂️ **Google Drive**
-- [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1DHx_hG_0kR07e8FNK_DZIVcNYrUpTyi0)
+- [🔗 Test Result (.zip)](https://drive.google.com/drive/folders/1f9foK6b4ZrYw6ugmbNNy25gB79n0HGNt)
 
 #### 📦 ZIP 파일 구성
 - 📁 `screenshots/`  
