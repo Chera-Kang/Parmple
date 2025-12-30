@@ -322,7 +322,7 @@ ${unused_BizNo}    None
     Press Key    name=reason    automation test
     Sleep    0.5
     Click Element    name=note
-    Click Element    xpath=//input[@name="note"]/following-sibling::div/button
+    # Click Element    xpath=//input[@name="note"]/following-sibling::div/button
     Sleep    0.5
     Press Key    name=note    automation test
     Screenshot
