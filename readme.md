@@ -1,7 +1,15 @@
 <!-- # Parmple 자동화 테스트 <br> Web Automation Testing (Robot Framework & Selenium) -->
-
+<!-- 
 # Parmple 자동화 테스트
-> **Web Automation Testing** | `Robot Framework` & `Selenium`
+> **Web Automation Testing** | `Robot Framework` & `Selenium` -->
+
+<div align="center">
+  <h1>🚀 Parmple 자동화 테스트</h1>
+  <p>Web Automation Testing</p>
+  <img src="https://img.shields.io/badge/Robot%20Framework-000000?style=flat-square&logo=robotframework&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white"/>
+</div>
+
 
 제약회사 영업 관리 서비스 **팜플(Parmple)** 의 자동화 테스트 스크립트
 
