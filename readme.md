@@ -45,7 +45,7 @@
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 > 프로젝트에 사용된 주요 기술 및 도구
 - **Language**: `Python`
 - **Framework**: `Robot Framework` + `Selenium Library`
