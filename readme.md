@@ -5,14 +5,6 @@
 
 ---
 
-## 🛠 Tech Stack
-> 프로젝트에 사용된 주요 기술 및 도구
-![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?style=for-the-badge&logo=robotframework&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
----
-
 ## 구성
 > 자동화 테스트 구성 요약
 - 📂 [Testcase](./Testcase)
@@ -50,3 +42,15 @@
   - 테스트 상세 실행 과정을 확인할 수 있는 HTML 로그 (각 단계별 상태 및 메시지를 포함)
 - 📄 **`report.html`**  
   - **테스트 요약 리포트**로, **전체 테스트 결과**(성공/실패 케이스 등) 확인 가능
+
+---
+
+## 🛠 Tech Stack
+> 프로젝트에 사용된 주요 기술 및 도구
+- **Language**: `Python`
+- **Framework**: `Robot Framework`
+- **Library**: `Selenium Library`
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?style=flat-square&logo=robotframework&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
