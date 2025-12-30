@@ -5,6 +5,14 @@
 
 ---
 
+## 🛠 Tech Stack
+> 프로젝트에 사용된 주요 기술 및 도구
+![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?style=for-the-badge&logo=robotframework&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
+---
+
 ## 구성
 > 자동화 테스트 구성 요약
 - 📂 [Testcase](./Testcase)
