@@ -48,8 +48,7 @@
 ## 🛠 Tech Stack
 > 프로젝트에 사용된 주요 기술 및 도구
 - **Language**: `Python`
-- **Framework**: `Robot Framework`
-- **Library**: `Selenium Library`
+- **Framework**: `Robot Framework` + `Selenium Library`
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?style=flat-square&logo=robotframework&logoColor=white)
