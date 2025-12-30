@@ -1,4 +1,4 @@
-# 자동화 테스트
+# Parmple 자동화 테스트 | Web Automation Testing (Robot Framework & Selenium)
 제약회사 영업 관리 서비스 **팜플(Parmple)** 의 자동화 테스트 스크립트
 
 ## 구성
