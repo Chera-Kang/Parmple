@@ -43,12 +43,14 @@ ${unused_BizNo}    None
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
     Screenshot
 
+
 3.1.3. 관리코드
     # 위탁업체 추가하기 
     # 관리코드
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    name=managementCode    ${managementCode}
+
 
 3.1.4. 담당자 정보    
     # 담당자 이름
@@ -73,12 +75,14 @@ ${unused_BizNo}    None
     Sleep    1
     Screenshot
 
+
 3.1.5. 업체 추가하기 (미가입 업체)
     ##### 미가입사용자 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
     Screenshot
+
 
 3.1.6. 사업자번호 입력
     # 미사용 번호 
@@ -90,6 +94,7 @@ ${unused_BizNo}    None
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
     Screenshot
 
+
 3.1.7. 파일첨부
     ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
@@ -97,12 +102,14 @@ ${unused_BizNo}    None
     Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH}
     Screenshot
 
+
 3.1.8. 관리코드
     # 관리코드
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    name=managementCode    ${managementCode}.
     
+
 3.1.9. 담당자 정보
     # 담당자 이름
     Press Key    name=managerName    자동화
@@ -123,18 +130,15 @@ ${unused_BizNo}    None
 
     # 확인버튼
     Click Element    xpath=//button[text()='확인']
-    Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
-    Screenshot
+    sleep    1
 
-    Go Back
-    Sleep    1
 
 3.2. 업체 상세
-    # 업체 상세 
     ${lastBizReNo}=    Get Last BizRegNo From File
     Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
+
 
 3.2.1. 관리코드 
     # 관리코드 수정 버튼 
@@ -154,9 +158,13 @@ ${unused_BizNo}    None
     Click Button    xpath=//button[normalize-space(.)='저장하기']
     Screenshot
 
-    Scroll Element Into View    xpath=//dt[text()='이메일']
 
-3.2.2. 첨부자료
+3.2.2. 첨부파일
+    Scroll Element Into View    xpath=//dt[text()='이메일']
+    Sleep    1
+
+
+3.2.2.1. 사업자등록증
     # 사업자등록증
     Click Button    xpath=//button[text()='보기'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
@@ -164,12 +172,20 @@ ${unused_BizNo}    None
     Screenshot
     Press Keys    NONE    ESC
 
+
+3.2.2.2. 의약품 판촉영업 신고증
     # 의약품 판촉영업 신고증 
     Click Button    xpath=(//button[text()='보기'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='영업신고증']    5
     Sleep    2
     Screenshot
     Press Keys    NONE    ESC
+
+
+3.2.2.3. CSO 교육 수료증
+    # CSO 교육 수료증
+    Sleep    1
+
 
 3.2.3. 담당자 정보
     # 담당자 정보 수정 
@@ -203,12 +219,14 @@ ${unused_BizNo}    None
 
 
 3.4. 계약 관리
-    Scroll Element Into View    xpath=//h3[text()='계약관리']
+    Scroll Element Into View    xpath=//h2[text()='업체 상세 보기']
+
 
 3.4.1. 계약 추가
     Click Button    xpath=//button[normalize-space(.)='계약 추가']
     Wait Until Element Is Visible    xpath=//h2[text()='계약 추가']    5
     Screenshot
+
 
 3.4.2. 계약 제목
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
@@ -216,9 +234,11 @@ ${unused_BizNo}    None
     Press Key    name=contractTitle    자동화테스트 ${managementCode}
     Sleep    0.5
 
+
 3.4.3. 파일 첨부
     Choose File     xpath=//*[@id="contractFile"]//input    ${testfile_PATH}
     Sleep    0.5
+
 
 3.4.4. 수수료율
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
@@ -263,7 +283,6 @@ ${unused_BizNo}    None
 
 
 3.4.5. 수수료율 확인
-    # 계약 - 수수료율 확인
     Click Button    xpath=//button[@title='수수료율']
     Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
     Screenshot
@@ -272,7 +291,6 @@ ${unused_BizNo}    None
 
 
 3.4.6. 계약서 확인
-    # 계약 - 계약서 확인
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
     Screenshot
@@ -281,7 +299,6 @@ ${unused_BizNo}    None
 
 
 3.4.7. 계약 삭제
-    # 계약 - 삭제
     Click Element    css=div.ag-body-horizontal-scroll
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
@@ -302,7 +319,6 @@ ${unused_BizNo}    None
 
 
 3.5. 계약 - 재위탁통보서
-    # 계약 - 재위탁통보서
     Click Button    xpath=//button[@title='재위탁 통보서'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
@@ -310,12 +326,10 @@ ${unused_BizNo}    None
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서 작성하기']    5
     Screenshot
 
-    
     Scroll Element Into View    xpath=//h3[text()='제약사']
 
 
 3.5.1. 재위탁 사유, 기타
-    # 재위탁 사유, 기타
     Click Element    name=reason
     Click Element    xpath=//input[@name="reason"]/following-sibling::div/button
     Sleep    0.5
@@ -329,7 +343,6 @@ ${unused_BizNo}    None
 
 
 3.5.2. 통보서 기재일
-    # 통보서 기재일 
     Click Element    id=created-date
     Screenshot
     Press Keys    NONE    ESC

@@ -98,7 +98,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     # 목록 첨부파일 확인
     Click Element    xpath=(//button[@title='재위탁통보서'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='수탁자의 재위탁 통보서']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
 
     # 미전송 통보서 삭제하기
@@ -111,7 +111,7 @@ Suite Teardown    Finalize Test Suite
 
     # 미전송 통보서 정보 수정
     Click Element    xpath=(//button[@title='재위탁통보서'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='수탁자의 재위탁 통보서']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
 
     # 재위탁 사유/기타
@@ -158,19 +158,20 @@ Suite Teardown    Finalize Test Suite
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
     Screenshot
 
-    # 수수료율
-    Click Element    xpath=(//button[@title='수수료율'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
+    # 임시 제한 
+    # # 수수료율
+    # Click Element    xpath=(//button[@title='수수료율'])[1]
+    # Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
+    # Screenshot
+    # Press Keys    NONE    ESC
+    # Sleep    0.5
 
-    # 계약서 
-    Click Element    xpath=(//button[@title='계약서'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
+    # # 계약서 
+    # Click Element    xpath=(//button[@title='계약서'])[1]
+    # Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
+    # Screenshot
+    # Press Keys    NONE    ESC
+    # Sleep    0.5
 
 
 4.2. 재위탁 통보서 전송
