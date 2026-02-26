@@ -96,6 +96,7 @@ Get Last BizRegNo From File
 
 # CSO 계정 로그인
 Login_CSO
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Sleep    0.5
     Input Text    name=email    ${id_CSO}
     Press Key    name=password    ${password}
@@ -106,6 +107,7 @@ Login_CSO
 
 # 제약사 계정 로그인
 Login_pharm_pharm1
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Sleep    0.5
     Input Text    name=email    ${id_pharm_1}
     Press Key    name=password    ${password}
@@ -116,6 +118,7 @@ Login_pharm_pharm1
 
 # 삼익제약 계정 로그인
 Login_pharm_samik
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Sleep    0.5
     Input Text    name=email    ${id_pharm_2}
     Press Key    name=password    ${password}

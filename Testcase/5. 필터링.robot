@@ -16,27 +16,28 @@ Suite Teardown    Finalize Test Suite
 *** Keywords ***
 *** Test Cases ***
 5.1. 필터링
-    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Login_CSO
     Sleep    1
 
 
 5.1.1. 필터링 직접 조회
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
+    Scroll Element Into View    xpath=//a[span[text()='필터링 직접 조회']]
     Click Element    xpath=//a[span[text()='필터링 직접 조회']]
     Sleep    1
     Screenshot
 
 
 5.1.2. 병의원 검색
-    # 병의원 검색 
     Press Key    xpath=//input[@placeholder='병의원명 검색 후 리스트를 선택해 주세요']    오토
     Sleep    2
     Screenshot
+
     Press Keys    xpath=//input[@placeholder='병의원명 검색 후 리스트를 선택해 주세요']    ENTER
     Screenshot
+
     Press Key    xpath=//input[@placeholder='사업자 등록번호 (-없이 숫자만 가능)']    1234567890
     Screenshot
+
     Click Element    xpath=//button[span[text()='조회하기']]
     Screenshot
 
@@ -45,8 +46,7 @@ Suite Teardown    Finalize Test Suite
     Logout
     Login_pharm_samik
 
-    # 필터링 조회 이력 
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
+    Scroll Element Into View    xpath=//a[span[text()='필터링 조회 이력']]
     Click Element    xpath=//a[span[text()='필터링 조회 이력']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회 이력']
     Screenshot
@@ -54,10 +54,12 @@ Suite Teardown    Finalize Test Suite
     # 병의원 검색 
     Click Element    xpath=//button[span[text()='병의원명']]
     Screenshot
+
     Press Keys    NONE    ESC
     Sleep    0.5
     Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    강남
     Screenshot
+
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
@@ -66,23 +68,22 @@ Suite Teardown    Finalize Test Suite
     Logout
     Login_CSO
 
-    # 필터링 요청
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
+    Scroll Element Into View    xpath=//a[span[text()='필터링 요청']]
     Click Element    xpath=//a[span[text()='필터링 요청']]
-    Sleep    1
     Screenshot
 
-5.3.1. 필터링 요청 등록
-    # 필터링 요청 등록하기
+
+5.3.1. 필터링 요청 등록하기
     Click Button    xpath=//button[@title='필터링 요청 등록']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청 등록하기']    5
     Screenshot
-    
-    # 제약사 선택
-    Click Element    xpath=//button[span[text()='제약사를 선택해주세요']]
-    Wait Until Element Is Visible    xpath=//div[span[text()='투썬제약']]    5
+
+    # 요청 업체 검색    
+    Click Element    xpath=//input[@placeholder='업체를 검색해 주세요']
+    Input Text    xpath=//input[@placeholder='업체를 검색해 주세요']    투썬
     Screenshot
-    Click Element    xpath=//div[span[text()='투썬제약']]
+
+    Click Element    xpath=//button[div[span[normalize-space(.)='제약사']]]
     Screenshot
 
     # 병의원 추가
@@ -108,56 +109,57 @@ Suite Teardown    Finalize Test Suite
     Press Key    name=inquiryContent    자동화테스트
     Screenshot
 
-5.3.2. 필터링 요청하기
+    # 필터링 요청하기 
+    Click Button    xpath=//button[@title='요청하기']
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
+    Screenshot
+
+5.3.1.1. 한번 더 등록하기 (for delete test)
+    Click Button    xpath=//button[@title='필터링 요청 등록']
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청 등록하기']    5
+    Sleep    1
+
+    # 요청 업체 검색    
+    Click Element    xpath=//input[@placeholder='업체를 검색해 주세요']
+    Input Text    xpath=//input[@placeholder='업체를 검색해 주세요']    투썬
+    Sleep    1
+
+    Click Element    xpath=//button[div[span[normalize-space(.)='제약사']]]
+    Sleep    1
+
+    # 병의원 추가
+    Click Element    xpath=//button[text()='신규 병의원 등록']
+    Wait Until Element Is Visible    xpath=//h2[text()='신규 병의원 등록']    5
+    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M')
+    ${managementCode}=    Set Variable    ${datetime}
+    Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
+    Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
+    ${bizRegNo}=      Get Biz Number
+    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizRegNo}
+    Sleep    1
+
+    # 모달 등록하기 버튼
+    Click Button    xpath=//button[text()='등록하기']
+    Sleep    1
+
+    Scroll Element Into View    xpath=//button[@title='취소']
+
+    # 문의 내용
+    Input Text    name=inquiryContent    1
+    Input Text    name=inquiryContent    ${EMPTY}
+    Press Key    name=inquiryContent    자동화테스트
+    Sleep    1
+
     # 필터링 요청하기 
     Click Button    xpath=//button[@title='요청하기']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
     Screenshot
 
 
-    # 한번더 등록
-    Sleep    1
-    Click Button    xpath=//button[@title='필터링 요청 등록']
-    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청 등록하기']    5
-    Screenshot
-    
-    Click Element    xpath=//button[span[text()='제약사를 선택해주세요']]
-    Wait Until Element Is Visible    xpath=//div[span[text()='투썬제약']]    5
-    Screenshot
-    Click Element    xpath=//div[span[text()='투썬제약']]
-    Screenshot
-
-    Click Element    xpath=//button[text()='신규 병의원 등록']
-    Wait Until Element Is Visible    xpath=//h2[text()='신규 병의원 등록']    5
-
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M')
-    ${managementCode}=    Set Variable    ${datetime}
-    Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
-    Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
-
-    ${bizRegNo}=      Get Biz Number
-    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizRegNo}
-
-    Screenshot
-
-    Click Button    xpath=//button[text()='등록하기']
-    Screenshot
-
-    Scroll Element Into View    xpath=//button[@title='취소']
-
-
-    Input Text    name=inquiryContent    1
-    Input Text    name=inquiryContent    ${EMPTY}
-    Press Key    name=inquiryContent    자동화테스트
-
-    Click Button    xpath=//button[@title='요청하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
-    Screenshot
-
-5.3.3. 필터링 요청 상세
+5.3.2. 필터링 요청 상세
     # 요청 상세
     Click Element    xpath=//span[text()='자동화테스트']
-    Wait Until Element Is Visible    xpath=//h2[text()='투썬제약']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
     Screenshot
 
     # 수정하기
@@ -169,7 +171,7 @@ Suite Teardown    Finalize Test Suite
  
     # 요청 취소
     Click Element    xpath=//span[text()='자동화테스트_수정하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='투썬제약']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
     Screenshot
     Click Button    xpath=//button[text()='요청 취소']
     Wait Until Element Is Visible    xpath=//button[text()='요청 취소하기']    5
@@ -179,7 +181,7 @@ Suite Teardown    Finalize Test Suite
 
     # 취소 확인
     Click Element    xpath=//span[text()='자동화테스트_수정하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='투썬제약']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
     Screenshot
     Press Keys    NONE    ESC
 
@@ -208,10 +210,11 @@ Suite Teardown    Finalize Test Suite
     Login_pharm_pharm1
 
     # 필터링 회신 관리
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
+    Scroll Element Into View    xpath=//a[span[text()='필터링 회신 관리']]
     Click Element    xpath=//a[span[text()='필터링 회신 관리']]
     Sleep    1
     Screenshot
+
 
 5.4.1. 필터링 요청 상세
     # 요청 상세 모달
@@ -244,7 +247,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//span[text()='자동화테스트']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 회신']    5
     Screenshot
-    Scroll Element Into View    xpath=(//span[text()='회신 내용'])[2]
+    Scroll Element Into View    xpath=(//span[text()='회신 내용'])[last()]
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
@@ -269,7 +272,7 @@ Suite Teardown    Finalize Test Suite
 
 
 5.5. 영업 거래처 관리
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
+    Scroll Element Into View    xpath=//a[span[text()='영업 거래처 관리']]
     Click Element    xpath=//a[span[text()='영업 거래처 관리']]
     Sleep    1
     Screenshot
@@ -284,7 +287,7 @@ Suite Teardown    Finalize Test Suite
     # 영업 상태 변경
     Click Button    xpath=//button[span[text()='변경할 상태 선택']]
     Screenshot
-    Click Element    xpath=(//div[span[text()='제품별 등록']])[last()]
+    Click Element    xpath=(//div[span[text()='제품별 승인']])[last()]
     Screenshot
 
     # 저장하기
@@ -309,31 +312,4 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
-
-5.6. 거래처 내역 
-    Logout
-    Login_CSO
-    
-    Scroll Element Into View    xpath=//div[span[text()='자료실']]
-    Click Element    xpath=//a[span[text()='거래처 내역']]
-    Sleep    1
-    Screenshot
-
-    # 검색 
-    Click Element    xpath=//button[span[text()='영업상태 (전체)']]
-    Screenshot
-    Click Element    xpath=//div[span[text()='등록 취소']]
-    Sleep    0.5
-    Click Element    xpath=//input[@placeholder='마지막 수정일시']
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
-    Click Element    xpath=//button[span[text()='병의원명']]
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
-    Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    중동
-    Screenshot
-    Click Element    xpath=//button[span[text()='검색']]
-    Screenshot
 

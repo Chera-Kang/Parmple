@@ -20,7 +20,6 @@ ${unused_BizNo}    None
 *** Keywords ***
 *** Test Cases ***
 3.1 위탁계약
-    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Login_CSO
     Sleep    1
     Screenshot
@@ -165,7 +164,6 @@ ${unused_BizNo}    None
 
 
 3.2.2.1. 사업자등록증
-    # 사업자등록증
     Click Button    xpath=//button[text()='보기'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
@@ -174,7 +172,6 @@ ${unused_BizNo}    None
 
 
 3.2.2.2. 의약품 판촉영업 신고증
-    # 의약품 판촉영업 신고증 
     Click Button    xpath=(//button[text()='보기'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='영업신고증']    5
     Sleep    2
@@ -188,7 +185,6 @@ ${unused_BizNo}    None
 
 
 3.2.3. 담당자 정보
-    # 담당자 정보 수정 
     Click Button    xpath=(//button[@title='수정'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='담당자 정보 수정']    5
     Screenshot
@@ -350,7 +346,6 @@ ${unused_BizNo}    None
 
 
 3.5.3. 제약사 추가
-    # 제약사 선택
     Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
     Click Element    xpath=//button[text()='추가하기']
 
@@ -382,8 +377,8 @@ ${unused_BizNo}    None
     Click Element    xpath=//button[@title='삭제'][1]
     Screenshot
 
+
 3.5.4. 통보서 작성하기
-    # 통보서 작성하기 
     Click Element    xpath=//button[text()='작성하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']    5
     Screenshot
@@ -391,35 +386,39 @@ ${unused_BizNo}    None
     Sleep    0.5
     Screenshot
 
-
     # 위탁 계약 page로 복귀
     Click Element    xpath=//a[span[text()='위탁 계약']]
     Sleep    1
 
+
 3.6. 검색
-    # 검색 
     Click Element    xpath=//button[span[text()="상태 (전체)"]]
     Wait Until Element Is Visible    xpath=//div[span[text()="등록"]]    5
     Screenshot
+
     Click Element    xpath=//div[span[text()="등록"]]
     Screenshot
+
     Click Element    xpath=//button[span[text()="사업자상태 (전체)"]]
     Screenshot
+
     Press Keys    NONE    ESC
     Click Element    xpath=//button[span[text()="상호/법인명"]]
     Wait Until Element Is Visible    xpath=//div[span[text()="관리코드"]]    5
     Screenshot
+
     Click Element    xpath=(//div[span[text()="관리코드"]])[last()]
     Screenshot
+
     ${datetime_monthday}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d')
     Press Key    xpath=//input[@placeholder="검색어를 입력해 주세요"]    ${datetime_monthday}
     Screenshot
+
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
 3.7. 수탁 계약 
-
     Click Element    xpath=//a[span[text()='수탁 계약']]
     Sleep    1
     Screenshot
@@ -427,35 +426,44 @@ ${unused_BizNo}    None
     # 검색 
     Click Element    xpath=//button[span[text()="상호/법인명"]]
     Screenshot
+
     Press Keys    NONE    ESC
     Press Key    xpath=//input[@placeholder="검색어를 입력해 주세요"]    투썬
     Screenshot
+
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
-3.7.1. 업체 상세
-    # 업체 상세 
+
+3.7.1. 수탁 업체 상세
     Click Element    xpath=//a[text()='842-88-83121']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
+
 3.7.2. 첨부자료
-    # 사업자등록증
+    Sleep    1
+
+
+3.7.2.1. 사업자등록증
     Click Button    xpath=//button[text()='보기']
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
     Screenshot
     Press Keys    NONE    ESC
 
-    # 계약 - 수수료율 확인
+
+3.7.2.2. 계약관리 - 수수료율
     Click Button    xpath=//button[@title='수수료율']
     Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
     Screenshot
     Press Keys    NONE    ESC
 
-    # 계약 - 계약서 확인
+
+3.7.2.3. 계약관리 - 계약서
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
+    Sleep    1
     Screenshot
     Press Keys    NONE    ESC
 
