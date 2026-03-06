@@ -7,7 +7,10 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import os
 
-load_dotenv() # .env 파일 환경변수로 불러오기
+# .env 파일 경로 설정 (스크립트 파일의 부모 디렉토리에 위치)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(current_dir, "..", ".env")
+load_dotenv(env_path)
 
 EMAIL = os.getenv("EMAIL")
 APP_PASSWORD = os.getenv("APP_PASSWORD")

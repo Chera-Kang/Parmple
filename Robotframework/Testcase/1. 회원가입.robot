@@ -18,7 +18,7 @@ Suite Teardown    Finalize Test Suite
 ${EMAIL_PREFIX}    chera.workspace
 ${EMAIL_DOMAIN}    gmail.com
 
-${PYTHON_EXE}    ${EXECDIR}/.venv/Scripts/python.exe
+${PYTHON_EXE}    ${CURDIR}/../.venv/Scripts/python.exe
 
 ${EMAIL}    None
 ${bizRegNo}    None
@@ -168,13 +168,18 @@ Approve Company Review
     Sleep    5
 
     # 인증번호 추출 및 입력 
-    ${result}=    Run Process    ${PYTHON_EXE}    resources/email_reader.py    stdout=PIPE    stderr=PIPE
+    ${result}=    Run Process    ${PYTHON_EXE}    ${CURDIR}/../resources/email_reader.py    stdout=PIPE    stderr=PIPE
     ${code}=      Set Variable   ${result.stdout.strip()}
     Log To Console    \n인증번호: ${code}
-    Should Not Be Equal    ${code}    NO_CODE
+    # 인증번호 검증 (숫자인지 확인)
+    Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
 
     Input Text    id=emailVerificationKey    ${code}
     Screenshot
+    
+    # 클릭 전 스크롤 및 대기 
+    Scroll Element Into View    xpath=//button[text()='인증하기']
+    Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
     Click Element    xpath=//button[text()='인증하기']
     Screenshot
 

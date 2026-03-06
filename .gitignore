@@ -1,1 +1,5 @@
 PIPE
+log.html
+output.xml
+report.html
+auth/credentials.json

@@ -3,6 +3,8 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 Library    String
 Library    Collections
+Library    DateTime
+Library    Process
 Resource    ../resources/.secrets.robot
 
 *** Variables ***
@@ -16,10 +18,12 @@ ${id_pharm_2}    pharm_manager@example.com
 ${API}               https://qa.api.parmple.com
 # DIR
 ${screenshot_DIR}     ../screenshots
-${testfile_DIR}    ${EXECDIR}/resources/testfile
+${testfile_DIR}    ${CURDIR}/testfile
 ${testfile_PATH}   ${testfile_DIR}/Sameple_PDF.pdf
-${bizRegNo_DIR}    ${EXECDIR}/resources/bizRegNo
-${bizReg_FILE}    ${EXECDIR}/resources/used_bizRegNo.txt
+${bizRegNo_DIR}    ${CURDIR}/bizRegNo
+${bizReg_FILE}    ${CURDIR}/used_bizRegNo.txt
+${PYTHON_EXE}    ${CURDIR}/../.venv/Scripts/python.exe
+${GSHEET_READER_PY}    ${CURDIR}/gsheet_reader.py
 ${MAX_RETRY}         5
 
 
@@ -46,28 +50,18 @@ Screenshot
     Sleep    0.5
 
 
-# 사업자번호 찾기 
+# 사업자번호 찾기 (Google Sheet)
 Get Biz Number
-    ${files}=         List Files In Directory    ${bizRegNo_DIR}   pattern=bizRegNo_*.txt
-    ${random_index}=  Evaluate    random.randint(0, len(${files}) - 1)    modules=random
-    ${file}=          Get From List    ${files}    ${random_index}
-    ${path}=          Catenate    SEPARATOR=/    ${bizRegNo_DIR}    ${file}
+    # Google Sheet에서 사업자번호 가져오기 (A열 체크박스=FALSE인 행 중 F열 데이터)
+    ${result}=    Run Process    ${PYTHON_EXE}    ${GSHEET_READER_PY}    stdout=PIPE    stderr=PIPE
+    ${biz_no}=    Set Variable   ${result.stdout.strip()}
     
-    ${content}=       Get File    ${path}
-    ${lines}=         Split To Lines    ${content}
-    Run Keyword Unless    ${lines}    Fatal Error    사용 가능한 사업자번호가 없습니다: ${file}
-
-    # 사용한 번호 제거
-    ${last}=          Get From List    ${lines}    -1    
-    Remove From List  ${lines}    -1
-    # 사용한 번호 기록
-    ${new_content}=   Catenate    SEPARATOR=\n    @{lines}
-    Create File       ${path}    ${new_content}
+    # 에러 및 결과 확인
+    Should Not Contain    ${biz_no}    ERROR    msg=Google Sheet 처리 중 오류 발생: ${biz_no}
+    Should Not Be Equal   ${biz_no}    NO_BIZ_NO    msg=사용 가능한 사업자번호가 스프레드시트에 없습니다.
     
-    Log To Console    \n선택된 파일 : ${file}
-    Log To Console    사용된 사업자번호 : ${last}
-
-    [Return]          ${last}
+    Log To Console    \n[Google Sheet] 선택된 사업자번호 : ${biz_no}
+    [Return]          ${biz_no}
 
 
 # 사업자번호 하이픈 제거

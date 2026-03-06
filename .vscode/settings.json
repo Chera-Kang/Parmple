@@ -1,0 +1,8 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}\\Robotframework\\.venv\\Scripts\\python.exe",
+    "robot.languageServer.python": "${workspaceFolder}\\Robotframework\\.venv\\Scripts\\python.exe",
+    "robot.languageServer.enabled": true,
+    "files.associations": {
+        "*.robot": "robotframework"
+    }
+}
