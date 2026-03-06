@@ -4,10 +4,11 @@ import time
 from robot import run
 
 # 테스트 스위트 폴더 
-TEST_SUITE_DIR = "Testcase" 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TEST_SUITE_DIR = os.path.join(SCRIPT_DIR, "Testcase") 
 
 # 새로운 결과 저장 경로
-BASE_RESULT_DIR = r"C:\Dev\Parmple\Web\TestResult"
+BASE_RESULT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "TestResult")
 
 # 현재 날짜 및 시간 기반으로 폴더 생성
 timestamp = time.strftime("%y-%m-%d_%H-%M")
