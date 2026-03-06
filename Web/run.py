@@ -7,7 +7,7 @@ from robot import run
 TEST_SUITE_DIR = "Testcase" 
 
 # 새로운 결과 저장 경로
-BASE_RESULT_DIR = r"C:\Dev\Web\TestResult"
+BASE_RESULT_DIR = r"C:\Dev\Parmple\Web\TestResult"
 
 # 현재 날짜 및 시간 기반으로 폴더 생성
 timestamp = time.strftime("%y-%m-%d_%H-%M")
