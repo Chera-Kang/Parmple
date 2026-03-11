@@ -2,11 +2,16 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import sys
 import os
+from dotenv import load_dotenv
 
-# 설정
-# credentials.json 경로 (사용자가 제공한 고정 경로 사용)
-CREDS_PATH = r"C:\Dev\Parmple\common\auth\credentials.json"
-SPREADSHEET_KEY = "1Mw4kRyQSswG4Qg6bf8jvw6nEQAWlO5I7FkY19cJZPc4"
+# .env 파일 로드 (보안 설정)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(current_dir, "..", "auth", ".env")
+load_dotenv(env_path)
+
+# 설정 (환경 변수 또는 상대 경로 활용)
+CREDS_PATH = os.path.join(current_dir, "..", "auth", "credentials.json")
+SPREADSHEET_KEY = os.getenv("GSHEET_KEY")
 
 def get_biz_no_from_sheet():
     # API 인증 설정
