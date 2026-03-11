@@ -7,13 +7,13 @@
 
 ## 구성
 > 자동화 테스트 구성 요약
-- 📂 [Testcase](./Testcase)
+- 📂 [Testcase](./web/robotframework/Testcase)
   - 서비스 주요 기능별 자동화 **테스트 케이스**
-- 📂 [resources](./resources)
+- 📂 [resources](./web/robotframework/resources)
   - 자동화 테스트에 필요한 리소스 및 환경 설정
-- 📂 [Legacy](./Legacy)
+- 📂 [Legacy](./web/robotframework/Legacy)
   - 과거 버전 자동화 테스트 레거시 코드 및 기록용 스크립트
-- 🗒️ [run.py](./run.py)
+- 🗒️ [run.py](./web/robotframework/run.py)
   - 자동화 테스트 **실행 스크립트**
 
 ---

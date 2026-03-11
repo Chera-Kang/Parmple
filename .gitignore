@@ -1,5 +1,20 @@
-PIPE
+# Environments & Credentials
+.venv/
+**/ .venv/
+common/auth/.env
+common/auth/credentials.json
+
+# Test Results & Artifacts
+TestResult/
+screenshots/
 log.html
 output.xml
 report.html
-auth/credentials.json
+PIPE
+**/log.html
+**/output.xml
+**/report.html
+
+# Python
+__pycache__/
+**/*.pyc
