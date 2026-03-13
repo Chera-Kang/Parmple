@@ -84,7 +84,8 @@ ${unused_BizNo}    None
 
 
 3.1.6. 사업자번호 입력
-    ${bizNo}=     Get Biz Number  
+    ${bizNo}=     Get Biz Number
+    Set Suite Variable    ${bizNo}
     Press Key    id=bizNumber    ${bizNo}
     Screenshot
 
@@ -129,6 +130,77 @@ ${unused_BizNo}    None
     # 확인버튼
     Click Element    xpath=//button[text()='확인']
     sleep    1
+
+3.1.10. 상세
+    Click Element    xpath=//a[text()="${bizNo}"]
+    Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+    Screenshot
+
+
+
+3.1.11. 수료증
+    sleep   1
+    Click Element    xpath=//button[text()='등록']
+    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
+    Screenshot
+
+    Choose File     xpath=//*[@id="fileUuid"]//input    ${testfile_PATH}
+    Sleep    0.5
+    Screenshot
+
+    Click Element    xpath=//div[span[text()='수료증 기재일']]
+    Screenshot
+
+    # 현재 날짜의 '일(day)' 가져오기 (1~31)
+    ${day}=    Evaluate    datetime.datetime.now().day    modules=datetime
+    Log To Console    오늘 날짜: ${day}
+    
+    # 해당 날짜 클릭
+    Click Element    xpath=//td[button[text()='${day}']]
+    Sleep    0.5
+    Screenshot
+
+    ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m%d-%H%M%S')    modules=datetime
+    Press Key    xpath=//input[@placeholder='발급번호를 입력해 주세요']    ${datetime}
+    Sleep    0.5
+    Screenshot
+
+    Click Button    xpath=//button[text()='등록하기']
+    Wait Until Element Is Visible    xpath=//h2[text()='교육 수료증을 등록할까요?']    5
+    Screenshot
+
+    Click Button    xpath=//button[text()='확인']
+    Screenshot
+
+
+    # CSO 신고증 목록 보기 
+    ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m-%d')    modules=datetime
+    Click Element    xpath=//dd[p[text()='${datetime}']]    
+    Sleep    1
+    Screenshot
+
+    ## 교육 수료증 보기 버튼
+
+
+    Press Keys    NONE    ESC
+
+
+
+
+
+
+
+
+
+
+
+
+    Go Back
+    Sleep    1
+
+
+
+
 
 
 3.2. 업체 상세
@@ -179,8 +251,12 @@ ${unused_BizNo}    None
 
 
 3.2.2.3. CSO 교육 수료증
-    # CSO 교육 수료증
+    Click Element    xpath=//button[text()='등록']
+    Wait Until Element Is Visible    xpath=//button[text()='확인']    5
+    Screenshot
+    Click Button    xpath=//button[text()='확인']
     Sleep    1
+
 
 
 3.2.3. 담당자 정보

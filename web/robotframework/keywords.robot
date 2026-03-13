@@ -23,7 +23,7 @@ ${RES_DIR}            ${ROOT_DIR}/common/resources
 ${SCREENSHOT_DIR}     ${ROOT_DIR}/screenshots
 ${TESTFILE_DIR}       ${RES_DIR}/testfile
 ${TESTFILE_PATH}      ${TESTFILE_DIR}/Sameple_PDF.pdf
-${BIZNO_FILE}         ${RES_DIR}/used_bizgNo.txt
+${BIZNO_FILE}         ${RES_DIR}/used_bizNo.txt
 ${PYTHON_EXE}         ${ROOT_DIR}/.venv/Scripts/python.exe
 ${GSHEET_READER_PY}   ${RES_DIR}/gsheet_reader.py
 ${EMAIL_READER_PY}    ${RES_DIR}/email_reader.py
@@ -35,14 +35,13 @@ ${ADMIN_API_PY}       ${RES_DIR}/admin_api.py
 # Test Suite 실행
 Initialize Test Suite
     Load Login Credentials        # 환경변수 강제 로드 (단일 파일 실행 및 run.py 모두 대응)
-    Log To Console    Initialzing Test Suite
-    Log To Console    Opening Browser
+    Log To Console    --- Opening Browser ----------------------------------------------------------
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
 
 # Test Suite 종료
 Finalize Test Suite
-    Log To Console    Closing Browser
+    Log To Console    ---------------------------------------------------------- Closing Browser ---
     Close Browser
 
 # 스크린샷
@@ -62,7 +61,11 @@ Get Biz Number
     Should Not Contain    ${biz_no}    ERROR    msg=Google Sheet 처리 중 오류 발생: ${biz_no}
     Should Not Be Equal   ${biz_no}    NO_BIZ_NO    msg=사용 가능한 사업자번호가 스프레드시트에 없습니다.
     
-    Log To Console    \n[Google Sheet] 선택된 사업자번호 : ${biz_no}
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    Selected bizNo : ${biz_no}
+    Log To Console    ---------------------------------------
+
     [Return]    ${biz_no}
 
 # 사업자번호 하이픈 제거 및 파일 기록
@@ -73,7 +76,9 @@ Record Biz Number
 
     # 2. 파일에 기록
     Append To File    ${bizNo_FILE}    ${clean_biz_no}\n
-    Log    기록된 사업자번호: ${clean_biz_no}
+    
+    # 결과 출력
+    Log To Console    Recorded bizNo : ${clean_biz_no}
 
     [Return]    ${clean_biz_no}
 
@@ -85,6 +90,12 @@ Get Last Biz Number
     Run Keyword If    ${line_count} < 2    Fail    No bizNo found in file
     ${last_bizNo}=    Get From List    ${lines}    -2
     [Return]    ${last_bizNo}
+
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    lastBizNo : ${lastBizNo}
+    Log To Console    ---------------------------------------
+
 
 # CSO 계정 로그인
 Login_CSO

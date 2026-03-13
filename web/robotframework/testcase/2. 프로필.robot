@@ -7,6 +7,7 @@ Library    RequestsLibrary
 Library    BuiltIn
 Library    Process
 Library    DateTime
+Library    ../../../.venv/Lib/site-packages/robot/libraries/XML.py
 Resource   ../keywords.robot
 
 Suite Setup    Initialize Test Suite
@@ -50,8 +51,53 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
 
+
 2.2.2. CSO 교육 수료증
     Sleep    1
+    Scroll Element Into View    xpath=//div[h3[text()='계정 정보']]
+    Screenshot
+
+    Click Element    xpath=//button[text()='등록']
+    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
+    Screenshot
+
+    Choose File     xpath=//*[@id="fileUuid"]//input    ${testfile_PATH}
+    Sleep    0.5
+    Screenshot
+
+    Click Element    xpath=//div[span[text()='수료증 기재일']]
+    Screenshot
+
+    # 현재 날짜의 '일(day)' 가져오기 (1~31)
+    ${day}=    Evaluate    datetime.datetime.now().day    modules=datetime
+    Log To Console    오늘 날짜: ${day}
+    
+    # 해당 날짜 클릭
+    Click Element    xpath=//td[button[text()='${day}']]
+    Sleep    0.5
+    Screenshot
+
+    ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m%d-%H%M%S')    modules=datetime
+    Press Key    xpath=//input[@placeholder='발급번호를 입력해 주세요']    ${datetime}
+    Sleep    0.5
+    Screenshot
+
+    Click Button    xpath=//button[text()='등록하기']
+    Screenshot
+
+    # CSO 신고증 목록 보기 
+    ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m-%d')    modules=datetime
+    Click Element    xpath=//dd[p[text()='${datetime}']]    
+    Sleep    1
+    Screenshot
+
+
+    ## 교육 수료증 보기 버튼
+
+
+    Press Keys    NONE    ESC
+
+
 
 2.3. 계정 정보
     Sleep    1
@@ -82,16 +128,14 @@ Suite Teardown    Finalize Test Suite
 
     # 이름
     ${datetime_monthday}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
-    Input Text    name=name    1
     Input Text    name=name    ${EMPTY}
-    Press Key    name=name    테스트_${datetime_monthday}
+    Input Text    name=name    테스트_${datetime_monthday}
     Sleep    0.5
 
     # 휴대폰 번호 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
-    Input Text    name=phone    1
     Input Text    name=phone    ${EMPTY}
-    Press Key    name=phone    010${random_number}
+    Input Text    name=phone    010${random_number}
     Screenshot
 
     # 수정하기 버튼 

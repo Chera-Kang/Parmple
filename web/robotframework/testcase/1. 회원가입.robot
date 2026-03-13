@@ -7,6 +7,7 @@ Library    RequestsLibrary
 Library    BuiltIn
 Library    Process
 Library    DateTime
+Library    ../../../.venv/Lib/site-packages/robot/libraries/XML.py
 Resource   ../keywords.robot
 
 Suite Setup    Initialize Test Suite
@@ -39,10 +40,9 @@ Setup Registered Company Data
     ${registeredBizNo}=      Get From Dictionary    ${item}    bizRegNo
     ${registeredCsoNo}=      Get From Dictionary    ${item}    csoReportNo
 
-    # # Suite 변수로 설정하여 다른 테스트 케이스에서 사용 가능하게 함
-    # Set Suite Variable    ${registeredBizNo}
-    # Set Suite Variable    ${registeredCsoNo}
-    # Set Suite Variable    ${registeredBizName}
+    Set Suite Variable    ${registeredBizNo}
+    Set Suite Variable    ${registeredCsoNo}
+    Set Suite Variable    ${registeredBizName}
 
     # 결과 출력
     Log To Console    \n---------------------------------------
@@ -50,6 +50,16 @@ Setup Registered Company Data
     Log To Console    bizNo : ${registeredBizNo}
     Log To Console    csoNo : ${registeredCsoNo}
     Log To Console    ---------------------------------------
+
+# 등록상태 업체 정보 조회 (isSignedUp=False)
+Get Registered Company Info From Admin
+    ${result}=    Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    get_company    stdout=PIPE    stderr=PIPE
+    ${json_str}=  Set Variable   ${result.stdout.strip()}
+    ${json_match}=  Evaluate    re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL).group(0) if re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL) else None    modules=re
+    Should Not Be Equal    ${json_match}    ${None}    msg=Admin API로부터 올바른 JSON 데이터를 가져오지 못했습니다: ${json_str}\nError: ${result.stderr}
+    ${data}=      Evaluate       json.loads($json_match)    json
+    [Return]    ${data}
+
 
 # 이메일 생성 (초단위 포함 고유형: yymmdd.hhmmss)
 Generate Email
@@ -63,14 +73,7 @@ Get Email Auth Code
     ${code}=      Set Variable   ${result.stdout.strip()}
     [Return]    ${code}
 
-# 등록상태 업체 정보 조회 (isSignedUp=False)
-Get Registered Company Info From Admin
-    ${result}=    Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    get_company    stdout=PIPE    stderr=PIPE
-    ${json_str}=  Set Variable   ${result.stdout.strip()}
-    ${json_match}=  Evaluate    re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL).group(0) if re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL) else None    modules=re
-    Should Not Be Equal    ${json_match}    ${None}    msg=Admin API로부터 올바른 JSON 데이터를 가져오지 못했습니다: ${json_str}\nError: ${result.stderr}
-    ${data}=      Evaluate       json.loads($json_match)    json
-    [Return]    ${data}
+
 
 *** Test Cases ***
 1. 로그인 Page
@@ -94,6 +97,10 @@ Get Registered Company Info From Admin
     ## 사업자 번호 입력
     ${bizNo}=      Get Biz Number
     Record Biz Number    ${bizNo}
+    # 결과 출력
+    Log To Console    ---------------------------------------
+    Log To Console    bizNo : ${bizNo}
+    Log To Console    ---------------------------------------
     Input Text    id=bizNumber    ${bizNo}
     Screenshot
 
@@ -120,15 +127,15 @@ Get Registered Company Info From Admin
 
 4. 이메일 입력 및 인증
     ## 이메일 입력 
-    ${EMAIL}=    Generate Email
-    Set Suite Variable    ${EMAIL}
+    ${EMAIL1}=    Generate Email
+    Set Suite Variable    ${EMAIL1}
 
     # 결과 출력
     Log To Console    \n---------------------------------------
-    Log To Console    email : ${EMAIL}
+    Log To Console    email : ${EMAIL1}
     Log To Console    ---------------------------------------
     
-    Input Text    id=email    ${EMAIL}
+    Input Text    id=email    ${EMAIL1}
     Screenshot
 
     # 인증번호 발송
@@ -170,7 +177,7 @@ Get Registered Company Info From Admin
 
 6. 회원정보 입력
     # 이름 
-    Input Text    id=name    테스트
+    Input Text    id=name    자동화테스트
     
     # 휴대폰 번호 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
@@ -203,7 +210,7 @@ Get Registered Company Info From Admin
 
 
 10. 로그인
-    Input Text    name=email    ${EMAIL}
+    Input Text    name=email    ${EMAIL1}
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
@@ -322,7 +329,7 @@ Get Registered Company Info From Admin
 
 16. 회원정보 입력
     # 이름 
-    Input Text    id=name    테스트
+    Input Text    id=name    자동화테스트
     
     # 휴대폰 번호 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
@@ -356,4 +363,95 @@ Get Registered Company Info From Admin
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
 
+
+
+20. 로그아웃
+    Click Element    xpath=//button[@aria-haspopup='menu']
+    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Click Element    xpath=//div[@title='로그아웃']
+    Screenshot
+    Sleep    1
+
+
+21. 아이디 찾기
+    ## 로그인 Page 
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Screenshot
+
+    # 회원가입 버튼
+    Execute Javascript    document.body.style.zoom='90%'
+    Click Element    xpath=//a[text()='아이디 찾기']
+    Execute Javascript    document.body.style.zoom='100%'
+
+    Wait Until Element Is Visible    xpath=//h1[text()='가입정보 확인 후 아이디를 찾을 수 있습니다']    5
+    Screenshot
+
+    ${lastBizNo}=    Get Last Biz Number
+    Press Key    id=businessNumber    ${lastBizNo}
+    Input Text    id=name    자동화테스트
+    Screenshot
+
+    Click Element    xpath=//button[text()='아이디 찾기']
+    Wait Until Element Is Visible    xpath=//h2[text()='가입하신 아이디 입니다']    5
+    Screenshot
+
+    Click Element    xpath=//button[text()='확인']
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Screenshot
+
+
+22. 비밀번호 재설정
+    ## 로그인 Page 
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Screenshot
+
+    # 회원가입 버튼
+    Execute Javascript    document.body.style.zoom='90%'
+    Click Element    xpath=//a[text()='비밀번호 재설정']
+    Execute Javascript    document.body.style.zoom='100%'
+
+    Wait Until Element Is Visible    xpath=//h1[text()='비밀번호를 잊으셨나요?']    5
+    Screenshot
+
+    Input Text    id=email    ${EMAIL1}
+    Screenshot
+    Click Element    xpath=//button[text()='인증번호 발송']
+    Wait Until Element Is Visible    xpath=//h2[text()='이메일로 인증번호를 발송했습니다.']    5
+    Screenshot
+    Click Element    xpath=//button[text()='확인']
+    Screenshot
+    Sleep    5
+
+    # 인증번호 추출 및 입력 
+    ${code}=    Get Email Auth Code
     
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    인증번호 : ${code}
+    Log To Console    ---------------------------------------
+
+    # 인증번호 검증 (숫자인지 확인)
+    Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
+
+    Input Text    id=emailcode    ${code}
+    Screenshot
+    Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
+    Click Element    xpath=//button[text()='인증하기']
+    Screenshot
+
+    Click Element    xpath=//button[text()='다음']
+    Wait Until Element Is Visible    xpath=//h1[text()='비밀번호를 재설정 해주세요']    5
+    Screenshot
+
+    # 비밀번호 재설정
+    Input Password    id=password    ${password}
+    Input Password    id=confirmPassword    ${password}
+    Screenshot
+
+    Click Element    xpath=//button[text()='비밀번호 변경하기']
+    Wait Until Element Is Visible    xpath=//h2[text()='비밀번호가 변경되었습니다']    5
+    Screenshot
+
+    Click Element    xpath=//button[text()='확인']
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Screenshot
