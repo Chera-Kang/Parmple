@@ -1,102 +1,96 @@
 import email
-from email.header import decode_header
-from imaplib import IMAP4_SSL
 import re
 import time
+import os
+import sys
+from email.header import decode_header
+from imaplib import IMAP4_SSL
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-import os
 
-# .env 파일 경로 설정
-current_dir = os.path.dirname(os.path.abspath(__file__))
-env_path = os.path.join(current_dir, "..", "auth", ".env")
-load_dotenv(env_path)
+# =============================================================================
+# 1. 초기 설정 및 환경 변수 로드
+# =============================================================================
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ENV_PATH = os.path.join(BASE_DIR, "common", "auth", ".env")
+load_dotenv(ENV_PATH)
 
-EMAIL = os.getenv("EMAIL")
+EMAIL_USER = os.getenv("EMAIL")
 APP_PASSWORD = os.getenv("APP_PASSWORD")
 SENDER_FILTER = "noreply@parmple.com"
 
-MAX_RETRIES = 5
-RETRY_DELAY = 3  # 초
+# =============================================================================
+# 2. 이메일 데이터 파싱 유틸리티
+# =============================================================================
 
 def decode_mime_words(s):
+    """ MIME 인코딩된 문자열(제목, 보낸이 등)을 디코딩합니다. """
     decoded = decode_header(s)
     return ''.join(
         str(part[0], part[1] or 'utf-8') if isinstance(part[0], bytes) else part[0]
         for part in decoded
     )
 
-def fetch_auth_code():
-    with IMAP4_SSL("imap.gmail.com") as mail:
-        mail.login(EMAIL, APP_PASSWORD)
-        mail.select("inbox")
+# =============================================================================
+# 3. 인증번호 추출 핵심 로직
+# =============================================================================
 
-        result, data = mail.search(None, "ALL")
-        mail_ids = data[0].split()
+def fetch_auth_code(max_retries=5, retry_delay=3):
+    """
+    Gmail IMAP을 통해 최신 인증 메일을 조회하고 숫자 코드를 추출합니다.
+    추출 실패 시 재시도 로직을 포함합니다.
+    """
+    if not EMAIL_USER or not APP_PASSWORD:
+        return "ERROR: EMAIL or APP_PASSWORD not set in .env"
 
-        if not mail_ids:
-            return None
+    for attempt in range(1, max_retries + 1):
+        try:
+            with IMAP4_SSL("imap.gmail.com") as mail:
+                mail.login(EMAIL_USER, APP_PASSWORD)
+                mail.select("inbox")
 
-        for i in reversed(mail_ids[-10:]):  # 최근 10개만 확인
-            result, msg_data = mail.fetch(i, "(RFC822)")
-            raw_email = msg_data[0][1]
-            msg = email.message_from_bytes(raw_email)
+                # 전체 메일 검색 (실제 환경에서는 최근 메일 위주로 필터링 권장)
+                result, data = mail.search(None, "ALL")
+                mail_ids = data[0].split()
 
-            sender = msg["From"]
-            subject = msg["Subject"]
+                if mail_ids:
+                    # 최신순으로 최근 10개 메일만 확인
+                    for i in reversed(mail_ids[-10:]):
+                        result, msg_data = mail.fetch(i, "(RFC822)")
+                        raw_email = msg_data[0][1]
+                        msg = email.message_from_bytes(raw_email)
 
-            decoded_subject = decode_mime_words(subject)
-            decoded_sender = decode_mime_words(sender)
+                        sender = decode_mime_words(msg["From"])
+                        if SENDER_FILTER in sender:
+                            body = ""
+                            if msg.is_multipart():
+                                for part in msg.walk():
+                                    if part.get_content_type() == "text/html":
+                                        charset = part.get_content_charset() or "utf-8"
+                                        body = part.get_payload(decode=True).decode(charset, errors="replace")
+                                        break
+                            else:
+                                charset = msg.get_content_charset() or "utf-8"
+                                body = msg.get_payload(decode=True).decode(charset, errors="replace")
 
-            if SENDER_FILTER in decoded_sender:
-                body = ""
-                if msg.is_multipart():
-                    for part in msg.walk():
-                        content_type = part.get_content_type()
-                        content_disposition = str(part.get("Content-Disposition"))
-                        if content_type == "text/html" and "attachment" not in content_disposition:
-                            charset = part.get_content_charset() or "utf-8"
-                            body = part.get_payload(decode=True).decode(charset, errors="replace")
-                            break
-                else:
-                    charset = msg.get_content_charset() or "utf-8"
-                    body = msg.get_payload(decode=True).decode(charset, errors="replace")
+                            # HTML에서 텍스트 추출 및 4~8자리 숫자(인증번호) 검색
+                            soup = BeautifulSoup(body, "html.parser")
+                            text = soup.get_text()
+                            match = re.search(r"[0-9]{4,8}", text)
+                            if match:
+                                return match.group(0)
+        except Exception:
+            pass # 일시적인 네트워크 등 에러는 무시하고 재시도
 
-                soup = BeautifulSoup(body, "html.parser")
-                text = soup.get_text(separator="\n")
+        if attempt < max_retries:
+            time.sleep(retry_delay)
+            
+    return "NO_CODE"
 
-                match = re.search(r"[0-9]{4,8}", text)
-                if match:
-                    return match.group(0)
-
-    return None
-
+# =============================================================================
+# 4. 메인 실행부 (CLI 호출 지원)
+# =============================================================================
 
 if __name__ == "__main__":
-    # 인증번호 추출 재시도
-    for attempt in range(1, MAX_RETRIES + 1):
-        # print(f"시도 {attempt}: EMAIL={EMAIL}, APP_PASSWORD={'SET' if APP_PASSWORD else 'NONE'}")
-        code = fetch_auth_code()
-        if code:
-            print(code)
-            break
-        else:
-            if attempt < MAX_RETRIES:
-                time.sleep(RETRY_DELAY)
-    else:
-        print("NO_CODE")
-
-
-
-# # 인증번호 추출 재시도
-# for attempt in range(1, MAX_RETRIES + 1):
-#     print(f"시도 {attempt}: EMAIL={EMAIL}, APP_PASSWORD={'SET' if APP_PASSWORD else 'NONE'}") ################ 11
-#     code = fetch_auth_code()
-#     if code:
-#         print(code)
-#         break
-#     else:
-#         if attempt < MAX_RETRIES:
-#             time.sleep(RETRY_DELAY)
-# else:
-#     print("NO_CODE")
+    # Robot Framework 등 외부에서 실행 시 인증번호만 출력
+    print(fetch_auth_code())

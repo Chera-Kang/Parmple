@@ -12,96 +12,68 @@ Resource   ../keywords.robot
 Suite Setup    Initialize Test Suite
 Suite Teardown    Finalize Test Suite
 
-
 *** Variables ***
-${EMAIL_PREFIX}    chera.workspace
-${EMAIL_DOMAIN}    gmail.com
-
-${EMAIL}    None
-${bizRegNo}    None
-
-
 *** Keywords ***
-# 이메일 번호 생성 
+# 어드민 승인 대상 ID 조회 및 승인 처리
+Approve Pending Company Review Via Admin API
+    # 리뷰 ID 조회
+    ${result_id}=    Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    get_review_id    stdout=PIPE    stderr=PIPE
+    ${company_id}=   Set Variable   ${result_id.stdout.strip()}
+    Run Keyword If    '${company_id}' == 'None' or '${company_id}' == ''    Fail    승인 대기 중인 업체를 찾을 수 없습니다.
+    
+    # 승인 처리
+    ${result_app}=   Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    approve    ${company_id}    stdout=PIPE    stderr=PIPE
+    Should Be Equal  ${result_app.stdout.strip()}    SUCCESS    msg=어드민 승인 처리에 실패했습니다: ${result_app.stderr}
+    
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    company id : ${company_id}
+    Log To Console    ---------------------------------------
+
+
+# 테스트용 업체 데이터 준비 (등록 업체 조회 및 변수 설정)
+Setup Registered Company Data
+    ${item}=    Get Registered Company Info From Admin
+    
+    ${registeredBizName}=    Get From Dictionary    ${item}    bizName
+    ${registeredBizNo}=      Get From Dictionary    ${item}    bizRegNo
+    ${registeredCsoNo}=      Get From Dictionary    ${item}    csoReportNo
+
+    # # Suite 변수로 설정하여 다른 테스트 케이스에서 사용 가능하게 함
+    # Set Suite Variable    ${registeredBizNo}
+    # Set Suite Variable    ${registeredCsoNo}
+    # Set Suite Variable    ${registeredBizName}
+
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    업체명 : ${registeredBizName}
+    Log To Console    bizNo : ${registeredBizNo}
+    Log To Console    csoNo : ${registeredCsoNo}
+    Log To Console    ---------------------------------------
+
+# 이메일 생성 (초단위 포함 고유형: yymmdd.hhmmss)
 Generate Email
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d.%H%M')
-    ${email}=    Set Variable    ${EMAIL_PREFIX}+${datetime}@${EMAIL_DOMAIN}
-    [Return]    ${EMAIL}
+    ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_GEN_PY}    chera.workspace    gmail.com    stdout=PIPE    stderr=PIPE
+    ${email}=     Set Variable   ${result.stdout.strip()}
+    [Return]    ${email}
 
+# 이메일 인증번호 추출
+Get Email Auth Code
+    ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_READER_PY}    stdout=PIPE    stderr=PIPE
+    ${code}=      Set Variable   ${result.stdout.strip()}
+    [Return]    ${code}
 
-# 어드민 로그인 토큰
-Get Admin Access Token
-    Create Session    parmple_admin    ${API}
-    ${payload}=    Create Dictionary
-    ...    email=${ADMIN_EMAIL}
-    ...    password=${password}
-    ${headers}=    Create Dictionary    accept=*/*    Content-Type=application/json
-    ${response}=    Post Request    parmple_admin    /api/v1/admins/auth/login    json=${payload}    headers=${headers}
-    
-    Log To Console    응답 코드: ${response.status_code}
-    Log To Console    응답 내용: ${response.text}
-
-    Should Be Equal As Numbers    ${response.status_code}    200
-    
-    ${json}=    To JSON    ${response.text}
-    ${data}=    Get From Dictionary    ${json}    data
-    ${detail}=    Get From Dictionary    ${data}    detail
-    ${access_token}=    Get From Dictionary    ${detail}    accessToken
-    [Return]    ${access_token}
-
-
-# 어드민 승인요청관리 목록 
-Get Pending Company Review Id
-    [Arguments]    ${access_token}
-    Create Session    parmple_admin    ${API}
-
-    ${filter_model}=    Create Dictionary
-    ${sort_model}=      Create Dictionary    createdAt=desc
-
-    ${payload}=    Create Dictionary
-    ...    filterModel=${filter_model}
-    ...    sortModel=${sort_model}
-    ...    page=1
-    ...    size=50
-
-    ${headers}=    Create Dictionary
-    ...    accept=*/*
-    ...    Authorization=Bearer ${access_token}
-    ...    Content-Type=application/json
-
-    ${response}=    Post Request    parmple_admin    /api/v1/admins/company-reviews/search    json=${payload}    headers=${headers}
-
-    Log To Console    응답 코드: ${response.status_code}
-
-    Should Be Equal As Numbers    ${response.status_code}    200
-
-    ${json}=    To JSON    ${response.text}
-
-    ${data}=    Get From Dictionary    ${json}    data
-    ${items}=   Get From Dictionary    ${data}    items
-
-    ${company_id}=    Get From Dictionary    ${items}[0]    id
-
-    [Return]    ${company_id}
-
-
-# 어드민 승인처리
-Approve Company Review
-    [Arguments]    ${access_token}    ${company_id}
-    Create Session    parmple_admin    ${API}
-    ${headers}=    Create Dictionary    accept=*/*    Authorization=Bearer ${access_token}    Content-Type=application/json
-    ${payload}=    Create Dictionary    csoReportNo=자동화테스트
-    ${endpoint}=    Set Variable    /api/v1/admins/company-reviews/${company_id}/approve
-    ${response}=    Post Request    parmple_admin    ${endpoint}    json=${payload}    headers=${headers}
-
-    Log To Console    승인 대상 ID: ${company_id}
-    Log To Console    승인 응답 코드: ${response.status_code}
-
-    Should Be Equal As Numbers    ${response.status_code}    200
-
+# 등록상태 업체 정보 조회 (isSignedUp=False)
+Get Registered Company Info From Admin
+    ${result}=    Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    get_company    stdout=PIPE    stderr=PIPE
+    ${json_str}=  Set Variable   ${result.stdout.strip()}
+    ${json_match}=  Evaluate    re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL).group(0) if re.search(r'\{.*\}', r'''${json_str}''', re.DOTALL) else None    modules=re
+    Should Not Be Equal    ${json_match}    ${None}    msg=Admin API로부터 올바른 JSON 데이터를 가져오지 못했습니다: ${json_str}\nError: ${result.stderr}
+    ${data}=      Evaluate       json.loads($json_match)    json
+    [Return]    ${data}
 
 *** Test Cases ***
-1.1. 로그인 Page
+1. 로그인 Page
     ## 사전 준비
     ${result}=    Run Process    python    -c    "import sys; print(sys.executable)"    stdout=PIPE
     
@@ -115,16 +87,14 @@ Approve Company Review
     Execute Javascript    document.body.style.zoom='100%'
 
 
-1.1.1. 사업자 번호 입력
+2. 사업자 번호 입력
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
     Screenshot
     
     ## 사업자 번호 입력
-    ${bizRegNo}=      Get Biz Number
-    ${cleanBizNo}=    Remove Hyphen From BizNo    ${bizRegNo}
-    Record BizRegNo To File    ${cleanBizNo}
-
-    Input Text    id=bizNumber    ${cleanBizNo}
+    ${bizNo}=      Get Biz Number
+    Record Biz Number    ${bizNo}
+    Input Text    id=bizNumber    ${bizNo}
     Screenshot
 
     Click Element    xpath=//button[text()='확인']
@@ -136,7 +106,7 @@ Approve Company Review
     Screenshot
 
 
-1.2.1. 파일 첨부
+3. 파일 첨부
     ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
@@ -148,12 +118,17 @@ Approve Company Review
     Sleep    0.5
 
 
-1.2.2. 이메일 입력 및 인증
+4. 이메일 입력 및 인증
     ## 이메일 입력 
     ${EMAIL}=    Generate Email
     Set Suite Variable    ${EMAIL}
+
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    email : ${EMAIL}
+    Log To Console    ---------------------------------------
+    
     Input Text    id=email    ${EMAIL}
-    Log To Console    \n${EMAIL}
     Screenshot
 
     # 인증번호 발송
@@ -164,9 +139,13 @@ Approve Company Review
     Sleep    5
 
     # 인증번호 추출 및 입력 
-    ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_READER_PY}    stdout=PIPE    stderr=PIPE
-    ${code}=      Set Variable   ${result.stdout.strip()}
-    Log To Console    \n인증번호: ${code}
+    ${code}=    Get Email Auth Code
+    
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    인증번호 : ${code}
+    Log To Console    ---------------------------------------
+
     # 인증번호 검증 (숫자인지 확인)
     Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
 
@@ -184,12 +163,12 @@ Approve Company Review
     Sleep    0.5
 
 
-1.2.3. 비밀번호 입력
+5. 비밀번호 입력
     Input Password    id=password    ${password}
     Input Password    id=passwordCheck    ${password}
 
 
-1.2.4. 회원정보 입력
+6. 회원정보 입력
     # 이름 
     Input Text    id=name    테스트
     
@@ -200,13 +179,13 @@ Approve Company Review
     Screenshot
 
 
-1.2.5. 약관 동의
+7. 약관 동의
     Scroll Element Into View    xpath=//button[text()='가입하기']
     Click Button    id=termsAll
     Screenshot
 
 
-1.2.6. 가입하기
+8. 가입하기
     # 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
@@ -217,16 +196,160 @@ Approve Company Review
     Screenshot
 
 
-1.3. Admin 승인 절차
-    # Admin API 승인 Process    
-    ${access_token}=    Get Admin Access Token
-    ${company_id}=    Get Pending Company Review Id    ${access_token}
-    Approve Company Review    ${access_token}    ${company_id}
+9. Admin 승인 절차
+    # Admin API 승인 Process
+    Approve Pending Company Review Via Admin API
     Sleep    1
 
 
-1.4. 로그인
+10. 로그인
     Input Text    name=email    ${EMAIL}
+    Press Key    name=password    ${password}
+    Screenshot
+    Click Button    xpath=//button[text()='로그인']
+    Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
+    Screenshot
+
+    
+
+
+
+
+11. 로그아웃
+    Click Element    xpath=//button[@aria-haspopup='menu']
+    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Click Element    xpath=//div[@title='로그아웃']
+    Screenshot
+    Sleep    1
+
+
+
+
+
+
+    ## 로그인 Page 
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Screenshot
+
+    # 회원가입 버튼
+    Execute Javascript    document.body.style.zoom='90%'
+    Click Element    xpath=//a[text()='회원가입']
+    Execute Javascript    document.body.style.zoom='100%'
+
+12. API 데이터 조회 테스트
+    Setup Registered Company Data
+
+
+13. 사업자 번호 입력
+    Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
+    Screenshot
+    
+    ## 사업자 번호 입력
+    Input Text    id=bizNumber    ${registeredBizNo}
+    Screenshot
+
+    Click Element    xpath=//button[text()='확인']
+    Wait Until Element Is Visible    xpath=//h2[text()='의약품 판촉영업 신고번호를 입력해주세요.']    5
+    Screenshot
+    
+    Input Text    id=csoNumber    ${registeredCsoNo}
+    Screenshot
+    Click Element    xpath=(//button[text()='확인'])[last()]
+    Screenshot
+    Wait Until Element Is Visible    xpath=//h2[text()='사업자 정보가 확인되었습니다']    5
+    Screenshot
+    Click Element    xpath=(//button[text()='확인'])[last()]
+
+
+    Wait Until Element Is Visible    xpath=//h1[text()='회원가입']    5
+    Screenshot
+
+    # 화면 스크롤
+    Scroll Element Into View    xpath=//*[@id="name"]
+    Sleep    0.5
+
+14. 이메일 입력 및 인증
+    ## 이메일 입력 
+    ${EMAIL2}=    Generate Email
+    Set Suite Variable    ${EMAIL2}
+
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    email : ${EMAIL2}
+    Log To Console    ---------------------------------------
+
+    Input Text    id=email    ${EMAIL2}
+    Screenshot
+
+    # 인증번호 발송
+    Click Element    xpath=//button[text()='인증번호 발송']
+    Wait Until Element Is Visible    xpath=//h2[text()='이메일로 인증번호를 발송했습니다.']    5
+    Screenshot
+    Click Element    xpath=//button[text()='확인']
+    Sleep    5
+
+    # 인증번호 추출 및 입력 
+    ${code}=    Get Email Auth Code
+    
+    # 결과 출력
+    Log To Console    \n---------------------------------------
+    Log To Console    인증번호 : ${code}
+    Log To Console    ---------------------------------------
+
+    # 인증번호 검증 (숫자인지 확인)
+    Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
+
+    Input Text    id=emailVerificationKey    ${code}
+    Screenshot
+    
+    # 클릭 전 스크롤 및 대기 
+    Scroll Element Into View    xpath=//button[text()='인증하기']
+    Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
+    Click Element    xpath=//button[text()='인증하기']
+    Screenshot
+
+    # 화면 스크롤
+    Scroll Element Into View    xpath=//div[button[@id='termsAll']]
+    Sleep    0.5
+
+
+
+15. 비밀번호 입력
+    Input Password    id=password    ${password}
+    Input Password    id=passwordCheck    ${password}
+    Sleep    1
+
+
+16. 회원정보 입력
+    # 이름 
+    Input Text    id=name    테스트
+    
+    # 휴대폰 번호 
+    ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
+    ${phone_number}=    Set Variable    010${random_number}
+    Press Key    id=phone    ${phone_number}
+    Screenshot
+
+
+17. 약관 동의
+    Scroll Element Into View    xpath=//button[text()='가입하기']
+    Click Button    id=termsAll
+    Screenshot
+
+
+18. 가입하기
+    # 가입하기 버튼
+    Click Button    xpath=//button[text()='가입하기']
+    Wait Until Element Is Visible    xpath=//button[text()='확인']    5
+    Screenshot
+    
+    # 로그인 Page 로 이동
+    Click Element    xpath=//button[text()='확인']
+    Screenshot
+
+
+19. 로그인
+    Input Text    name=email    ${EMAIL2}
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']

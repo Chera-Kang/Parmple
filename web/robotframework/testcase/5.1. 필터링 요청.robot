@@ -49,8 +49,8 @@ Suite Teardown    Finalize Test Suite
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
-    ${bizRegNo}=      Get Biz Number
-    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizRegNo}
+    ${bizNo}=      Get Biz Number
+    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizNo}
     Screenshot
 
     # 모달 등록하기 버튼
@@ -90,8 +90,8 @@ Suite Teardown    Finalize Test Suite
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
-    ${bizRegNo}=      Get Biz Number
-    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizRegNo}
+    ${bizNo}=      Get Biz Number
+    Press Key    xpath=//input[@placeholder='-없이 숫자만 입력해 주세요']    ${bizNo}
     Sleep    1
 
     # 모달 등록하기 버튼

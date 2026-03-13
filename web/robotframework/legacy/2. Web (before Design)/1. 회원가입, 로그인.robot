@@ -22,6 +22,9 @@ ${PYTHON_EXE}    ${EXECDIR}/.venv/Scripts/python.exe
 ${EMAIL}    None
 ${bizRegNo}    None
 
+${ADMIN_EMAIL}    None
+${ADMIN_PASSWORD}       None
+
 *** Keywords ***
 # 이메일 번호 생성 
 Generate Email

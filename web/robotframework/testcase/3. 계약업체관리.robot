@@ -14,7 +14,7 @@ Suite Teardown    Finalize Test Suite
 
 
 *** Variables ***
-${lastBizReNo}    None
+${lastBizNo}    None
 ${unused_BizNo}    None
 
 *** Keywords ***
@@ -35,8 +35,8 @@ ${unused_BizNo}    None
 
 3.1.2. 사업자번호 입력
     # 직전 회원가입한 사업자번호 입력
-    ${lastBizReNo}=    Get Last BizRegNo From File
-    Press Key    id=bizNumber    ${lastBizReNo}
+    ${lastBizNo}=    Get Last Biz Number
+    Press Key    id=bizNumber    ${lastBizNo}
     Screenshot
     Click Button    xpath=//button[text()='확인하기']
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
@@ -84,9 +84,8 @@ ${unused_BizNo}    None
 
 
 3.1.6. 사업자번호 입력
-    # 미사용 번호 
-    ${unused_BizNo}=    Get Biz Number    
-    Press Key    id=bizNumber    ${unused_BizNo}
+    ${bizNo}=     Get Biz Number  
+    Press Key    id=bizNumber    ${bizNo}
     Screenshot
 
     Click Button    xpath=//button[text()='확인하기']
@@ -133,8 +132,8 @@ ${unused_BizNo}    None
 
 
 3.2. 업체 상세
-    ${lastBizReNo}=    Get Last BizRegNo From File
-    Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizReNo}"]
+    ${lastBizNo}=    Get Last Biz Number
+    Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 

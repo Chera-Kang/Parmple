@@ -23,6 +23,9 @@ ${id_2}    pharm1@parmple.com
 ${id_3}    pharm_manager@example.com
 ${password}    password123!
 
+${ADMIN_EMAIL}    %{ADMIN_EMAIL=}
+${password}       %{PASSWORD=}
+
 ${API}               https://qa.api.parmple.com
 ${bizRegNo_DIR}      resources/bizRegNo
 ${unused_bizRegNo_DIR}      resources/unused_bizRegNo
