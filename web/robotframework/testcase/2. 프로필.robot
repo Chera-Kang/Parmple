@@ -7,7 +7,6 @@ Library    RequestsLibrary
 Library    BuiltIn
 Library    Process
 Library    DateTime
-Library    ../../../.venv/Lib/site-packages/robot/libraries/XML.py
 Resource   ../keywords.robot
 
 Suite Setup    Initialize Test Suite
@@ -70,7 +69,6 @@ Suite Teardown    Finalize Test Suite
 
     # 현재 날짜의 '일(day)' 가져오기 (1~31)
     ${day}=    Evaluate    datetime.datetime.now().day    modules=datetime
-    Log To Console    오늘 날짜: ${day}
     
     # 해당 날짜 클릭
     Click Element    xpath=//td[button[text()='${day}']]
@@ -91,8 +89,11 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
+    # 교육 수료증 보기 버튼
+    Click Element    xpath=//button[@title='수료증']
+    Wait Until Element Is Visible    xpath=//h2[text()='교육 수료증']    5
+    Screenshot
 
-    ## 교육 수료증 보기 버튼
 
 
     Press Keys    NONE    ESC

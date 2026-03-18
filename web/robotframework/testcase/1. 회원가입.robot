@@ -7,7 +7,6 @@ Library    RequestsLibrary
 Library    BuiltIn
 Library    Process
 Library    DateTime
-Library    ../../../.venv/Lib/site-packages/robot/libraries/XML.py
 Resource   ../keywords.robot
 
 Suite Setup    Initialize Test Suite

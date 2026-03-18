@@ -15,6 +15,7 @@ Suite Teardown    Finalize Test Suite
 
 *** Variables ***
 *** Keywords ***
+*** Test Cases ***
 3.7. 수탁 계약 
 
     Login_CSO
@@ -39,7 +40,7 @@ Suite Teardown    Finalize Test Suite
 
 
 3.7.1. 수탁 업체 상세
-    Click Element    xpath=//a[text()='842-88-83121']
+    Click Element    xpath=//a[text()='투썬제약']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
@@ -70,3 +71,43 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
 
+
+4. CSO 상세
+
+    Go Back
+    Sleep    1
+
+    Click Element    xpath=//a[text()='투썬인베스트 주식회사']
+    Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+    Screenshot
+
+
+    
+
+4.1. 사업자등록증
+    Click Button    xpath=//button[text()='보기']
+    Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
+    Sleep    2
+    Screenshot
+    Press Keys    NONE    ESC
+
+    Click Button    xpath=//button[text()='보기'][last()]
+    Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
+    Sleep    2
+    Screenshot
+    Press Keys    NONE    ESC
+
+
+4.2. 계약관리 - 수수료율
+    Click Button    xpath=//button[@title='수수료율']
+    Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
+    Screenshot
+    Press Keys    NONE    ESC
+
+
+4.3. 계약관리 - 계약서
+    Click Button    xpath=//button[@title='계약서']
+    Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
+    Sleep    1
+    Screenshot
+    Press Keys    NONE    ESC

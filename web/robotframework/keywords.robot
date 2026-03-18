@@ -66,7 +66,7 @@ Get Biz Number
     Log To Console    Selected bizNo : ${biz_no}
     Log To Console    ---------------------------------------
 
-    [Return]    ${biz_no}
+    RETURN    ${biz_no}
 
 # 사업자번호 하이픈 제거 및 파일 기록
 Record Biz Number
@@ -80,7 +80,7 @@ Record Biz Number
     # 결과 출력
     Log To Console    Recorded bizNo : ${clean_biz_no}
 
-    [Return]    ${clean_biz_no}
+    RETURN    ${clean_biz_no}
 
 # 마지막으로 사용했던 사업자 번호 찾기 
 Get Last Biz Number
@@ -89,12 +89,13 @@ Get Last Biz Number
     ${line_count}=    Get Length    ${lines}
     Run Keyword If    ${line_count} < 2    Fail    No bizNo found in file
     ${last_bizNo}=    Get From List    ${lines}    -2
-    [Return]    ${last_bizNo}
-
+    
     # 결과 출력
     Log To Console    \n---------------------------------------
-    Log To Console    lastBizNo : ${lastBizNo}
+    Log To Console    lastBizNo : ${last_bizNo}
     Log To Console    ---------------------------------------
+
+    RETURN    ${last_bizNo}
 
 
 # CSO 계정 로그인
