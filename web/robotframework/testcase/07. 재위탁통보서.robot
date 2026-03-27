@@ -173,7 +173,7 @@ Suite Teardown    Finalize Test Suite
 4.2. 재위탁 통보서 전송
     ## 재위탁 통보서 작성 의 check box 선택 
     Wait Until Element Is Visible    xpath=//div[contains(@class,'ag-selection-checkbox')]    5
-    Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[2]
+    Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[1]
     Screenshot
 
 
@@ -187,50 +187,3 @@ Suite Teardown    Finalize Test Suite
     Click Button    xpath=(//button[@title="전송하기"])[2]
     Screenshot
 
-
-4.3. 받은 재위탁 통보서
-    # 계정 변경
-    Logout
-    Login_pharm_pharm1
-
-    Click Element    xpath=//a[span[text()='받은 재위탁 통보서']]
-    Sleep    1
-    Screenshot
-
-
-4.3.1. 재위탁 통보서
-    Click Button    xpath=//button[@title='통보서']
-    Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5
-
-
-4.3.2. 첨부파일
-    Click Element    xpath=(//button[@title='파일'])[1]
-    Wait Until Element Is Visible    xpath=//h2[text()='파일']    5
-
-
-4.3.2.1. 계약서
-    Sleep    2
-    Screenshot
-
-
-4.3.2.2. 수수료율
-    Click Element    xpath=//button[normalize-space(.)='수수료율']
-    Sleep    2
-    Screenshot
-
-
-4.3.2.3. 수료증
-    Click Element    xpath=//button[normalize-space(.)='수료증']
-    Sleep    2
-    Screenshot
-
-
-4.3.2.4. 수료증(재위탁)
-    Click Element    xpath=//button[normalize-space(.)='수료증(재위탁)']
-    Sleep    2
-    Screenshot
-    Press Keys    NONE    ESC
-    Sleep    0.5

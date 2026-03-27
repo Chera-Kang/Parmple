@@ -44,3 +44,4 @@ Suite Teardown    Finalize Test Suite
     Scroll Element Into View    xpath=//div[span[span[text()='01']]]
     Click Element    xpath=//button[normalize-space(.)='적용']
     Screenshot
+

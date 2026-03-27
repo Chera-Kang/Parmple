@@ -22,11 +22,12 @@ Suite Teardown    Finalize Test Suite
 
 
 
-    # 전자계약 메뉴 
+
     Click Element    xpath=//a[span[text()='계약서 관리']]
     Wait Until Element Is Visible    xpath=//h2[text()='계약서 관리']    5
     Sleep    1
 
+템플릿
     Click Element    xpath=//button[span[text()='템플릿 관리']]
     Wait Until Element Is Visible    xpath=//h2[text()='템플릿 관리']    5
     Screenshot
@@ -82,7 +83,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
 
 
-
+계약서 작성
     Click Element    xpath=//button[span[text()='계약서 작성']]
     Wait Until Element Is Visible    xpath=//h2[text()='계약서 작성하기']    5
     Screenshot
@@ -172,14 +173,131 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
 
 
+목록 계약서 확인
 
 
-    Sleep   5
+    Sleep    2
+    # 목록 계약서 확인
+    Click Element    xpath=//button[span[text()='검색 초기화']]
+    Sleep    1
+    Click Element    xpath=//button[span[text()='검색 초기화']]
+    Sleep    1
+
+    Click Element    xpath=//button[@title='계약서']
+    Sleep    2
+
+    Press Keys    None    ESC
+    Sleep    1
+
+
+    # 수정하기
+    Click Element    xpath=//button[@title='수정']
+    Sleep    1
+
+
+    # 제목
+    Input Text    name=title    _fix
+    Sleep    1
+
+    Click Element    id=date
+    Sleep    1
+
+    Press Keys    None    ESC
+    Sleep    1
+
+
+    #내용
+    # Quill 에디터 영역에 텍스트 입력 (contenteditable 대응)
+    Wait Until Element Is Visible    css:.ql-editor    5
+    Execute Javascript    document.querySelector('.ql-editor').innerHTML = '<p>자동화테스트 내용 수정하기</p>'
+
+    Sleep    2
+
+    Click Element    xpath=//button[@title='수정하기']
+    Sleep    1
 
 
 
+전송하기
 
 
+    # 전송하기
+    Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[1]
+    Sleep    1
+
+    Click Element    xpath=//button[@title='전송하기']
+    Sleep    1
+
+    Click Element    xpath=//button[div[span[text()='서명 가능 기한']]]
+    Sleep    1
+
+    # 선택 가능한 첫 번째 날짜 클릭
+    Click Element    xpath=(//button[@name='day' and not(@disabled)])[1]
+    Sleep    1
+
+    Click Element    xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]]
+    Sleep    1
+
+    Click Element    id=termsAll
+    Sleep    1
+
+    # 전송하기 버튼 클릭 (가로막힘 문제를 방지하기 위해 JavaScript 클릭 활용)
+    Execute Javascript    var btns = document.querySelectorAll("button[title='전송하기'][type='submit']"); if(btns.length > 0) btns[btns.length - 1].click();
+    Sleep    1
+
+
+
+전송 완료 
+    # Click Element    xpath=//button[text()='전송 완료']
+    # Sleep    1
+
+    Sleep    2
+    Click Element    xpath=//button[span[text()='검색 초기화']]
+    Sleep    1
+    Click Element    xpath=//button[span[text()='검색 초기화']]
+    Sleep    1
+
+    Click Element    xpath=//button[@title='계약서']
+    Sleep    2
+    Press Keys    None    ESC
+    Sleep    1
+
+전송 취소
+
+    Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[1]
+    Sleep    1
+
+    Click Element    xpath=//button[@title='전송취소']
+    Sleep    1
+
+    Click Element    xpath=//button[@title='확인']
+    Sleep    1
+
+재전송
+
+    # 전송하기
+    Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[1]
+    Sleep    1
+
+    Click Element    xpath=//button[@title='전송하기']
+    Sleep    1
+
+    Click Element    xpath=//button[div[span[text()='서명 가능 기한']]]
+    Sleep    1
+
+    # 선택 가능한 첫 번째 날짜 클릭
+    Click Element    xpath=(//button[@name='day' and not(@disabled)])[1]
+    Sleep    1
+
+    Click Element    xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]]
+    Sleep    1
+
+    Click Element    id=termsAll
+    Sleep    1
+
+    # 전송하기 버튼 클릭 (가로막힘 문제를 방지하기 위해 JavaScript 클릭 활용)
+    Execute Javascript    var btns = document.querySelectorAll("button[title='전송하기'][type='submit']"); if(btns.length > 0) btns[btns.length - 1].click();
+    Sleep    1
 
 
 

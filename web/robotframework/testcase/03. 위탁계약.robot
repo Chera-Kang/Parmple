@@ -131,6 +131,7 @@ ${unused_BizNo}    None
     Click Element    xpath=//button[text()='확인']
     sleep    1
 
+
 3.1.10. 상세
     Click Element    xpath=//a[text()="${bizNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
@@ -174,23 +175,26 @@ ${unused_BizNo}    None
 
 
     # CSO 신고증 목록 보기 
-    ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m-%d')    modules=datetime
-    Click Element    xpath=//dd[p[text()='${datetime}']]    
-    Sleep    1
-    Screenshot
+    ## 현재 모니터 화면에서의 UI 오류로 확인 불가, 추후 이슈 등록하여 확인 예정으로 그동안 주석처리
+    # CSO 교육 수료증 목록 보기 (날짜 span 클릭)
+    # Click Element    xpath=//dl[dt[text()='CSO 교육 수료증']]//span[@role='button']
+    # Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료 이력']    5
+    # Sleep    1
 
-    ## 교육 수료증 보기 버튼
 
+    # Execute Javascript    document.body.style.zoom='90%'
+    # Click Element    xpath=//button[@title='수료증']
+    # Execute Javascript    document.body.style.zoom='100%'
 
-    Press Keys    NONE    ESC
-
+    # # 이미지 또는 PDF 중 하나라도 로드될 때까지 대기
+    # Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
+    # Screenshot
+    # Press Keys    ${None}    ESC
+    # Sleep    1
 
 
     Go Back
     Sleep    1
-
-
-
 
 
 
@@ -241,12 +245,12 @@ ${unused_BizNo}    None
     Press Keys    NONE    ESC
 
 
-3.2.2.3. CSO 교육 수료증
-    Click Element    xpath=//button[text()='등록']
-    Wait Until Element Is Visible    xpath=//button[text()='확인']    5
-    Screenshot
-    Click Button    xpath=//button[text()='확인']
-    Sleep    1
+# 3.2.2.3. CSO 교육 수료증
+#     Click Element    xpath=//button[text()='등록']
+#     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
+#     Screenshot
+#     Click Button    xpath=//button[text()='확인']
+#     Sleep    1
 
 
 

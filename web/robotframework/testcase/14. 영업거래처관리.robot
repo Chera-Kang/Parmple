@@ -24,11 +24,13 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
 
+
 5.5.1. 거래처 상세 모달
     # 거래처 상세 모달
     Click Element    xpath=//span[span[contains(text(), 'Auto')]]
     Wait Until Element Is Visible    xpath=//h2[text()='영업 거래처']    5
     Screenshot
+
 
 5.5.2. 영업 상태 변경
     # 영업 상태 변경

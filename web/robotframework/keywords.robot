@@ -12,6 +12,7 @@ ${URL}    https://qa.erp.parmple.com/
 
 # Account
 ${id_CSO}        %{ID_CSO=}
+${id_CSO3}        %{ID_CSO3=}
 ${id_pharm_1}    %{ID_PHARM_1=}
 ${id_pharm_2}    %{ID_PHARM_2=}
 ${ADMIN_EMAIL}    %{ADMIN_EMAIL=}
@@ -106,7 +107,18 @@ Login_CSO
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Sleep    2
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Sleep    1
+
+Login_CSO3
+    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
+    Sleep    0.5
+    Input Text    name=email    ${id_CSO3}
+    Press Key    name=password    ${password}
+    Screenshot
+    Click Button    xpath=//button[text()='로그인']
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Sleep    1
 
 # 제약사 계정 로그인
 Login_pharm_pharm1
@@ -116,7 +128,8 @@ Login_pharm_pharm1
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Sleep    2
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Sleep    1
 
 # 삼익제약 계정 로그인
 Login_pharm_samik
@@ -126,8 +139,9 @@ Login_pharm_samik
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Sleep    2
-
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Sleep    1
+    
 # 로그아웃 
 Logout
     Sleep    0.5
