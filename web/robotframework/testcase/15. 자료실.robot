@@ -17,7 +17,6 @@ Suite Teardown    Finalize Test Suite
 *** Test Cases ***
 6.0. 자료실 (신규 개원정보)
     Login_CSO
-    Sleep    1
 
     Scroll Element Into View    xpath=//a[span[text()='신규 개원 정보']]
     Click Element    xpath=//a[span[text()='신규 개원 정보']]
@@ -29,7 +28,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//div[button[span[normalize-space(.)='광주']]]
     Screenshot
     Scroll Element Into View    xpath=//div[span[span[text()='01']]]
-    Screenshot
+    Sleep    1
     Click Element    xpath=//button[normalize-space(.)='적용']
     Screenshot
 

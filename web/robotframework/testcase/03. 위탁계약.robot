@@ -21,7 +21,7 @@ ${unused_BizNo}    None
 *** Test Cases ***
 3.1 위탁계약
     Login_CSO
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
     Screenshot
 
 
@@ -174,13 +174,13 @@ ${unused_BizNo}    None
     Screenshot
 
 
+    #### 현재 모니터 화면에서의 UI 오류로 확인 불가, 추후 이슈 등록하여 확인 예정으로 그동안 주석처리
+
     # CSO 신고증 목록 보기 
-    ## 현재 모니터 화면에서의 UI 오류로 확인 불가, 추후 이슈 등록하여 확인 예정으로 그동안 주석처리
     # CSO 교육 수료증 목록 보기 (날짜 span 클릭)
     # Click Element    xpath=//dl[dt[text()='CSO 교육 수료증']]//span[@role='button']
     # Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료 이력']    5
     # Sleep    1
-
 
     # Execute Javascript    document.body.style.zoom='90%'
     # Click Element    xpath=//button[@title='수료증']
@@ -192,9 +192,11 @@ ${unused_BizNo}    None
     # Press Keys    ${None}    ESC
     # Sleep    1
 
+    #### 현재 모니터 화면에서의 UI 오류로 확인 불가, 추후 이슈 등록하여 확인 예정으로 그동안 주석처리
+
 
     Go Back
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
 
 
 
@@ -298,12 +300,12 @@ ${unused_BizNo}    None
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    name=contractTitle    자동화테스트 ${managementCode}
-    Sleep    0.5
+    Screenshot
 
 
 3.4.3. 파일 첨부
     Choose File     xpath=//*[@id="contractFile"]//input    ${testfile_PATH}
-    Sleep    0.5
+    Screenshot
 
 
 3.4.4. 수수료율
@@ -315,15 +317,13 @@ ${unused_BizNo}    None
     Screenshot
 
     # 계약 - 추가하기 버튼
-    # Execute Javascript    document.body.style.zoom='80%'
     Click Button    xpath=//button[normalize-space(.)='추가하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']
-    # Execute Javascript    document.body.style.zoom='100%'
     Screenshot
     Click Button    xpath=//button[normalize-space(.)='나중에']
     Sleep    1
 
-    # 계약 1개 더 추가
+    #### 계약 1개 더 추가
     # 계약 추가
     Click Button    xpath=//button[normalize-space(.)='계약 추가']
     Wait Until Element Is Visible    xpath=//h2[text()='계약 추가']    5
@@ -417,8 +417,8 @@ ${unused_BizNo}    None
 
 3.5.3. 제약사 추가
     Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
+    Screenshot
     Click Element    xpath=//button[text()='추가하기']
-
     Wait Until Element Is Visible    xpath=//h2[text()='제약사 추가']    5
     Screenshot
 
@@ -458,7 +458,7 @@ ${unused_BizNo}    None
 
     # 위탁 계약 page로 복귀
     Click Element    xpath=//a[span[text()='위탁 계약']]
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
 
 
 3.6. 검색
@@ -485,5 +485,6 @@ ${unused_BizNo}    None
     Screenshot
 
     Click Element    xpath=//button[span[text()='검색']]
+    Sleep    1
     Screenshot
 

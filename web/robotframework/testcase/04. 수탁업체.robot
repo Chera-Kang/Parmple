@@ -19,12 +19,9 @@ Suite Teardown    Finalize Test Suite
 3.7. 수탁 계약 
 
     Login_CSO
-    Sleep    1
-    Screenshot
-
     
     Click Element    xpath=//a[span[text()='수탁 계약']]
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
     Screenshot
 
     # 검색 
@@ -73,16 +70,14 @@ Suite Teardown    Finalize Test Suite
 
 
 4. CSO 상세
-
     Go Back
-    Sleep    1
-
+    Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
+    Screenshot
+    
     Click Element    xpath=//a[text()='투썬인베스트 주식회사']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
-
-    
 
 4.1. 사업자등록증
     Click Button    xpath=//button[text()='보기']
@@ -91,8 +86,10 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Press Keys    NONE    ESC
 
-    Click Button    xpath=//button[text()='보기'][last()]
-    Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
+    Scroll Element Into View    xpath=//dl[dt[text()='의약품 판촉영업 신고증']]
+    Sleep    1
+    Click Button    xpath=(//button[text()='보기'])[last()]
+    Wait Until Element Is Visible    xpath=//h2[text()='영업신고증']    5
     Sleep    2
     Screenshot
     Press Keys    NONE    ESC
@@ -111,3 +108,4 @@ Suite Teardown    Finalize Test Suite
     Sleep    1
     Screenshot
     Press Keys    NONE    ESC
+

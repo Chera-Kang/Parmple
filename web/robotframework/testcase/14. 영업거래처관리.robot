@@ -15,7 +15,6 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-    
 5.5. 영업 거래처 관리
     Login_pharm_pharm1
 

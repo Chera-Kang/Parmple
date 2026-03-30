@@ -17,15 +17,11 @@ Suite Teardown    Finalize Test Suite
 *** Keywords ***
 *** Test Cases ***
 4.4. 재위탁 현황
-
-
     Login_pharm_pharm1
-    Sleep    1
-
-
 
     Click Element    xpath=//a[span[text()='재위탁 현황']]
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//h2[text()='재위탁 현황']    5
+    Sleep    2
     Screenshot
 
     # 검색 
@@ -50,3 +46,9 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//a[span[text()='이전 통보서 관리']]
     Sleep    1
     Screenshot
+
+
+    Click Element    xpath=/div[button[text()='업체 정보']]
+    Sleep    1
+
+    

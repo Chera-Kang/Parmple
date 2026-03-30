@@ -17,13 +17,6 @@ Suite Teardown    Finalize Test Suite
 *** Test Cases ***
 5.1. 필터링
     Login_CSO
-    Sleep    1
-
-
-
-5.3. 필터링 요청
-    Logout
-    Login_CSO
 
     Scroll Element Into View    xpath=//a[span[text()='필터링 요청']]
     Click Element    xpath=//a[span[text()='필터링 요청']]
@@ -38,6 +31,7 @@ Suite Teardown    Finalize Test Suite
     # 요청 업체 검색    
     Click Element    xpath=//input[@placeholder='업체를 검색해 주세요']
     Input Text    xpath=//input[@placeholder='업체를 검색해 주세요']    투썬
+    Sleep    1
     Screenshot
 
     Click Element    xpath=//button[div[span[normalize-space(.)='제약사']]]
@@ -46,7 +40,7 @@ Suite Teardown    Finalize Test Suite
     # 병의원 추가
     Click Element    xpath=//button[text()='신규 병의원 등록']
     Wait Until Element Is Visible    xpath=//h2[text()='신규 병의원 등록']    5
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M')
+    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M%S')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
@@ -87,7 +81,7 @@ Suite Teardown    Finalize Test Suite
     # 병의원 추가
     Click Element    xpath=//button[text()='신규 병의원 등록']
     Wait Until Element Is Visible    xpath=//h2[text()='신규 병의원 등록']    5
-    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M')
+    ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%y%m%d-%H%M%S')
     ${managementCode}=    Set Variable    ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 명을 입력해 주세요.']    Auto ${datetime}
     Press Key    xpath=//input[@placeholder='병의원 주소를 입력해 주세요.']    자동화주소
@@ -160,3 +154,4 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
+

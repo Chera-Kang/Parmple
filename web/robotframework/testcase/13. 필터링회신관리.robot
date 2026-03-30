@@ -15,9 +15,6 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-
-
-
 5.4. 필터링 회신 관리
     Login_pharm_pharm1
 
@@ -47,6 +44,7 @@ Suite Teardown    Finalize Test Suite
     Press Key    name=replyContent    자동화테스트 회신
     Screenshot
     
+
 5.4.2. 필터링 회신하기
     # 회신하기
     Click Button    xpath=//button[text()='회신하기']
@@ -81,3 +79,4 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
+

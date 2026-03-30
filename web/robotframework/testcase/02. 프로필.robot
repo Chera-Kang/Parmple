@@ -87,7 +87,7 @@ Generate Email
     Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
     Screenshot
     Press Keys    NONE    ESC
-    Sleep    1
+    Sleep    0.5
 
     # 의약품 판촉영업 신고증 
     Click Button    xpath=(//button[text()='보기'])[last()]
@@ -95,7 +95,7 @@ Generate Email
     Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
     Screenshot
     Press Keys    NONE    ESC
-    Sleep    1
+    Sleep    0.5
 
 
 - 업체 계정 관리
@@ -117,7 +117,7 @@ Generate Email
     Screenshot
 
     Click Element    xpath=//button[@title='확인']
-    Sleep    1
+    Sleep    0.5
 
     Scroll Element Into View    ${last_delete_btn}
     Scroll Element Into View    ${last_delete_btn}
@@ -136,7 +136,7 @@ Generate Email
     Screenshot
 
     Click Element    xpath=//button[text()='생성하기']
-    Screenshot
+    Sleep    0.5
 
     Scroll Element Into View    ${last_delete_btn}
     Scroll Element Into View    ${last_delete_btn}
@@ -170,13 +170,12 @@ Generate Email
     Screenshot
 
     Click Button    xpath=//button[text()='등록하기']
-    Screenshot
+    Sleep    0.5
 
     Click Element    xpath=//dl[dt[text()='CSO 교육 수료증']]//button
     Wait Until Element Is Visible    xpath=//div[h2[text()='CSO 교육 수료 이력']]    5
-    Screenshot
-
     Execute Javascript    document.body.style.zoom='90%'
+    Screenshot
     Click Element    xpath=//button[@title='수료증']
     Execute Javascript    document.body.style.zoom='100%'
 
@@ -184,7 +183,7 @@ Generate Email
     Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
     Screenshot
     Press Keys    ${None}    ESC
-    Sleep    1
+    Sleep    0.5
 
 
 
@@ -207,7 +206,7 @@ Generate Email
     Screenshot
 
     Click Button    xpath=//button[@title='저장하기']
-    Screenshot
+    Sleep    0.5
     
     Scroll Element Into View    xpath=//img[@alt='도장이미지']
     Screenshot
@@ -235,7 +234,7 @@ Generate Email
     Screenshot
 
     Click Button    xpath=//button[@title='저장하기']
-    Screenshot
+    Sleep    0.5
 
     Scroll Element Into View    xpath=//img[@alt='도장이미지']
     Screenshot
@@ -245,25 +244,28 @@ Generate Email
     # 서비스 이용약관
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='서비스 이용약관']    5
+    Screenshot
     Click Element    xpath=//div[@title='서비스 이용약관']
     Wait Until Element Is Visible    xpath=//h2[text()='서비스 이용약관']    5
     Screenshot
     Press Keys    NONE    ESC
-    Sleep    1
+    Sleep    0.5
 
     # 개인정보처리방침
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='개인정보처리방침']    5
+    Screenshot
     Click Element    xpath=//div[@title='개인정보처리방침']
     Wait Until Element Is Visible    xpath=//h2[text()='개인정보처리방침']    5
     Screenshot
     Press Keys    NONE    ESC
-    Sleep    1
+    Sleep    0.5
 
 
 - 로그아웃
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Screenshot
     Click Element    xpath=//div[@title='로그아웃']
     Screenshot
 

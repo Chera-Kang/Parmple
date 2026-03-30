@@ -25,7 +25,6 @@ Suite Teardown    Finalize Test Suite
 
 4.1.1 재위탁통보서 작성하기
     Click Element    xpath=//button[@title='작성하기']
-    Sleep    1
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서 작성하기']    5
     Screenshot
 
@@ -65,6 +64,7 @@ Suite Teardown    Finalize Test Suite
 
 4.1.5. 재위탁 업체 추가
     Scroll Element Into View    xpath=//button[@title='작성하기']
+    Screenshot
     
     # 재위탁 업체 추가버튼
     Click Element    xpath=//button[@title='추가하기']

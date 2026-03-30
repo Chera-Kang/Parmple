@@ -50,6 +50,7 @@ Setup Registered Company Data
     Log To Console    csoNo : ${registeredCsoNo}
     Log To Console    ---------------------------------------
 
+
 # 등록상태 업체 정보 조회 (isSignedUp=False)
 Get Registered Company Info From Admin
     ${result}=    Run Process    ${PYTHON_EXE}    ${ADMIN_API_PY}    get_company    stdout=PIPE    stderr=PIPE
@@ -60,18 +61,18 @@ Get Registered Company Info From Admin
     [Return]    ${data}
 
 
-# 이메일 생성 (초단위 포함 고유형: yymmdd.hhmmss)
+# 이메일 생성
 Generate Email
     ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_GEN_PY}    chera.workspace    gmail.com    stdout=PIPE    stderr=PIPE
     ${email}=     Set Variable   ${result.stdout.strip()}
     [Return]    ${email}
+
 
 # 이메일 인증번호 추출
 Get Email Auth Code
     ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_READER_PY}    stdout=PIPE    stderr=PIPE
     ${code}=      Set Variable   ${result.stdout.strip()}
     [Return]    ${code}
-
 
 
 *** Test Cases ***
@@ -93,10 +94,8 @@ Get Email Auth Code
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
     Screenshot
     
-    ## 사업자 번호 입력
     ${bizNo}=      Get Biz Number
     Record Biz Number    ${bizNo}
-    # 결과 출력
     Log To Console    ---------------------------------------
     Log To Console    bizNo : ${bizNo}
     Log To Console    ---------------------------------------
@@ -113,23 +112,19 @@ Get Email Auth Code
 
 
 3. 파일 첨부
-    ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
     Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH}
     Screenshot
 
-    # 화면 스크롤
     Scroll Element Into View    xpath=//*[@id="name"]
     Sleep    0.5
 
 
 4. 이메일 입력 및 인증
-    ## 이메일 입력 
     ${EMAIL1}=    Generate Email
     Set Suite Variable    ${EMAIL1}
 
-    # 결과 출력
     Log To Console    \n---------------------------------------
     Log To Console    email : ${EMAIL1}
     Log To Console    ---------------------------------------
@@ -137,7 +132,6 @@ Get Email Auth Code
     Input Text    id=email    ${EMAIL1}
     Screenshot
 
-    # 인증번호 발송
     Click Element    xpath=//button[text()='인증번호 발송']
     Wait Until Element Is Visible    xpath=//h2[text()='이메일로 인증번호를 발송했습니다.']    5
     Screenshot
@@ -147,24 +141,20 @@ Get Email Auth Code
     # 인증번호 추출 및 입력 
     ${code}=    Get Email Auth Code
     
-    # 결과 출력
     Log To Console    \n---------------------------------------
     Log To Console    인증번호 : ${code}
     Log To Console    ---------------------------------------
 
-    # 인증번호 검증 (숫자인지 확인)
     Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
 
     Input Text    id=emailVerificationKey    ${code}
     Screenshot
     
-    # 클릭 전 스크롤 및 대기 
     Scroll Element Into View    xpath=//button[text()='인증하기']
     Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
     Click Element    xpath=//button[text()='인증하기']
     Screenshot
 
-    # 화면 스크롤
     Scroll Element Into View    xpath=//div[button[@id='termsAll']]
     Sleep    0.5
 
@@ -192,12 +182,10 @@ Get Email Auth Code
 
 
 8. 가입하기
-    # 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
     Screenshot
     
-    # 로그인 Page 로 이동
     Click Element    xpath=//button[text()='확인']
     Screenshot
 
@@ -216,37 +204,30 @@ Get Email Auth Code
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
 
-    
-
-
-
 
 11. 로그아웃
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
-    Click Element    xpath=//div[@title='로그아웃']
     Screenshot
-    Sleep    1
-
-
-
-
-
+    Click Element    xpath=//div[@title='로그아웃']
 
     ## 로그인 Page 
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
+
+12. 등록 상태인 업체 가입 Flow
 
     # 회원가입 버튼
     Execute Javascript    document.body.style.zoom='90%'
     Click Element    xpath=//a[text()='회원가입']
     Execute Javascript    document.body.style.zoom='100%'
 
-12. API 데이터 조회 테스트
+
+13. API 데이터 조회 테스트
     Setup Registered Company Data
 
 
-13. 사업자 번호 입력
+14. 사업자 번호 입력
     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
     Screenshot
     
@@ -261,25 +242,22 @@ Get Email Auth Code
     Input Text    id=csoNumber    ${registeredCsoNo}
     Screenshot
     Click Element    xpath=(//button[text()='확인'])[last()]
-    Screenshot
     Wait Until Element Is Visible    xpath=//h2[text()='사업자 정보가 확인되었습니다']    5
     Screenshot
     Click Element    xpath=(//button[text()='확인'])[last()]
 
-
     Wait Until Element Is Visible    xpath=//h1[text()='회원가입']    5
     Screenshot
 
-    # 화면 스크롤
     Scroll Element Into View    xpath=//*[@id="name"]
     Sleep    0.5
 
-14. 이메일 입력 및 인증
+
+15. 이메일 입력 및 인증
     ## 이메일 입력 
     ${EMAIL2}=    Generate Email
     Set Suite Variable    ${EMAIL2}
 
-    # 결과 출력
     Log To Console    \n---------------------------------------
     Log To Console    email : ${EMAIL2}
     Log To Console    ---------------------------------------
@@ -320,13 +298,13 @@ Get Email Auth Code
 
 
 
-15. 비밀번호 입력
+16. 비밀번호 입력
     Input Password    id=password    ${password}
     Input Password    id=passwordCheck    ${password}
     Sleep    1
 
 
-16. 회원정보 입력
+17. 회원정보 입력
     # 이름 
     Input Text    id=name    자동화테스트
     
@@ -337,13 +315,13 @@ Get Email Auth Code
     Screenshot
 
 
-17. 약관 동의
+18. 약관 동의
     Scroll Element Into View    xpath=//button[text()='가입하기']
     Click Button    id=termsAll
     Screenshot
 
 
-18. 가입하기
+19. 가입하기
     # 가입하기 버튼
     Click Button    xpath=//button[text()='가입하기']
     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
@@ -354,7 +332,7 @@ Get Email Auth Code
     Screenshot
 
 
-19. 로그인
+20. 로그인
     Input Text    name=email    ${EMAIL2}
     Press Key    name=password    ${password}
     Screenshot
@@ -364,15 +342,14 @@ Get Email Auth Code
 
 
 
-20. 로그아웃
+21. 로그아웃
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
-    Click Element    xpath=//div[@title='로그아웃']
     Screenshot
-    Sleep    1
+    Click Element    xpath=//div[@title='로그아웃']
 
 
-21. 아이디 찾기
+22. 아이디 찾기
     ## 로그인 Page 
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
@@ -395,11 +372,9 @@ Get Email Auth Code
     Screenshot
 
     Click Element    xpath=//button[text()='확인']
-    Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
-    Screenshot
+    
 
-
-22. 비밀번호 재설정
+23. 비밀번호 재설정
     ## 로그인 Page 
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
@@ -454,3 +429,4 @@ Get Email Auth Code
     Click Element    xpath=//button[text()='확인']
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
+
