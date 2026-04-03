@@ -18,11 +18,11 @@ Suite Teardown    Finalize Test Suite
 Generate Email
     ${result}=    Run Process    ${PYTHON_EXE}    ${EMAIL_GEN_PY}    chera.workspace    gmail.com    stdout=PIPE    stderr=PIPE
     ${email}=     Set Variable   ${result.stdout.strip()}
-    [Return]    ${email}
+    RETURN    ${email}
 
 
 *** Test Cases ***
-2.1 프로필
+1 프로필
     Login_CSO
 
     Click Element    xpath=//button[@aria-haspopup='menu']
@@ -30,16 +30,16 @@ Generate Email
     Screenshot
 
 
-2.2. 내 정보
+2. 내 정보 Page
     Click Element    xpath=//button[span[div[i[contains(@class, 'ri-user-line')]]]]
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     
 
-
-계정 정보
+2.1. 계정 정보
     Screenshot
 
-- 비밀번호 변경
+
+2.2. 비밀번호 변경
     Click Element    xpath=//button[span[text()='계정 관리']]
     Screenshot
 
@@ -59,7 +59,7 @@ Generate Email
     Screenshot
 
 
-- 계정 정보 수정
+2.3. 계정 정보 수정
     Click Element    xpath=//button[span[text()='계정 관리']]
     Screenshot
 
@@ -77,11 +77,12 @@ Generate Email
     Screenshot
 
 
-사업자 정보
+3. 사업자 정보
     Scroll Element Into View    xpath=//img[@alt='도장이미지']
     Screenshot
 
-    # 사업자등록증
+
+3.1. 사업자등록증
     Click Button    xpath=//button[text()='보기'][1]
     # 이미지 또는 PDF 중 하나라도 로드될 때까지 대기
     Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
@@ -89,7 +90,8 @@ Generate Email
     Press Keys    NONE    ESC
     Sleep    0.5
 
-    # 의약품 판촉영업 신고증 
+
+3.2. 의약품 판촉영업 신고증 
     Click Button    xpath=(//button[text()='보기'])[last()]
     # 이미지 또는 PDF 중 하나라도 로드될 때까지 대기
     Wait Until Element Is Visible    xpath=//img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]    10
@@ -98,10 +100,12 @@ Generate Email
     Sleep    0.5
 
 
-- 업체 계정 관리
+4. 업체 계정 관리
     Click Element    xpath=//button[span[text()='업체 관리']]
     Screenshot
 
+
+4.1. 업체 계정 관리 Page
     Click Element    xpath=//div[text()=' 업체 계정 관리']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 계정 관리']    5
     Screenshot
@@ -112,6 +116,8 @@ Generate Email
     Scroll Element Into View    ${last_delete_btn}
     Screenshot
 
+
+4.2. 계정 삭제
     Click Element    ${last_delete_btn}
     Wait Until Element Is Visible    xpath=//h2[text()='삭제할까요?']
     Screenshot
@@ -123,6 +129,8 @@ Generate Email
     Scroll Element Into View    ${last_delete_btn}
     Screenshot
     
+
+4.3. 계정 생성
     Click Element    xpath=//button[@title='계정 생성하기']
     Wait Until Element Is Visible    xpath=//h2[text()='계정 생성하기']
     Screenshot
@@ -146,7 +154,7 @@ Generate Email
     Sleep    1
 
 
-- CSO 교육 수료증 등록
+5. CSO 교육 수료증 등록
     Click Element    xpath=//button[span[text()='업체 관리']]
     Screenshot
 
@@ -154,10 +162,14 @@ Generate Email
     Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
     Screenshot
 
+
+5.1. 수료증 첨부
     Choose File     xpath=//*[@id="fileUuid"]//input    ${testfile_PATH}
     Wait Until Element Is Visible    xpath=//button[@title='삭제']    5
     Screenshot
 
+
+5.2. 수료일자
     Click Element    xpath=//div[span[text()='수료증 기재일']]
     Screenshot
 
@@ -165,6 +177,8 @@ Generate Email
     Click Element    xpath=//td[button[text()='${day}']]
     Screenshot
 
+
+5.3. 발급번호
     ${datetime}=    Evaluate    datetime.datetime.now().strftime('%Y-%m%d-%H%M%S')    modules=datetime
     Press Key    xpath=//input[@placeholder='발급번호를 입력해 주세요']    ${datetime}
     Screenshot
@@ -172,6 +186,8 @@ Generate Email
     Click Button    xpath=//button[text()='등록하기']
     Sleep    0.5
 
+
+5.4. 수료증 업데이트 확인
     Click Element    xpath=//dl[dt[text()='CSO 교육 수료증']]//button
     Wait Until Element Is Visible    xpath=//div[h2[text()='CSO 교육 수료 이력']]    5
     Execute Javascript    document.body.style.zoom='90%'
@@ -186,8 +202,7 @@ Generate Email
     Sleep    0.5
 
 
-
-- 도장 정보 관리
+6. 도장 정보 관리
     Scroll Element Into View    xpath=//img[@alt='도장이미지']
     Screenshot
 
@@ -198,6 +213,8 @@ Generate Email
     Wait Until Element Is Visible    xpath=//h2[text()='도장 정보 관리']    5
     Screenshot
 
+
+6.1. 직접 만들기
     Press Key    id=stampName    테스트
     Screenshot
     
@@ -211,6 +228,8 @@ Generate Email
     Scroll Element Into View    xpath=//img[@alt='도장이미지']
     Screenshot
 
+
+6.2. 파일 업로드
     Click Element    xpath=//button[span[text()='업체 관리']]
     Screenshot
 
@@ -240,7 +259,7 @@ Generate Email
     Screenshot
 
 
-- 약관
+7. 약관
     # 서비스 이용약관
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='서비스 이용약관']    5
@@ -262,11 +281,10 @@ Generate Email
     Sleep    0.5
 
 
-- 로그아웃
+8. 로그아웃
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
     Screenshot
     Click Element    xpath=//div[@title='로그아웃']
     Screenshot
-
 

@@ -16,7 +16,7 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-4.3. 받은 재위탁 통보서
+1. 받은 재위탁 통보서
     Login_pharm_pharm1
 
     Click Element    xpath=//a[span[text()='받은 재위탁 통보서']]
@@ -24,7 +24,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-4.3.1. 재위탁 통보서
+1.1. 재위탁 통보서
     Click Button    xpath=//button[@title='통보서']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
@@ -32,29 +32,29 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-4.3.2. 첨부파일
+1.2. 첨부파일
     Click Element    xpath=(//button[@title='파일'])[1]
     Wait Until Element Is Visible    xpath=//h2[text()='파일']    5
 
 
-4.3.2.1. 계약서
+1.3. 계약서
     Sleep    2
     Screenshot
 
 
-4.3.2.2. 수수료율
+1.4. 수수료율
     Click Element    xpath=//button[normalize-space(.)='수수료율']
     Sleep    2
     Screenshot
 
 
-4.3.2.3. 수료증
+1.5. 수료증
     Click Element    xpath=//button[normalize-space(.)='수료증']
     Sleep    2
     Screenshot
 
 
-4.3.2.4. 수료증(재위탁)
+1.6. 수료증(재위탁)
     Click Element    xpath=//button[normalize-space(.)='수료증(재위탁)']
     Sleep    2
     Screenshot

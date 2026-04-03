@@ -16,20 +16,20 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-4.1. 재위탁통보서
+1. 재위탁 통보서 관리 Page
     Login_CSO
     Click Element    xpath=//a[span[text()='재위탁 통보서 관리']]
     Sleep    1
     Screenshot
     
 
-4.1.1 재위탁통보서 작성하기
+1.1. 재위탁통보서 작성하기 Page
     Click Element    xpath=//button[@title='작성하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서 작성하기']    5
     Screenshot
 
 
-4.1.2. 제약사 선택
+1.2. 제약사 선택
     Click Element    xpath=//input[@placeholder='제약사 명 검색']
     Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬
     Screenshot
@@ -38,7 +38,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-4.1.3. 재위탁 사유, 기타
+1.3. 재위탁 사유, 기타
     # 재위탁 사유
     Input Text    name=reason    1
     Input Text    name=reason    ${EMPTY}
@@ -53,7 +53,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
     
 
-4.1.4. 통보서 기재일
+1.4. 통보서 기재일
     Scroll Element Into View    xpath=//button[@title='추가하기']
 
     Click Button    xpath=//button[@id='date']
@@ -62,10 +62,12 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-4.1.5. 재위탁 업체 추가
+1.5. 재위탁 업체
     Scroll Element Into View    xpath=//button[@title='작성하기']
     Screenshot
     
+
+1.6. 업체 추가
     # 재위탁 업체 추가버튼
     Click Element    xpath=//button[@title='추가하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 업체 추가하기']    5
@@ -85,7 +87,7 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-4.1.6. 재위탁통보서 작성하기
+1.7. 재위탁통보서 작성하기
     # 통보서 작성 Page 의 작성하기 버튼
     Click Button    xpath=//button[@title="작성하기"]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']    5
@@ -97,11 +99,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-4.1.7. 재위탁통보서 삭제/수정
+2. 재위탁통보서 삭제/수정
     Click Element    xpath=(//button[@title='재위탁통보서'])[1]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
 
+
+2.1. 삭제하기
     # 미전송 통보서 삭제하기
     Click Button    xpath=//button[text()='삭제하기']
     Wait Until Element Is Visible    xpath=//h2[text()='삭제할까요?']    5
@@ -110,6 +114,8 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
     Screenshot
 
+
+2.2. 수정하기
     # 미전송 통보서 정보 수정
     Click Element    xpath=(//button[@title='재위탁통보서'])[1]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
@@ -146,23 +152,23 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-4.1.8. 첨부파일
+3. 첨부파일
     Click Element    xpath=(//button[@title='파일'])[1]
     Wait Until Element Is Visible    xpath=//h2[text()='파일']    5
 
 
-4.1.8.1. 계약서
+3.1. 계약서
     Sleep    2
     Screenshot
 
 
-4.1.8.2. 수수료율
+3.2. 수수료율
     Click Element    xpath=//button[normalize-space(.)='수수료율']
     Sleep    2
     Screenshot
 
 
-4.1.8.3. 수료증
+3.3. 수료증
     Click Element    xpath=//button[normalize-space(.)='수료증']
     Sleep    2
     Screenshot
@@ -170,14 +176,14 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-4.2. 재위탁 통보서 전송
+4. 재위탁 통보서 전송
     ## 재위탁 통보서 작성 의 check box 선택 
     Wait Until Element Is Visible    xpath=//div[contains(@class,'ag-selection-checkbox')]    5
     Click Element    xpath=(//div[contains(@class,'ag-selection-checkbox')])[1]
     Screenshot
 
 
-4.2.1. 재위탁 통보 전송하기
+4.1. 재위탁 통보 전송하기
     # 전송하기 버튼 
     Click Button    xpath=//button[@title="전송하기"]
     Wait Until Element Is Visible   xpath=//h2[text()='1건의 통보서를 전송할까요?']    5

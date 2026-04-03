@@ -16,14 +16,15 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-3.7. 수탁 계약 
-
+1. 수탁 계약 Page
     Login_CSO
     
     Click Element    xpath=//a[span[text()='수탁 계약']]
     Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
     Screenshot
 
+
+1.1. 검색
     # 검색 
     Click Element    xpath=//button[span[text()="상호/법인명"]]
     Screenshot
@@ -36,17 +37,13 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-3.7.1. 수탁 업체 상세
+2. 수탁 업체 상세 (제약사)
     Click Element    xpath=//a[text()='투썬제약']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
 
-3.7.2. 첨부자료
-    Sleep    1
-
-
-3.7.2.1. 사업자등록증
+2.1. 사업자등록증
     Click Button    xpath=//button[text()='보기']
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
@@ -54,14 +51,14 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
 
 
-3.7.2.2. 계약관리 - 수수료율
+2.2. 계약관리 - 수수료율
     Click Button    xpath=//button[@title='수수료율']
     Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
     Screenshot
     Press Keys    NONE    ESC
 
 
-3.7.2.3. 계약관리 - 계약서
+2.3. 계약서
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
     Sleep    1
@@ -69,7 +66,7 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
 
 
-4. CSO 상세
+3. 수탁 업체 상세 (CSO)
     Go Back
     Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
     Screenshot
@@ -79,13 +76,15 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-4.1. 사업자등록증
+3.1. 사업자등록증
     Click Button    xpath=//button[text()='보기']
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
     Screenshot
     Press Keys    NONE    ESC
 
+
+3.2. 의약품 판촉영업 신고증
     Scroll Element Into View    xpath=//dl[dt[text()='의약품 판촉영업 신고증']]
     Sleep    1
     Click Button    xpath=(//button[text()='보기'])[last()]
@@ -95,14 +94,14 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
 
 
-4.2. 계약관리 - 수수료율
+3.3. 계약관리 - 수수료율
     Click Button    xpath=//button[@title='수수료율']
     Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
     Screenshot
     Press Keys    NONE    ESC
 
 
-4.3. 계약관리 - 계약서
+3.4. 계약관리 - 계약서
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
     Sleep    1

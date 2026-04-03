@@ -19,13 +19,13 @@ ${unused_BizNo}    None
 
 *** Keywords ***
 *** Test Cases ***
-3.1 위탁계약
+1. 위탁 계약 Page 
     Login_CSO
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
     Screenshot
 
 
-3.1.1. 업체 추가하기 (가입 업체)
+1.1. 업체 추가하기 (가입 업체)
     ##### 가입된 업체 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']
@@ -33,40 +33,38 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.1.2. 사업자번호 입력
+1.2. 사업자번호 입력
     # 직전 회원가입한 사업자번호 입력
     ${lastBizNo}=    Get Last Biz Number
-    Press Key    id=bizNumber    ${lastBizNo}
+    Input Text    id=bizNumber    ${lastBizNo}
     Screenshot
     Click Button    xpath=//button[text()='확인하기']
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
     Screenshot
 
 
-3.1.3. 관리코드
-    # 위탁업체 추가하기 
-    # 관리코드
+1.3. 관리코드
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=managementCode    ${managementCode}
+    Input Text    name=managementCode    ${managementCode}
 
 
-3.1.4. 담당자 정보    
+1.4. 담당자 정보    
     # 담당자 이름
-    Press Key    name=managerName    자동화
+    Input Text    name=managerName    자동화
     
     ## 담당자 휴대폰 번호 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
     ${phone_number}=    Set Variable    010${random_number}
-    Press Key    name=managerPhone    ${phone_number}
+    Input Text    name=managerPhone    ${phone_number}
     
     # 담당자 이메일 
-    Press Key    name=managerEmail    auto@mation.com
+    Input Text    name=managerEmail    auto@mation.com
     Screenshot
 
     # 추가하기
-    Click Button    xpath=//button[text()='추가하기']
-    Wait Until Element Is Visible    xpath=//button[normalize-space(.)='나중에']    5
+    Click Button    xpath=//button[text()='추가하기'][last()]
+    Wait Until Element Is Visible    xpath=//h2[text()='계약서를 등록할까요?']    5
     Screenshot
 
     # 확인버튼
@@ -75,7 +73,7 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.1.5. 업체 추가하기 (미가입 업체)
+2.1. 업체 추가하기 (미가입 업체)
     ##### 미가입사용자 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
@@ -83,10 +81,10 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.1.6. 사업자번호 입력
+2.2. 사업자번호 입력
     ${bizNo}=     Get Biz Number
     Set Suite Variable    ${bizNo}
-    Press Key    id=bizNumber    ${bizNo}
+    Input Text    id=bizNumber    ${bizNo}
     Screenshot
 
     Click Button    xpath=//button[text()='확인하기']
@@ -94,7 +92,7 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.1.7. 파일첨부
+2.3. 파일첨부
     ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
@@ -102,45 +100,46 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.1.8. 관리코드
+2.4. 관리코드
     # 관리코드
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=managementCode    ${managementCode}.
+    Input Text    name=managementCode    ${managementCode}.
     
 
-3.1.9. 담당자 정보
+2.5. 담당자 정보
     # 담당자 이름
-    Press Key    name=managerName    자동화
+    Input Text    name=managerName    자동화
 
     ## 담당자 휴대폰 번호 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
     ${phone_number}=    Set Variable    010${random_number}
-    Press Key    name=managerPhone    ${phone_number}
+    Input Text    name=managerPhone    ${phone_number}
     
     # 담당자 이메일 
-    Press Key    name=managerEmail    auto@mation.com
+    Input Text    name=managerEmail    auto@mation.com
     Screenshot
 
     # 추가하기
-    Click Button    xpath=//button[text()='추가하기']
+    Click Button    xpath=//button[text()='추가하기'][last()]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 등록 요청이 완료되었습니다']    5
     Screenshot
 
     # 확인버튼
-    Click Element    xpath=//button[text()='확인']
-    sleep    1
+    Click Button    xpath=//button[normalize-space(.)='확인']
+    sleep    0.5
 
 
-3.1.10. 상세
+3. 상세 Page (미가입 업체)
     Click Element    xpath=//a[text()="${bizNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+
+
+3.1. 업체 정보
     Screenshot
 
 
-
-3.1.11. 수료증
-    sleep   1
+3.2. CSO 교육 수료증
     Click Element    xpath=//button[text()='등록']
     Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
     Screenshot
@@ -197,17 +196,20 @@ ${unused_BizNo}    None
 
     Go Back
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
+    Sleep    3
 
 
-
-3.2. 업체 상세
+4. 상세 Page (가입 업체)
     ${lastBizNo}=    Get Last Biz Number
-    Click Element    xpath=//a[translate(normalize-space(text()), "-", "") = "${lastBizNo}"]
+
+    Click Element    xpath=//a[translate(normalize-space(.), "-", "") = "${lastBizNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+
+4.1. 업체 정보
     Screenshot
 
 
-3.2.1. 관리코드 
+4.2. 관리코드 
     # 관리코드 수정 버튼 
     Click Button    xpath=//button[@title='수정'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='관리 코드 수정']    5
@@ -220,26 +222,22 @@ ${unused_BizNo}    None
     Click Element    name=managementCode
     Click Element    xpath=//input[@name="managementCode"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=managementCode    ${managementCode}F
+    Input Text    name=managementCode    ${managementCode}F
     Screenshot
     Click Button    xpath=//button[normalize-space(.)='저장하기']
     Screenshot
 
 
-3.2.2. 첨부파일
+4.3. 사업자등록증/CSO신고증
     Scroll Element Into View    xpath=//dt[text()='이메일']
     Sleep    1
 
-
-3.2.2.1. 사업자등록증
     Click Button    xpath=//button[text()='보기'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
     Screenshot
     Press Keys    NONE    ESC
 
-
-3.2.2.2. 의약품 판촉영업 신고증
     Click Button    xpath=(//button[text()='보기'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='영업신고증']    5
     Sleep    2
@@ -247,16 +245,7 @@ ${unused_BizNo}    None
     Press Keys    NONE    ESC
 
 
-# 3.2.2.3. CSO 교육 수료증
-#     Click Element    xpath=//button[text()='등록']
-#     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
-#     Screenshot
-#     Click Button    xpath=//button[text()='확인']
-#     Sleep    1
-
-
-
-3.2.3. 담당자 정보
+4.4. 담당자 정보
     Click Button    xpath=(//button[@title='수정'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='담당자 정보 수정']    5
     Screenshot
@@ -265,7 +254,7 @@ ${unused_BizNo}    None
     Click Element    name=name
     Click Element    xpath=//input[@name="name"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=name    자동화테스트
+    Input Text    name=name    자동화테스트
 
     # 연락처 
     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
@@ -273,47 +262,47 @@ ${unused_BizNo}    None
     Click Element    name=phone
     Click Element    xpath=//input[@name="phone"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=phone    ${phone_number}
+    Input Text    name=phone    ${phone_number}
 
     # 이메일 
     Click Element    name=email
     Click Element    xpath=//input[@name="email"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=email    automation@test.com
+    Input Text    name=email    automation@test.com
     Screenshot
 
     Click Button    xpath=//button[normalize-space(.)='저장하기']
     Screenshot
 
 
-3.4. 계약 관리
+5. 계약 관리
     Scroll Element Into View    xpath=//h2[text()='업체 상세 보기']
 
 
-3.4.1. 계약 추가
+5.1. 계약 추가
     Click Button    xpath=//button[normalize-space(.)='계약 추가']
     Wait Until Element Is Visible    xpath=//h2[text()='계약 추가']    5
     Screenshot
 
 
-3.4.2. 계약 제목
+5.2. 계약 제목
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=contractTitle    자동화테스트 ${managementCode}
+    Input Text    name=contractTitle    자동화테스트 ${managementCode}
     Screenshot
 
 
-3.4.3. 파일 첨부
+5.3. 파일 첨부
     Choose File     xpath=//*[@id="contractFile"]//input    ${testfile_PATH}
     Screenshot
 
 
-3.4.4. 수수료율
+5.4. 수수료율
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
     Click Element    id=direct
     Wait Until Element Is Visible    name=commissionText    5
-    Press Key    name=commissionText    자동화테스트 ${managementCode}
+    Input Text    name=commissionText    자동화테스트 ${managementCode}
     Screenshot
 
     # 계약 - 추가하기 버튼
@@ -331,7 +320,7 @@ ${unused_BizNo}    None
     # 계약 제목 
     ${datetime}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d-%H%M')
     ${managementCode}=    Set Variable    ${datetime}
-    Press Key    name=contractTitle    자동화테스트 ${managementCode}
+    Input Text    name=contractTitle    자동화테스트 ${managementCode}
 
     # 파일 첨부 
     Choose File     xpath=//*[@id="contractFile"]//input    ${testfile_PATH}
@@ -348,7 +337,7 @@ ${unused_BizNo}    None
     Sleep    1
 
 
-3.4.5. 수수료율 확인
+5.5. 수수료율 확인
     Click Button    xpath=//button[@title='수수료율']
     Wait Until Element Is Visible    xpath=//h2[text()='수수료율']    5
     Screenshot
@@ -356,7 +345,7 @@ ${unused_BizNo}    None
     Sleep    0.5
 
 
-3.4.6. 계약서 확인
+5.6. 계약서 확인
     Click Button    xpath=//button[@title='계약서']
     Wait Until Element Is Visible    xpath=//h2[text()='계약서']    5
     Screenshot
@@ -364,7 +353,7 @@ ${unused_BizNo}    None
     Sleep    0.5
 
 
-3.4.7. 계약 삭제
+5.7. 계약 삭제
     Click Element    css=div.ag-body-horizontal-scroll
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
     Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
@@ -384,7 +373,7 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.5. 계약 - 재위탁통보서
+6. 계약 - 재위탁통보서
     Click Button    xpath=//button[@title='재위탁 통보서'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서']    5
     Screenshot
@@ -395,27 +384,27 @@ ${unused_BizNo}    None
     Scroll Element Into View    xpath=//h3[text()='제약사']
 
 
-3.5.1. 재위탁 사유, 기타
+6.1. 재위탁 사유, 기타
     Click Element    name=reason
     Click Element    xpath=//input[@name="reason"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=reason    automation test
+    Input Text    name=reason    automation test
     Sleep    0.5
     Click Element    name=note
     # Click Element    xpath=//input[@name="note"]/following-sibling::div/button
     Sleep    0.5
-    Press Key    name=note    automation test
+    Input Text    name=note    automation test
     Screenshot
 
 
-3.5.2. 통보서 기재일
+6.2. 통보서 기재일
     Click Element    id=created-date
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
 
 
-3.5.3. 제약사 추가
+6.3. 제약사 추가
     Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
     Screenshot
     Click Element    xpath=//button[text()='추가하기']
@@ -424,7 +413,7 @@ ${unused_BizNo}    None
 
 
     # 제약사 검색
-    Press Key    xpath=//input[@placeholder='제약사 명 검색']    팜플
+    Input Text    xpath=//input[@placeholder='제약사 명 검색']    팜플
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
     Click Element    xpath=//div[text()='팜플제약']/ancestor::div[contains(@class,'ag-row')]//button
@@ -433,7 +422,7 @@ ${unused_BizNo}    None
     Click Element    xpath=//input[@placeholder='제약사 명 검색']
     Click Element    xpath=//input[@placeholder='제약사 명 검색']/following-sibling::div/button
 
-    Press Key    xpath=//input[@placeholder='제약사 명 검색']    투썬
+    Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
     Click Element    xpath=//div[text()='투썬제약']/ancestor::div[contains(@class,'ag-row')]//button
@@ -448,7 +437,7 @@ ${unused_BizNo}    None
     Screenshot
 
 
-3.5.4. 통보서 작성하기
+6.4. 통보서 작성하기
     Click Element    xpath=//button[text()='작성하기']
     Wait Until Element Is Visible    xpath=//h2[text()='재위탁 통보서를 작성할까요?']    5
     Screenshot
@@ -461,7 +450,7 @@ ${unused_BizNo}    None
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
 
 
-3.6. 검색
+7. 검색
     Click Element    xpath=//button[span[text()="상태 (전체)"]]
     Wait Until Element Is Visible    xpath=//div[span[text()="등록"]]    5
     Screenshot
@@ -481,7 +470,7 @@ ${unused_BizNo}    None
     Screenshot
 
     ${datetime_monthday}=    Evaluate    __import__('datetime').datetime.now().strftime('%m%d')
-    Press Key    xpath=//input[@placeholder="검색어를 입력해 주세요"]    ${datetime_monthday}
+    Input Text    xpath=//input[@placeholder="검색어를 입력해 주세요"]    ${datetime_monthday}
     Screenshot
 
     Click Element    xpath=//button[span[text()='검색']]

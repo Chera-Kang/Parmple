@@ -16,42 +16,43 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-
-2.1 프로필
+1. 필터링 직접 조회
     Login_CSO
 
     Scroll Element Into View    xpath=//a[span[text()='필터링 직접 조회']]
     Click Element    xpath=//a[span[text()='필터링 직접 조회']]
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 직접 조회']    5
     Screenshot
-    
+
+
+1.1. 업체 선택
     Click Element    xpath=//button[@role='combobox' and contains(., '제약사를 선택해 주세요')]
-    Sleep    0.5
-
-    # Click Element    xpath=//span[text()='투썬제약'][last()]
-    Press Keys    None    ARROW_DOWN
-    Press Keys    None    ARROW_DOWN
-    Press Keys    None    ENTER
+    Wait Until Element Is Visible    xpath=(//div[span[text()='투썬제약']])[last()]    5
     Screenshot
 
+    Click Element    xpath=(//div[span[text()='투썬제약']])[last()]
+    Screenshot
+
+
+1.2. 공지사항
     Click Element    xpath=//button[text()='다음']
-    Sleep    0.5
     Screenshot
 
+
+1.3. 병의원 검색
     Click Element    xpath=//button[text()='다음']
-    Sleep    0.5
     Screenshot
 
-    # 병의원 검색
     Press Key    xpath=//input[@placeholder='병의원명을 입력해 주세요']    자동화테스트
-    Sleep    1
+    Wait Until Element Is Visible    xpath=//div[span[span[text()='자동화테스트']]]    5
+    Click Element    xpath=//div[span[span[text()='자동화테스트']]]
     Screenshot
-    Press Keys    None    ENTER
-    Sleep    1
 
-    Press Key    xpath=//input[@placeholder='-없이 숫자만 가능']    6046400707
+    Input Text    xpath=//input[@placeholder='-없이 숫자만 가능']    6046400707
     Screenshot
     
+
+1.4. 조회 결과
     Click Element    xpath=//button[text()='조회하기']
     Wait Until Element Is Visible    xpath=//h2[text()='필터링 조회 결과']    5
     Screenshot
@@ -60,7 +61,7 @@ Suite Teardown    Finalize Test Suite
     Sleep    0.5
 
 
-    # 검색
+2. 검색
     Click Element    xpath=//button[span[text()='조회 결과(전체)']]
     Screenshot
     Click Element    xpath=(//div[span[text()="거래 불가"]])[last()]
