@@ -228,6 +228,7 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//h2[text()='계약서 전송하기']    5
     Screenshot
 
+
 6.1. 서명 가능 기한
     Click Element    xpath=//button[div[span[text()='서명 가능 기한']]]
     Screenshot
@@ -235,12 +236,14 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=(//button[@name='day' and not(@disabled)])[1]
     Screenshot
 
+
 6.2. 전자계약 이용약관
     Click Element    xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]]
     Screenshot
 
     Click Element    id=termsAll
     Screenshot
+
 
 6.3. 전송하기
     # 전송하기 버튼 클릭 (가로막힘 문제를 방지하기 위해 JavaScript 클릭 활용)
@@ -257,6 +260,7 @@ Suite Teardown    Finalize Test Suite
     Click Element    xpath=//button[span[text()='검색 초기화']]
     Sleep    1
     # 목록 계약서 확인을 위한 검색 초기화 동작
+
 
 7.1. 계약서 확인
     Click Element    xpath=//button[@title='계약서']

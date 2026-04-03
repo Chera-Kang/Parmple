@@ -96,7 +96,7 @@ ${unused_BizNo}    None
     ## 파일 첨부    
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
-    Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH}
+    Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH2}
     Screenshot
 
 

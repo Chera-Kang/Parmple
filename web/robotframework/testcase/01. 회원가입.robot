@@ -117,7 +117,7 @@ Get Email Auth Code
 1.3. 파일 첨부 (사업자등록증/CSO신고증)
     Choose File     xpath=//*[@id="bizRegCertFileUuid"]//input    ${testfile_PATH}
     Sleep    0.5
-    Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH}
+    Choose File     xpath=//*[@id="salesCertFileUuid"]//input    ${testfile_PATH2}
     Screenshot
 
     Scroll Element Into View    xpath=//*[@id="name"]

@@ -24,6 +24,7 @@ ${RES_DIR}            ${ROOT_DIR}/common/resources
 ${SCREENSHOT_DIR}     ${ROOT_DIR}/screenshots
 ${TESTFILE_DIR}       ${RES_DIR}/testfile
 ${TESTFILE_PATH}      ${TESTFILE_DIR}/Sameple_PDF.pdf
+${TESTFILE_PATH2}     ${TESTFILE_DIR}/Sameple_PDF_2.pdf
 ${BIZNO_FILE}         ${RES_DIR}/used_bizNo.txt
 ${PYTHON_EXE}         ${ROOT_DIR}/.venv/Scripts/python.exe
 ${GSHEET_READER_PY}   ${RES_DIR}/gsheet_reader.py
@@ -40,10 +41,12 @@ Initialize Test Suite
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
 
+
 # Test Suite 종료
 Finalize Test Suite
     Log To Console    ---------------------------------------------------------- Closing Browser ---
     Close Browser
+
 
 # 스크린샷
 Screenshot
@@ -51,6 +54,7 @@ Screenshot
     Sleep    0.5
     Capture Page Screenshot    ${screenshot_DIR}/screenshot_${SetTime}.png
     Sleep    0.5
+
 
 # 새로운 사업자번호 조회 (Google Sheet에서 가져오기)
 Get Biz Number
@@ -69,6 +73,7 @@ Get Biz Number
 
     RETURN    ${biz_no}
 
+
 # 사업자번호 하이픈 제거 및 파일 기록
 Record Biz Number
     [Arguments]    ${raw_biz_no}
@@ -82,6 +87,7 @@ Record Biz Number
     Log To Console    Recorded bizNo : ${clean_biz_no}
 
     RETURN    ${clean_biz_no}
+
 
 # 마지막으로 사용했던 사업자 번호 찾기 
 Get Last Biz Number
@@ -110,6 +116,8 @@ Login_CSO
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
     Sleep    1
 
+
+# CSO 3 계정 로그인
 Login_CSO3
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Sleep    0.5
@@ -119,6 +127,7 @@ Login_CSO3
     Click Button    xpath=//button[text()='로그인']
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
     Sleep    1
+
 
 # 제약사 계정 로그인
 Login_pharm_pharm1
@@ -131,6 +140,7 @@ Login_pharm_pharm1
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
     Sleep    1
 
+
 # 삼익제약 계정 로그인
 Login_pharm_samik
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
@@ -141,7 +151,8 @@ Login_pharm_samik
     Click Button    xpath=//button[text()='로그인']
     Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
     Sleep    1
-    
+
+
 # 로그아웃 
 Logout
     Sleep    0.5
@@ -151,7 +162,6 @@ Logout
     Click Element    xpath=//div[@title='로그아웃']
     Screenshot
     Sleep    1
-
 
 
 # [Common] .env 파일에서 변수 강제 로드 (개별 파일 실행용)
@@ -167,3 +177,4 @@ Load Login Credentials
         ${key}    ${val}=    Split String    ${line}    separator==    max_split=1
         Set Global Variable    \${${key.strip()}}    ${val.strip()}
     END
+
