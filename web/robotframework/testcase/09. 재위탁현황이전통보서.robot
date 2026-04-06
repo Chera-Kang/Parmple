@@ -52,6 +52,7 @@ Suite Teardown    Finalize Test Suite
 
 2.1. 업체 정보
     Click Element    xpath=//button[normalize-space(.)='업체 정보']
+    Sleep    1
+    Click Element    xpath=(//div[@role='gridcell' and @col-id='bizName'])[1]
     Wait Until Element Is Visible    xpath=//h2[text()='업체 정보 수정']    5
     Screenshot
-

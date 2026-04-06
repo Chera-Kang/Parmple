@@ -112,6 +112,7 @@ Generate Email
 
     # 마지막 삭제 버튼으로 스크롤 후 클릭 시도
     ${last_delete_btn}=    Set Variable    xpath=(//button[@title='삭제'])[last()]
+    Set Suite Variable    ${last_delete_btn}
     Scroll Element Into View    ${last_delete_btn}
     Scroll Element Into View    ${last_delete_btn}
     Screenshot
