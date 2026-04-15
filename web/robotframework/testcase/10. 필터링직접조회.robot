@@ -27,10 +27,10 @@ Suite Teardown    Finalize Test Suite
 
 1.1. 업체 선택
     Click Element    xpath=//button[@role='combobox' and contains(., '제약사를 선택해 주세요')]
-    Wait Until Element Is Visible    xpath=(//div[span[text()='투썬제약']])[last()]    5
+    Wait Until Element Is Visible    xpath=(//div[span[text()='투썬1제약']])[last()]    5
     Screenshot
 
-    Click Element    xpath=(//div[span[text()='투썬제약']])[last()]
+    Click Element    xpath=(//div[span[text()='투썬1제약']])[last()]
     Screenshot
 
 

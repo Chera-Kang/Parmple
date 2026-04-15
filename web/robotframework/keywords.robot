@@ -113,7 +113,7 @@ Login_CSO
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']
     Sleep    1
 
 
@@ -125,7 +125,7 @@ Login_CSO3
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']
     Sleep    1
 
 
@@ -137,7 +137,7 @@ Login_pharm_pharm1
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']
     Sleep    1
 
 
@@ -149,7 +149,7 @@ Login_pharm_samik
     Press Key    name=password    ${password}
     Screenshot
     Click Button    xpath=//button[text()='로그인']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']
     Sleep    1
 
 

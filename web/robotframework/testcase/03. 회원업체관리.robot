@@ -19,9 +19,10 @@ ${unused_BizNo}    None
 
 *** Keywords ***
 *** Test Cases ***
-1. 위탁 계약 Page 
+1. 회원 업체 관리 Page 
     Login_CSO
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
+
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']    5
     Screenshot
 
 
@@ -29,7 +30,7 @@ ${unused_BizNo}    None
     ##### 가입된 업체 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 추가']    5
     Screenshot
 
 
@@ -39,7 +40,7 @@ ${unused_BizNo}    None
     Input Text    id=bizNumber    ${lastBizNo}
     Screenshot
     Click Button    xpath=//button[text()='확인하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 추가']    5
     Screenshot
 
 
@@ -77,7 +78,7 @@ ${unused_BizNo}    None
     ##### 미가입사용자 추가 
     # 업체 추가하기 
     Click Button    xpath=//button[normalize-space(.)='추가하기']    #추가하기 버튼 
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 추가']    5
     Screenshot
 
 
@@ -88,7 +89,7 @@ ${unused_BizNo}    None
     Screenshot
 
     Click Button    xpath=//button[text()='확인하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 업체 추가']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 추가']    5
     Screenshot
 
 
@@ -195,7 +196,7 @@ ${unused_BizNo}    None
 
 
     Go Back
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']    5
     Sleep    3
 
 
@@ -446,8 +447,8 @@ ${unused_BizNo}    None
     Screenshot
 
     # 위탁 계약 page로 복귀
-    Click Element    xpath=//a[span[text()='위탁 계약']]
-    Wait Until Element Is Visible    xpath=//h2[text()='위탁 계약']    5
+    Click Element    xpath=//a[span[text()='회원 업체 관리 ']]
+    Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']    5
 
 
 7. 검색

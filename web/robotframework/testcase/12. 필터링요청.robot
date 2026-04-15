@@ -18,8 +18,8 @@ Suite Teardown    Finalize Test Suite
 1. 필터링 요청
     Login_CSO
 
-    Scroll Element Into View    xpath=//a[span[text()='필터링 요청']]
-    Click Element    xpath=//a[span[text()='필터링 요청']]
+    Scroll Element Into View    xpath=//a[span[text()='필터링 요청하기']]
+    Click Element    xpath=//a[span[text()='필터링 요청하기']]
     Screenshot
 
 
@@ -68,7 +68,7 @@ Suite Teardown    Finalize Test Suite
 2.4. 문의하기
     # 필터링 요청하기 
     Click Button    xpath=//button[@title='요청하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청하기']    5
     Screenshot
 
 
@@ -110,7 +110,7 @@ Suite Teardown    Finalize Test Suite
 
     # 필터링 요청하기 
     Click Button    xpath=//button[@title='요청하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='필터링 요청하기']    5
     Screenshot
 
 

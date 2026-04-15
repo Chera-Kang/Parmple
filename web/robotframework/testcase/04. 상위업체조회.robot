@@ -16,11 +16,11 @@ Suite Teardown    Finalize Test Suite
 *** Variables ***
 *** Keywords ***
 *** Test Cases ***
-1. 수탁 계약 Page
+1. 상위 업체 조회 Page
     Login_CSO
     
-    Click Element    xpath=//a[span[text()='수탁 계약']]
-    Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
+    Click Element    xpath=//a[span[text()='상위 업체 조회']]
+    Wait Until Element Is Visible    xpath=//h2[text()='상위 업체 조회']    5
     Screenshot
 
 
@@ -37,8 +37,8 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-2. 수탁 업체 상세 (제약사)
-    Click Element    xpath=//a[text()='투썬제약']
+2. 상위 업체 상세 (제약사)
+    Click Element    xpath=//a[text()='842-88-83121']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
@@ -66,12 +66,12 @@ Suite Teardown    Finalize Test Suite
     Press Keys    NONE    ESC
 
 
-3. 수탁 업체 상세 (CSO)
+3. 상위 업체 상세 (CSO)
     Go Back
-    Wait Until Element Is Visible    xpath=//h2[text()='수탁 계약']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='상위 업체 조회']    5
     Screenshot
     
-    Click Element    xpath=//a[text()='투썬인베스트 주식회사']
+    Click Element    xpath=//a[text()='129-86-37855']
     Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
     Screenshot
 
