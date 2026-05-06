@@ -133,7 +133,7 @@ ${unused_BizNo}    None
 
 3. 상세 Page (미가입 업체)
     Click Element    xpath=//a[text()="${bizNo}"]
-    Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='상세 보기']    5
 
 
 3.1. 업체 정보
@@ -141,7 +141,11 @@ ${unused_BizNo}    None
 
 
 3.2. CSO 교육 수료증
-    Click Element    xpath=//button[text()='등록']
+    # CSO 교육 수료증 등록 버튼 선택
+    ${REG_BUTTON}=    Set Variable    xpath=//tr[contains(@class, 'lg:table-row') and .//th[text()='CSO 교육 수료증']]//button[text()='등록']
+    Wait Until Element Is Visible    ${REG_BUTTON}    10
+    Click Button                     ${REG_BUTTON}
+
     Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
     Screenshot
 
@@ -204,7 +208,7 @@ ${unused_BizNo}    None
     ${lastBizNo}=    Get Last Biz Number
 
     Click Element    xpath=//a[translate(normalize-space(.), "-", "") = "${lastBizNo}"]
-    Wait Until Element Is Visible    xpath=//h2[text()='업체 상세 보기']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='상세 보기']    5
 
 4.1. 업체 정보
     Screenshot
@@ -212,7 +216,7 @@ ${unused_BizNo}    None
 
 4.2. 관리코드 
     # 관리코드 수정 버튼 
-    Click Button    xpath=//button[@title='수정'][1]
+    Click Button    xpath=(//button[text()='수정'])[last()]
     Wait Until Element Is Visible    xpath=//h2[text()='관리 코드 수정']    5
     Screenshot
 
@@ -233,7 +237,7 @@ ${unused_BizNo}    None
     Scroll Element Into View    xpath=//dt[text()='이메일']
     Sleep    1
 
-    Click Button    xpath=//button[text()='보기'][1]
+    Click Button    xpath=(//button[text()='보기'])[last()-1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
     Sleep    2
     Screenshot
@@ -247,7 +251,7 @@ ${unused_BizNo}    None
 
 
 4.4. 담당자 정보
-    Click Button    xpath=(//button[@title='수정'])[last()]
+    Click Button    xpath=//button[@title='수정']
     Wait Until Element Is Visible    xpath=//h2[text()='담당자 정보 수정']    5
     Screenshot
 
@@ -277,7 +281,7 @@ ${unused_BizNo}    None
 
 
 5. 계약 관리
-    Scroll Element Into View    xpath=//h2[text()='업체 상세 보기']
+    Scroll Element Into View    xpath=//h3[text()='계약관리']
 
 
 5.1. 계약 추가
@@ -312,6 +316,9 @@ ${unused_BizNo}    None
     Screenshot
     Click Button    xpath=//button[normalize-space(.)='나중에']
     Sleep    1
+
+    Scroll Element Into View    xpath=//button[@title='처음']
+    Screenshot
 
     #### 계약 1개 더 추가
     # 계약 추가
@@ -355,18 +362,6 @@ ${unused_BizNo}    None
 
 
 5.7. 계약 삭제
-    Click Element    css=div.ag-body-horizontal-scroll
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-    Press Keys       css=div.ag-body-horizontal-scroll    ARROW_RIGHT
-
     Click Button    xpath=//button[@title='삭제'][1]
     Wait Until Element Is Visible    xpath=//h2[text()='삭제할까요?']    5
     Screenshot

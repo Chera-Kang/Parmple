@@ -110,7 +110,7 @@ Suite Teardown    Finalize Test Suite
     Click Button    xpath=//button[text()='삭제하기']
     Wait Until Element Is Visible    xpath=//h2[text()='삭제할까요?']    5
     Screenshot
-    Click Button    xpath=//button[@title='삭제하기']
+    Click Button    xpath=(//button[text()='삭제하기'])[last()]
     Sleep    0.5
     Screenshot
 

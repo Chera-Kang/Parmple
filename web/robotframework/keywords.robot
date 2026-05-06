@@ -9,6 +9,7 @@ Library    Process
 *** Variables ***
 # Service URL
 ${URL}    https://qa.erp.parmple.com/
+${URL_Admin}    https://qa.admin.parmple.com/
 
 # Account
 ${id_CSO}        %{ID_CSO=}
@@ -39,6 +40,13 @@ Initialize Test Suite
     Load Login Credentials        # 환경변수 강제 로드 (단일 파일 실행 및 run.py 모두 대응)
     Log To Console    --- Opening Browser ----------------------------------------------------------
     Open Browser    ${URL}    Chrome
+    Maximize Browser Window
+
+
+Initialize Admin Test Suite
+    Load Login Credentials        # 환경변수 강제 로드 (단일 파일 실행 및 run.py 모두 대응)
+    Log To Console    --- Opening Browser ----------------------------------------------------------
+    Open Browser    ${URL_Admin}    Chrome
     Maximize Browser Window
 
 

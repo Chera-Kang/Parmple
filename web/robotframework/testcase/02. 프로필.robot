@@ -24,14 +24,11 @@ Generate Email
 *** Test Cases ***
 1 프로필
     Login_CSO
-
-    Click Element    xpath=//button[@aria-haspopup='menu']
-    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
-    Screenshot
+    Sleep    1
 
 
 2. 내 정보 Page
-    Click Element    xpath=//button[span[div[i[contains(@class, 'ri-user-line')]]]]
+    Click Element    xpath=//button[@title='내 정보']
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     
 
@@ -260,11 +257,23 @@ Generate Email
     Screenshot
 
 
-7. 약관
-    # 서비스 이용약관
+7. 추가 메뉴
     Click Element    xpath=//button[@aria-haspopup='menu']
     Wait Until Element Is Visible    xpath=//div[@title='서비스 이용약관']    5
     Screenshot
+
+
+7.1. 서비스 이용 매뉴얼
+    Click Element    xpath=//div[@title='서비스 이용 매뉴얼']
+    Wait Until Element Is Visible    xpath=//h2[text()='서비스 이용 매뉴얼']    5
+    Screenshot
+
+
+7.2. 약관
+    Click Element    xpath=//button[@aria-haspopup='menu']
+    Wait Until Element Is Visible    xpath=//div[@title='서비스 이용약관']    5
+
+    # 서비스 이용약관
     Click Element    xpath=//div[@title='서비스 이용약관']
     Wait Until Element Is Visible    xpath=//h2[text()='서비스 이용약관']    5
     Screenshot
@@ -283,9 +292,12 @@ Generate Email
 
 
 8. 로그아웃
-    Click Element    xpath=//button[@aria-haspopup='menu']
-    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Click Element    xpath=//button[@title='내 정보']
+    Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
-    Click Element    xpath=//div[@title='로그아웃']
+
+    Scroll Element Into View    xpath=//button[text()=' 로그아웃']
+    Screenshot
+    Click Element    xpath=//button[text()=' 로그아웃']
     Screenshot
 

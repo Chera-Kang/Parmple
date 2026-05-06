@@ -6,6 +6,7 @@
 - Next3 
     screentshot 확인?
     screentshot 을 모아서 mp4 로 변환 검토
+    -> 취소
 
 - Next4
 >필터링 (조회, 요청, 영업 거래처)

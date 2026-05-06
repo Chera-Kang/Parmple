@@ -209,14 +209,14 @@ Get Email Auth Code
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
 
-    Click Element    xpath=//button[@aria-haspopup='menu']
-    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Scroll Element Into View    xpath=//button[text()=' 로그아웃']
     Screenshot
-    Click Element    xpath=//div[@title='로그아웃']
+    Click Element    xpath=//button[text()=' 로그아웃']
 
     ## 로그인 Page 
     Wait Until Element Is Visible    xpath=//a[normalize-space(.)='회원가입']    5
     Screenshot
+
 
 2. 등록 상태인 업체 회원가입 Flow
     # 회원가입 버튼
@@ -246,7 +246,7 @@ Get Email Auth Code
     Input Text    id=csoNumber    ${registeredCsoNo}
     Screenshot
     Click Element    xpath=(//button[text()='확인'])[last()]
-    Wait Until Element Is Visible    xpath=//h2[text()='사업자 정보가 확인되었습니다']    5
+    Sleep    1
     Screenshot
     Click Element    xpath=(//button[text()='확인'])[last()]
 
@@ -348,10 +348,9 @@ Get Email Auth Code
     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
     Screenshot
 
-    Click Element    xpath=//button[@aria-haspopup='menu']
-    Wait Until Element Is Visible    xpath=//div[@title='로그아웃']    5
+    Scroll Element Into View    xpath=//button[text()=' 로그아웃']
     Screenshot
-    Click Element    xpath=//div[@title='로그아웃']
+    Click Element    xpath=//button[text()=' 로그아웃']
 
 
 3. 아이디 찾기
@@ -363,9 +362,11 @@ Get Email Auth Code
     Click Element    xpath=//a[text()='아이디 찾기']
     Execute Javascript    document.body.style.zoom='100%'
 
+
 3.1. 아이디 찾기 Page
     Wait Until Element Is Visible    xpath=//h1[text()='가입정보 확인 후 아이디를 찾을 수 있습니다']    5
     Screenshot
+
 
 3.2. 사업자번호/사용자정보 입력
     ${lastBizNo}=    Get Last Biz Number
@@ -393,6 +394,7 @@ Get Email Auth Code
 4.1. 비밀번호 찾기 Page
     Wait Until Element Is Visible    xpath=//h1[text()='비밀번호를 잊으셨나요?']    5
     Screenshot
+
 
 4.2. 이메일 입력
     Input Text    id=email    ${EMAIL1}
