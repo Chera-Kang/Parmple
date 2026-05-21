@@ -234,8 +234,8 @@ ${unused_BizNo}    None
 
 
 4.3. 사업자등록증/CSO신고증
-    Scroll Element Into View    xpath=//dt[text()='이메일']
-    Sleep    1
+    # Scroll Element Into View    xpath=//dt[text()='이메일']
+    # Sleep    1
 
     Click Button    xpath=(//button[text()='보기'])[last()-1]
     Wait Until Element Is Visible    xpath=//h2[text()='사업자등록증']    5
@@ -447,14 +447,14 @@ ${unused_BizNo}    None
 
 
 7. 검색
-    Click Element    xpath=//button[span[text()="상태 (전체)"]]
+    Click Element    xpath=//button[span[text()="구분 (전체)"]]
     Wait Until Element Is Visible    xpath=//div[span[text()="등록"]]    5
     Screenshot
 
     Click Element    xpath=//div[span[text()="등록"]]
     Screenshot
 
-    Click Element    xpath=//button[span[text()="사업자상태 (전체)"]]
+    Click Element    xpath=//button[span[text()="상태 (전체)"]]
     Screenshot
 
     Press Keys    NONE    ESC

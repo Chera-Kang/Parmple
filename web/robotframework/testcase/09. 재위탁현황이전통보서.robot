@@ -31,17 +31,17 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//div[span[text()="사업자등록번호"]]    5
     Screenshot
     Press Keys    NONE    ESC
-    Input Text    xpath=//input[@placeholder="검색어를 입력해 주세요"]    휴피스
+    Input Text    xpath=//input[@placeholder="검색어를 입력해 주세요"]    휴피
     Screenshot
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
 
-1.2. 하위목록 펼침
-    # 펼침 
-    Click Element    xpath=//div[@style[contains(.,'cursor: pointer')]]/i
-    Screenshot
-    Sleep    0.5
+# 1.2. 하위목록 펼침
+#     # 펼침 
+#     Click Element    xpath=//div[@style[contains(.,'cursor: pointer')]]/i
+#     Screenshot
+#     Sleep    0.5
 
 
 2. 이전 통보서 관리
