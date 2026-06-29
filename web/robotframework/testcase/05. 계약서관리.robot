@@ -123,7 +123,8 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
     # 검색 버튼 클릭
-    Click Element    xpath=//button[span[text()='검색']]
+    # Click Element    xpath=//button[span[text()='검색']]
+    Press Keys    None    ENTER
     Screenshot
 
     Click Element    xpath=//div[span[text()='투썬인베스트 주식회사']]
@@ -137,7 +138,7 @@ Suite Teardown    Finalize Test Suite
     Scroll Element Into View    xpath=//div[label[text()='서명란']]
     Screenshot
 
-    Click Element    xpath=//div[button[span[text()='직접 입력']]]
+    Click Element    xpath=//div[button[span[span[text()='직접 입력']]]]
     Screenshot
 
     # 자동화테스트_ 가 포함되면 선택

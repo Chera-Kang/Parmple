@@ -24,7 +24,6 @@ Suite Teardown    Finalize Test Suite
     Screenshot
 
 
-
 2. 병의원 상세 Page
     Click Element    xpath=//span[span[contains(text(), 'Auto')]]
     Wait Until Element Is Visible    xpath=//h2[text()='상세 보기']    5
@@ -53,7 +52,7 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//h2[text()='영업 거래처']    5
     Screenshot
 
-    Click Button    xpath=//button[span[text()='변경할 상태 선택']]
+    Click Button    xpath=//button[span[span[text()='변경할 상태 선택']]]
     Screenshot
     Click Element    xpath=(//div[span[text()='제품별 승인']])[last()]
     Screenshot
@@ -79,7 +78,7 @@ Suite Teardown    Finalize Test Suite
 
 
 3. 검색
-    Click Element    xpath=//button[span[text()='영업 상태(전체)']]
+    Click Element    xpath=//button[span[span[text()='영업 상태(전체)']]]
     Screenshot
 
     Press Keys    NONE    ESC
@@ -89,7 +88,7 @@ Suite Teardown    Finalize Test Suite
 
     Press Keys    NONE    ESC
     Sleep    0.5
-    Click Element    xpath=//button[span[text()='병의원 명']]
+    Click Element    xpath=//button[span[span[text()='병의원 명']]]
     Screenshot
 
     Press Keys    NONE    ESC

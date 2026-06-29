@@ -27,7 +27,7 @@ Suite Teardown    Finalize Test Suite
 
 1.1. 검색
     # 검색 
-    Click Element    xpath=//button[span[text()="상호/법인명"]]
+    Click Element    xpath=//button[span[span[text()="상호/법인명"]]]
     Wait Until Element Is Visible    xpath=//div[span[text()="사업자등록번호"]]    5
     Screenshot
     Press Keys    NONE    ESC

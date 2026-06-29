@@ -34,7 +34,7 @@ Suite Teardown    Finalize Test Suite
 
 
 2.1. 필터링 결과 선택
-    Click Button    xpath=//button[span[text()='필터링 결과']]
+    Click Button    xpath=//button[span[span[text()='필터링 결과']]]
     Screenshot
     Click Element    xpath=(//div[span[text()='임시 승인']])[last()]
 
@@ -65,15 +65,15 @@ Suite Teardown    Finalize Test Suite
 
 3. 검색
     # 병의원 검색 
-    Click Element    xpath=//button[span[text()='상태 (전체)']]
+    Click Element    xpath=//button[span[span[text()='상태 (전체)']]]
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5
-    Click Element    xpath=//button[span[text()='조회 결과(전체)']]
+    Click Element    xpath=//button[span[span[text()='조회 결과(전체)']]]
     Screenshot
     Click Element    xpath=//div[span[text()='반려']]
     Sleep    0.5
-    Click Element    xpath=//button[span[text()='상호/법인명']]
+    Click Element    xpath=//button[span[span[text()='상호/법인명']]]
     Screenshot
     Press Keys    NONE    ESC
     Sleep    0.5

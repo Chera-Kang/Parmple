@@ -157,7 +157,7 @@ Generate Email
     Screenshot
 
     Click Element    xpath=//div[text()=' CSO 교육 수료증 등록']
-    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록하기']    5
     Screenshot
 
 

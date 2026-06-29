@@ -62,7 +62,7 @@ Suite Teardown    Finalize Test Suite
 
 
 2. 검색
-    Click Element    xpath=//button[span[text()='조회 결과(전체)']]
+    Click Element    xpath=//button[span[span[text()='조회 결과(전체)']]]
     Screenshot
     Click Element    xpath=(//div[span[text()="거래 불가"]])[last()]
     Screenshot
@@ -72,7 +72,7 @@ Suite Teardown    Finalize Test Suite
     Press Keys    None    ESC
     Sleep    0.5
 
-    Click Element    xpath=//button[span[text()='병의원 명']]
+    Click Element    xpath=//button[span[span[text()='병의원 명']]]
     Screenshot
     Press Keys    None    ESC
     Sleep    0.5

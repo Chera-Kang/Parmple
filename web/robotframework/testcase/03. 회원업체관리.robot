@@ -128,7 +128,7 @@ ${unused_BizNo}    None
 
     # 확인버튼
     Click Button    xpath=//button[normalize-space(.)='확인']
-    sleep    0.5
+    sleep    1
 
 
 3. 상세 Page (미가입 업체)
@@ -146,7 +146,7 @@ ${unused_BizNo}    None
     Wait Until Element Is Visible    ${REG_BUTTON}    10
     Click Button                     ${REG_BUTTON}
 
-    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='CSO 교육 수료증 등록하기']    5
     Screenshot
 
     Choose File     xpath=//*[@id="fileUuid"]//input    ${testfile_PATH}
@@ -170,13 +170,11 @@ ${unused_BizNo}    None
     Sleep    0.5
     Screenshot
 
+    Click Button    id=isNoticeConfirmed
+    Screenshot
+
     Click Button    xpath=//button[text()='등록하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='교육 수료증을 등록할까요?']    5
     Screenshot
-
-    Click Button    xpath=//button[text()='확인']
-    Screenshot
-
 
     #### 현재 모니터 화면에서의 UI 오류로 확인 불가, 추후 이슈 등록하여 확인 예정으로 그동안 주석처리
 
@@ -209,6 +207,7 @@ ${unused_BizNo}    None
 
     Click Element    xpath=//a[translate(normalize-space(.), "-", "") = "${lastBizNo}"]
     Wait Until Element Is Visible    xpath=//h2[text()='상세 보기']    5
+
 
 4.1. 업체 정보
     Screenshot
@@ -447,18 +446,18 @@ ${unused_BizNo}    None
 
 
 7. 검색
-    Click Element    xpath=//button[span[text()="구분 (전체)"]]
+    Click Element    xpath=//button[span[span[text()="구분 (전체)"]]]
     Wait Until Element Is Visible    xpath=//div[span[text()="등록"]]    5
     Screenshot
 
     Click Element    xpath=//div[span[text()="등록"]]
     Screenshot
 
-    Click Element    xpath=//button[span[text()="상태 (전체)"]]
+    Click Element    xpath=//button[span[span[text()="상태 (전체)"]]]
     Screenshot
 
     Press Keys    NONE    ESC
-    Click Element    xpath=//button[span[text()="상호/법인명"]]
+    Click Element    xpath=//button[span[span[text()="상호/법인명"]]]
     Wait Until Element Is Visible    xpath=//div[span[text()="관리코드"]]    5
     Screenshot
 

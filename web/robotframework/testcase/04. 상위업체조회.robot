@@ -25,8 +25,7 @@ Suite Teardown    Finalize Test Suite
 
 
 1.1. 검색
-    # 검색 
-    Click Element    xpath=//button[span[text()="상호/법인명"]]
+    Click Element    xpath=//button[span[span[text()="상호/법인명"]]]
     Screenshot
 
     Press Keys    NONE    ESC

@@ -42,6 +42,7 @@ Suite Teardown    Finalize Test Suite
     Wait Until Element Is Visible    xpath=//h2[text()='서명하기']    5
     Screenshot
 
+
 2.1. 전자계약 이용약관
     Click Element    xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]]
     Screenshot

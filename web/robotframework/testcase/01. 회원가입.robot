@@ -85,9 +85,9 @@ Get Email Auth Code
     Screenshot
 
     # 회원가입 버튼
-    Execute Javascript    document.body.style.zoom='90%'
+    # Execute Javascript    document.body.style.zoom='90%'
     Click Element    xpath=//a[text()='회원가입']
-    Execute Javascript    document.body.style.zoom='100%'
+    # Execute Javascript    document.body.style.zoom='100%'
 
 
 1.1. 사업자등록번호 입력
@@ -218,139 +218,139 @@ Get Email Auth Code
     Screenshot
 
 
-2. 등록 상태인 업체 회원가입 Flow
-    # 회원가입 버튼
-    Execute Javascript    document.body.style.zoom='90%'
-    Click Element    xpath=//a[text()='회원가입']
-    Execute Javascript    document.body.style.zoom='100%'
+# 2. 등록 상태인 업체 회원가입 Flow
+#     # 회원가입 버튼
+#     Execute Javascript    document.body.style.zoom='90%'
+#     Click Element    xpath=//a[text()='회원가입']
+#     Execute Javascript    document.body.style.zoom='100%'
 
 
-2.1. API 조회 (등록 상태 업체)
-    Setup Registered Company Data
+# 2.1. API 조회 (등록 상태 업체)
+#     Setup Registered Company Data
 
 
-2.2. 사업자등록번호 입력
-    Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
-    Screenshot
+# 2.2. 사업자등록번호 입력
+#     Wait Until Element Is Visible    xpath=//input[@placeholder="-없이 숫자만 입력해 주세요"]    5
+#     Screenshot
     
-    ## 사업자 번호 입력
-    Input Text    id=bizNumber    ${registeredBizNo}
-    Screenshot
+#     ## 사업자 번호 입력
+#     Input Text    id=bizNumber    ${registeredBizNo}
+#     Screenshot
 
-    Click Element    xpath=//button[text()='확인']
-    Wait Until Element Is Visible    xpath=//h2[text()='의약품 판촉영업 신고번호를 입력해주세요.']    5
-    Screenshot
+#     Click Element    xpath=//button[text()='확인']
+#     Wait Until Element Is Visible    xpath=//h2[text()='의약품 판촉영업 신고번호를 입력해주세요.']    5
+#     Screenshot
     
 
-2.3. CSO 신고번호 입력
-    Input Text    id=csoNumber    ${registeredCsoNo}
-    Screenshot
-    Click Element    xpath=(//button[text()='확인'])[last()]
-    Sleep    1
-    Screenshot
-    Click Element    xpath=(//button[text()='확인'])[last()]
+# 2.3. CSO 신고번호 입력
+#     Input Text    id=csoNumber    ${registeredCsoNo}
+#     Screenshot
+#     Click Element    xpath=(//button[text()='확인'])[last()]
+#     Sleep    1
+#     Screenshot
+#     Click Element    xpath=(//button[text()='확인'])[last()]
 
 
-2.4. 회원가입 Page 및 업체 정보 확인
-    Wait Until Element Is Visible    xpath=//h1[text()='회원가입']    5
-    Screenshot
+# 2.4. 회원가입 Page 및 업체 정보 확인
+#     Wait Until Element Is Visible    xpath=//h1[text()='회원가입']    5
+#     Screenshot
 
-    Scroll Element Into View    xpath=//*[@id="name"]
-    Sleep    0.5
-
-
-2.5. 이메일 입력
-    ## 이메일 입력 
-    ${EMAIL2}=    Generate Email
-    Set Suite Variable    ${EMAIL2}
-
-    Log To Console    \n---------------------------------------
-    Log To Console    email : ${EMAIL2}
-    Log To Console    ---------------------------------------
-
-    Input Text    id=email    ${EMAIL2}
-    Screenshot
-
-    # 인증번호 발송
-    Click Element    xpath=//button[text()='인증번호 발송']
-    Wait Until Element Is Visible    xpath=//h2[text()='이메일로 인증번호를 발송했습니다.']    5
-    Screenshot
-    Click Element    xpath=//button[text()='확인']
-    Sleep    5
+#     Scroll Element Into View    xpath=//*[@id="name"]
+#     Sleep    0.5
 
 
-2.6. 인증번호 입력
-    # 인증번호 추출 및 입력 
-    ${code}=    Get Email Auth Code
+# 2.5. 이메일 입력
+#     ## 이메일 입력 
+#     ${EMAIL2}=    Generate Email
+#     Set Suite Variable    ${EMAIL2}
+
+#     Log To Console    \n---------------------------------------
+#     Log To Console    email : ${EMAIL2}
+#     Log To Console    ---------------------------------------
+
+#     Input Text    id=email    ${EMAIL2}
+#     Screenshot
+
+#     # 인증번호 발송
+#     Click Element    xpath=//button[text()='인증번호 발송']
+#     Wait Until Element Is Visible    xpath=//h2[text()='이메일로 인증번호를 발송했습니다.']    5
+#     Screenshot
+#     Click Element    xpath=//button[text()='확인']
+#     Sleep    5
+
+
+# 2.6. 인증번호 입력
+#     # 인증번호 추출 및 입력 
+#     ${code}=    Get Email Auth Code
     
-    # 결과 출력
-    Log To Console    \n---------------------------------------
-    Log To Console    인증번호 : ${code}
-    Log To Console    ---------------------------------------
+#     # 결과 출력
+#     Log To Console    \n---------------------------------------
+#     Log To Console    인증번호 : ${code}
+#     Log To Console    ---------------------------------------
 
-    # 인증번호 검증 (숫자인지 확인)
-    Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
+#     # 인증번호 검증 (숫자인지 확인)
+#     Should Match Regexp    ${code}    ^[0-9]+$    msg=인증번호 형식이 올바르지 않습니다: ${code}
 
-    Input Text    id=emailVerificationKey    ${code}
-    Screenshot
+#     Input Text    id=emailVerificationKey    ${code}
+#     Screenshot
     
-    # 클릭 전 스크롤 및 대기 
-    Scroll Element Into View    xpath=//button[text()='인증하기']
-    Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
-    Click Element    xpath=//button[text()='인증하기']
-    Screenshot
+#     # 클릭 전 스크롤 및 대기 
+#     Scroll Element Into View    xpath=//button[text()='인증하기']
+#     Wait Until Element Is Visible    xpath=//button[text()='인증하기']    5
+#     Click Element    xpath=//button[text()='인증하기']
+#     Screenshot
 
-    # 화면 스크롤
-    Scroll Element Into View    xpath=//div[button[@id='termsAll']]
-    Sleep    0.5
-
-
-
-2.7. 비밀번호 입력
-    Input Password    id=password    ${password}
-    Input Password    id=passwordCheck    ${password}
-    Sleep    1
+#     # 화면 스크롤
+#     Scroll Element Into View    xpath=//div[button[@id='termsAll']]
+#     Sleep    0.5
 
 
-2.8. 회원정보 입력
-    # 이름 
-    Input Text    id=name    자동화테스트
+
+# 2.7. 비밀번호 입력
+#     Input Password    id=password    ${password}
+#     Input Password    id=passwordCheck    ${password}
+#     Sleep    1
+
+
+# 2.8. 회원정보 입력
+#     # 이름 
+#     Input Text    id=name    자동화테스트
     
-    # 휴대폰 번호 
-    ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
-    ${phone_number}=    Set Variable    010${random_number}
-    Press Key    id=phone    ${phone_number}
-    Screenshot
+#     # 휴대폰 번호 
+#     ${random_number}=    Evaluate    str(__import__('random').randint(10000000, 99999999))
+#     ${phone_number}=    Set Variable    010${random_number}
+#     Press Key    id=phone    ${phone_number}
+#     Screenshot
 
 
-2.9. 약관 동의
-    Scroll Element Into View    xpath=//button[text()='가입하기']
-    Click Button    id=termsAll
-    Screenshot
+# 2.9. 약관 동의
+#     Scroll Element Into View    xpath=//button[text()='가입하기']
+#     Click Button    id=termsAll
+#     Screenshot
 
 
-2.10. 회원가입 완료
-    # 가입하기 버튼
-    Click Button    xpath=//button[text()='가입하기']
-    Wait Until Element Is Visible    xpath=//button[text()='확인']    5
-    Screenshot
+# 2.10. 회원가입 완료
+#     # 가입하기 버튼
+#     Click Button    xpath=//button[text()='가입하기']
+#     Wait Until Element Is Visible    xpath=//button[text()='확인']    5
+#     Screenshot
     
-    # 로그인 Page 로 이동
-    Click Element    xpath=//button[text()='확인']
-    Screenshot
+#     # 로그인 Page 로 이동
+#     Click Element    xpath=//button[text()='확인']
+#     Screenshot
 
 
-2.11. 로그인
-    Input Text    name=email    ${EMAIL2}
-    Press Key    name=password    ${password}
-    Screenshot
-    Click Button    xpath=//button[text()='로그인']
-    Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
-    Screenshot
+# 2.11. 로그인
+#     Input Text    name=email    ${EMAIL2}
+#     Press Key    name=password    ${password}
+#     Screenshot
+#     Click Button    xpath=//button[text()='로그인']
+#     Wait Until Element Is Visible    xpath=//h2[text()='내 정보']    5
+#     Screenshot
 
-    Scroll Element Into View    xpath=//button[text()=' 로그아웃']
-    Screenshot
-    Click Element    xpath=//button[text()=' 로그아웃']
+#     Scroll Element Into View    xpath=//button[text()=' 로그아웃']
+#     Screenshot
+#     Click Element    xpath=//button[text()=' 로그아웃']
 
 
 3. 아이디 찾기

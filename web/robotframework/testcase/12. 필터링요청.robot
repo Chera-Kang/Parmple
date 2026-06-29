@@ -147,21 +147,24 @@ Suite Teardown    Finalize Test Suite
 
 
 4. 검색
-    # 병의원 검색 
-    Click Element    xpath=//button[span[text()='상태 (전체)']]
+    Click Element    xpath=//button[span[span[text()='상태 (전체)']]]
     Screenshot
+
     Press Keys    NONE    ESC
     Sleep    0.5
-    Click Element    xpath=//button[span[text()='조회 결과(전체)']]
+    Click Element    xpath=//button[span[span[text()='조회 결과(전체)']]]
     Screenshot
+
     Click Element    xpath=//div[span[text()='반려']]
     Sleep    0.5
-    Click Element    xpath=//button[span[text()='병의원명']]
+    Click Element    xpath=//button[span[span[text()='병의원명']]]
     Screenshot
+
     Press Keys    NONE    ESC
     Sleep    0.5
     Press Key    xpath=//input[@placeholder='검색어를 입력해 주세요']    인천
     Screenshot
+
     Click Element    xpath=//button[span[text()='검색']]
     Screenshot
 
