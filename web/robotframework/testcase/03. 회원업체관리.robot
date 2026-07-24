@@ -403,33 +403,32 @@ ${unused_BizNo}    None
     Scroll Element Into View   xpath=//button[normalize-space(.)='작성하기']
     Screenshot
     Click Element    xpath=//button[text()='추가하기']
-    Wait Until Element Is Visible    xpath=//h2[text()='제약사 추가']    5
+    Wait Until Element Is Visible    xpath=//h2[text()='제약사 추가하기']    5
     Screenshot
 
+    # # 제약사 검색
+    # Input Text    xpath=//input[@placeholder='제약사명 검색']    팜플
+    # Click Element    xpath=//button[@title='검색']
+    # Screenshot
+    # Click Element    xpath=//div[@role='row' and @row-index = //div[@role='gridcell' and contains(., '팜플제약')]/ancestor::div[@role='row']/@row-index]//div[contains(@class, 'ag-selection-checkbox')]
+    # Screenshot
 
-    # 제약사 검색
-    Input Text    xpath=//input[@placeholder='제약사 명 검색']    팜플
-    Click Element    xpath=//button[span[text()='검색']]
-    Screenshot
-    Click Element    xpath=//div[text()='팜플제약']/ancestor::div[contains(@class,'ag-row')]//button
-    Screenshot
+    # Click Element    xpath=//input[@placeholder='제약사명 검색']
+    # Click Element    xpath=//input[@placeholder='제약사명 검색']/following-sibling::div/button
 
-    Click Element    xpath=//input[@placeholder='제약사 명 검색']
-    Click Element    xpath=//input[@placeholder='제약사 명 검색']/following-sibling::div/button
-
-    Input Text    xpath=//input[@placeholder='제약사 명 검색']    투썬
-    Click Element    xpath=//button[span[text()='검색']]
+    Input Text    xpath=//input[@placeholder='제약사명 검색']    투썬
+    Click Element    xpath=//button[@title='검색']
     Screenshot
-    Click Element    xpath=//div[text()='투썬제약']/ancestor::div[contains(@class,'ag-row')]//button
+    Click Element    xpath=//div[@role='row' and @row-index = //div[@role='gridcell' and contains(., '투썬제약')]/ancestor::div[@role='row']/@row-index]//div[contains(@class, 'ag-selection-checkbox')]
     Screenshot
 
     # 제약사 추가하기
     Click Element    xpath=(//button[text()='추가하기'])[last()]
     Screenshot
 
-    # 추가한 제약사 삭제
-    Click Element    xpath=//button[@title='삭제'][1]
-    Screenshot
+    # # 추가한 제약사 삭제
+    # Click Element    xpath=//button[@title='삭제'][1]
+    # Screenshot
 
 
 6.4. 통보서 작성하기
@@ -441,7 +440,7 @@ ${unused_BizNo}    None
     Screenshot
 
     # 위탁 계약 page로 복귀
-    Click Element    xpath=//a[span[text()='회원 업체 관리 ']]
+    Click Element    xpath=//a[span[text()='회원 업체 관리']]
     Wait Until Element Is Visible    xpath=//h2[text()='회원 업체 관리 ']    5
 
 
@@ -453,10 +452,14 @@ ${unused_BizNo}    None
     Click Element    xpath=//div[span[text()="등록"]]
     Screenshot
 
-    Click Element    xpath=//button[span[span[text()="상태 (전체)"]]]
+    Click Element    xpath=//button[span[span[text()="영업 상태 (전체)"]]]
     Screenshot
-
     Press Keys    NONE    ESC
+
+    Click Element    xpath=//button[span[span[text()="계약 상태(계약)"]]]
+    Screenshot
+    Press Keys    NONE    ESC
+
     Click Element    xpath=//button[span[span[text()="상호/법인명"]]]
     Wait Until Element Is Visible    xpath=//div[span[text()="관리코드"]]    5
     Screenshot
