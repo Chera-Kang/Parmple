@@ -36,10 +36,6 @@ def decode_mime_words(s):
 # =============================================================================
 
 def fetch_auth_code(max_retries=5, retry_delay=3):
-    """
-    Gmail IMAP을 통해 최신 인증 메일을 조회하고 숫자 코드를 추출합니다.
-    추출 실패 시 재시도 로직을 포함합니다.
-    """
     if not EMAIL_USER or not APP_PASSWORD:
         return "ERROR: EMAIL or APP_PASSWORD not set in .env"
 

@@ -10,18 +10,18 @@ ${URL2}               https://qa.renew.parmple.com/
 ${SCREENSHOT_DIR}     ../screenshots
 ${GENERATOR}    file:///C:/Dev/parmple/resources/GENERATOR.html
 ${VALIDATOR}    file:///C:/Dev/parmple/resources/VALIDATOR.html
-${USER_1_ID}    chera-m1@twosun.com
-${USER_1_PW}    asdf1234
-${USER_2_ID}    chera@twosun.com
-${USER_2_PW}    dummy_password123!
+${USER_1_ID}    id1
+${USER_1_PW}    pw1
+${USER_2_ID}    id2
+${USER_2_PW}    pw2
 
 # ▲ 기존 버전
 # ▼ 리뉴얼 버전
 
-${id_1}    chera+1@twosun.com
-${id_2}    pharm1@parmple.com
-${id_3}    pharm_manager@example.com
-${password}    password123!
+${id_1}    id1
+${id_2}    id2
+${id_3}    id3
+${password}    password
 
 ${ADMIN_EMAIL}    %{ADMIN_EMAIL=}
 ${password}       %{PASSWORD=}
