@@ -19,3 +19,6 @@ interactive_console_output.xml
 # Python
 __pycache__/
 **/*.pyc
+
+# # ETC
+# plan.txt
