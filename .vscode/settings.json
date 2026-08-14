@@ -1,12 +1,7 @@
 {
-    "python.defaultInterpreterPath": "c:\\Dev\\Parmple\\.venv\\Scripts\\python.exe",
-    "python.interpreterPath": "c:\\Dev\\Parmple\\.venv\\Scripts\\python.exe",
-    "robot.python.executable": "c:\\Dev\\Parmple\\.venv\\Scripts\\python.exe",
-    "robot.languageServer.python": "c:\\Dev\\Parmple\\.venv\\Scripts\\python.exe",
-    "robot.language-server.python": "c:\\Dev\\Parmple\\.venv\\Scripts\\python.exe",
-    "robot.languageServer.enabled": true,
-    "python.terminal.activateEnvInSelectedTerminal": true,
-    "files.associations": {
-        "*.robot": "robotframework"
-    }
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}\\.venv\\Lib\\site-packages"
+    ],
+    "python.terminal.activateEnvironment": true
 }

@@ -19,6 +19,15 @@ interactive_console_output.xml
 # Python
 __pycache__/
 **/*.pyc
+.pytest_cache
+
+# Playwright & Self-Healing Artifacts
+web/playwright/self_healing/error_artifacts/
+
+# Appium
+appium_server.log
+
+
 
 # # ETC
 # plan.txt
