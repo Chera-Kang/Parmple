@@ -48,7 +48,7 @@
 ## 📁 Directory Structure
 
 ```
-c:\Dev\Parmple\
+Parmple\
 ├── automation/                  # 🌟 자동화 메인 프레임워크
 │   ├── app/                     # 📱 [Appium] 모바일 하이브리드 앱 테스트
 │   │   ├── testcase/            # conftest.py, smoke_test.py
@@ -101,31 +101,18 @@ c:\Dev\Parmple\
 
 ---
 
-## 🚀 Execution & Report Inspection
+## 📊 Test Deliverables & Reporting
+> 테스트 수행 후 자동 생성 및 아카이빙되는 3-in-1 결과 리포트 체계
 
-### 1. Web E2E 테스트 실행
-```powershell
-# 기본 전체 회귀 테스트 실행
-python automation/web/playwright/run.py
-
-# AI 제로베이스 & 특정 테스트 케이스 단독 실행
-python automation/web/playwright/run.py automation/web/playwright/testcase_ai/test_05_계약서관리_ai.py
-```
-
-### 2. Mobile App 테스트 실행
-```powershell
-python automation/app/run.py
-```
-
-### 3. 결과 리포트 열람 (더블클릭 실행)
-테스트 완료 후 생성된 `TestResult/YY-MM-DD_HH-MM/` 디렉터리 내에서 바로 확인 가능합니다:
-- 📄 `report.html` : Pytest HTML 요약 리포트 (더블클릭)
-- 📊 `allure_report/index.html` : Allure 대시보드 리포트 (더블클릭)
-- 🎬 `열기_PlaywrightTrace.bat` : 대화형 Playwright Trace Viewer 선택기 (더블클릭)
+- 📄 **Pytest HTML Summary (`report.html`)**: 전체 테스트 수행 현황, 성공/실패율 및 실행 소요 시간 요약
+- 📊 **Allure Interactive Dashboard (`allure_report/`)**: 원형 통계 차트, 스텝별 실행 내역 및 실패 원인 심층 시각화
+- 🎬 **Playwright Trace Viewer (`traces/`)**: 타임라인별 마우스 인터랙션, DOM 스냅샷 및 네트워크 패킷 프레임 재생
+- 📸 **Failure Artifacts (`screenshots/`)**: 실패 발생 시점의 화면 스크린샷 자동 캡처 및 보관
 
 ---
 
 ## 🎥 Video Demos & History Archive
+> 서비스 고도화(Renewal/Design System) 단계별 자동화 테스트 시연 영상 및 결과 아카이브
 
 - 🎬 **Design System 적용 E2E 시연 영상 (25.10.27)**: [▶️ Youtube 바로보기](https://youtu.be/e3fbpIVPqks)
 - 🎬 **Renewal 버전 E2E 시연 영상 (25.08.06)**: [▶️ Youtube 바로보기](https://youtu.be/KU7lC9yqJbI)
