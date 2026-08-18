@@ -8,7 +8,7 @@
 [![Allure Report](https://img.shields.io/badge/Allure-Report-FF7800?style=flat-square&logo=qameta&logoColor=white)](https://allurereport.org/)
 [![Google Gemini](https://img.shields.io/badge/Gemini-Self--Healing-8E75C2?style=flat-square&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
-제약 CSO 및 영업 관리 SaaS 플랫폼 **팜플(Parmple)**의 전사 비즈니스 로직을 검증하는 **풀스택 E2E 테스트 자동화 및 AI 자가 치유(Self-Healing) 시스템**입니다.  
+제약 CSO 및 영업 관리 SaaS 플랫폼 **팜플(Parmple)** 의 전사 비즈니스 로직을 검증하는 **풀스택 E2E 테스트 자동화 및 AI 자가 치유(Self-Healing) 시스템**입니다.  
 과거 Selenium/Robot Framework 기반 레거시를 **Playwright & Appium** 기반 모던 아키텍처로 전면 마이그레이션하여 테스트 신뢰도와 실행 속도를 대폭 개선했습니다.
 
 ---
