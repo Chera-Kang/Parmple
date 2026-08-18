@@ -6,6 +6,9 @@ common/auth/credentials.json
 
 # Test Results & Artifacts
 TestResult/
+test-results/
+allure-results/
+allure-report/
 screenshots/
 log.html
 output.xml
@@ -22,7 +25,8 @@ __pycache__/
 .pytest_cache
 
 # Playwright & Self-Healing Artifacts
-web/playwright/self_healing/error_artifacts/
+automation/web/playwright/self_healing/error_artifacts/
+**/error_artifacts/
 
 # Appium
 appium_server.log
