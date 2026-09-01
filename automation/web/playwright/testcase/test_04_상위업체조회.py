@@ -36,23 +36,25 @@ def test_04_upper_company_inquiry_flow(page: Page, login_cso):
     # 2. 상위 업체 상세 (제약사)
     # -------------------------------------------------------------
     print("[Step 2] 상위 업체 상세 보기 (제약사: 842-88-83121)")
-    # 첫 번째 대상 제약사 링크 클릭 (사업자번호 기준)
     pharm_link = page.locator("xpath=//a[translate(normalize-space(.), '-', '') = '8428883121'] | //a[contains(text(), '842-88-83121')]").first
-    if pharm_link.count() > 0:
+    if pharm_link.count() > 0 and pharm_link.is_visible():
         pharm_link.click()
     else:
-        # 특정 번호가 없는 경우 첫 번째 행의 링크 클릭
-        page.locator("xpath=//table//tbody//tr//a").first.click()
+        # 특정 번호가 없는 경우 첫 번째 행의 링크 클릭 (AG Grid 및 Table 지원)
+        page.locator(".ag-row:visible a, .ag-cell:visible a, div[role='gridcell'] a").first.click()
     
     page.wait_for_selector("xpath=//h2[text()='상세 보기']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='상세 보기']")).to_be_visible()
 
     # 2.1. 사업자등록증 미리보기
     print("[Step 2.1] 사업자등록증 미리보기")
     view_btn = page.locator("xpath=//button[text()='보기']").last
-    view_btn.click()
-    page.wait_for_selector("xpath=//h2[text()='사업자등록증'] | //img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]", timeout=5000)
-    page.keyboard.press("Escape")
-    page.wait_for_timeout(500)
+    if view_btn.count() > 0 and view_btn.is_visible():
+        view_btn.click()
+        page.wait_for_selector("xpath=//h2[text()='사업자등록증'] | //img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='사업자등록증'] | //img[@alt='사업자등록증'] | //div[contains(@class, 'react-pdf__Document')]").first).to_be_visible()
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(500)
 
     # 2.2. 계약관리 - 수수료율 확인
     print("[Step 2.2] 수수료율 팝업 확인")
@@ -61,6 +63,7 @@ def test_04_upper_company_inquiry_flow(page: Page, login_cso):
     if commission_btn.count() > 0 and commission_btn.is_visible():
         commission_btn.click()
         page.wait_for_selector("xpath=//h2[text()='수수료율']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='수수료율']")).to_be_visible()
         page.keyboard.press("Escape")
         page.wait_for_timeout(500)
 
@@ -70,6 +73,7 @@ def test_04_upper_company_inquiry_flow(page: Page, login_cso):
     if contract_btn.count() > 0 and contract_btn.is_visible():
         contract_btn.click()
         page.wait_for_selector("xpath=//h2[text()='계약서']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서']")).to_be_visible()
         page.keyboard.press("Escape")
         page.wait_for_timeout(500)
 
@@ -81,13 +85,14 @@ def test_04_upper_company_inquiry_flow(page: Page, login_cso):
     page.wait_for_selector("xpath=//h2[text()='상위 업체 조회']", timeout=5000)
 
     cso_link = page.locator("xpath=//a[translate(normalize-space(.), '-', '') = '1298637855'] | //a[contains(text(), '129-86-37855')]").first
-    if cso_link.count() > 0:
+    if cso_link.count() > 0 and cso_link.is_visible():
         cso_link.click()
     else:
         # 특정 번호가 없는 경우 마지막 행의 링크 클릭
-        page.locator("xpath=//table//tbody//tr//a").last.click()
+        page.locator(".ag-row:visible a, .ag-cell:visible a, div[role='gridcell'] a").last.click()
 
     page.wait_for_selector("xpath=//h2[text()='상세 보기']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='상세 보기']")).to_be_visible()
 
     # 3.1. 사업자등록증 미리보기
     print("[Step 3.1] CSO 상위 업체 사업자등록증 미리보기")

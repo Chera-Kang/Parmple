@@ -20,6 +20,7 @@ def test_11_direct_filtering_inquiry_flow(page: Page, login_cso):
     page.locator("xpath=//a[span[text()='필터링 직접 조회']]").scroll_into_view_if_needed()
     page.click("xpath=//a[span[text()='필터링 직접 조회']]")
     page.wait_for_selector("xpath=//h2[text()='필터링 직접 조회'] | //h2[contains(., '필터링 직접 조회')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='필터링 직접 조회'] | //h2[contains(., '필터링 직접 조회')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 1.1. 업체(제약사) 선택
@@ -64,6 +65,7 @@ def test_11_direct_filtering_inquiry_flow(page: Page, login_cso):
     print("[Step 1.4] 필터링 조회 결과 팝업 확인")
     page.click("xpath=//button[text()='조회하기'] | //button[normalize-space(.)='조회하기']")
     page.wait_for_selector("xpath=//h2[text()='필터링 조회 결과'] | //h2[contains(., '조회 결과')]", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='필터링 조회 결과'] | //h2[contains(., '조회 결과')]").first).to_be_visible()
     page.keyboard.press("Escape")
     page.wait_for_timeout(500)
 

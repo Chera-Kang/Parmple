@@ -27,6 +27,7 @@ env_path = os.path.join(ROOT_DIR, "common", "auth", ".env")
 load_dotenv(env_path)
 
 # 기본 테스트 대상 디렉토리 (testcase 또는 testcase_ai)
+# DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase")
 DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase_ai")
 
 # 결과 디렉토리 설정: TestResult/YY-MM-DD_HH-MM

@@ -19,15 +19,17 @@ def test_06_received_contract_flow(page: Page, login_cso3):
     print("[Step 1] '받은 계약서' 페이지 이동")
     page.click("xpath=//a[span[text()='받은 계약서']]")
     page.wait_for_selector("xpath=//h2[text()='받은 계약서']", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='받은 계약서']")).to_be_visible()
 
     # -------------------------------------------------------------
     # 1.1. 계약서 미리보기 확인
     # -------------------------------------------------------------
     print("[Step 1.1] 수신된 계약서 미리보기 확인")
     contract_btn = page.locator("xpath=//button[@title='계약서']")
-    if contract_btn.count() > 0:
+    if contract_btn.count() > 0 and contract_btn.first.is_visible():
         contract_btn.first.click()
         page.wait_for_selector("xpath=//h2[text()='계약서'] | //div[contains(@class, 'react-pdf__Document')]", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서'] | //div[contains(@class, 'react-pdf__Document')]").first).to_be_visible()
         page.keyboard.press("Escape")
         page.wait_for_timeout(500)
 
@@ -36,13 +38,15 @@ def test_06_received_contract_flow(page: Page, login_cso3):
     # -------------------------------------------------------------
     print("[Step 2] 계약서 서명하기 모달 진입")
     sign_open_btn = page.locator("xpath=//button[@title='서명하기']")
-    if sign_open_btn.count() > 0:
+    if sign_open_btn.count() > 0 and sign_open_btn.first.is_visible():
         sign_open_btn.first.click()
         page.wait_for_selector("xpath=//h2[text()='계약서']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서']")).to_be_visible()
 
         # 계약서 확인 팝업 내 노출된 서명하기 버튼 클릭
         page.locator("button:visible:has-text('서명하기')").last.click()
         page.wait_for_selector("xpath=//h2[text()='서명하기']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='서명하기']")).to_be_visible()
 
         # 2.1. 전자계약 이용약관 전체 동의
         print("[Step 2.1] 전자계약 이용약관 동의")
@@ -53,16 +57,11 @@ def test_06_received_contract_flow(page: Page, login_cso3):
 
         # 2.2. 전자계약 서명 완료
         print("[Step 2.2] 전자계약 서명 완료 처리")
-        page.evaluate("""
-            var btns = document.querySelectorAll("button[title='서명하기'][type='submit']");
-            if(btns.length > 0) btns[btns.length - 1].click();
-            else {
-                var submitBtns = document.querySelectorAll("button[type='submit']");
-                if(submitBtns.length > 0) submitBtns[submitBtns.length - 1].click();
-            }
-        """)
+        modal_submit_btn = page.locator("xpath=//div[@role='dialog']//button[contains(text(), '서명하기') and @type='submit'] | //button[normalize-space(.)='서명하기']").last
+        modal_submit_btn.click()
         
         page.wait_for_selector("xpath=//h2[text()='계약서에 서명하였습니다'] | //h2[contains(text(), '서명')]", timeout=10000)
+        expect(page.locator("xpath=//h2[text()='계약서에 서명하였습니다'] | //h2[contains(text(), '서명')]").first).to_be_visible()
         page.locator("button:visible:has-text('확인')").last.click()
         page.wait_for_timeout(1000)
     else:

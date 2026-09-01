@@ -20,15 +20,17 @@ def test_14_filtering_reply_management_flow(page: Page, login_pharm1):
     page.locator("xpath=//a[span[text()='필터링 회신 관리']]").scroll_into_view_if_needed()
     page.click("xpath=//a[span[text()='필터링 회신 관리']]")
     page.wait_for_selector("xpath=//h2[text()='필터링 회신 관리'] | //h2[contains(., '필터링 회신')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='필터링 회신 관리'] | //h2[contains(., '필터링 회신')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 2. 필터링 요청 상세 진입 및 회신 작성
     # -------------------------------------------------------------
     print("[Step 2] 필터링 요청 상세 진입 및 결과 회신")
-    req_item = page.locator("xpath=//span[text()='자동화테스트'] | //table//tbody//tr//span[contains(text(), '자동화테스트')]").first
-    if req_item.count() > 0:
+    req_item = page.locator("xpath=//div[contains(@class, 'ag-row')]//span[text()='자동화테스트'] | //span[text()='자동화테스트']").first
+    if req_item.count() > 0 and req_item.is_visible():
         req_item.click()
         page.wait_for_selector("xpath=//h2[text()='상세 보기'] | //h2[contains(., '상세')]", timeout=10000)
+        expect(page.locator("xpath=//h2[text()='상세 보기'] | //h2[contains(., '상세')]").first).to_be_visible()
 
         # 페이지 하단으로 스크롤하여 회신 폼 확인
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")

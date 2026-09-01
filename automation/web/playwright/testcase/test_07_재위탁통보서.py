@@ -130,18 +130,19 @@ def test_07_reconsignment_notice_flow(page: Page, login_cso):
     # 4. 재위탁 통보서 전송
     # -------------------------------------------------------------
     print("[Step 4] 재위탁 통보서 전송 수행")
-    rows_to_send = page.locator("xpath=//div[contains(@class, 'ag-center-cols-container')]//div[contains(@class, 'ag-row')] | (//table//tbody//tr)")
+    rows_to_send = page.locator(".ag-row:visible, .ag-center-cols-container .ag-row")
     if rows_to_send.count() > 0:
-        checkbox_send = rows_to_send.first.locator(".ag-selection-checkbox, input[type='checkbox'], [role='checkbox'], div.ag-cell").first
-        if checkbox_send.count() > 0:
+        checkbox_send = rows_to_send.first.locator("input[type='checkbox'], .ag-selection-checkbox, [role='checkbox']").first
+        if checkbox_send.count() > 0 and not checkbox_send.is_disabled():
             checkbox_send.click()
-        else:
-            rows_to_send.first.click()
-        page.wait_for_timeout(300)
+            page.wait_for_timeout(300)
 
-        page.click("xpath=//button[@title='전송하기'] | //button[normalize-space(.)='전송하기']")
-        page.wait_for_selector("xpath=//h2[contains(text(), '통보서를 전송할까요?')]", timeout=5000)
-        page.locator("xpath=(//button[@title='전송하기'])[last()] | (//button[normalize-space(.)='전송하기'])[last()]").click()
-        page.wait_for_timeout(1500)
+            send_btn = page.locator("xpath=//button[@title='전송하기'] | //button[normalize-space(.)='전송하기']")
+            if send_btn.count() > 0 and not send_btn.first.is_disabled():
+                send_btn.first.click()
+                page.wait_for_selector("xpath=//h2[contains(text(), '통보서를 전송할까요?')]", timeout=5000)
+                expect(page.locator("xpath=//h2[contains(text(), '통보서를 전송할까요?')]")).to_be_visible()
+                page.locator("xpath=(//button[@title='전송하기'])[last()] | (//button[normalize-space(.)='전송하기'])[last()]").click()
+                page.wait_for_timeout(1500)
 
     print("[Success] 07. 재위탁 통보서 전체 Flow 성공 완료!")

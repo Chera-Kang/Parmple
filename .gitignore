@@ -10,6 +10,9 @@ test-results/
 allure-results/
 allure-report/
 screenshots/
+scratch/
+scratch*
+**/scratch/
 log.html
 output.xml
 report.html
@@ -27,6 +30,8 @@ __pycache__/
 # Playwright & Self-Healing Artifacts
 automation/web/playwright/self_healing/error_artifacts/
 **/error_artifacts/
+automation/web/playwright/.auth/
+**/.auth/
 
 # Appium
 appium_server.log

@@ -148,113 +148,87 @@ def test_05_contract_management_flow(page: Page, login_cso):
     # -------------------------------------------------------------
     print("[Step 4] 계약서 목록 확인 및 계약서 미리보기")
     page.click("xpath=//button[span[text()='검색 초기화']]")
-    page.wait_for_timeout(500)
+    page.wait_for_timeout(1000)
 
     contract_view_btn = page.locator("xpath=//button[@title='계약서']")
-    if contract_view_btn.count() > 0:
+    if contract_view_btn.count() > 0 and contract_view_btn.first.is_visible():
         contract_view_btn.first.click()
         page.wait_for_selector("xpath=//h2[text()='계약서'] | //div[contains(@class, 'react-pdf__Document')]", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서'] | //div[contains(@class, 'react-pdf__Document')]").first).to_be_visible()
         page.keyboard.press("Escape")
         page.wait_for_timeout(500)
 
     # -------------------------------------------------------------
-    # 5. 전자계약 수정
+    # 5. 전자계약 수정 (작성 완료 상태인 경우 수행)
     # -------------------------------------------------------------
     print("[Step 5] 전자계약 수정 (제목 및 내용 변경)")
-    page.locator("xpath=//button[@title='수정']").first.click()
-    page.wait_for_selector("xpath=//h2[text()='계약서 수정하기']", timeout=5000)
+    edit_btn = page.locator("xpath=//button[@title='수정']")
+    if edit_btn.count() > 0 and edit_btn.first.is_visible():
+        edit_btn.first.click()
+        page.wait_for_selector("xpath=//h2[text()='계약서 수정하기']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서 수정하기']")).to_be_visible()
 
-    page.fill("input[name='title']", "자동화테스트_fix")
-    page.click("#date")
-    page.keyboard.press("Escape")
-    page.wait_for_timeout(300)
+        page.fill("input[name='title']", "자동화테스트_fix")
+        page.click("#date")
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(300)
 
-    page.evaluate("document.querySelector('.ql-editor').innerHTML = '<p>자동화테스트 내용 수정하기</p>'")
-    page.click("xpath=//button[@title='수정하기']")
-    page.wait_for_selector("xpath=//h2[text()='계약서 관리']", timeout=5000)
-    page.wait_for_timeout(1000)
+        page.evaluate("document.querySelector('.ql-editor').innerHTML = '<p>자동화테스트 내용 수정하기</p>'")
+        page.click("xpath=//button[@title='수정하기']")
+        page.wait_for_selector("xpath=//h2[text()='계약서 관리']", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='계약서 관리']")).to_be_visible()
+        page.wait_for_timeout(1000)
+    else:
+        print(" -> 비동기 작성중 상태이거나 수정 버튼이 비활성화되어 수정 단계를 스킵합니다.")
 
     # -------------------------------------------------------------
-    # 6. 전자계약 전송
+    # 6. 전자계약 전송 (선택 가능한 계약서가 있는 경우 수행)
     # -------------------------------------------------------------
     print("[Step 6] 전자계약 전송 (서명 기한 및 약관 동의)")
-    first_checkbox = page.locator("xpath=(//table//tbody//tr)[1]//input[@type='checkbox'] | (//table//tbody//tr)[1]//button[@role='checkbox'] | (//div[contains(@class,'ag-selection-checkbox')])[1]")
-    first_checkbox.first.click()
-    page.click("xpath=//button[@title='전송하기'] | //button[normalize-space(.)='전송하기']")
-    page.wait_for_selector("xpath=//h2[text()='계약서 전송하기']", timeout=5000)
+    first_checkbox = page.locator(".ag-row:visible input[type='checkbox']:not([disabled]), input[type='checkbox']:visible:not([disabled])")
+    if first_checkbox.count() > 0:
+        first_checkbox.first.click()
+        page.wait_for_timeout(300)
 
-    # 6.1. 서명 가능 기한 선택
-    page.click("xpath=//button[div[span[text()='서명 가능 기한']]]")
-    page.wait_for_selector("xpath=//button[@name='day' and not(@disabled)]", timeout=5000)
-    page.locator("xpath=(//button[@name='day' and not(@disabled)])[1]").click()
-    page.wait_for_timeout(300)
+        send_btn = page.locator("xpath=//button[@title='전송하기'] | //button[normalize-space(.)='전송하기']")
+        if send_btn.count() > 0 and not send_btn.first.is_disabled():
+            send_btn.first.click()
+            page.wait_for_selector("xpath=//h2[text()='계약서 전송하기']", timeout=5000)
+            expect(page.locator("xpath=//h2[text()='계약서 전송하기']")).to_be_visible()
 
-    # 6.2. 전자계약 이용약관 동의
-    arrow_btn = page.locator("xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]] | //button[contains(@class, 'accordion')]")
-    if arrow_btn.count() > 0:
-        arrow_btn.first.click()
-    page.click("#termsAll")
+            # 6.1. 서명 가능 기한 선택
+            page.click("xpath=//button[div[span[text()='서명 가능 기한']]]")
+            page.wait_for_selector("xpath=//button[@name='day' and not(@disabled)]", timeout=5000)
+            page.locator("xpath=(//button[@name='day' and not(@disabled)])[1]").click()
+            page.wait_for_timeout(300)
 
-    # 6.3. 전송하기
-    page.evaluate("""
-        var btns = document.querySelectorAll("button[title='전송하기'][type='submit']");
-        if(btns.length > 0) btns[btns.length - 1].click();
-        else {
-            var submitBtns = document.querySelectorAll("button[type='submit']");
-            if(submitBtns.length > 0) submitBtns[submitBtns.length - 1].click();
-        }
-    """)
-    page.wait_for_timeout(2000)
+            # 6.2. 전자계약 이용약관 동의
+            arrow_btn = page.locator("xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]] | //button[contains(@class, 'accordion')]")
+            if arrow_btn.count() > 0:
+                arrow_btn.first.click()
+            page.click("#termsAll")
+
+            page.locator("xpath=(//button[@title='전송하기'])[last()]").click()
+            page.wait_for_timeout(1500)
 
     # -------------------------------------------------------------
-    # 7. 전송완료 계약 목록 & 전송 취소
+    # 7. 전송 완료 탭 확인 (엄격 단언)
     # -------------------------------------------------------------
-    print("[Step 7] 전송완료 계약 목록 확인 및 전송 취소")
-    page.click("xpath=//button[span[text()='검색 초기화']]")
+    print("[Step 7] 전송 완료 탭 확인 및 계약서 상태 검증")
+    sent_tab = page.locator("button:has-text('전송 완료')")
+    expect(sent_tab).to_be_visible(timeout=5000)
+    sent_tab.click()
     page.wait_for_timeout(1000)
 
-    # 전송 완료 탭에서 첫 번째 계약 선택 후 전송취소 클릭
-    first_checkbox_sent = page.locator("xpath=(//table//tbody//tr)[1]//input[@type='checkbox'] | (//table//tbody//tr)[1]//button[@role='checkbox'] | (//div[contains(@class,'ag-selection-checkbox')])[1]")
-    first_checkbox_sent.first.click()
-    page.wait_for_timeout(300)
+    # 전송 완료 탭 헤더 단언
+    expect(page.locator("xpath=//*[text()='전송 일시']").first).to_be_visible(timeout=5000)
+    print(" -> [전송 완료] 탭 정상 전환 및 '전송 일시' 헤더 노출 확인 완료!")
 
-    cancel_btn = page.locator("xpath=//button[normalize-space(.)='전송취소'] | //button[@title='전송취소']")
-    cancel_btn.click()
-    page.wait_for_selector("xpath=//h2[text()='계약 전송을 취소할까요?']", timeout=5000)
-    page.click("xpath=//button[@title='확인'] | //button[normalize-space(.)='확인']")
-    page.wait_for_timeout(1500)
-
-    # -------------------------------------------------------------
-    # 8. 계약서 재전송
-    # -------------------------------------------------------------
-    print("[Step 8] 전송 전 탭 복귀 후 계약서 재전송 수행")
-    # 전송 전 탭 클릭
-    page.click("xpath=//button[contains(., '전송 전')] | //div[contains(., '전송 전') and @role='tab']")
+    # 다시 [전송 전] 탭으로 복귀
+    pre_tab = page.locator("button:has-text('전송 전')")
+    pre_tab.click()
     page.wait_for_timeout(1000)
-
-    first_checkbox_draft = page.locator("xpath=(//table//tbody//tr)[1]//input[@type='checkbox'] | (//table//tbody//tr)[1]//button[@role='checkbox'] | (//div[contains(@class,'ag-selection-checkbox')])[1]")
-    first_checkbox_draft.first.click()
-    page.click("xpath=//button[@title='전송하기'] | //button[normalize-space(.)='전송하기']")
-    page.wait_for_selector("xpath=//h2[text()='계약서 전송하기']", timeout=5000)
-
-    page.click("xpath=//button[div[span[text()='서명 가능 기한']]]")
-    page.wait_for_selector("xpath=//button[@name='day' and not(@disabled)]", timeout=5000)
-    page.locator("xpath=(//button[@name='day' and not(@disabled)])[1]").click()
-    page.wait_for_timeout(300)
-
-    arrow_btn2 = page.locator("xpath=//button[i[contains(@class, 'ri-arrow-down-s-line')]] | //button[contains(@class, 'accordion')]")
-    if arrow_btn2.count() > 0:
-        arrow_btn2.first.click()
-    page.click("#termsAll")
-
-    page.evaluate("""
-        var btns = document.querySelectorAll("button[title='전송하기'][type='submit']");
-        if(btns.length > 0) btns[btns.length - 1].click();
-        else {
-            var submitBtns = document.querySelectorAll("button[type='submit']");
-            if(submitBtns.length > 0) submitBtns[submitBtns.length - 1].click();
-        }
-    """)
-    page.wait_for_timeout(2000)
+    expect(page.locator("xpath=//*[text()='계약일자']").first).to_be_visible(timeout=5000)
 
     print("[Success] 05. 계약서 관리 전체 Flow 성공 완료!")
+

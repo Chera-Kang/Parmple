@@ -19,6 +19,7 @@ def test_09_reconsignment_status_flow(page: Page, login_pharm1):
     print("[Step 1] '재위탁 현황' 페이지 이동")
     page.click("xpath=//a[span[text()='재위탁 현황']]")
     page.wait_for_selector("xpath=//h2[text()='재위탁 현황'] | //h2[contains(., '재위탁 현황')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='재위탁 현황'] | //h2[contains(., '재위탁 현황')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 1.1. 재위탁 현황 검색 조건 및 검색 수행

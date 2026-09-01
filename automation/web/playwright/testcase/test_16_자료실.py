@@ -20,6 +20,7 @@ def test_16_reference_room_flow(page: Page, login_cso):
     page.locator("xpath=//a[span[text()='신규 개원 정보']]").scroll_into_view_if_needed()
     page.click("xpath=//a[span[text()='신규 개원 정보']]")
     page.wait_for_selector("xpath=//h2[text()='신규 개원 정보'] | //h2[contains(., '신규 개원 정보')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='신규 개원 정보'] | //h2[contains(., '신규 개원 정보')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 2. 필터링 검색 검증

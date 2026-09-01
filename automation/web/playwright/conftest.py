@@ -1,7 +1,8 @@
 import os
+import json
 import time
 import pytest
-from playwright.sync_api import Page, sync_playwright
+from playwright.sync_api import Page, Browser, sync_playwright
 from dotenv import load_dotenv
 
 # 공통 환경 변수 로드
@@ -10,6 +11,8 @@ load_dotenv(os.path.join(ROOT_DIR, "common", "auth", ".env"))
 
 BASE_URL = "https://qa.erp.parmple.com/"
 ADMIN_URL = "https://qa.admin.parmple.com/"
+AUTH_DIR = os.path.join(ROOT_DIR, "automation", "web", "playwright", ".auth")
+os.makedirs(AUTH_DIR, exist_ok=True)
 
 @pytest.fixture(scope="session")
 def base_url():
@@ -27,39 +30,87 @@ def credentials():
         "password": os.environ.get("PASSWORD", "")
     }
 
+# --------------------------------------------------------------------------
+# Playwright Storage State (세션 재사용) 관리 헬퍼
+# --------------------------------------------------------------------------
+def get_or_create_auth_state(browser: Browser, role_name: str, email: str, password: str) -> str:
+    """역할별 1회 로그인 수행 후 storage_state JSON 파일 생성 및 경로 반환"""
+    auth_file = os.path.join(AUTH_DIR, f"{role_name}.json")
+    
+    # 이미 유효한 auth_file이 존재하면 그대로 사용
+    if os.path.exists(auth_file) and os.path.getsize(auth_file) > 100:
+        return auth_file
+
+    # 세션 1회 로그인 수행
+    context = browser.new_context()
+    page = context.new_page()
+    try:
+        page.goto(BASE_URL)
+        page.wait_for_selector("a:has-text('회원가입')", timeout=15000)
+        page.fill("input[name='email']", email)
+        page.fill("input[name='password']", password)
+        page.click("button:has-text('로그인')")
+        page.wait_for_selector("xpath=//h2[contains(., '회원 업체 관리')] | //h2[contains(., '계약서 관리')] | //h2[contains(., '받은 재위탁 통보서')]", timeout=15000)
+        context.storage_state(path=auth_file)
+    finally:
+        context.close()
+        
+    return auth_file
+
+def apply_auth_state(page: Page, auth_file: str):
+    """현재 테스트의 독립 context 및 page에 storage_state 주입"""
+    if os.path.exists(auth_file):
+        with open(auth_file, "r", encoding="utf-8") as f:
+            state = json.load(f)
+            
+        cookies = state.get("cookies", [])
+        if cookies:
+            page.context.add_cookies(cookies)
+            
+        for origin in state.get("origins", []):
+            ls_items = origin.get("localStorage", [])
+            if ls_items:
+                js = ";\n".join([f"localStorage.setItem({json.dumps(item['name'])}, {json.dumps(item['value'])});" for item in ls_items])
+                page.add_init_script(js)
+
+# --------------------------------------------------------------------------
+# 고속 인증 Fixture (Playwright 공식 표준: Storage State 기반)
+# --------------------------------------------------------------------------
 @pytest.fixture(scope="function")
-def login_cso(page: Page, credentials):
-    """CSO 1 계정으로 로그인하는 공통 fixture"""
-    page.goto(BASE_URL)
-    page.wait_for_selector("a:has-text('회원가입')", timeout=10000)
-    page.fill("input[name='email']", credentials["id_cso"])
-    page.fill("input[name='password']", credentials["password"])
-    page.click("button:has-text('로그인')")
-    page.wait_for_selector("h2:has-text('회원 업체 관리')", timeout=10000)
+def login_cso(browser: Browser, page: Page, credentials):
+    """CSO 1 계정 Storage State 주입 fixture"""
+    auth_path = get_or_create_auth_state(browser, "cso", credentials["id_cso"], credentials["password"])
+    apply_auth_state(page, auth_path)
+    page.goto(BASE_URL + "dashboard/contractor/entrustment-contract")
+    page.wait_for_selector("h2", timeout=10000)
     return page
 
 @pytest.fixture(scope="function")
-def login_cso3(page: Page, credentials):
-    """CSO 3 계정으로 로그인하는 공통 fixture"""
-    page.goto(BASE_URL)
-    page.wait_for_selector("a:has-text('회원가입')", timeout=10000)
-    page.fill("input[name='email']", credentials["id_cso3"])
-    page.fill("input[name='password']", credentials["password"])
-    page.click("button:has-text('로그인')")
-    page.wait_for_selector("h2:has-text('회원 업체 관리')", timeout=10000)
+def login_cso2(browser: Browser, page: Page, credentials):
+    """CSO 2 계정 Storage State 주입 fixture"""
+    auth_path = get_or_create_auth_state(browser, "cso2", credentials["id_cso2"], credentials["password"])
+    apply_auth_state(page, auth_path)
+    page.goto(BASE_URL + "dashboard/contractor/entrustment-contract")
+    page.wait_for_selector("h2", timeout=10000)
     return page
 
 @pytest.fixture(scope="function")
-def login_pharm1(page: Page, credentials):
-    """제약사 1 계정으로 로그인하는 공통 fixture"""
-    page.goto(BASE_URL)
-    page.wait_for_selector("a:has-text('회원가입')", timeout=10000)
-    page.fill("input[name='email']", credentials["id_pharm1"])
-    page.fill("input[name='password']", credentials["password"])
-    page.click("button:has-text('로그인')")
-    page.wait_for_selector("xpath=//h2[contains(., '회원 업체 관리')] | //h2[contains(., '계약서 관리')] | //h2[contains(., '받은 재위탁 통보서')]", timeout=10000)
+def login_cso3(browser: Browser, page: Page, credentials):
+    """CSO 3 계정 Storage State 주입 fixture"""
+    auth_path = get_or_create_auth_state(browser, "cso3", credentials["id_cso3"], credentials["password"])
+    apply_auth_state(page, auth_path)
+    page.goto(BASE_URL + "dashboard/contractor/entrustment-contract")
+    page.wait_for_selector("h2", timeout=10000)
     return page
 
+@pytest.fixture(scope="function")
+def login_pharm1(browser: Browser, page: Page, credentials):
+    """제약사 1 계정 Storage State 주입 fixture"""
+    auth_path = get_or_create_auth_state(browser, "pharm1", credentials["id_pharm1"], credentials["password"])
+    apply_auth_state(page, auth_path)
+    page.goto(BASE_URL + "dashboard/contract/received-contract")
+    page.wait_for_selector("h2", timeout=10000)
+    return page
 
 # --------------------------------------------------------------------------
 # 실패 시 스크린샷 자동 캡처 및 HTML 리포트 첨부 Hook
@@ -76,7 +127,7 @@ def pytest_runtest_makereport(item, call):
             # 결과 저장 디렉토리 확인 (run.py에서 지정한 경로 또는 기본 TestResult 경로)
             result_dir = os.environ.get("CURRENT_TEST_RESULT_DIR")
             if not result_dir:
-                result_dir = os.path.join(ROOT_DIR, "TestResult", f"{time.strftime('%y-%m-%d_%H-%M')}_playwright")
+                result_dir = os.path.join(ROOT_DIR, "TestResult", f"{time.strftime('%y-%m-%d_%H-%M')}")
             
             screenshots_dir = os.path.join(result_dir, "screenshots")
             os.makedirs(screenshots_dir, exist_ok=True)

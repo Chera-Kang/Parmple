@@ -45,6 +45,7 @@ def test_02_profile_full_management_flow(page: Page, login_cso, credentials):
     print("[Step 2] '내 정보' 페이지 이동")
     page.click("button[title='내 정보']")
     page.wait_for_selector("xpath=//h2[text()='내 정보']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='내 정보']")).to_be_visible()
 
     # -------------------------------------------------------------
     # 2.2. 비밀번호 변경
@@ -54,6 +55,7 @@ def test_02_profile_full_management_flow(page: Page, login_cso, credentials):
     page.wait_for_timeout(300)
     page.click("xpath=//div[contains(text(), '비밀번호 변경')]")
     page.wait_for_selector("xpath=//h2[text()='비밀번호 변경']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='비밀번호 변경']")).to_be_visible()
 
     pwd = credentials["password"]
     page.fill("input#password", pwd)
@@ -62,6 +64,7 @@ def test_02_profile_full_management_flow(page: Page, login_cso, credentials):
     page.click("xpath=//button[@title='변경하기']")
 
     page.wait_for_selector("xpath=//h2[text()='비밀번호가 변경되었습니다.']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='비밀번호가 변경되었습니다.']")).to_be_visible()
     page.click("xpath=//button[@title='확인']")
     page.wait_for_timeout(500)
 
@@ -73,6 +76,7 @@ def test_02_profile_full_management_flow(page: Page, login_cso, credentials):
     page.wait_for_timeout(300)
     page.click("xpath=//div[contains(text(), '계정 정보 수정')]")
     page.wait_for_selector("xpath=//h2[text()='계정 정보 수정']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='계정 정보 수정']")).to_be_visible()
 
     now_str = datetime.datetime.now().strftime("%m%d-%H%M")
     new_name = f"테스트_{now_str}"

@@ -20,15 +20,17 @@ def test_12_filtering_inquiry_management_flow(page: Page, login_pharm1):
     page.locator("xpath=//a[span[text()='필터링 조회 관리']]").scroll_into_view_if_needed()
     page.click("xpath=//a[span[text()='필터링 조회 관리']]")
     page.wait_for_selector("xpath=//h2[text()='필터링 조회 관리'] | //h2[contains(., '필터링 조회 관리')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='필터링 조회 관리'] | //h2[contains(., '필터링 조회 관리')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 2. 조건 관리
     # -------------------------------------------------------------
     print("[Step 2] 필터링 조건 관리 및 저장 확인")
     cond_btn = page.locator("xpath=//button[@title='조건 관리'] | //button[contains(., '조건 관리')]")
-    if cond_btn.count() > 0:
+    if cond_btn.count() > 0 and cond_btn.first.is_visible():
         cond_btn.first.click()
         page.wait_for_selector("xpath=//h2[text()='필터링 조건 관리'] | //h2[contains(., '조건 관리')]", timeout=5000)
+        expect(page.locator("xpath=//h2[text()='필터링 조건 관리'] | //h2[contains(., '조건 관리')]").first).to_be_visible()
 
         save_btn = page.locator("xpath=//button[@title='저장하기'] | //button[normalize-space(.)='저장하기']")
         if save_btn.count() > 0:

@@ -33,8 +33,23 @@ def generate_launcher_bats(result_dir: str, enable_allure: bool, enable_traces: 
 
     # 2. Playwright Trace Viewer 선택기 배치 파일
     if enable_traces:
+        traces_path = os.path.join(result_dir, "traces")
+        trace_folders = [f for f in os.listdir(traces_path) if os.path.isdir(os.path.join(traces_path, f))] if os.path.exists(traces_path) else []
+        
         bat_trace_path = os.path.join(result_dir, "열기_PlaywrightTrace.bat")
-        bat_content = """@echo off
+        
+        menu_items_str = ""
+        for i, folder in enumerate(trace_folders, 1):
+            if "-py-" in folder:
+                func_part = folder.split("-py-")[1].rsplit("-", 1)[0] # remove -chromium
+                clean_name = func_part.replace("-", "_")
+            else:
+                clean_name = folder
+            menu_items_str += f'echo  [{i:2d}] {clean_name}\nset "folder[{i}]=traces\\{folder}"\n'
+
+        total_count = len(trace_folders)
+
+        bat_content = f"""@echo off
 chcp 65001 >nul
 title Playwright Trace Viewer Selector
 cd /d "%~dp0"
@@ -43,18 +58,8 @@ echo                    Playwright Trace Viewer - 테스트 선택
 echo ================================================================================
 echo.
 setlocal enabledelayedexpansion
-set count=0
-for /d %%d in (traces\\*) do (
-    set /a count+=1
-    set "folder[!count!]=%%d"
-    set "rawname=%%~nxd"
-    
-    :: 보기 편하도록 긴 경로 접두사 제거
-    set "dispname=!rawname:automation-web-playwright-testcase-ai-=!"
-    set "dispname=!dispname:automation-web-playwright-testcase-=!"
-    set "dispname=!dispname:-chromium=!"
-    echo  [!count!] !dispname!
-)
+set count={total_count}
+{menu_items_str}
 echo.
 echo ================================================================================
 echo  [A] 전체 동시 열기   [Q] 종료

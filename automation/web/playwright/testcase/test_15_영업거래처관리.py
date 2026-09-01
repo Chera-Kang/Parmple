@@ -21,15 +21,17 @@ def test_15_sales_customer_management_flow(page: Page, login_pharm1):
     page.locator("xpath=//a[span[text()='영업 거래처 관리']]").scroll_into_view_if_needed()
     page.click("xpath=//a[span[text()='영업 거래처 관리']]")
     page.wait_for_selector("xpath=//h2[text()='영업 거래처 관리'] | //h2[contains(., '영업 거래처')]", timeout=10000)
+    expect(page.locator("xpath=//h2[text()='영업 거래처 관리'] | //h2[contains(., '영업 거래처')]").first).to_be_visible()
 
     # -------------------------------------------------------------
     # 2. 병의원 상세 진입 및 관리
     # -------------------------------------------------------------
     print("[Step 2] 병의원 상세 페이지 진입")
-    target_row = page.locator("xpath=//span[span[contains(text(), 'Auto')]] | //table//tbody//tr//span[contains(text(), 'Auto')] | //table//tbody//tr[1]//td[contains(@class, 'cursor-pointer')] | //tbody//tr[1]").first
-    if target_row.count() > 0:
-        target_row.click()
+    target_link = page.locator(".ag-row:visible a:has-text('Auto'), .ag-row:visible [col-id='hospitalName'] a, .ag-row:visible a, div[role='gridcell'] a").first
+    if target_link.count() > 0 and target_link.is_visible():
+        target_link.click()
         page.wait_for_selector("xpath=//h2[text()='상세 보기'] | //h2[contains(., '상세')]", timeout=10000)
+        expect(page.locator("xpath=//h2[text()='상세 보기'] | //h2[contains(., '상세')]").first).to_be_visible()
 
         # 2.1. 관리코드 수정
         print("[Step 2.1] 관리코드 수정")

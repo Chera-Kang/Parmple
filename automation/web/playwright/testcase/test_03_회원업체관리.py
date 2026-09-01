@@ -48,6 +48,7 @@ def test_03_member_company_management_flow(page: Page, login_cso):
     # -------------------------------------------------------------
     print("[Step 1] 회원 업체 관리 메인 화면 확인")
     page.wait_for_selector("xpath=//h2[contains(text(), '회원 업체 관리')]", timeout=10000)
+    expect(page.locator("xpath=//h2[contains(text(), '회원 업체 관리')]")).to_be_visible()
 
     # -------------------------------------------------------------
     # 1.1. 가입된 업체 추가하기
@@ -55,6 +56,7 @@ def test_03_member_company_management_flow(page: Page, login_cso):
     print("[Step 1.1] 가입된 업체 추가 (직전 가입 사업자번호 사용)")
     page.click("xpath=//button[normalize-space(.)='추가하기']")
     page.wait_for_selector("xpath=//h2[text()='회원 업체 추가']", timeout=5000)
+    expect(page.locator("xpath=//h2[text()='회원 업체 추가']")).to_be_visible()
 
     last_biz_no = get_last_biz_number()
     print(f"-> 사용할 가입 업체 사업자번호: {last_biz_no}")
