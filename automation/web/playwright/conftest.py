@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 load_dotenv(os.path.join(ROOT_DIR, "common", "auth", ".env"))
 
-BASE_URL = "https://qa.erp.parmple.com/"
-ADMIN_URL = "https://qa.admin.parmple.com/"
+BASE_URL = os.environ.get("BASE_URL", "https://qa.erp.parmple.com/")
+ADMIN_URL = os.environ.get("ADMIN_URL", "https://qa.admin.parmple.com/")
 
 @pytest.fixture(scope="session")
 def base_url():

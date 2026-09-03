@@ -17,7 +17,7 @@ load_dotenv(ENV_PATH)
 
 EMAIL_USER = os.getenv("EMAIL")
 APP_PASSWORD = os.getenv("APP_PASSWORD")
-SENDER_FILTER = "noreply@parmple.com"
+SENDER_FILTER = os.getenv("EMAIL_SENDER_FILTER", "noreply@parmple.com")
 
 # =============================================================================
 # 2. 이메일 데이터 파싱 유틸리티

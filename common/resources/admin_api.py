@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ENV_PATH = os.path.join(BASE_DIR, "common", "auth", ".env")
 load_dotenv(ENV_PATH)
 
-API_URL = "https://qa.api.parmple.com"
+API_URL = os.getenv("ADMIN_API_URL", "https://qa.api.parmple.com")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD = os.getenv("PASSWORD")
 

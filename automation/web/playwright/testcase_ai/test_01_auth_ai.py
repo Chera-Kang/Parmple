@@ -21,7 +21,7 @@ BIZNO_FILE = os.path.join(ROOT_DIR, "common", "resources", "used_bizNo.txt")
 TESTFILE_PATH1 = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF.pdf")
 TESTFILE_PATH2 = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF_2.pdf")
 
-BASE_URL = "https://qa.erp.parmple.com/"
+BASE_URL = os.environ.get("BASE_URL", "https://qa.erp.parmple.com/")
 
 # ==============================================================================
 # Helper Functions
