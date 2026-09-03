@@ -1,10 +1,29 @@
+# =============================================================================
 # Environments & Credentials
+# =============================================================================
+# 가상환경
 .venv/
-**/ .venv/
-common/auth/.env
-common/auth/credentials.json
+**/.venv/
 
+# 환경 변수 (.env 파일 전역 차단, 샘플 템플릿만 허용)
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env_sample
+
+# 인증 키 (GCP Service Account 키 차단, 샘플 템플릿만 허용)
+**/credentials.json
+**/*credential*.json
+!**/credentials.sample.json
+
+# 사내 메모 및 작업 계획
+todo.txt
+todo*.txt
+# plan.txt
+
+# =============================================================================
 # Test Results & Artifacts
+# =============================================================================
 TestResult/
 test-results/
 allure-results/
@@ -22,21 +41,22 @@ PIPE
 **/report.html
 interactive_console_output.xml
 
-# Python
+# =============================================================================
+# Python & Cache
+# =============================================================================
 __pycache__/
 **/*.pyc
 .pytest_cache
 
+# =============================================================================
 # Playwright & Self-Healing Artifacts
+# =============================================================================
 automation/web/playwright/self_healing/error_artifacts/
 **/error_artifacts/
 automation/web/playwright/.auth/
 **/.auth/
 
+# =============================================================================
 # Appium
+# =============================================================================
 appium_server.log
-
-
-
-# # ETC
-# plan.txt

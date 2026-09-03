@@ -1,4 +1,4 @@
-﻿*** Settings ***
+*** Settings ***
 Library    SeleniumLibrary
 Library    OperatingSystem
 Resource   ../keywords_legacy.robot
