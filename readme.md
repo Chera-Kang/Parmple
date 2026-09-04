@@ -25,7 +25,7 @@ B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 품질 검증
 
 - **[App] Android 하이브리드 앱 Appium 스모크 테스트 시연 (2026.09)**  
   [▶️ YouTube 바로보기](https://youtu.be/AGG6c-pH-6g)  
-  *서버 프로세스 자동 관리, 1회 로그인 세션 재사용 및 GNB 핵심 메뉴 이동 검증*
+  *Appium 서버 자동 구동 및 앱 로그인 후 주요 GNB 메뉴 진입 확인*
 
 - **과거 마일스톤 시연 영상**:  
   [Design System 적용 버전 (25.10.27)](https://youtu.be/e3fbpIVPqks) | [Renewal 버전 (25.08.06)](https://youtu.be/KU7lC9yqJbI) | [초기 버전 (25.04.15)](https://youtu.be/5YyteNw1Jz4) | [결과 리포트 샘플 (.zip)](https://drive.google.com/drive/folders/1f9foK6b4ZrYw6ugmbNNy25gB79n0HGNt)
