@@ -21,7 +21,7 @@ ${password}       %{PASSWORD=}
 
 # DIR
 ${ROOT_DIR}           ${{os.path.abspath(os.path.join(r'${CURDIR}', '../../../'))}}
-${RES_DIR}            ${ROOT_DIR}/common/resources
+${RES_DIR}            ${ROOT_DIR}/tools/resources
 ${SCREENSHOT_DIR}     ${ROOT_DIR}/TestResult/screenshots
 ${TESTFILE_DIR}       ${RES_DIR}/testfile
 ${TESTFILE_PATH}      ${TESTFILE_DIR}/Sameple_PDF.pdf
@@ -172,9 +172,9 @@ Logout
     Sleep    1
 
 
-# [Common] .env 파일에서 변수 강제 로드 (개별 파일 실행용)
+# [Tools] .env 파일에서 변수 강제 로드 (개별 파일 실행용)
 Load Login Credentials
-    ${env_path}=    Normalize Path    ${CURDIR}/../../../common/auth/.env
+    ${env_path}=    Normalize Path    ${CURDIR}/../../../tools/auth/.env
     ${content}=     Get File    ${env_path}
     ${lines}=       Split To Lines    ${content}
     FOR    ${line}    IN    @{lines}

@@ -10,11 +10,11 @@ import sys
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
 sys.path.append(ROOT_DIR)
 
-from common.resources.email_generator import generate_email
+from tools.resources.email_generator import generate_email
 
 # 파일 경로 상수
-TESTFILE_PDF = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF.pdf")
-STAMP_IMG_DIR = os.path.join(ROOT_DIR, "common", "resources", "testfile", "img_number")
+TESTFILE_PDF = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF.pdf")
+STAMP_IMG_DIR = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "img_number")
 
 
 # =============================================================================

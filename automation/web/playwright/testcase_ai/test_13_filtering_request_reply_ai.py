@@ -10,7 +10,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-from common.resources.gsheet_reader import get_biz_no_from_sheet
+from tools.resources.gsheet_reader import get_biz_no_from_sheet
 
 # ==============================================================================
 # Phase 2 Extension AI Generated Test Cases: 필터링 요청하기 & 필터링 회신 관리

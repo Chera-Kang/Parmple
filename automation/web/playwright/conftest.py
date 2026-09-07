@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 # 공통 환경 변수 로드
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-load_dotenv(os.path.join(ROOT_DIR, "common", "auth", ".env"))
+load_dotenv(os.path.join(ROOT_DIR, "tools", "auth", ".env"))
 
 BASE_URL = os.environ.get("BASE_URL", "https://qa.erp.parmple.com/")
 ADMIN_URL = os.environ.get("ADMIN_URL", "https://qa.admin.parmple.com/")

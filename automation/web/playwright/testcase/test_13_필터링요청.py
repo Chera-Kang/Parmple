@@ -9,7 +9,7 @@ import sys
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
 sys.path.append(ROOT_DIR)
 
-from common.resources.gsheet_reader import get_biz_no_from_sheet
+from tools.resources.gsheet_reader import get_biz_no_from_sheet
 
 # =============================================================================
 # Test Cases (13. 필터링 요청하기)

@@ -240,7 +240,7 @@ Generate Email
     Screenshot
 
     # 랜덤 파일 선택 및 업로드
-    ${testfile_dir}=    Normalize Path    ${ROOT_DIR}/common/resources/testfile/img_number
+    ${testfile_dir}=    Normalize Path    ${ROOT_DIR}/tools/resources/testfile/img_number
     ${files}=    List Files In Directory    ${testfile_dir}
     ${random_file}=    Evaluate    random.choice(${files})    modules=random
     ${target_file_path}=    Join Path    ${testfile_dir}    ${random_file}

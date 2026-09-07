@@ -15,9 +15,9 @@ def load_api_key():
 
     # 2. dotenv 라이브러리가 있다면 로드 시도
     env_paths = [
-        os.path.join(os.path.dirname(__file__), "..", "..", "..", "common", "auth", ".env"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "..", "tools", "auth", ".env"),
         os.path.join(os.path.dirname(__file__), "..", "..", "..", ".env"),
-        os.path.join(os.getcwd(), "common", "auth", ".env"),
+        os.path.join(os.getcwd(), "tools", "auth", ".env"),
         os.path.join(os.getcwd(), ".env")
     ]
     try:

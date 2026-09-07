@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 # 1. 초기 설정 및 환경 변수 로드
 # =============================================================================
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-ENV_PATH = os.path.join(BASE_DIR, "common", "auth", ".env")
+ENV_PATH = os.path.join(BASE_DIR, "tools", "auth", ".env")
 load_dotenv(ENV_PATH)
 
 API_URL = os.getenv("ADMIN_API_URL", "https://qa.api.parmple.com")

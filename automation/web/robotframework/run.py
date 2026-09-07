@@ -10,7 +10,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
 
 # 환경 변수 로드
-load_dotenv(os.path.join(ROOT_DIR, "common", "auth", ".env"))
+load_dotenv(os.path.join(ROOT_DIR, "tools", "auth", ".env"))
 
 TEST_SUITE_DIR = os.path.join(SCRIPT_DIR, "3. Web (latest robot)") 
 

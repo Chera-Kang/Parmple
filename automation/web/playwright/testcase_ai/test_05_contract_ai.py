@@ -12,7 +12,7 @@ if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
 # 파일 경로 상수
-TESTFILE_PDF = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF.pdf")
+TESTFILE_PDF = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF.pdf")
 
 # ==============================================================================
 # Phase 1 & 2: Core & Atomic Validation Test Cases

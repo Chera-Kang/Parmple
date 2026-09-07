@@ -11,15 +11,15 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-from common.resources.gsheet_reader import get_biz_no_from_sheet
-from common.resources.email_generator import generate_email
-from common.resources.email_reader import fetch_auth_code
-from common.resources.admin_api import AdminAPI
+from tools.resources.gsheet_reader import get_biz_no_from_sheet
+from tools.resources.email_generator import generate_email
+from tools.resources.email_reader import fetch_auth_code
+from tools.resources.admin_api import AdminAPI
 
 # 파일 경로 상수
-BIZNO_FILE = os.path.join(ROOT_DIR, "common", "resources", "used_bizNo.txt")
-TESTFILE_PATH1 = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF.pdf")
-TESTFILE_PATH2 = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF_2.pdf")
+BIZNO_FILE = os.path.join(ROOT_DIR, "tools", "resources", "used_bizNo.txt")
+TESTFILE_PATH1 = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF.pdf")
+TESTFILE_PATH2 = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF_2.pdf")
 
 BASE_URL = os.environ.get("BASE_URL", "https://qa.erp.parmple.com/")
 

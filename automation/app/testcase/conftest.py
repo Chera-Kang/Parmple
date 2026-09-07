@@ -9,7 +9,7 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
 # 공통 .env 파일 로드
-env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'common', 'auth', '.env'))
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tools', 'auth', '.env'))
 load_dotenv(dotenv_path=env_path)
 
 def kill_process_on_port(port):

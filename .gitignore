@@ -41,6 +41,10 @@ PIPE
 **/report.html
 interactive_console_output.xml
 
+# Business Validator Artifacts
+tools/business-validator/biz.txt
+tools/business-validator/result*.xlsx
+
 # =============================================================================
 # Python & Cache
 # =============================================================================

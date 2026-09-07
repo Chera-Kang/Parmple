@@ -18,7 +18,7 @@ def login_once(driver):
     cso_id = os.getenv('ID_CSO')
     cso_pw = os.getenv('PASSWORD')
     if not cso_id or not cso_pw:
-        raise ValueError("common/auth/.env 파일에 'ID_CSO' 또는 'PASSWORD'가 설정되어 있지 않습니다.")
+        raise ValueError("tools/auth/.env 파일에 'ID_CSO' 또는 'PASSWORD'가 설정되어 있지 않습니다.")
 
     id_locator = (AppiumBy.XPATH, "//*[@resource-id='ion-input-0']")
     id_input = wait.until(EC.visibility_of_element_located(id_locator))

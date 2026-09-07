@@ -23,7 +23,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
 
 # 환경 변수 로드
-env_path = os.path.join(ROOT_DIR, "common", "auth", ".env")
+env_path = os.path.join(ROOT_DIR, "tools", "auth", ".env")
 load_dotenv(env_path)
 
 # 기본 테스트 대상 디렉토리 (testcase 또는 testcase_ai)

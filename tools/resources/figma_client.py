@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # .env 로드
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
-env_path = os.path.join(ROOT_DIR, "common", "auth", ".env")
+env_path = os.path.join(ROOT_DIR, "tools", "auth", ".env")
 load_dotenv(env_path)
 
 FIGMA_TOKEN = os.getenv("FIGMA_ACCESS_TOKEN")

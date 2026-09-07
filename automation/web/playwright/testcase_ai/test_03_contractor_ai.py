@@ -12,12 +12,12 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-from common.resources.gsheet_reader import get_biz_no_from_sheet
+from tools.resources.gsheet_reader import get_biz_no_from_sheet
 
 # 파일 경로 상수
-BIZNO_FILE = os.path.join(ROOT_DIR, "common", "resources", "used_bizNo.txt")
-TESTFILE_PDF = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF.pdf")
-TESTFILE_PDF2 = os.path.join(ROOT_DIR, "common", "resources", "testfile", "Sameple_PDF_2.pdf")
+BIZNO_FILE = os.path.join(ROOT_DIR, "tools", "resources", "used_bizNo.txt")
+TESTFILE_PDF = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF.pdf")
+TESTFILE_PDF2 = os.path.join(ROOT_DIR, "tools", "resources", "testfile", "Sameple_PDF_2.pdf")
 
 # ==============================================================================
 # Helper Functions

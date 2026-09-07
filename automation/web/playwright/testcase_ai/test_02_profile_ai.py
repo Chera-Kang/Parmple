@@ -12,7 +12,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-from common.resources.email_generator import generate_email
+from tools.resources.email_generator import generate_email
 
 # ==============================================================================
 # Phase 1 & 2: Core & Atomic Validation Test Cases

@@ -83,7 +83,7 @@ Parmple\
 │       │
 │       └── robotframework/      # [Legacy] 기존 로봇프레임워크 아카이브
 │
-├── common/                      # 공통 모듈 (.env.example, Admin API, 메일 OTP 파싱 등)
+├── tools/                       # 엔지니어링 도구 및 유틸리티 (인증 관리, 검증 툴, Admin API 등)
 ├── TestResult/                  # 날짜별 테스트 결과 및 리포트 저장 폴더
 └── .gitignore                   # 인증 정보 및 테스트 결과 파일 차단
 ```
@@ -101,7 +101,7 @@ pip install -r requirements.txt
 playwright install chromium
 
 # 2. 환경 변수 설정 (.env.example 참고)
-cp common/auth/.env.example common/auth/.env
+cp tools/auth/.env.example tools/auth/.env
 
 # 3. 테스트 실행
 # [웹 전체 회귀 테스트 실행]
