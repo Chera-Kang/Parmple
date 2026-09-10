@@ -9,7 +9,7 @@
 [![Allure Report](https://img.shields.io/badge/Allure-Report-FF7800?style=flat-square&logo=qameta&logoColor=white)](https://allurereport.org/)
 
 B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 품질 검증을 위해 구축한 E2E 테스트 자동화 프로젝트입니다.  
-기존 Robot Framework와 Selenium으로 작성되었던 테스트 환경을 Playwright 및 Appium 환경으로 전환하여 실행 속도와 안정성을 개선하고, **기획서(Figma Workflow) 기반 자동 TC 생성 파이프라인(Figma-to-Code)** 및 AI 점진적 3-Phase 테스트 생성 파이프라인을 구축했습니다.
+기존 Robot Framework와 Selenium으로 작성되었던 테스트 환경을 Playwright 및 Appium 환경으로 전환하여 실행 속도와 안정성을 개선하고, **기획서(Figma Workflow) 기반 자동 TC 생성 파이프라인(Figma-to-Code)** 및 **AI를 활용한 점진적 3-Phase 테스트케이스 생성 파이프라인**을 구축했습니다.
 
 ---
 
@@ -35,13 +35,13 @@ B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 품질 검증
 
 ## 2. 주요 설계 내용
 
-### 1) 계정별 로그인 Fixture를 통한 세션 격리
-- CSO(영업대행), 제약사, 관리자 등 여러 권한이 나뉘어 있는 B2B 플랫폼 구조에 맞춰, Pytest Fixture(`conftest.py`)로 역할별 로그인 세션을 분리했습니다.
-- 각 테스트가 서로의 로그인 상태에 영향을 주지 않고 독립적으로 동작하도록 구성했습니다.
+### 1) 역할 및 권한별(Role-based) 독립 로그인 세션 관리
+- CSO(영업대행), 제약사, 관리자 등 다중 권한 체계를 갖춘 B2B 플랫폼 특성에 맞춰, Pytest Fixture(`conftest.py`)를 통해 역할별 로그인 세션을 분리했습니다.
+- 테스트 간 세션 간섭이나 상태 오염 없이 독립적이고 안정적인 병렬 검증이 가능하도록 설계했습니다.
 
-### 2) 상태 변화 단언 원칙 (Zero False-Positive)
-- 단순 클릭이나 화면 이동 후 검증 없이 넘어가는 무음 통과(Silent Pass)를 방지했습니다.
-- 모든 인터랙션 뒤에는 텍스트 노출, URL 변경, 요소 가시성 등 실제 화면에 일어난 상태 변화를 1:1로 검증하도록 테스트 규칙(`.agents/rules/qa_automation.md`)을 두었습니다.
+### 2) 실질적 UI 상태 변화 검증 원칙 (Zero False-Positive)
+- 단순 클릭이나 화면 이동 후 실질적인 확인 없이 통과하는 '무음 통과(Silent Pass)'를 방지했습니다.
+- 버튼 클릭, 모달 오픈, 폼 제출 등 모든 인터랙션 뒤에는 텍스트 노출, URL 변경, 요소 활성화 등 실제 화면의 DOM/상태 변화를 1:1로 검증(Assertion)하도록 테스트 규칙(`.agents/rules/qa_automation.md`)을 정립했습니다.
 
 ### 3) Dual-Track TC 생성 전략 (상황별 최적 파이프라인)
 프로젝트 및 기획 산출물의 성숙도에 따라 두 가지 상호 보완적인 생성 방식을 적용합니다:
@@ -49,14 +49,14 @@ B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 품질 검증
 * **Track A. 점진적 3단계 생성 전략 (Bottom-Up, 레거시/기획 미비 도메인)**:
   - **Phase 1 (코어 스모크)**: 화면 진입, 기본 메뉴 및 주요 버튼 노출 등 필수 안전망 구축
   - **Phase 2 (세부 유효성 검증)**: 각 입력 필드별 필수값 누락 방어, 경계값 및 비정상 입력 검증
-  - **Phase 3 (비즈니스 CRUD)**: 실제 데이터 등록, 확인 모달 처리, 목록 반영 및 삭제까지의 전체 흐름 검증
-  - **Self-Healing 보정**: UI 변경으로 셀렉터 실패 시, 에러 시점의 화면과 로그를 기반으로 대체 로케이터를 제안받아 유지보수
+  - **Phase 3 (비즈니스 CRUD & 자가 치유)**: 실제 데이터 등록, 확인 모달 처리, 목록 반영 및 삭제까지의 전체 흐름 검증
+    - *Self-Healing 연계*: 런타임 UI 변경으로 셀렉터 실패 시, 에러 시점의 화면과 DOM 로그를 기반으로 대체 로케이터를 제안받아 자가 치유 및 유지보수
 
 * **Track B. Figma(기획서) 기반 자동 TC 생성 파이프라인 (Top-Down, Figma-to-Code)**:
   - **Figma REST API 연동**: 워크플로우 맵의 Node(화면/모달)와 Edge(이동/분기)를 파싱하여 사용자 여정(User Journey)을 1:1 테스트 스텝으로 자동 변환
   - **자동 완전 탐색 (Auto Drill-Down)**: 메인 여정의 목적지 화면(예: 프로필)에 도달해서 멈추지 않고, 해당 화면에 설계된 모든 하위 메뉴(계정 관리, 업체 관리), 모달 팝업, 그리고 연결된 독립 서브 페이지(업체 계정 관리)까지 끝까지 추적 검증
   - **1-Subflow 1-TC 모듈화**: 스파게티 E2E를 방지하기 위해 메인 여정과 각 서브 기능군을 독립된 pytest 함수로 개별 분리하여 Allure 리포트 및 병렬 실행 최적화
-  - **Description 인수 조건 단언 강제**: 피그마 프레임의 `description`(예: 필드 입력 포맷, 경고 팝업만 확인 후 취소 등)을 Playwright `expect()` 단언문으로 1:1 매핑
+  - **Description 인수 조건 검증 강제**: 피그마 프레임의 `description`(예: 필드 입력 포맷, 경고 팝업만 확인 후 취소 등)을 Playwright `expect()` 검증문으로 1:1 매핑
 
 ### 4) API 및 메일 연동을 통한 검증
 - 회원가입 등 외부 인증과 관리자 처리가 필요한 구간에서 순수 UI 클릭에만 의존하지 않고, 백엔드 관리자 REST API(`admin_api.py`) 및 메일 OTP 수신 파서(`email_reader.py`)를 자동화 스크립트와 연계했습니다.
@@ -78,7 +78,7 @@ B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 품질 검증
 
 ```
 Parmple\
-├── .agents/rules/               # AI 테스트 작성 규칙 (단언문 원칙, Dual-Track TC 생성 가이드)
+├── .agents/rules/               # AI 테스트 작성 규칙 (상태 검증 원칙, Dual-Track TC 생성 가이드)
 │   ├── qa_automation.md         # Zero False-Positive 및 셀렉터 표준 원칙
 │   └── qa_tc_creation.md        # 3-Phase 및 Figma-to-Code 완전 탐색 프로토콜
 ├── automation/                  # 테스트 코드 메인 폴더
@@ -87,7 +87,7 @@ Parmple\
 │       ├── playwright/          # [Playwright]
 │       │   ├── testcase/        # 기존 회귀 테스트 (01~16번, Robot Framework ➔ Playwright 전환)
 │       │   ├── testcase_ai/     # AI 3-Phase 점진적 생성 테스트 (01~21번)
-│       │   ├── testcase_figma/  # [NEW] Figma 워크플로우 기반 통합 E2E 테스트 (회원가입 ➔ 프로필 하위플로우 6종)
+│       │   ├── testcase_figma/  # Figma 워크플로우 기반 통합 E2E 테스트 (회원가입 ➔ 프로필 하위플로우 6종)
 │       │   ├── self_healing/    # 셀렉터 자가 치유 파이프라인
 │       │   ├── conftest.py      # 공통 브라우저 설정 및 계정별 로그인 Fixture
 │       │   ├── report_manager.py# Report 관리 모듈 (Allure / Trace / HTML)
