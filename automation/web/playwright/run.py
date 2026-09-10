@@ -28,7 +28,8 @@ load_dotenv(env_path)
 
 # 기본 테스트 대상 디렉토리 (testcase 또는 testcase_ai)
 # DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase")
-DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase_ai")
+# DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase_ai")
+DEFAULT_TEST_DIR = os.path.join(SCRIPT_DIR, "testcase_figma")
 
 # 결과 디렉토리 설정: TestResult/YY-MM-DD_HH-MM
 BASE_RESULT_DIR = os.path.join(ROOT_DIR, "TestResult")
