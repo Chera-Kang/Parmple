@@ -1,0 +1,40 @@
+# Parmple E2E Automation Dependencies
+# Python 3.13+
+
+# Core Test Runners & Frameworks
+pytest==9.1.1
+pytest-playwright==0.9.0
+playwright==1.62.0
+pytest-html==4.2.0
+pytest-metadata==3.1.1
+pytest-base-url==2.1.0
+
+# Reporting & Tracing
+allure-pytest==2.16.0
+allure-python-commons==2.16.0
+
+# Mobile Automation
+Appium-Python-Client==6.0.0
+selenium==4.41.0
+
+# Environment & Utilities
+python-dotenv==1.2.2
+requests==2.34.2
+pillow==12.3.0
+beautifulsoup4==4.14.3
+click==8.3.1
+colorama==0.4.6
+tqdm==4.70.0
+pydantic==2.13.4
+
+# Google APIs & AI (Self-Healing & Google Sheets)
+google-auth==2.49.0
+google-auth-oauthlib==1.3.0
+google-api-python-client==2.198.0
+google-generativeai==0.8.6
+gspread==6.2.1
+
+# Legacy Compatibility (Robot Framework)
+robotframework==7.4.2
+robotframework-seleniumlibrary==6.8.0
+robotframework-requests==0.9.7
