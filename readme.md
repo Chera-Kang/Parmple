@@ -1,32 +1,31 @@
 # Parmple E2E Test Automation Framework
-> **B2B 제약 CSO ERP 서비스를 위한 Playwright 기반 E2E 테스트 자동화 & AI 자가치유 파이프라인**
+> **B2B 제약 CSO ERP 서비스를 위한 Playwright 기반 E2E 테스트 자동화 프레임워크**
 
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
 [![Pytest](https://img.shields.io/badge/Pytest-9.1-0A9EDC?style=flat-square&logo=pytest&logoColor=white)](https://docs.pytest.org/)
 [![Appium](https://img.shields.io/badge/Appium-v2.15-662D91?style=flat-square&logo=appium&logoColor=white)](https://appium.io/)
 [![Allure Report](https://img.shields.io/badge/Allure-Report-FF7800?style=flat-square&logo=qameta&logoColor=white)](https://allurereport.org/)
-[![Google Gemini](https://img.shields.io/badge/AI-Gemini_Self--Healing-8E75C2?style=flat-square&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
 
 ---
 
 ## 🎬 시연 영상 및 결과 산출물
-- 🎬 **[Web] Playwright + Pytest 16개 핵심 도메인 회귀 테스트 시연**: [▶️ YouTube 바로보기](https://youtu.be/t7XDqr4cbYw)
-- 🎬 **[Web] AI 활용 3단계 점진적 TC 자동 설계 및 검증 (18개 E2E)**: [▶️ YouTube 바로보기](https://youtu.be/mywifH10t74)
-- 🎬 **[App] Android 하이브리드 앱 Appium 스모크 테스트 시연**: [▶️ YouTube 바로보기](https://youtu.be/AGG6c-pH-6g)
+- 🎬 **[Web] Playwright + Pytest 16개 핵심 도메인 회귀 테스트 시연 (메인)**: [▶️ YouTube 바로보기](https://youtu.be/t7XDqr4cbYw)
+- 🎬 **[App] Android 하이브리드 앱 Appium 스모크 테스트 시연 (메인)**: [▶️ YouTube 바로보기](https://youtu.be/AGG6c-pH-6g)
+- 🎬 **[R&D PoC] AI 활용 점진적 TC 도출 및 화면 분석 시연 (연구용 PoC)**: [▶️ YouTube 바로보기](https://youtu.be/mywifH10t74)
 - 📁 **Allure 테스트 결과 리포트 및 산출물 샘플**: [Google Drive 바로가기](https://drive.google.com/drive/folders/1fhsUjoCoELRtGKLkGjBAfgC0W3t8jBnq)
 
 ---
 
 ## 1. 개요 (Overview)
 B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 안정적인 릴리즈를 위해 구축된 **Playwright + Pytest 기반 E2E 자동화 프레임워크**입니다.  
-다중 권한(영업사원·제약사·관리자) 간 세션 충돌로 인한 간헐적 오류(Flaky)를 방지하고, 2차 인증(OTP)을 자동화하여 **수동 개입 없는 회귀 검증 환경**을 완성했습니다.
+다중 권한(영업사원·제약사·관리자) 간 세션 간섭으로 인한 간헐적 오류(Flaky)를 방지하고, 2차 이메일 인증(OTP)을 자동화하여 **안정적인 회귀 검증 환경**을 구축했습니다.
 
 ### 핵심 해결 포인트
-- **다중 권한 세션 격리**: Pytest Fixture를 활용해 CSO, 제약사, 관리자 간 BrowserContext를 독립 분리하여 쿠키/세션 충돌 원천 차단
-- **OTP 실시간 파싱 & Admin API**: IMAP 메일함 조회 기반 실시간 OTP 자동 파싱 및 관리자 REST API 연동을 통한 테스트 사전 데이터(계정/계약) 셋업
-- **AI 로케이터 자가치유 (Self-Healing)**: UI 변경으로 요소 탐색 실패 시 에러 시점의 DOM과 화면을 Google Gemini로 분석하여 대체 셀렉터로 자동 복구
-- **Figma 명세 기반 TC 자동화**: Figma REST API로 기획 명세를 파싱하여 하위 팝업 및 서브페이지 검증 스크립트 도출
+- **다중 권한 세션 격리**: Pytest Fixture를 활용해 CSO, 제약사, 관리자 간 `BrowserContext`를 독립 분리하여 이전 테스트의 로그인 세션 잔존으로 인한 간섭 및 Flaky 방지
+- **이메일 OTP 자동 파싱**: IMAP4 메일함 주기적 조회를 통해 2차 인증번호를 자동으로 파싱하여 로그인 프로세스 자동화
+- **Admin REST API 사전 셋업**: 계정 승인 및 계약 데이터 생성 등 반복적 사전 준비 작업을 API로 처리하여 테스트 실행 시간 단축
+- **관측성 및 추적성 확보**: Allure Report와 실패 시점의 Playwright Trace Viewer(DOM 스냅샷, 네트워크 액션)를 연동하여 빠른 원인 분석 지원
 
 ---
 
@@ -34,28 +33,24 @@ B2B 제약 영업대행(CSO) 및 위탁 계약 관리 플랫폼의 안정적인 
 
 ```mermaid
 graph LR
-    subgraph Input["기획 명세 & 화면"]
-        Figma["Figma API 명세"]
-        DOM["화면 구조/DOM"]
+    subgraph Setup["사전 준비 및 인증"]
+        AdminAPI["Admin REST API<br>(테스트 데이터 사전 셋업)"]
+        OTP["IMAP 메일함 Polling<br>(2차 인증 OTP 파싱)"]
     end
 
     subgraph Runner["실행 엔진 (Pytest + Playwright)"]
-        Fixture["다중 세션 물리 격리 (CSO·제약사·Admin)"]
-        OTP["실시간 OTP 수신 / Admin API Setup"]
-        Core["Playwright 테스트 스위트"]
+        Fixture["BrowserContext 독립 분리<br>(CSO · 제약사 · Admin)"]
+        Core["16개 핵심 도메인 E2E 스위트"]
     end
 
-    subgraph Analysis["관측성 & 자가치유"]
-        Report["Allure Report / Trace Viewer"]
-        AI["Gemini 로케이터 자가치유"]
+    subgraph Observability["리포팅 & 디버깅"]
+        Allure["Allure Report<br>(통합 대시보드)"]
+        Trace["Playwright Trace Viewer<br>(실패 시점 DOM/액션 스냅샷)"]
     end
 
-    Input --> Runner
+    Setup --> Runner
     Fixture --> Core
-    OTP --> Core
-    Core --> Report
-    Core -.->|"셀렉터 실패 시"| AI
-    AI -.->|"대체 로케이터 제안"| Core
+    Core --> Observability
 ```
 
 ---
@@ -63,17 +58,14 @@ graph LR
 ## 3. 디렉토리 구조
 
 ```
-c:\Dev\Parmple/
+Parmple/
 ├── automation/
 │   ├── app/                              # Android 하이브리드 앱 Appium 자동화
 │   └── web/playwright/                   # [메인] Playwright E2E 프레임워크
-│       ├── conftest.py                   # 다중 세션 격리 & 브라우저 픽스처
+│       ├── conftest.py                   # 세션 격리(BrowserContext) & 브라우저 픽스처
 │       ├── report_manager.py             # Allure & Trace Viewer 연계 매니저
 │       ├── run.py                        # 회귀 테스트 통합 실행 스크립트
-│       ├── testcase/                     # 핵심 도메인 회귀 테스트 (16개 도메인)
-│       ├── testcase_ai/                  # 점진적 3단계 자동 생성 테스트
-│       ├── testcase_figma/               # Figma REST API 기반 자동 생성 테스트
-│       └── self_healing/                 # Gemini AI 기반 로케이터 자가치유 엔진
+│       └── testcase/                     # B2B 핵심 도메인 회귀 테스트 (16개 도메인)
 └── tools/resources/                      # OTP 메일 수신, Admin API, 사업자번호 검증기
 ```
 
