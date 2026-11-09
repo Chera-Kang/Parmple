@@ -9,11 +9,9 @@
 
 ---
 
-## 🎬 시연 영상 및 결과 산출물
+## 🎬 시연 영상
 - 🎬 **[Web] Playwright + Pytest 16개 핵심 도메인 회귀 테스트 시연 (메인)**: [▶️ YouTube 바로보기](https://youtu.be/t7XDqr4cbYw)
 - 🎬 **[App] Android 하이브리드 앱 Appium 스모크 테스트 시연 (메인)**: [▶️ YouTube 바로보기](https://youtu.be/AGG6c-pH-6g)
-- 🎬 **[R&D PoC] AI 활용 점진적 TC 도출 및 화면 분석 시연 (연구용 PoC)**: [▶️ YouTube 바로보기](https://youtu.be/mywifH10t74)
-- 📁 **Allure 테스트 결과 리포트 및 산출물 샘플**: [Google Drive 바로가기](https://drive.google.com/drive/folders/1fhsUjoCoELRtGKLkGjBAfgC0W3t8jBnq)
 
 ---
 
