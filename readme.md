@@ -64,7 +64,9 @@ Parmple/
 │       ├── report_manager.py             # Allure & Trace Viewer 연계 매니저
 │       ├── run.py                        # 회귀 테스트 통합 실행 스크립트
 │       └── testcase/                     # B2B 핵심 도메인 회귀 테스트 (16개 도메인)
-└── tools/resources/                      # OTP 메일 수신, Admin API, 사업자번호 검증기
+└── tools/
+    ├── auth/                             # 계정 인증 정보 및 환경변수 (.env)
+    └── resources/                        # OTP 메일 수신, Admin API 등 공통 헬퍼
 ```
 
 ---
