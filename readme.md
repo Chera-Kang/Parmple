@@ -66,6 +66,7 @@ Parmple/
 │       └── testcase/                     # B2B 핵심 도메인 회귀 테스트 (16개 도메인)
 └── tools/
     ├── auth/                             # 계정 인증 정보 및 환경변수 (.env)
+    ├── business-validator/               # 사업자등록번호 유효성 및 상태 검증 크롤러
     └── resources/                        # OTP 메일 수신, Admin API 등 공통 헬퍼
 ```
 
